@@ -70,9 +70,10 @@ theme: landscape
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  message: 
-  repo: 
-    github: https://ladder1984:goodmybest1@github.com/ladder1984/ladder1984.github.io.git
+  message:
+  repo:
+    github: https://github.com/ladder1984/ladder1984.github.io.git
+    branch: master
 
 disqus_shortname: ifchanged
 google_analytics: UA-67561349-1
