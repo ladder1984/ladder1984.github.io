@@ -1,4 +1,5 @@
 title: emoji、Python、MySQL utf8mb4与UTF
+date: 2016-03-20 21:16:31
 tags:
 - MySQL
 - Python
