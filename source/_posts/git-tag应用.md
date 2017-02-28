@@ -58,7 +58,7 @@ tag的命令与分支相似。
 	- 取得远程master上没有上线的commit：
 	
 	```
-	git fetch && git log ^`git tag --sort="version:refname" -l "v*"|tail -1` origin/master
+	git fetch && git log `git tag --sort="version:refname" -l "v*"|tail -1`..origin/master
 	```
 	或者
 	```
