@@ -40,7 +40,7 @@ tag的命令与分支相似。
 
 增加构建后操作的Publisher：
 
-[](/images/git_tag1.png)
+![](/images/git_tag1.png)
 
 - v168形式的标签表示每次 jenkins上线构建的版本,使用`git tag --sort="version:refname" -l "v*"`获得按照版本排序的tag。
 
@@ -65,7 +65,7 @@ tag的命令与分支相似。
 	git fetch && git rev-list ^`git tag --sort="version:refname" -l "v*"|tail -1` origin/master --pretty=oneline
 	```
 	
-    **注**：`--sort="version:refname" -l "v*"`要求v开头的tag都是jenkins打出来的，且要求git 2.1及以上版本
+**注**：`--sort="version:refname" -l "v*"`要求v开头的tag都是jenkins打出来的，且要求git 2.1及以上版本
     
 2. 回滚
 
