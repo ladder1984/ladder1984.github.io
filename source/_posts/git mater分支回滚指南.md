@@ -48,7 +48,7 @@ Date:   Mon Aug 22 15:40:16 2016 +0800
 ```
         a4aebedf4
            /\
-   6ee7688| |6ee7688
+   6ee7688| |d593ca7
   (master)| | (feature)
           | |
           | |
