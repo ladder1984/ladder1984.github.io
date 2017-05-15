@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ifchanged.io/"/>
-  <updated>2017-05-15T17:14:45.000Z</updated>
+  <updated>2017-05-15T17:50:51.000Z</updated>
   <id>http://ifchanged.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一站经验总结——行为驱动开发</title>
+    <title>第一站经验总结——行为驱动开发(BDD)</title>
     <link href="http://ifchanged.io/2017/%E7%AC%AC%E4%B8%80%E7%AB%99%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88BDD%EF%BC%89/"/>
     <id>http://ifchanged.io/2017/第一站经验总结——行为驱动开发（BDD）/</id>
     <published>2017-05-15T16:45:44.000Z</published>
-    <updated>2017-05-15T17:14:45.000Z</updated>
+    <updated>2017-05-15T17:50:51.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>BDD（Behaviour-Driven Development行为驱动开发）是一种敏捷开放方式，鼓励开发者、测试、业务方参与开发协作，虽然多数情况下只有开发和测试参与。BDD使用自然语言描述用户故事，从而让各方都可读、可写测试用例，并且用通用的语言精确描述软件的行为。</p>
 <h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>模拟用户的真实行为，来保证各个软件模块执行后的最终结果是正确的。</p>
