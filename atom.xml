@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ifchanged.io/"/>
-  <updated>2017-05-15T17:14:45.000Z</updated>
+  <updated>2017-05-15T17:23:01.000Z</updated>
   <id>http://ifchanged.io/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一站经验总结——微服务（microservice）</title>
+    <link href="http://ifchanged.io/2017/%E7%AC%AC%E4%B8%80%E7%AB%99%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%BE%AE%E6%9C%8D%E5%8A%A1%EF%BC%88microservice%EF%BC%89/"/>
+    <id>http://ifchanged.io/2017/第一站经验总结——微服务（microservice）/</id>
+    <published>2017-05-15T17:23:01.000Z</published>
+    <updated>2017-05-15T17:23:01.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>第一站经验总结——行为驱动开发</title>
@@ -1125,146 +1139,6 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digit+
       <category term="Django" scheme="http://ifchanged.io/tags/Django/"/>
     
       <category term="Python" scheme="http://ifchanged.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Visual Studio 2013支持的C99库（library）</title>
-    <link href="http://ifchanged.io/2014/Visual%20Studio%202013%E6%94%AF%E6%8C%81%E7%9A%84C99%E5%BA%93%EF%BC%88library%EF%BC%89/"/>
-    <id>http://ifchanged.io/2014/Visual Studio 2013支持的C99库（library）/</id>
-    <published>2014-07-23T10:09:05.000Z</published>
-    <updated>2017-01-08T14:27:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<p># </p>
-<p>C99已经发布多年，但微软的Visual C++尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大家有帮助。水平有限，翻译不当之处，欢迎指正。</p>
-<hr>
-<p>大家好，我是Pat Brenner，Visual C++库团队的开发人员。在这篇博文中，我想分享添加到Visual Studio 2013中的 C运行时库（run-time library）对C99支持的一些信息。</p>
-<p>总的来说，我们为如下头文件中缺失的函数增加了声明（declarations）和实现（implementations）：math.h，ctype.h，wctype.h，tdio.h， stdlib.h， and wchar.h。我们也新增了一些头文件，包括complex.h，stdbool.h，fenv.h，和 inttypes.h，并且增加了声明在它们中的所有函数的实现。此外，我们增加了新的C ++ wrapper headers（ccomplex, cfenv, cinttypes, ctgmath)并且更新了其他的一部分（ccomplex, cctype, clocale, cmath, cstdint, cstdio, cstring, cwchar, and cwctype）。</p>
-<p>大部分工作（除了stdbool.h和fenv.h外的所有C头文件）已经及时在Visual Studio 2013 Preview发布前完成并且已经可用，但是剩下的（stdbool.h, fenv.h 和 the C++ wrapper headers）将会在Visual Studio 2013 RTM中完成并发布。</p>
-<p>更详细的说，这些是我们增加的声明和实现，根据声明它们的头文件分组：</p>
-<ul>
-<li><p>math.h:</p>
-<ul>
-<li>float_t, double_t, fpclassify, isfinite isinf, isnan, isnormal, signbit</li>
-<li>HUGE_VALF, HUGE_VALL, INFINITY, NAN, MATH_ERRNO, MATH_ERREXCEPT</li>
-<li>FP_INFINITE, FP_NAN, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, FP_ILOGB0, FP_ILOGBNAN</li>
-<li>acosh, acoshf, acoshl, asinh, asinhf, asinhl, atanh, atanhf, atanhl</li>
-<li>exp2, exp2f, exp2l, expm1, expm1f, expm1l</li>
-<li>ilogb, ilogbf, ilogbl, logb, logbf, logbl, log1p, log1pf, log1pl, log2, log2f, log2l</li>
-<li>scalbn, scalbnf, scalbnl, scalbln, scalblnf, scalblnl</li>
-<li>cbrt, cbrtf, cbrtl, erf, erff, erfl, erfc, erfcf, erfcl</li>
-<li>lgamma, lgammaf, lgammal, tgamma, tgammaf, tgammal</li>
-<li>nearbyint, nearbyintf, nearbyintl, nan, nanf, nanl</li>
-<li>rint, rintf, rintl, lrint, lrintf, lrintl, llrint, llrintf, llrintl</li>
-<li>round, roundf, roundl, lround, lroundf, lroundl, llround, llroundf, llroundl</li>
-<li>trunc, truncf, truncl, remainder, remainderf, remainder, remquo, remquof, remquol</li>
-<li>nextafter, nextafterf, nextafterl, nexttoward, nexttowardf, nexttowardl</li>
-<li>fdim, fdimf, fdiml, fmax, fmaxf, fmaxl, fmin, fminf, fminl, fma, fmaf, fmal</li>
-</ul>
-</li>
-<li><p>complex.h:</p>
-<ul>
-<li>cacos, cacosf, cacosl, casin, casinf, casinl, catan, catanf, catanl</li>
-<li>ccos, ccosf, ccosl, csin, csinf, csinl, ctan, ctanf, ctanl</li>
-<li>cacosh, cacoshf, cacoshl, casinh, casinhf, casinhl, catanh, catanhf, catanhl</li>
-<li>ccosh, ccoshf, ccoshl, csinh, csinhf, csinhl, ctanh, ctanhf, ctanhl</li>
-<li>cexp, cexpf, cexpl, clog, clogf, clogl, cabs, cabsf, cabsl</li>
-<li>cpow, cpowf, cpowl, csqrt, csqrtf, csqrtl, carg, cargf, cargl</li>
-<li>cimag, cimagf, cimagl, conj, conjf, conjl, cproj, cprojf, cprojl, creal, crealf, creall</li>
-</ul>
-</li>
-<li><p>fenv.h:</p>
-<ul>
-<li>fegetenv, fesetenv, feupdateenv, fegetexceptflag, fesetexceptflag</li>
-<li>feclearexcept, feholdexcept, fetestexcept, feraiseexcept</li>
-</ul>
-</li>
-<li><p>inttypes.h:</p>
-<ul>
-<li>PRIi8, PRIi16, PRIi32, PRIi64, PRIiMAX, PRIiPTR, PRIiLEAST8, PRIiLEAST16, PRIiLEAST32, PRIiLEAST64, PRIiFAST8, PRIiFAST16, PRIiFAST32, PRIiFAST64</li>
-<li>PRIo8, PRIo16, PRIo32, PRIo64, PRIoMAX, PRIoPTR, PRIoLEAST8, PRIoLEAST16, PRIoLEAST32, PRIoLEAST64, PRIoFAST8, PRIoFAST16, PRIoFAST32, PRIoFAST64</li>
-<li>PRIu8, PRIu16, PRIu32, PRIu64, PRIuMAX, PRIuPTR, PRIuLEAST8, PRIuLEAST16, PRIuLEAST32, PRIuLEAST64, PRIuFAST8, PRIuFAST16, PRIuFAST32, PRIuFAST64</li>
-<li>PRIx8, PRIx16, PRIx32, PRIx64, PRIxMAX, PRIxPTR, PRIxLEAST8, PRIxLEAST16, PRIxLEAST32, PRIxLEAST64, PRIxFAST8, PRIxFAST16, PRIxFAST32, PRIxFAST64</li>
-<li>PRIX8, PRIX16, PRIX32, PRIX64, PRIXMAX, PRIXPTR, PRIXLEAST8, PRIXLEAST16, PRIXLEAST32, PRIXLEAST64, PRIXFAST8, PRIXFAST16, PRIXFAST32, PRIXFAST64</li>
-<li>SCNd8, SCNd16, SCNd32, SCNd64, SCNdMAX, SCNdPTR, SCNdLEAST8, SCNdLEAST16, SCNdLEAST32, SCNdLEAST64, SCNdFAST8, SCNdFAST16, SCNdFAST32, SCNdFAST64</li>
-<li>SCNi8, SCNi16, SCNi32, SCNi64, SCNiMAX, SCNiPTR, SCNiLEAST8, SCNiLEAST16, SCNiLEAST32, SCNiLEAST64, SCNiFAST8, SCNiFAST16, SCNiFAST32, SCNiFAST64</li>
-<li>SCNo8, SCNo16, SCNo32, SCNo64, SCNoMAX, SCNoPTR, SCNoLEAST8, SCNoLEAST16, SCNoLEAST32, SCNoLEAST64, SCNoFAST8, SCNoFAST16, SCNoFAST32, SCNoFAST64</li>
-<li>SCNu8, SCNu16, SCNu32, SCNu64, SCNuMAX, SCNuPTR, SCNuLEAST8, SCNuLEAST16, SCNuLEAST32, SCNuLEAST64, SCNuFAST8, SCNuFAST16, SCNuFAST32, SCNuFAST64</li>
-<li>SCNx8, SCNx16, SCNx32, SCNx64, SCNxMAX, SCNxPTR, SCNxLEAST8, SCNxLEAST16, SCNxLEAST32, SCNxLEAST64, SCNxFAST8, SCNxFAST16, SCNxFAST32, SCNxFAST64</li>
-<li>SCNX8, SCNX16, SCNX32, SCNX64, SCNXMAX, SCNXPTR, SCNXLEAST8, SCNXLEAST16, SCNXLEAST32, SCNXLEAST64, SCNXFAST8, SCNXFAST16, SCNXFAST32, SCNXFAST64</li>
-<li>imaxabs, imaxdiv, strtoimax, strtoumax, wcstoimax, wcstoumax</li>
-</ul>
-</li>
-<li><p>ctype.h</p>
-<ul>
-<li>isblank</li>
-</ul>
-</li>
-<li><p>wctype.h</p>
-<ul>
-<li>iswblank</li>
-</ul>
-</li>
-<li><p>float.h</p>
-<ul>
-<li>DECIMAL_DIG, FLT_EVAL_METHOD</li>
-</ul>
-</li>
-<li><p>stdarg.h</p>
-<ul>
-<li>va_copy</li>
-</ul>
-</li>
-<li><p>stdbool.h</p>
-<ul>
-<li>bool, true, false, __bool_true_false_are_defined</li>
-</ul>
-</li>
-<li><p>stdio.h</p>
-<ul>
-<li>vscanf, vfscanf, vsscanf</li>
-</ul>
-</li>
-<li><p>stdlib.h</p>
-<ul>
-<li>atoll, strtof, strtold, strtoll, strtoull</li>
-</ul>
-</li>
-<li><p>wchar.h</p>
-<ul>
-<li>vwscanf, vfwscanf, vswscanf, wcstof, wcstold, wcstoll, wcstoull<br>我们知道这并不是对C99库函数的完整支持，尽我们的理解，缺少的部分如下：</li>
-</ul>
-</li>
-<li><p>tgmath头文件缺失，这个头文件需要C编译器的支持。</p>
-<ul>
-<li>注意，ctgmath 头文件已经被添加——这是有可能的，因为这个头文件不需要tgmath.h头文件，只需要ccomplex 和 cmath headers头文件</li>
-</ul>
-</li>
-<li><p>uchar.h偷文件缺失。这来自the C Unicode TR.</p>
-</li>
-<li>printf家族中的一些格式说明符尚不支持</li>
-<li>stdio.h和wcahr.h中的snprintf and snwprintf 函数缺失。<br>我希望你觉得这些信息有用，我们尽力优先实现我们认为重要的函数。</li>
-</ul>
-<p>Pat Brenner, Visual C++ Libraries Development Team</p>
-<hr>
-<p>&nbsp;</p>
-<p>原文链接：<a href="http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx</a></p>
-<p>&nbsp;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;# &lt;/p&gt;
-&lt;p&gt;C99已经发布多年，但微软的Visual C++尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大家有帮助。水平有限，翻译不当之处，欢迎指正。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;大家好，我是Pat Brenner，Vis
-    
-    </summary>
-    
-      <category term="Coding" scheme="http://ifchanged.io/categories/Coding/"/>
-    
-    
-      <category term="C" scheme="http://ifchanged.io/tags/C/"/>
     
   </entry>
   
