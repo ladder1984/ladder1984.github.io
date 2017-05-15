@@ -258,270 +258,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2014/Visual Studio 2013支持的C99库（library）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zeroten">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IFchanged">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/Visual Studio 2013支持的C99库（library）/" itemprop="url">
-                  Visual Studio 2013支持的C99库（library）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-23T18:09:05+08:00">
-                2014-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/Visual Studio 2013支持的C99库（library）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/Visual Studio 2013支持的C99库（library）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p># </p>
-<p>C99已经发布多年，但微软的Visual C++尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大家有帮助。水平有限，翻译不当之处，欢迎指正。</p>
-<hr>
-<p>大家好，我是Pat Brenner，Visual C++库团队的开发人员。在这篇博文中，我想分享添加到Visual Studio 2013中的 C运行时库（run-time library）对C99支持的一些信息。</p>
-<p>总的来说，我们为如下头文件中缺失的函数增加了声明（declarations）和实现（implementations）：math.h，ctype.h，wctype.h，tdio.h， stdlib.h， and wchar.h。我们也新增了一些头文件，包括complex.h，stdbool.h，fenv.h，和 inttypes.h，并且增加了声明在它们中的所有函数的实现。此外，我们增加了新的C ++ wrapper headers（ccomplex, cfenv, cinttypes, ctgmath)并且更新了其他的一部分（ccomplex, cctype, clocale, cmath, cstdint, cstdio, cstring, cwchar, and cwctype）。</p>
-<p>大部分工作（除了stdbool.h和fenv.h外的所有C头文件）已经及时在Visual Studio 2013 Preview发布前完成并且已经可用，但是剩下的（stdbool.h, fenv.h 和 the C++ wrapper headers）将会在Visual Studio 2013 RTM中完成并发布。</p>
-<p>更详细的说，这些是我们增加的声明和实现，根据声明它们的头文件分组：</p>
-<ul>
-<li><p>math.h:</p>
-<ul>
-<li>float_t, double_t, fpclassify, isfinite isinf, isnan, isnormal, signbit</li>
-<li>HUGE_VALF, HUGE_VALL, INFINITY, NAN, MATH_ERRNO, MATH_ERREXCEPT</li>
-<li>FP_INFINITE, FP_NAN, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, FP_ILOGB0, FP_ILOGBNAN</li>
-<li>acosh, acoshf, acoshl, asinh, asinhf, asinhl, atanh, atanhf, atanhl</li>
-<li>exp2, exp2f, exp2l, expm1, expm1f, expm1l</li>
-<li>ilogb, ilogbf, ilogbl, logb, logbf, logbl, log1p, log1pf, log1pl, log2, log2f, log2l</li>
-<li>scalbn, scalbnf, scalbnl, scalbln, scalblnf, scalblnl</li>
-<li>cbrt, cbrtf, cbrtl, erf, erff, erfl, erfc, erfcf, erfcl</li>
-<li>lgamma, lgammaf, lgammal, tgamma, tgammaf, tgammal</li>
-<li>nearbyint, nearbyintf, nearbyintl, nan, nanf, nanl</li>
-<li>rint, rintf, rintl, lrint, lrintf, lrintl, llrint, llrintf, llrintl</li>
-<li>round, roundf, roundl, lround, lroundf, lroundl, llround, llroundf, llroundl</li>
-<li>trunc, truncf, truncl, remainder, remainderf, remainder, remquo, remquof, remquol</li>
-<li>nextafter, nextafterf, nextafterl, nexttoward, nexttowardf, nexttowardl</li>
-<li>fdim, fdimf, fdiml, fmax, fmaxf, fmaxl, fmin, fminf, fminl, fma, fmaf, fmal</li>
-</ul>
-</li>
-<li><p>complex.h:</p>
-<ul>
-<li>cacos, cacosf, cacosl, casin, casinf, casinl, catan, catanf, catanl</li>
-<li>ccos, ccosf, ccosl, csin, csinf, csinl, ctan, ctanf, ctanl</li>
-<li>cacosh, cacoshf, cacoshl, casinh, casinhf, casinhl, catanh, catanhf, catanhl</li>
-<li>ccosh, ccoshf, ccoshl, csinh, csinhf, csinhl, ctanh, ctanhf, ctanhl</li>
-<li>cexp, cexpf, cexpl, clog, clogf, clogl, cabs, cabsf, cabsl</li>
-<li>cpow, cpowf, cpowl, csqrt, csqrtf, csqrtl, carg, cargf, cargl</li>
-<li>cimag, cimagf, cimagl, conj, conjf, conjl, cproj, cprojf, cprojl, creal, crealf, creall</li>
-</ul>
-</li>
-<li><p>fenv.h:</p>
-<ul>
-<li>fegetenv, fesetenv, feupdateenv, fegetexceptflag, fesetexceptflag</li>
-<li>feclearexcept, feholdexcept, fetestexcept, feraiseexcept</li>
-</ul>
-</li>
-<li><p>inttypes.h:</p>
-<ul>
-<li>PRIi8, PRIi16, PRIi32, PRIi64, PRIiMAX, PRIiPTR, PRIiLEAST8, PRIiLEAST16, PRIiLEAST32, PRIiLEAST64, PRIiFAST8, PRIiFAST16, PRIiFAST32, PRIiFAST64</li>
-<li>PRIo8, PRIo16, PRIo32, PRIo64, PRIoMAX, PRIoPTR, PRIoLEAST8, PRIoLEAST16, PRIoLEAST32, PRIoLEAST64, PRIoFAST8, PRIoFAST16, PRIoFAST32, PRIoFAST64</li>
-<li>PRIu8, PRIu16, PRIu32, PRIu64, PRIuMAX, PRIuPTR, PRIuLEAST8, PRIuLEAST16, PRIuLEAST32, PRIuLEAST64, PRIuFAST8, PRIuFAST16, PRIuFAST32, PRIuFAST64</li>
-<li>PRIx8, PRIx16, PRIx32, PRIx64, PRIxMAX, PRIxPTR, PRIxLEAST8, PRIxLEAST16, PRIxLEAST32, PRIxLEAST64, PRIxFAST8, PRIxFAST16, PRIxFAST32, PRIxFAST64</li>
-<li>PRIX8, PRIX16, PRIX32, PRIX64, PRIXMAX, PRIXPTR, PRIXLEAST8, PRIXLEAST16, PRIXLEAST32, PRIXLEAST64, PRIXFAST8, PRIXFAST16, PRIXFAST32, PRIXFAST64</li>
-<li>SCNd8, SCNd16, SCNd32, SCNd64, SCNdMAX, SCNdPTR, SCNdLEAST8, SCNdLEAST16, SCNdLEAST32, SCNdLEAST64, SCNdFAST8, SCNdFAST16, SCNdFAST32, SCNdFAST64</li>
-<li>SCNi8, SCNi16, SCNi32, SCNi64, SCNiMAX, SCNiPTR, SCNiLEAST8, SCNiLEAST16, SCNiLEAST32, SCNiLEAST64, SCNiFAST8, SCNiFAST16, SCNiFAST32, SCNiFAST64</li>
-<li>SCNo8, SCNo16, SCNo32, SCNo64, SCNoMAX, SCNoPTR, SCNoLEAST8, SCNoLEAST16, SCNoLEAST32, SCNoLEAST64, SCNoFAST8, SCNoFAST16, SCNoFAST32, SCNoFAST64</li>
-<li>SCNu8, SCNu16, SCNu32, SCNu64, SCNuMAX, SCNuPTR, SCNuLEAST8, SCNuLEAST16, SCNuLEAST32, SCNuLEAST64, SCNuFAST8, SCNuFAST16, SCNuFAST32, SCNuFAST64</li>
-<li>SCNx8, SCNx16, SCNx32, SCNx64, SCNxMAX, SCNxPTR, SCNxLEAST8, SCNxLEAST16, SCNxLEAST32, SCNxLEAST64, SCNxFAST8, SCNxFAST16, SCNxFAST32, SCNxFAST64</li>
-<li>SCNX8, SCNX16, SCNX32, SCNX64, SCNXMAX, SCNXPTR, SCNXLEAST8, SCNXLEAST16, SCNXLEAST32, SCNXLEAST64, SCNXFAST8, SCNXFAST16, SCNXFAST32, SCNXFAST64</li>
-<li>imaxabs, imaxdiv, strtoimax, strtoumax, wcstoimax, wcstoumax</li>
-</ul>
-</li>
-<li><p>ctype.h</p>
-<ul>
-<li>isblank</li>
-</ul>
-</li>
-<li><p>wctype.h</p>
-<ul>
-<li>iswblank</li>
-</ul>
-</li>
-<li><p>float.h</p>
-<ul>
-<li>DECIMAL_DIG, FLT_EVAL_METHOD</li>
-</ul>
-</li>
-<li><p>stdarg.h</p>
-<ul>
-<li>va_copy</li>
-</ul>
-</li>
-<li><p>stdbool.h</p>
-<ul>
-<li>bool, true, false, __bool_true_false_are_defined</li>
-</ul>
-</li>
-<li><p>stdio.h</p>
-<ul>
-<li>vscanf, vfscanf, vsscanf</li>
-</ul>
-</li>
-<li><p>stdlib.h</p>
-<ul>
-<li>atoll, strtof, strtold, strtoll, strtoull</li>
-</ul>
-</li>
-<li><p>wchar.h</p>
-<ul>
-<li>vwscanf, vfwscanf, vswscanf, wcstof, wcstold, wcstoll, wcstoull<br>我们知道这并不是对C99库函数的完整支持，尽我们的理解，缺少的部分如下：</li>
-</ul>
-</li>
-<li><p>tgmath头文件缺失，这个头文件需要C编译器的支持。</p>
-<ul>
-<li>注意，ctgmath 头文件已经被添加——这是有可能的，因为这个头文件不需要tgmath.h头文件，只需要ccomplex 和 cmath headers头文件</li>
-</ul>
-</li>
-<li><p>uchar.h偷文件缺失。这来自the C Unicode TR.</p>
-</li>
-<li>printf家族中的一些格式说明符尚不支持</li>
-<li>stdio.h和wcahr.h中的snprintf and snwprintf 函数缺失。<br>我希望你觉得这些信息有用，我们尽力优先实现我们认为重要的函数。</li>
-</ul>
-<p>Pat Brenner, Visual C++ Libraries Development Team</p>
-<hr>
-<p>&nbsp;</p>
-<p>原文链接：<a href="http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx</a></p>
-<p>&nbsp;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2014/基于Java的个人信息助理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2234,6 +1970,182 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2013/C语言undefined behaviour未定义行为/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/C语言undefined behaviour未定义行为/" itemprop="url">
+                  C语言undefined behaviour未定义行为
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-19T20:32:19+08:00">
+                2013-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">编程笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/C语言undefined behaviour未定义行为/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/C语言undefined behaviour未定义行为/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行为有编译器自行处理，在不同的编译器可能会产生不同的结果，又或者如果程序调用未定义的行为，可能会成功编译，甚至一开始运行时没有错误，只会在另一个系统上，甚至是在另一个日期运行失败。当一个未定义行为的实例发生时，正如语言标准所说，“什么事情都可能发生”，也许什么都没有发生。</p>
+<p>　　所以，避免未定义行为，是个明智的决定。本文将介绍几种未定义行为，同时欢迎读者纠错和补充。</p>
+<h2 id="1-同一运算符中多个操作数的计算顺序（-amp-amp-、-、-和-运算符除外）"><a href="#1-同一运算符中多个操作数的计算顺序（-amp-amp-、-、-和-运算符除外）" class="headerlink" title="1.同一运算符中多个操作数的计算顺序（&amp;&amp;、||、?和,运算符除外）"></a>1.同一运算符中多个操作数的计算顺序（&amp;&amp;、||、?和,运算符除外）</h2><p>　　例如：x = f()+g(); //错误</p>
+<p>　　f()和g()谁先计算由编译器决定，如果函数f或g改变了另一个函数所使用变量的值，那么x的结果可能依赖于这两个函数的计算顺序。</p>
+<p><strong>参考：</strong> 《C程序设计语言（第2版）》 P43</p>
+<h2 id="2-函数各参数的求值顺序"><a href="#2-函数各参数的求值顺序" class="headerlink" title="2.函数各参数的求值顺序"></a>2.函数各参数的求值顺序</h2><p>　　例如： printf(“%d,%d\n”,++n,power(2,n)); //错误</p>
+<p>　　在不同的编译器可能产生不同的结果，这取决于n的自增运算和power调用谁在前谁在后。</p>
+<p>需要<strong>注意</strong>的是，不要和逗号表达式弄混，都好表达式可以参考这篇文章：<a href="http://blog.csdn.net/great_ghoul/article/details/1779768" title="c语言中逗号运算符和逗号表达式 " target="_blank" rel="external">c语言中逗号运算符和逗号表达式</a></p>
+<p><strong>参考：</strong> 《C程序设计语言（第2版）》 P43</p>
+<h2 id="3-通过指针直接修改-const-常量的值"><a href="#3-通过指针直接修改-const-常量的值" class="headerlink" title="3.通过指针直接修改 const 常量的值"></a>3.通过指针直接修改 const 常量的值</h2><p>　　直接通过赋值修改const变量的值，编译器会报错，但通过指针修改则不会，例如:</p>
+<pre>
+int main()
+{
+    const int a = 1;
+    int *b = (int*)&a;
+    *b = 21;
+
+    printf("%d, %d", a, *b);
+    return 0;
+}
+</pre>
+
+<p>a输出值也由编译器决定。</p>
+<p><strong>参考：</strong><br><a href="http://www.cnblogs.com/wghost/p/3280074.html" target="_blank" rel="external">http://www.cnblogs.com/wghost/p/3280074.html</a></p>
+<p><a href="http://stackoverflow.com/a/3801601/90172" target="_blank" rel="external">http://stackoverflow.com/a/3801601/90172</a></p>
+<p>推荐文章：<a href="http://blog.jobbole.com/53211/" target="_blank" rel="external">C语言未定义行为一览</a></p>
+<p>未完待续……</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -2283,7 +2195,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
