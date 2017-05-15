@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Firefox," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="IFchanged" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScript脚本，自定义网页显示或表现方式&amp;rdquo;。试用油猴脚本首先得安装油猴扩展，扩展安装地址https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/。本文将介绍几个常用的优秀油猴脚本。这里有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="油猴脚本推荐">
+<meta property="og:url" content="http://ifchanged.io/2013/油猴脚本推荐/index.html">
+<meta property="og:site_name" content="IFchanged">
+<meta property="og:description" content="油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScript脚本，自定义网页显示或表现方式&amp;rdquo;。试用油猴脚本首先得安装油猴扩展，扩展安装地址https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/。本文将介绍几个常用的优秀油猴脚本。这里有">
+<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="油猴脚本推荐">
+<meta name="twitter:description" content="油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScript脚本，自定义网页显示或表现方式&amp;rdquo;。试用油猴脚本首先得安装油猴扩展，扩展安装地址https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/。本文将介绍几个常用的优秀油猴脚本。这里有">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ifchanged.io/2013/油猴脚本推荐/"/>
+
+
+
+
+
+  <title> 油猴脚本推荐 | IFchanged </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67561349-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IFchanged</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2013/油猴脚本推荐/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                油猴脚本推荐
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-16T22:15:50+08:00">
+                2013-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/About互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">About互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/油猴脚本推荐/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/油猴脚本推荐/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&ldquo;允许您通过使用少量的JavaScript脚本，自定义网页显示或表现方式&rdquo;。试用油猴脚本首先得安装油猴扩展，扩展安装地址<a href="https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/" title="https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/" target="_blank" rel="external">https://addons.mozilla.org/zh-cn/firefox/addon/greasemonkey/</a>。本文将介绍几个常用的优秀油猴脚本。这里有大量的油猴脚本<a href="http://userscripts.org" title="http://userscripts.org" target="_blank" rel="external">http://userscripts.org</a>。</p>
+<pre><code>&amp;nbsp;
+</code></pre><p>####<br>    <strong><font size="3">1.</font></strong>OpenGG.Clean.Player</p>
+<pre><code>**_介绍：_**OpenGG.Clean.Player 去除优酷和土豆播放器中的黑屏和广告支持firefox, chrome, opera, 搜狗浏览器, 360高速浏览器
+
+**_点评：_**去除优酷、土豆广告的&lt;font color=&quot;#ff0000&quot; style=&quot;background-color: #ffffff&quot;&gt;**神器**&lt;/font&gt;
+
+**_安装地址：_**[http://userscripts.org/scripts/show/120679](http://userscripts.org/scripts/show/120679 &quot;http://userscripts.org/scripts/show/120679&quot;)
+
+**_安装次数：_**491,679
+
+&amp;nbsp;
+</code></pre><p>####<br>    2.Straight Google</p>
+<pre><code>**_介绍：_**去除Google产品的重定向，包括谷歌新闻、G+、谷歌文档等)保护你的隐私，节约你的时间。（Remove Google&amp;#39;s URL track redirection from Google Products (Google NewsPlusDocsInstantGroups etc.) Protect your privacy and save your time from redirecting! ）
+
+**_点评：_**其实最主要的是，即使搜索结果很和谐，重定向的时候容易撞墙，有了它搜索结果的链接就是网页的直接网址。
+
+**_安装地址：_[http://userscripts.org/scripts/show/121261](http://userscripts.org/scripts/show/121261 &quot;http://userscripts.org/scripts/show/121261&quot;)**
+
+**_安装次数：_**206,366
+
+&amp;nbsp;
+</code></pre><p>####<br>    3.search_engineJump</p>
+<pre><code>**介绍：**方便的在各个引擎之间跳转，将导航条插入到搜索引擎的页面,方便跳转.
+
+![](http://i1113.photobucket.com/albums/k508/a313852096/search_engineJump/6fc025c4.jpg)
+
+**_点评：_**大大提升搜索引擎的使用效率
+
+**_安装地址：_**[http://userscripts.org/scripts/show/84970](http://userscripts.org/scripts/show/84970 &quot;http://userscripts.org/scripts/show/84970&quot;)
+
+**_安装次数：_**46,836
+
+&amp;nbsp;
+</code></pre><p>####<br>    <strong>4.</strong>Jump to Top/Bottom of page with hotkeys</p>
+<pre><code>**_介绍：_**网页增加向页尾、页首的按钮及快捷键
+
+**_点评：_**很方便的脚本
+
+**_安装地址：_**[http://userscripts.org/scripts/show/108242](http://userscripts.org/scripts/show/108242 &quot;http://userscripts.org/scripts/show/108242&quot;)
+
+**_安装次数：_**16,032
+
+&amp;nbsp;
+</code></pre><p>####<br>    <strong>5.</strong>眼不见心不烦（新浪微博）</p>
+<pre><code>**_官方介绍：_**满屏的王力宏李云迪刷得搓火？被强行推送的推广微博搅得反胃？新版微博三栏首页各种不习惯？5个屏蔽名额不够用，又不想交钱开通会员？&amp;ldquo;眼不见心不烦&amp;rdquo;可屏蔽关键词、用户、推广微博，去除页面广告，恢复双栏版式，还您一个清爽干净的微博！
+
+**_点评：_**和乱七八糟的的新浪微博广告说再见，享有会员才有的过滤功能
+
+**_安装地址：_**[http://userscripts.org/scripts/show/114087](http://userscripts.org/scripts/show/114087 &quot;http://userscripts.org/scripts/show/114087&quot;)
+
+**_安装次数：_**489,691
+
+&amp;nbsp;
+</code></pre><p>####<br>    6.豆藤 Bean vine</p>
+<pre><code>**_官方介绍：_**为豆瓣增加多种便利功能，方便【沟通】与【获得】，Make Douban better
+
+**点评：**逛豆瓣的人怎么可以少了找个，增强豆瓣原本简陋的功能
+
+**_安装地址：_**[http://userscripts.org/scripts/show/49911](http://userscripts.org/scripts/show/49911 &quot;http://userscripts.org/scripts/show/49911&quot;)
+
+**_安装次数：_**317,081
+
+&amp;nbsp;
+</code></pre><p>####<br>    7.校内网改造器</p>
+<pre><code>**_介绍：_**为人人网（renren.com，原校内网xiaonei.com）清理广告、新鲜事、各种烦人的通告，删除页面模板，恢复旧的深蓝色主题，增加更多功能。。。
+
+**_点评：_**为人人去除广告，增强功能
+
+**_安装地址：_**[http://userscripts.org/scripts/show/45836](http://userscripts.org/scripts/show/45836 &quot;http://userscripts.org/scripts/show/45836&quot;)
+
+**_安装次数：_**214,150
+
+&amp;nbsp;
+</code></pre><p>####<br>    8.Google Search by Image</p>
+<pre><code>**_介绍：_**右键增加Google以图搜图
+
+![screenshot](http://lh4.googleusercontent.com/-MiuFj0_3278/ULacCvnjcrI/AAAAAAAAC5s/CNTwvq_fCGQ/s209/context-menu-search-by-image.png)
+
+**_点评：_**省得手动搜索图片地址
+
+**_安装地址：_**[http://userscripts.org/scripts/show/151097](http://userscripts.org/scripts/show/151097 &quot;http://userscripts.org/scripts/show/151097&quot;)
+
+**_安装次数：_**2,180
+
+&amp;nbsp;
+
+关于火狐扩展，推荐这篇文章：[火狐Firefox优秀扩展推荐](http://www.itoldme.net/archives/136)
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Firefox/" rel="tag"># Firefox</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/domain-transferred-from-huaxia/" rel="next" title="域名从华夏名网转出">
+                <i class="fa fa-chevron-left"></i> 域名从华夏名网转出
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/PHPCloud安装使用Wordpress图文教程/" rel="prev" title="PHPCloud安装使用Wordpress图文教程">
+                PHPCloud安装使用Wordpress图文教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zeroten" />
+          <p class="site-author-name" itemprop="name">zeroten</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeroten</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ifchanged';
+      var disqus_identifier = '2013/油猴脚本推荐/';
+
+      var disqus_title = "油猴脚本推荐";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
