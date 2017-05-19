@@ -1,0 +1,900 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,The Python Language Reference阅读笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="IFchanged" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="第二章 词法分析（Lexical analysis）一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语言符号(token) 流. 本章讨论词法分析器是如何把文件割成若干语言符号的.
+Python使用7位ASCII字符作为程序文本（注意：Python3使用Unicode）。
+2.1.行结构Python程序由逻辑行组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第2章 词法分析——The Python Language Reference阅读笔记">
+<meta property="og:url" content="http://ifchanged.io/2015/1376/index.html">
+<meta property="og:site_name" content="IFchanged">
+<meta property="og:description" content="第二章 词法分析（Lexical analysis）一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语言符号(token) 流. 本章讨论词法分析器是如何把文件割成若干语言符号的.
+Python使用7位ASCII字符作为程序文本（注意：Python3使用Unicode）。
+2.1.行结构Python程序由逻辑行组">
+<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第2章 词法分析——The Python Language Reference阅读笔记">
+<meta name="twitter:description" content="第二章 词法分析（Lexical analysis）一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语言符号(token) 流. 本章讨论词法分析器是如何把文件割成若干语言符号的.
+Python使用7位ASCII字符作为程序文本（注意：Python3使用Unicode）。
+2.1.行结构Python程序由逻辑行组">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ifchanged.io/2015/1376/"/>
+
+
+
+
+
+  <title> 第2章 词法分析——The Python Language Reference阅读笔记 | IFchanged </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99172222-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IFchanged</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2015/1376/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第2章 词法分析——The Python Language Reference阅读笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-15T23:08:51+08:00">
+                2015-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">编程笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/1376/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/1376/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第二章-词法分析（Lexical-analysis）"><a href="#第二章-词法分析（Lexical-analysis）" class="headerlink" title="第二章 词法分析（Lexical analysis）"></a>第二章 词法分析（Lexical analysis）</h1><p>一个 Python 程序由 <strong>解析器</strong>(parser) 读入, 输入解析器的是由 <strong>词法分析器</strong>(lexical analyzer) 生成的 <strong>语言符号</strong>(token) 流. 本章讨论词法分析器是如何把文件割成若干语言符号的.</p>
+<p>Python使用7位ASCII字符作为程序文本（注意：Python3使用Unicode）。</p>
+<h2 id="2-1-行结构"><a href="#2-1-行结构" class="headerlink" title="2.1.行结构"></a>2.1.行结构</h2><p>Python程序由逻辑行组成。</p>
+<h3 id="2-1-1-逻辑行"><a href="#2-1-1-逻辑行" class="headerlink" title="2.1.1.逻辑行"></a>2.1.1.逻辑行</h3><p>逻辑行的结尾以“换行”（NEWLINE）为标志，语句不能出现在多个逻辑行，除非语法支持（例如符合语句，复合语句在第七章详解）。逻辑行由一个或多个显/隐式连接的物理行。</p>
+<p>文档中没有明确给出“NEWLINE”的定义，我的理解是逻辑行形式上等同于组成它的物理行，所以物理行的结束也就是逻辑行的结束。</p>
+<h3 id="2-1-2-物理行"><a href="#2-1-2-物理行" class="headerlink" title="2.1.2.物理行"></a>2.1.2.物理行</h3><p>物理行以end-of-line（EOL）结束，这个EOL在每个平台不同。</p>
+<blockquote>
+<p>以ASCII为基础的或相容的字元集使用分别LF（Line feed，0Ah）或CR（Carriage Return，0Dh）或CR+LF；下面列出各系统换行字元编码的列表</p>
+<p>  <strong>LF</strong>：在Unix或Unix相容系统（GNU/Linux，AIX，Xenix，Mac OS X，…）、BeOS、Amiga、RISC OS<br>  <strong>CR+LF</strong>：MS-DOS、微软视窗操作系统（Microsoft Windows）、大部分非Unix的系统<br>  <strong>CR</strong>：Apple II家族，Mac OS至版本9<br>  <a href="http://zh.wikipedia.org/zh-cn/%E6%8F%9B%E8%A1%8C" target="_blank" rel="external">换行 - 维基百科</a></p>
+</blockquote>
+<p>物理行等同于视觉上看到的行，这个是考验编辑器的事情。</p>
+<h3 id="2-1-3-注释"><a href="#2-1-3-注释" class="headerlink" title="2.1.3.注释"></a>2.1.3.注释</h3><p><strong>comment</strong>是以#开头的物理行，会被解释器忽略。文档中并没有提到另一种注释，三个引号(“””)包围的东西，<strong>文档注释（doc string）</strong>。如：</p>
+<pre>
+def foo():
+    """文档注释"""
+    return None 
+print(foo.__doc__)  
+help(foo)
+</pre>
+
+<h3 id="2-1-4-编码声明"><a href="#2-1-4-编码声明" class="headerlink" title="2.1.4.编码声明"></a>2.1.4.编码声明</h3><p>声明编码，源文件中第一行或者第二行匹配正则表达式<code>coding[=:]\s*([-\w.]+)</code>的注释，通常写成 # -<em>- coding: utf-8 -</em>- 或者coding=utf8。当然声明的编码Python得认识，通常声明成utf-8就好。</p>
+<p><strong>编码设置会用于整个词法分析过程, 包括字符串字面值, 注释和标识符。</strong></p>
+<p>另外，Python还能识别UTF-8 byte-order mark (‘\xef\xbb\xbf’)，也就是微软的恶趣味BOM。通常自己编写的文件最好避免出现BOM，读取文本文件时候也要注意BOM。</p>
+<h3 id="2-1-5-显式行连接"><a href="#2-1-5-显式行连接" class="headerlink" title="2.1.5.显式行连接"></a>2.1.5.显式行连接</h3><p>行连接是为了把多个物理行连接成一个逻辑行，显式即是通过反斜杠（\,backslashe）。要注意的反斜杠后面不能有注释。</p>
+<h3 id="2-1-6-隐式行连接"><a href="#2-1-6-隐式行连接" class="headerlink" title="2.1.6.隐式行连接"></a>2.1.6.隐式行连接</h3><p>圆括号()、方括号[]、花括号{}中多个物理行的内容不需要显式连接，并且可以添加注释。例如：</p>
+<pre>
+month_names = ['Januari', 'Februari', 'Maart',  # These are the
+   'April',   'Mei',  'Juni',   # Dutch names
+   'Juli','Augustus', 'September',  # for the months
+   'Oktober', 'November', 'December']   # of the year
+</pre>
+
+<h3 id="2-1-7-空行"><a href="#2-1-7-空行" class="headerlink" title="2.1.7.空行"></a>2.1.7.空行</h3><p>简单来说，空的行在解析时会被忽略。所谓空行就是只有空格、制表符、进纸符和注释的逻辑行。在交互时，空行根据具体实现而定。</p>
+<h3 id="2-1-8-缩进"><a href="#2-1-8-缩进" class="headerlink" title="2.1.8.缩进"></a>2.1.8.缩进</h3><p>缩进用来区分语句是Python最明显的特色，缩进可以使用制表符（tab）或者空格，在解析时候tab会被先转换成空格，推荐使用四个空格的方式。</p>
+<p>另外，用<strong>分号(;)</strong>将多个语句写在同一行上，语句之间用分号隔开，而这些语句也不能在这行开始一个新的代码块。例如：<code>a=1;a=2</code>。不过，不推荐这样做，也基本没见过这样写的Python代码。</p>
+<p>Python用栈来控制缩进，详情看官方文档：<a href="https://docs.python.org/2/reference/lexical_analysis.html#indentation" title="Indentation" target="_blank" rel="external">Indentation</a></p>
+<h3 id="2-1-9-语言符号间的空白符"><a href="#2-1-9-语言符号间的空白符" class="headerlink" title="2.1.9.语言符号间的空白符"></a>2.1.9.语言符号间的空白符</h3><p>除了在行首、字符串中这样的特殊位置，空白符的作用就是把标记分号，如把变量<strong>ab</strong>分隔成<strong>a b</strong>两个变量。</p>
+<h2 id="2-2-其他记号"><a href="#2-2-其他记号" class="headerlink" title="2.2.其他记号"></a>2.2.其他记号</h2><p>除了换行（NEWLINE）、缩进（INDENT）、DEDENT（啥？），语言记号包括：标识符、关键字、字面值、运算符 和 分隔符。空白符不是。</p>
+<h2 id="2-3-标识符和关键字"><a href="#2-3-标识符和关键字" class="headerlink" title="2.3.标识符和关键字"></a>2.3.标识符和关键字</h2><p>标识符（Identifier）也叫做名字，就是平时所说的变量名一类，词法定义如下：</p>
+<blockquote>
+<p>identifier ::=  (letter|”<em>“) (letter | digit | “</em>“)*<br>  letter     ::=  lowercase | uppercase<br>  lowercase  ::=  “a”…”z”<br>  uppercase  ::=  “A”…”Z”<br>  digit      ::=  “0”…”9”</p>
+</blockquote>
+<p>标识符不限长度，大小写敏感，Python的标识符要求和其他语言基本一样。<br>另外，标识符命名推荐使用”_”分隔，而不是大小写的驼峰法，具体推荐命名法见PEP8。</p>
+<h3 id="2-3-1-关键字"><a href="#2-3-1-关键字" class="headerlink" title="2.3.1.关键字"></a>2.3.1.关键字</h3><p>Python 2的关键字就这么多：</p>
+<blockquote>
+<p>and       del       from      not       while<br>  as        elif      global    or        with<br>  assert    else      if        pass      yield<br>  break     except    import    print<br>  class     exec      in        raise<br>  continue  finally   is        return<br>  def       for       lambda    try</p>
+</blockquote>
+<p>顺带附上Python 3.4的关键字：</p>
+<blockquote>
+<p>False      class      finally    is         return<br>  None       continue   for        lambda     try<br>  True       def        from       nonlocal   while<br>  and        del        global     not        with<br>  as         elif       if         or         yield<br>  assert     else       import     pass<br>  break      except     in         raise</p>
+</blockquote>
+<h3 id="2-3-2-保留的标识符类型"><a href="#2-3-2-保留的标识符类型" class="headerlink" title="2.3.2.保留的标识符类型"></a>2.3.2.保留的标识符类型</h3><p><code>_*</code>：不会在from module import &#42;时被导入<br><code>__*__</code>:系统保留的名字，所以自己写的时候就不用这种名字格式<br><code>__*</code>:类的私有名</p>
+<h2 id="2-4-字面值"><a href="#2-4-字面值" class="headerlink" title="2.4.字面值"></a>2.4.字面值</h2><p>字面值是某些内置类型的常量值的表示法</p>
+<h3 id="2-4-1-字符串字面值"><a href="#2-4-1-字符串字面值" class="headerlink" title="2.4.1.字符串字面值"></a>2.4.1.字符串字面值</h3><p>词法定义,见<a href="https://docs.python.org/2/reference/lexical_analysis.html#string-literals" target="_blank" rel="external">String literals</a>：</p>
+<pre>
+stringliteral   ::=  [stringprefix](shortstring | longstring)
+stringprefix    ::=  "r" | "u" | "ur" | "R" | "U" | "UR" | "Ur" | "uR"
+                     | "b" | "B" | "br" | "Br" | "bR" | "BR"
+shortstring     ::=  "'" shortstringitem* "'" | '"' shortstringitem* '"'
+longstring      ::=  "'''" longstringitem* "'''"
+                     | '"""' longstringitem* '"""'
+shortstringitem ::=  shortstringchar | escapeseq
+longstringitem  ::=  longstringchar | escapeseq
+shortstringchar ::=  <any source="" character="" except="" "\"="" or="" newline="" the="" quote="">
+longstringchar  ::=  <any source="" character="" except="" "\"="">
+escapeseq       ::=  "\" <any ascii="" character="">
+</any></any></any></pre>
+
+<p>前缀：<br>r:表示原始字符串（raw strings），即不对字符串里的\进行特殊处理<br>u：表示Unicode字符串<br>b：b在Python 中没用，它是用于告诉2to3的自动转换程序，这个字符串转换成3后应该是个字节字面值。</p>
+<h3 id="2-4-2-字符串字面值的连接"><a href="#2-4-2-字符串字面值的连接" class="headerlink" title="2.4.2.字符串字面值的连接"></a>2.4.2.字符串字面值的连接</h3><p>简单来说，写在一起的字符串会自动连接到一起，如”hello” ‘world’会自动连接成”helloworld”</p>
+<p>注意这个功能是在语法层次上定义的, 但却是在编译时实现的。 在运行时连接字符串表达式必须使用” +” 运算符。在字面值连接时, 不同的引用字符可以混用, 甚至原始串与三重引用串也可以混合使用.</p>
+<h3 id="2-4-4数值型字面值"><a href="#2-4-4数值型字面值" class="headerlink" title="2.4.4数值型字面值"></a>2.4.4数值型字面值</h3><p>Python 2有四种字面值：普通整数（plain integers）、长整数（long integers）、浮点数（floating point numbers）、虚数（imaginary numbers）（Python 3中只有三种，只有整数）。复数用实数+虚数的形式表示。</p>
+<p>词法定义：</p>
+<pre>
+longinteger    ::=  integer ("l" | "L")
+integer        ::=  decimalinteger | octinteger | hexinteger | bininteger
+decimalinteger ::=  nonzerodigit digit* | "0"
+octinteger     ::=  "0" ("o" | "O") octdigit+ | "0" octdigit+
+hexinteger     ::=  "0" ("x" | "X") hexdigit+
+bininteger     ::=  "0" ("b" | "B") bindigit+
+nonzerodigit   ::=  "1"..."9"
+octdigit       ::=  "0"..."7"
+bindigit       ::=  "0" | "1"
+hexdigit       ::=  digit | "a"..."f" | "A"..."F"
+</pre>
+
+<p>要注意的是L要大写，来和数字1区分。Python 3对整数的统一更有好些，在Python 2中，数值溢出时候会自动转换成带L后缀的长整数。长整数的取值范围没有限制，由可用内存而定。</p>
+<p>参考阅读：<a href="https://docs.python.org/2/library/sys.html#sys.maxint" target="_blank" rel="external">sys.maxint</a></p>
+<h3 id="2-4-5-浮点型字面值"><a href="#2-4-5-浮点型字面值" class="headerlink" title="2.4.5.浮点型字面值"></a>2.4.5.浮点型字面值</h3><p>词法定义：</p>
+<pre>
+floatnumber   ::=  pointfloat | exponentfloat
+pointfloat    ::=  [intpart] fraction | intpart "."
+exponentfloat ::=  (intpart | pointfloat) exponent
+intpart       ::=  digit+
+fraction      ::=  "." digit+
+exponent      ::=  ("e" | "E") ["+" | "-"] digit+
+</pre>
+
+<p>浮点数的取值范围依赖于实现。注意整数部分和指数部分都看作是十进制的. 例如, 077e010 是合法的, 它等价于 77e10,下面这些奇奇怪怪的形式也是可以的:<br>3.14    10.    .001    1e100    3.14e-10    0e0</p>
+<p>浮点型的取值范围和机器有关，可以使用sys.float_info查看相关信息，会得到这样的结果：</p>
+<blockquote>
+<p>sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)</p>
+</blockquote>
+<p>参考阅读：<a href="https://docs.python.org/2/library/sys.html#sys.float_info" target="_blank" rel="external">sys.float_info</a></p>
+<h3 id="2-4-6-虚数字面值"><a href="#2-4-6-虚数字面值" class="headerlink" title="2.4.6.虚数字面值"></a>2.4.6.虚数字面值</h3><p>词法定义：<br>imagnumber ::=  (floatnumber | intpart) (“j” | “J”)</p>
+<p>虚数是实部为零的复数. 复数由一对有着相同取值范围的浮点数表示. 为了创建一个非零实部的复数, 可以对它增加一个浮点数, 例如, (3+4j). 下面是一些例子:<br>3.14j   10.j    10j     .001j   1e100j  3.14e-10j</p>
+<h2 id="2-5-运算符"><a href="#2-5-运算符" class="headerlink" title="2.5.运算符"></a>2.5.运算符</h2><p>运算符包括：</p>
+<pre>
++       -       *       **      /       //      %
+<<      >     &       |       ^       ~
+<             <=>=      ==      !=      <>
+</=></pre>
+
+<p>其中!=和&lt;&gt;是一个意思，不建议使用后者，并且它在Python 3中已经取消。</p>
+<h2 id="2-6-分隔符"><a href="#2-6-分隔符" class="headerlink" title="2.6.分隔符"></a>2.6.分隔符</h2><p>分隔符包括：</p>
+<pre>
+(       )       [       ]       {       }
+,       :       .       ;       @       =
++=      -=      *=      /=      //=     %=
+&=      |=      ^=      >>=     <<= **="</pre"></=></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/The-Python-Language-Reference阅读笔记/" rel="tag"># The Python Language Reference阅读笔记</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/1374/" rel="next" title="第1章 简介——The Python Language Reference阅读笔记">
+                <i class="fa fa-chevron-left"></i> 第1章 简介——The Python Language Reference阅读笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/cj2w0q6qk000xje6xya1b52ng/" rel="prev" title="Python模拟登录京东">
+                Python模拟登录京东 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zeroten" />
+          <p class="site-author-name" itemprop="name">zeroten</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ladder1984" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-词法分析（Lexical-analysis）"><span class="nav-number">1.</span> <span class="nav-text">第二章 词法分析（Lexical analysis）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-行结构"><span class="nav-number">1.1.</span> <span class="nav-text">2.1.行结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-逻辑行"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1.1.逻辑行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-物理行"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.1.2.物理行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-注释"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.1.3.注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-编码声明"><span class="nav-number">1.1.4.</span> <span class="nav-text">2.1.4.编码声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-5-显式行连接"><span class="nav-number">1.1.5.</span> <span class="nav-text">2.1.5.显式行连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-6-隐式行连接"><span class="nav-number">1.1.6.</span> <span class="nav-text">2.1.6.隐式行连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-7-空行"><span class="nav-number">1.1.7.</span> <span class="nav-text">2.1.7.空行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-8-缩进"><span class="nav-number">1.1.8.</span> <span class="nav-text">2.1.8.缩进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-9-语言符号间的空白符"><span class="nav-number">1.1.9.</span> <span class="nav-text">2.1.9.语言符号间的空白符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-其他记号"><span class="nav-number">1.2.</span> <span class="nav-text">2.2.其他记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-标识符和关键字"><span class="nav-number">1.3.</span> <span class="nav-text">2.3.标识符和关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-关键字"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.3.1.关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-保留的标识符类型"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.3.2.保留的标识符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-字面值"><span class="nav-number">1.4.</span> <span class="nav-text">2.4.字面值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-字符串字面值"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.4.1.字符串字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-字符串字面值的连接"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.4.2.字符串字面值的连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4数值型字面值"><span class="nav-number">1.4.3.</span> <span class="nav-text">2.4.4数值型字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-浮点型字面值"><span class="nav-number">1.4.4.</span> <span class="nav-text">2.4.5.浮点型字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-6-虚数字面值"><span class="nav-number">1.4.5.</span> <span class="nav-text">2.4.6.虚数字面值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-运算符"><span class="nav-number">1.5.</span> <span class="nav-text">2.5.运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-分隔符"><span class="nav-number">1.6.</span> <span class="nav-text">2.6.分隔符</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeroten</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://ifchanged.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://ifchanged.io/2015/1376/';
+          this.page.identifier = '2015/1376/';
+          this.page.title = '第2章 词法分析——The Python Language Reference阅读笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ifchanged.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
