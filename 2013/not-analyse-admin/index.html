@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -127,7 +127,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -187,7 +187,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -379,7 +379,8 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/not-analyse-admin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/not-analyse-admin/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/not-analyse-admin/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -445,6 +446,12 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -493,7 +500,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
     </div>
   </div>
 
-          
+
           </div>
           
 
@@ -504,7 +511,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     
@@ -586,6 +593,17 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ladder1984" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -631,7 +649,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -648,7 +666,7 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
         
       </div>
     
-    
+
   </div>
 
   
@@ -668,6 +686,8 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
 
 
   
+
+
 
 
 
@@ -719,58 +739,51 @@ $capability(string) (required) capability or role nameDefault: None$args(mixed">
   
 
 
-
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'ifchanged';
-      var disqus_identifier = '2013/not-analyse-admin/';
+    
+      <script id="dsq-count-scr" src="https://ifchanged.disqus.com/count.js" async></script>
+    
 
-      var disqus_title = "Wordpress禁止统计代码计算管理员本人访问";
-
-
-      function run_disqus_script(disqus_script) {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-
-      
+    
+      <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = disqus_url;
-            this.page.identifier = disqus_identifier;
-            this.page.title = disqus_title;
+          this.page.url = 'http://ifchanged.io/2013/not-analyse-admin/';
+          this.page.identifier = '2013/not-analyse-admin/';
+          this.page.title = 'Wordpress禁止统计代码计算管理员本人访问';
         };
-        run_disqus_script('embed.js');
-      
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ifchanged.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
-    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
 
 
 
-
-
-
-
-
-  
   
 
   
 
   
-
-  
-
-  
-
 
   
 
