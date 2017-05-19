@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,MySQL,peewee," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="IFchanged" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="peewee使用指南本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。
+1.peewee介绍peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。
+2.使用指南2.1.连接mysql2.1.1.连接形式使用url连接，方式和django类似，如：1234567891011DATABASES = &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="peewee笔记(1)——基本语法">
+<meta property="og:url" content="http://ifchanged.io/2016/peewee-note1/index.html">
+<meta property="og:site_name" content="IFchanged">
+<meta property="og:description" content="peewee使用指南本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。
+1.peewee介绍peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。
+2.使用指南2.1.连接mysql2.1.1.连接形式使用url连接，方式和django类似，如：1234567891011DATABASES = &amp;#123;">
+<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="peewee笔记(1)——基本语法">
+<meta name="twitter:description" content="peewee使用指南本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。
+1.peewee介绍peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。
+2.使用指南2.1.连接mysql2.1.1.连接形式使用url连接，方式和django类似，如：1234567891011DATABASES = &amp;#123;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ifchanged.io/2016/peewee-note1/"/>
+
+
+
+
+
+  <title> peewee笔记(1)——基本语法 | IFchanged </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99172222-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">IFchanged</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2016/peewee-note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                peewee笔记(1)——基本语法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-23T10:44:27+08:00">
+                2016-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/peewee-note1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/peewee-note1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="peewee使用指南"><a href="#peewee使用指南" class="headerlink" title="peewee使用指南"></a>peewee使用指南</h1><p>本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。</p>
+<h2 id="1-peewee介绍"><a href="#1-peewee介绍" class="headerlink" title="1.peewee介绍"></a>1.peewee介绍</h2><p>peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。</p>
+<h2 id="2-使用指南"><a href="#2-使用指南" class="headerlink" title="2.使用指南"></a>2.使用指南</h2><h3 id="2-1-连接mysql"><a href="#2-1-连接mysql" class="headerlink" title="2.1.连接mysql"></a>2.1.连接mysql</h3><h4 id="2-1-1-连接形式"><a href="#2-1-1-连接形式" class="headerlink" title="2.1.1.连接形式"></a>2.1.1.连接形式</h4><p>使用url连接，方式和django类似，如：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'mysql'</span>,</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'name'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'user'</span>,                      </div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'pass'</span>,                  </div><div class="line">        <span class="string">'HOST'</span>: <span class="string">'url'</span>,</div><div class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,</div><div class="line">        <span class="string">'CONN_MAX_AGE'</span>: <span class="number">100</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2-2-model定义"><a href="#2-2-model定义" class="headerlink" title="2.2.model定义"></a>2.2.model定义</h3><h4 id="2-2-1-概述"><a href="#2-2-1-概述" class="headerlink" title="2.2.1.概述"></a>2.2.1.概述</h4><p>一句话描述：<strong>和Django一样用。</strong></p>
+<p>model定义基本和Django一致，<br>需要注意的是：</p>
+<ol>
+<li>属性和Django基本一致</li>
+<li>有些Django并不影响使用的东西peewee不支持，目前注意到的是<code>Field.choices</code>。</li>
+<li>peewee可以使用<code>playhouse.signals</code>实现信号机制。</li>
+</ol>
+<p>详见：<a href="http://docs.peewee-orm.com/en/stable/peewee/models.html#fields" target="_blank" rel="external">http://docs.peewee-orm.com/en/stable/peewee/models.html#fields</a></p>
+<h2 id="3-ORM操作（CRUD）"><a href="#3-ORM操作（CRUD）" class="headerlink" title="3.ORM操作（CRUD）"></a>3.ORM操作（CRUD）</h2><p>示例Model：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> peewee <span class="keyword">import</span> *</div><div class="line"></div><div class="line">db = SqliteDatabase(<span class="string">'people.db'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(Model)</span>:</span></div><div class="line">    name = CharField(default=<span class="string">''</span>)</div><div class="line">    age = IntegerField(default=<span class="number">0</span>) </div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        database = db <span class="comment"># This model uses the "people.db" database.</span></div></pre></td></tr></table></figure>
+<p>注：这是个model示例，实际上’database=db’已经封装在<code>db.model.Model</code>中，在python-service-base中不用写。</p>
+<h3 id="3-1-增加（Create）"><a href="#3-1-增加（Create）" class="headerlink" title="3.1.增加（Create）"></a>3.1.增加（Create）</h3><ol>
+<li>create()方法：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grandma =Person.create(name=<span class="string">'Grandma'</span>, age = <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<ol>
+<li>save()方法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">person = Person()</div><div class="line">person.name = <span class="string">'bill'</span></div><div class="line">person.age =<span class="number">10</span></div><div class="line">person.save()</div></pre></td></tr></table></figure>
+<h3 id="3-2-查（Retrieve）"><a href="#3-2-查（Retrieve）" class="headerlink" title="3.2.查（Retrieve）"></a>3.2.查（Retrieve）</h3><p>peewee中查询记录分为get（查询单条记录）、select(条件查询批量记录)。</p>
+<h4 id="3-2-1-查询单条记录"><a href="#3-2-1-查询单条记录" class="headerlink" title="3.2.1.查询单条记录"></a>3.2.1.查询单条记录</h4><p>注：get方法获取不存在的记录会抛出异常。</p>
+<ol>
+<li><p><code>Product.get(name=&#39;abc&#39;)</code><br>或者<br><code>Product.get(Product.name==&#39;abc&#39;)</code></p>
+</li>
+<li><p><code>Product.select().where(Product.name==&#39;abc&#39;).get()</code></p>
+</li>
+<li><code>Product.select().where(Product.name==&#39;abc&#39;).first()</code></li>
+</ol>
+<p><strong>注:</strong></p>
+<ol>
+<li>get()支持name=’abc’也支持Product.name==’abc’的写法，where<strong>只</strong>Product.name==’abc’。</li>
+<li>前两种都是get方法，查询不到会抛出异常，select方法查询不到返回None。</li>
+</ol>
+<h4 id="3-2-2-查询全部"><a href="#3-2-2-查询全部" class="headerlink" title="3.2.2.查询全部"></a>3.2.2.查询全部</h4><p><code>Product.select()</code>等价于Django中的<code>Product.select().all()</code>，返回一个可迭代的SelectQuery对象。</p>
+<h4 id="3-2-3-条件查询"><a href="#3-2-3-条件查询" class="headerlink" title="3.2.3.条件查询"></a>3.2.3.条件查询</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Product</span>.<span class="keyword">select</span>().<span class="keyword">where</span>(<span class="built_in">Product</span>.<span class="keyword">name</span>==<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<p>返回一个可迭代的SelectQuery对象。</p>
+<ul>
+<li>或(OR)查询：<strong>|</strong>，例如：<code>User.select().where((User.is_staff == True) | (User.is_superuser == True))</code></li>
+<li>且(AND)查询:<strong>&amp;</strong>，例如：<code>Product.select().where(Product.name==&#39;abc&#39;,Product.owner_id==10086)</code> 或者 <code>Product.select().where((Product.name==&#39;abc&#39;) &amp; (Product.owner_id==10086))</code></li>
+<li>非(NOT)：<strong>~</strong>,没用过。。。</li>
+<li><p>比较：peewee支持如下比较符</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">==  x <span class="keyword">equals</span> y</div><div class="line">&lt;   x <span class="keyword">is</span> <span class="keyword">less than</span> y</div><div class="line">&lt;=  x <span class="keyword">is</span> <span class="keyword">less than or equal</span> <span class="keyword">to</span> y</div><div class="line">&gt;   x <span class="keyword">is</span> <span class="keyword">greater than</span> y</div><div class="line">&gt;=  x <span class="keyword">is</span> <span class="keyword">greater than</span> <span class="keyword">or</span> <span class="keyword">equal</span> <span class="keyword">to</span> y</div><div class="line">!=  x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">equal</span> <span class="keyword">to</span> y</div><div class="line">&lt;&lt;  x IN y, <span class="keyword">where</span> y <span class="keyword">is</span> a <span class="built_in">list</span> <span class="keyword">or</span> query</div><div class="line">&gt;&gt;  x IS y, <span class="keyword">where</span> y <span class="keyword">is</span> None/NULL</div><div class="line">%   x LIKE y <span class="keyword">where</span> y may <span class="keyword">contain</span> wildcards</div><div class="line">**  x ILIKE y <span class="keyword">where</span> y may <span class="keyword">contain</span> wildcards</div><div class="line">~   Negation</div></pre></td></tr></table></figure>
+</li>
+<li><p>其他查询</p>
+  <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.contains(substr) 	Wild-card search <span class="keyword">for</span> substring.</div><div class="line">.startswith(prefix) 	Search <span class="keyword">for</span> values beginning <span class="keyword">with</span> prefix.</div><div class="line">.endswith(suffix) 	Search <span class="keyword">for</span> values ending <span class="keyword">with</span> suffix.</div><div class="line">.between(low, high) 	Search <span class="keyword">for</span> values between low <span class="keyword">and</span> high.</div><div class="line">.regexp(exp) 	Regular expression match.</div><div class="line">.bin_and(value) 	<span class="keyword">Binary</span> <span class="keyword">AND</span>.</div><div class="line">.bin_or(value) 	<span class="keyword">Binary</span> <span class="keyword">OR</span>.</div><div class="line">.in_(value) 	<span class="keyword">IN</span> lookup (identical <span class="keyword">to</span> &lt;&lt;).</div><div class="line">.not_in(value) 	<span class="keyword">NOT</span> <span class="keyword">IN</span> lookup.</div><div class="line">.is_null(is_null) 	<span class="keyword">IS</span> NULL <span class="keyword">or</span> <span class="keyword">IS</span> <span class="keyword">NOT</span> NULL. Accepts <span class="built_in">boolean</span> param.</div><div class="line">.concat(other) 	Concatenate two strings <span class="keyword">using</span> ||.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>示例：</p>
+<p>查询id in ids，ids是个list。</p>
+<ul>
+<li><code>Product.select().where(Product.id &lt;&lt; ids)</code></li>
+<li><code>Product.select().where(Product.id.in_(ids))</code></li>
+</ul>
+<p>等价于Django中的<code>Product.objects.filter(id__=ids)</code>。</p>
+<h4 id="3-2-3-计数count"><a href="#3-2-3-计数count" class="headerlink" title="3.2.3.计数count"></a>3.2.3.计数count</h4><p><code>Product.select().where(Product.name==&#39;abc&#39;).count()</code>。<br>SelectQuery对象并不支持len()方法，即执行<code>len(Product.select().where(Product.name==&#39;abc&#39;))</code>会抛出TypeError异常。虽然可以实现支持len，但滥用可能带来性能风险。</p>
+<h4 id="3-2-5-排序order-by"><a href="#3-2-5-排序order-by" class="headerlink" title="3.2.5.排序order_by"></a>3.2.5.排序order_by</h4><ul>
+<li>降序：使用”-“或者”desc()”,<code>Tweet.select().order_by(Tweet.created_date.desc())</code> 等价于 <code>Tweet.select().order_by(-Tweet.created_date)</code></li>
+<li>升序：使用”+”或者”asc()”或者不写，<code>User.select().order_by(+User.username)</code></li>
+</ul>
+<h3 id="3-3-删除（Delete）"><a href="#3-3-删除（Delete）" class="headerlink" title="3.3.删除（Delete）"></a>3.3.删除（Delete）</h3><p><strong>建议使用方法1</strong></p>
+<ol>
+<li>Model.delete (Python class method, in API Reference)<br><code>mall_models.Order.delete().where(mall_models.Order.id=order.id).execute()</code><br>或者<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p = mall_models.Order.delete().where(mall_models.Order.id=order.id)</div><div class="line">p.execute()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>也就是执行了execute()才会执行删除操作。</p>
+<ol>
+<li><p>Model.delete_instance (Python method, in API Reference)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> = Product.get(Product.name==<span class="string">'abc'</span>)</div><div class="line"><span class="selector-tag">p</span>.elete_instance()</div></pre></td></tr></table></figure>
+</li>
+<li><p>DeleteQuery<br><code>dq = DeleteQuery(User).where(User.active == False).execute()</code></p>
+</li>
+</ol>
+<h3 id="3-4-改（Update）"><a href="#3-4-改（Update）" class="headerlink" title="3.4.改（Update）"></a>3.4.改（Update）</h3><ol>
+<li>update修改(推荐)<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">query = Stat.update(counter=Stat.counter + <span class="number">1</span>).where(Stat.url == request.url)</div><div class="line">query.execute()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>同delete,也就是执行了execute()才会执行update操作。</p>
+<ol>
+<li>save修改<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> stat <span class="keyword">in</span> Stat.select().where(Stat.url == request.url):</div><div class="line">     stat.counter += <span class="number">1</span></div><div class="line">     stat.save()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>两种方式都类似Django语句，<strong>需要特别注意的是，peewee的update是原子的（Atomic ）</strong>，在并发情况下可靠，即peewee的update语句效果等价于Django使用F表达式的update，如<code>rules.update(remained_count=F(&#39;remained_count&#39;) - 1, get_count=F(&#39;get_count&#39;) + 1)</code></p>
+<h2 id="4-外键与join"><a href="#4-外键与join" class="headerlink" title="4.外键与join"></a>4.外键与join</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderHasProduct</span><span class="params">(models.Model)</span>:</span></div><div class="line">	order = models.ForeignKey(Order)</div><div class="line">	product = models.ForeignKey(Product, related_name=<span class="string">'product'</span>)</div><div class="line">	price = models.FloatField()  <span class="comment"># 商品单价</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span><span class="params">(models.Model)</span>:</span></div><div class="line">	order_id = models.CharField(max_length=<span class="number">100</span>)  <span class="comment"># 订单号</span></div><div class="line">	webapp_user_id = models.IntegerField()  <span class="comment"># WebApp用户的id</span></div><div class="line">	webapp_id = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'店铺ID'</span>)  <span class="comment"># webapp,订单成交的店铺id</span></div><div class="line">	webapp_source_id = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">'商品来源店铺ID'</span>)  <span class="comment"># 订单内商品实际来源店铺的id，已废弃</span></div><div class="line">	buyer_name = models.CharField(max_length=<span class="number">100</span>)  <span class="comment"># 购买人姓名</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></div><div class="line">	owner = models.ForeignKey(User, related_name=<span class="string">'user-product'</span>)</div><div class="line">	name = models.CharField(max_length=<span class="number">256</span>)  <span class="comment"># 商品名称</span></div><div class="line">	physical_unit = models.CharField(default=<span class="string">''</span>, max_length=<span class="number">256</span>)  <span class="comment"># 计量单位</span></div><div class="line">	price = models.FloatField(default=<span class="number">0.0</span>)  <span class="comment"># 商品价格</span></div></pre></td></tr></table></figure>
+<p>OrderHasProduct有外键Product和外键Order。</p>
+<h3 id="4-1-外键赋值"><a href="#4-1-外键赋值" class="headerlink" title="4.1.外键赋值"></a>4.1.外键赋值</h3><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mall_models.OrderHasProduct.create(</div><div class="line">	<span class="keyword">order</span>=<span class="built_in">self</span>.db_model,</div><div class="line">	product=product.id,</div><div class="line">	<span class="params">...</span></div></pre></td></tr></table></figure>
+<p>可以看到把<strong>外键实例</strong>或者<strong>外键实例的id</strong>都是可以的。</p>
+<h3 id="4-2-涉及外键的查询"><a href="#4-2-涉及外键的查询" class="headerlink" title="4.2.涉及外键的查询"></a>4.2.涉及外键的查询</h3><h4 id="4-2-1-根据外键的主键查询"><a href="#4-2-1-根据外键的主键查询" class="headerlink" title="4.2.1 根据外键的主键查询"></a>4.2.1 根据外键的主键查询</h4><p>直接<code>OrderHasProduct.select().where(where(mall_models.Order.id=order.id).product_id=10086)</code></p>
+<h4 id="4-2-2-根据外键的某字段查询（join外键）"><a href="#4-2-2-根据外键的某字段查询（join外键）" class="headerlink" title="4.2.2 根据外键的某字段查询（join外键）"></a>4.2.2 根据外键的某字段查询（join外键）</h4><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">Rule</span>(<span class="title">models</span>.<span class="type">Model</span>):</span></div><div class="line">	owner = models.<span class="type">ForeignKey</span>(<span class="type">User</span>)</div><div class="line">	name = models.<span class="type">CharField</span>(<span class="title">max_length</span>=20, <span class="title">db_index</span>=<span class="type">True</span>) </div><div class="line">	valid = models.<span class="type">DecimalField</span>(<span class="title">max_digits</span>=65) </div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">class</span> <span class="type">Card</span>(<span class="title">models</span>.<span class="type">Model</span>):</div><div class="line">	owner = models.<span class="type">ForeignKey</span>(<span class="type">User</span>)</div><div class="line">	rule = models.<span class="type">ForeignKey</span>(<span class="type">Rule</span>)</div></pre></td></tr></table></figure>
+<p>Card有外键Rule。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">count = Card.select().join(wzcard_models.Rule).where(Card<span class="selector-class">.card_id</span><span class="selector-class">.in_</span>(ids),Rule<span class="selector-class">.valid</span> &gt;<span class="number">0</span>).count()</div></pre></td></tr></table></figure>
+<p>的确很长，peewee不支持django风格的”__”（双下划线），所以就直街上join了，peewee默认使用INNER join。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/peewee/" rel="tag"># peewee</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/emoji、Python、MySQL utf8mb4与UTF/" rel="next" title="emoji、Python、MySQL utf8mb4与UTF">
+                <i class="fa fa-chevron-left"></i> emoji、Python、MySQL utf8mb4与UTF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/peewee-note2/" rel="prev" title="peewee笔记(2)——构建自已的peewee文档">
+                peewee笔记(2)——构建自已的peewee文档 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zeroten" />
+          <p class="site-author-name" itemprop="name">zeroten</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ladder1984" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#peewee使用指南"><span class="nav-number">1.</span> <span class="nav-text">peewee使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-peewee介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1.peewee介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用指南"><span class="nav-number">1.2.</span> <span class="nav-text">2.使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-连接mysql"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1.连接mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-连接形式"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1.连接形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-model定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.model定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-概述"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1.概述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ORM操作（CRUD）"><span class="nav-number">1.3.</span> <span class="nav-text">3.ORM操作（CRUD）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-增加（Create）"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1.增加（Create）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-查（Retrieve）"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2.查（Retrieve）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-查询单条记录"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1.查询单条记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-查询全部"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2.查询全部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-条件查询"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.2.3.条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-计数count"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.2.3.计数count</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-排序order-by"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">3.2.5.排序order_by</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-删除（Delete）"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3.删除（Delete）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-改（Update）"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4.改（Update）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-外键与join"><span class="nav-number">1.4.</span> <span class="nav-text">4.外键与join</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-外键赋值"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1.外键赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-涉及外键的查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2.涉及外键的查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-根据外键的主键查询"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">4.2.1 根据外键的主键查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-根据外键的某字段查询（join外键）"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">4.2.2 根据外键的某字段查询（join外键）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeroten</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://ifchanged.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://ifchanged.io/2016/peewee-note1/';
+          this.page.identifier = '2016/peewee-note1/';
+          this.page.title = 'peewee笔记(1)——基本语法';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ifchanged.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
