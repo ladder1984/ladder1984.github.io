@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,MySQL,peewee," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -89,19 +89,42 @@
 
 
 
-<meta name="description" content="背景开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。
-打开peewee官方文档http://docs.peewee-orm.com/en/latest/，我们可以看到只提供latest、stable版">
+<meta name="description" content="1. Tag概述
+像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 等等）。
+
+参考：  
+
+https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+git help tag
+
+1.1 命令ta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="peewee笔记(2)——构建自已的peewee文档">
-<meta property="og:url" content="http://ifchanged.io/2016/cj2w0q6s7003mje6xmjq9plpn/index.html">
+<meta property="og:title" content="git tag应用">
+<meta property="og:url" content="http://ifchanged.io/2017/cj2w0tuvk002boc6xp8nwtb33/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="背景开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。
-打开peewee官方文档http://docs.peewee-orm.com/en/latest/，我们可以看到只提供latest、stable版">
-<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta property="og:description" content="1. Tag概述
+像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 等等）。
+
+参考：  
+
+https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+git help tag
+
+1.1 命令ta">
+<meta property="og:image" content="http://ifchanged.io/images/git_tag1.png">
+<meta property="og:updated_time" content="2017-03-03T13:07:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="peewee笔记(2)——构建自已的peewee文档">
-<meta name="twitter:description" content="背景开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。
-打开peewee官方文档http://docs.peewee-orm.com/en/latest/，我们可以看到只提供latest、stable版">
+<meta name="twitter:title" content="git tag应用">
+<meta name="twitter:description" content="1. Tag概述
+像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 等等）。
+
+参考：  
+
+https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+git help tag
+
+1.1 命令ta">
+<meta name="twitter:image" content="http://ifchanged.io/images/git_tag1.png">
 
 
 
@@ -129,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://ifchanged.io/2016/cj2w0q6s7003mje6xmjq9plpn/"/>
+  <link rel="canonical" href="http://ifchanged.io/2017/cj2w0tuvk002boc6xp8nwtb33/"/>
 
 
 
 
 
-  <title> peewee笔记(2)——构建自已的peewee文档 | IFchanged </title>
+  <title> git tag应用 | IFchanged </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -283,7 +306,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2016/cj2w0q6s7003mje6xmjq9plpn/">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2017/cj2w0tuvk002boc6xp8nwtb33/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zeroten">
@@ -304,7 +327,7 @@
             
             
               
-                peewee笔记(2)——构建自已的peewee文档
+                git tag应用
               
             
           </h1>
@@ -319,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-28T20:17:01+08:00">
-                2016-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T14:59:13+08:00">
+                2017-02-28
               </time>
             
 
@@ -338,9 +361,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/cj2w0q6s7003mje6xmjq9plpn/#comments" itemprop="discussionUrl">
+                <a href="/2017/cj2w0tuvk002boc6xp8nwtb33/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/cj2w0q6s7003mje6xmjq9plpn/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/cj2w0tuvk002boc6xp8nwtb33/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,15 +389,65 @@
       
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。</p>
-<p>打开peewee官方文档<a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="external">http://docs.peewee-orm.com/en/latest/</a>，我们可以看到只提供latest、stable版本文档，可能和我们定制的已经千差万别。好在peewee文档使用Sphinx构建，易于修改部署。</p>
-<h2 id="部署文档"><a href="#部署文档" class="headerlink" title="部署文档"></a>部署文档</h2><p>好在github上我们可以找到历史版本的文档，以2.6.4为例。</p>
-<ol>
-<li>安装Sphinx：<code>pip install sphinx</code></li>
-<li>从官方git（<a href="https://github.com/coleifer/peewee" target="_blank" rel="external">https://github.com/coleifer/peewee</a>）下载peewee源码并切换到tag 2.6.4。</li>
-<li>进入项目内doc/目录，执行<code>make.bat html</code>(Windows)或<code>make html</code>(Linux)生成静态网站目录_build/index/ 。</li>
-<li>把2的目录找个服务器放。</li>
+        <h2 id="1-Tag概述"><a href="#1-Tag概述" class="headerlink" title="1. Tag概述"></a>1. Tag概述</h2><blockquote>
+<p>像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 等等）。</p>
+</blockquote>
+<p>参考：  </p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE" target="_blank" rel="external">https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE</a></li>
+<li><code>git help tag</code></li>
+</ul>
+<h3 id="1-1-命令"><a href="#1-1-命令" class="headerlink" title="1.1 命令"></a>1.1 命令</h3><p>tag的命令与分支相似。</p>
+<ul>
+<li>列出标签: <code>git tag</code></li>
+<li>创建标签: <code>git tag tag123</code><ul>
+<li>附注标签: <code>git tag -a v1.4 -m &#39;my version 1.4&#39;</code></li>
+<li>打在制定版本: <code>git tag -a v1.2 9fceb02</code> </li>
+</ul>
+</li>
+<li>查看标签内容: <code>git show v1.4</code> 或 <code>git log v1.4</code><ul>
+<li>按照版本排序：<code>git tag --sort=&quot;version:refname</code></li>
+<li>搜索： <code>git tag -l &lt;pattern&gt;</code>，如<code>git tag -l &quot;v*&quot;</code></li>
+</ul>
+</li>
+<li>push标签：git push不会推送本地标签<ul>
+<li>push特定标签： <code>git push origin [tagname]</code></li>
+<li>push所有标签： <code>git push origin --tags</code></li>
+</ul>
+</li>
+<li>检出标签: <code>git checkout -b version2 v2.0.0</code></li>
+<li>删除标签：<ul>
+<li>删除本地标签: <code>git tag -d v0.1</code>      批量：<code>git tag -l &quot;vTEST*&quot;|xargs git tag -d</code></li>
+<li>删除远程标签: <code>git push origin --delete v0.1</code>   批量：<code>git tag -l &quot;vTEST*&quot;|xargs git push origin --delete</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><h3 id="2-1-jenkins"><a href="#2-1-jenkins" class="headerlink" title="2.1 jenkins"></a>2.1 jenkins</h3><p>增加构建后操作的Publisher：</p>
+<p><img src="/images/git_tag1.png" alt=""></p>
+<ul>
+<li>v168形式的标签表示每次 jenkins上线构建的版本,使用<code>git tag --sort=&quot;version:refname&quot; -l &quot;v*&quot;</code>获得按照版本排序的tag。</li>
+</ul>
+<h3 id="2-2-Gitlab"><a href="#2-2-Gitlab" class="headerlink" title="2.2 Gitlab"></a>2.2 Gitlab</h3><p>需要添加jenkins用户为develop权限。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ol>
+<li>比较</li>
 </ol>
+<ul>
+<li>文件比较：<code>git diff v98 master</code>,此命令比较v98和master文件不同。常用于比较两个版本是否一致。</li>
+<li><p>commit：<code>git diff ^v98 master</code>，此命令比较不在v98上但是在master上的commit有哪些。常用于比较两个版本不同的commit</p>
+<ul>
+<li><p>取得远程master上没有上线的commit：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch &amp;&amp; git log `git <span class="keyword">tag</span> <span class="title">--sort</span>=<span class="string">"version:refname"</span> -l <span class="string">"v*"</span>|tail -<span class="number">1</span>`..origin/<span class="literal">master</span></div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch &amp;&amp; git rev-list ^`git <span class="keyword">tag</span> <span class="title">--sort</span>=<span class="string">"version:refname"</span> -l <span class="string">"v*"</span>|tail -<span class="number">1</span>` origin/<span class="keyword">master</span> <span class="title">--pretty</span>=oneline</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>注</strong>：<code>--sort=&quot;version:refname&quot; -l &quot;v*&quot;</code>要求v开头的tag都是jenkins打出来的，且要求git 2.1及以上版本</p>
+<ol>
+<li>回滚</li>
+</ol>
+<p>todo</p>
 
       
     </div>
@@ -404,11 +477,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          
-            <a href="/tags/peewee/" rel="tag"># peewee</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -421,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/cj2w0q6s4003gje6xp29yvgnj/" rel="next" title="peewee笔记(1)——基本语法">
-                <i class="fa fa-chevron-left"></i> peewee笔记(1)——基本语法
+              <a href="/2016/cj2w0tuvj0028oc6xpvn6qobd/" rel="next" title="git master分支回滚指南">
+                <i class="fa fa-chevron-left"></i> git master分支回滚指南
               </a>
             
           </div>
@@ -431,8 +500,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/cj2w0q6rh002gje6x8q4m9cim/" rel="prev" title="git master分支回滚指南">
-                git master分支回滚指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/cj2w0tuxq006hoc6x4ta2jajh/" rel="prev" title="简谈行为驱动开发(BDD)">
+                简谈行为驱动开发(BDD) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -587,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署文档"><span class="nav-number">2.</span> <span class="nav-text">部署文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Tag概述"><span class="nav-number">1.</span> <span class="nav-text">1. Tag概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-命令"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置"><span class="nav-number">2.</span> <span class="nav-text">2. 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-jenkins"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Gitlab"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Gitlab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li></ol></div>
             
 
           </div>
@@ -724,9 +793,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ifchanged.io/2016/cj2w0q6s7003mje6xmjq9plpn/';
-          this.page.identifier = '2016/cj2w0q6s7003mje6xmjq9plpn/';
-          this.page.title = 'peewee笔记(2)——构建自已的peewee文档';
+          this.page.url = 'http://ifchanged.io/2017/cj2w0tuvk002boc6xp8nwtb33/';
+          this.page.identifier = '2017/cj2w0tuvk002boc6xp8nwtb33/';
+          this.page.title = 'git tag应用';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ifchanged.disqus.com/embed.js';

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,MySQL," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -89,19 +89,49 @@
 
 
 
-<meta name="description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta name="description" content="1. 概述1.1 master分支回滚的特殊性
+多人协作，修改提交历史的方式易造成冲突
+希望所有操作的记录都是保存的，避免丢失代码
+希望没有master权限的人也能按照正常合并流程进行回滚
+
+所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
+1.2 场景描述
+回滚某个或某些commit
+回滚分支合并（merge commit）
+回滚到某个提交
+
+2. 回滚方法2.1 回滚某个或某">
 <meta property="og:type" content="article">
-<meta property="og:title" content="emoji、Python、MySQL utf8mb4与UTF">
-<meta property="og:url" content="http://ifchanged.io/2016/cj2w0q6r5001zje6xc2gara26/index.html">
+<meta property="og:title" content="git master分支回滚指南">
+<meta property="og:url" content="http://ifchanged.io/2016/cj2w0tuvj0028oc6xpvn6qobd/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
-<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta property="og:description" content="1. 概述1.1 master分支回滚的特殊性
+多人协作，修改提交历史的方式易造成冲突
+希望所有操作的记录都是保存的，避免丢失代码
+希望没有master权限的人也能按照正常合并流程进行回滚
+
+所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
+1.2 场景描述
+回滚某个或某些commit
+回滚分支合并（merge commit）
+回滚到某个提交
+
+2. 回滚方法2.1 回滚某个或某">
+<meta property="og:updated_time" content="2017-03-03T16:59:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="emoji、Python、MySQL utf8mb4与UTF">
-<meta name="twitter:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta name="twitter:title" content="git master分支回滚指南">
+<meta name="twitter:description" content="1. 概述1.1 master分支回滚的特殊性
+多人协作，修改提交历史的方式易造成冲突
+希望所有操作的记录都是保存的，避免丢失代码
+希望没有master权限的人也能按照正常合并流程进行回滚
+
+所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
+1.2 场景描述
+回滚某个或某些commit
+回滚分支合并（merge commit）
+回滚到某个提交
+
+2. 回滚方法2.1 回滚某个或某">
 
 
 
@@ -129,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="http://ifchanged.io/2016/cj2w0q6r5001zje6xc2gara26/"/>
+  <link rel="canonical" href="http://ifchanged.io/2016/cj2w0tuvj0028oc6xpvn6qobd/"/>
 
 
 
 
 
-  <title> emoji、Python、MySQL utf8mb4与UTF | IFchanged </title>
+  <title> git master分支回滚指南 | IFchanged </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -283,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2016/cj2w0q6r5001zje6xc2gara26/">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2016/cj2w0tuvj0028oc6xpvn6qobd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zeroten">
@@ -304,7 +334,7 @@
             
             
               
-                emoji、Python、MySQL utf8mb4与UTF
+                git master分支回滚指南
               
             
           </h1>
@@ -319,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-20T21:16:31+08:00">
-                2016-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-24T23:44:27+08:00">
+                2016-08-24
               </time>
             
 
@@ -338,9 +368,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/cj2w0q6r5001zje6xc2gara26/#comments" itemprop="discussionUrl">
+                <a href="/2016/cj2w0tuvj0028oc6xpvn6qobd/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/cj2w0q6r5001zje6xc2gara26/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2016/cj2w0tuvj0028oc6xpvn6qobd/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,20 +396,26 @@
       
 
       
-        <p>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。</p>
-<h2 id="浅谈UTF"><a href="#浅谈UTF" class="headerlink" title="浅谈UTF"></a>浅谈UTF</h2><p>最常用的字符都在BMP（Basic Multilingual Plane, 基本多语言平面），范围是<strong>U+0000至U+FFFF</strong>。只有这些码位在UCS-2可用，也是MySQL UTF8可以存储的范围，其它字符存储在辅助平面。</p>
-<p>其中从<strong>U+D800到U+DFFF</strong>之间的码位区段是永久保留不映射到Unicode字符。UTF-16就利用保留下来的0xD800-0xDFFF区段的码位来对辅助平面的字符的码位进行编码。Unicode规定这个范围不对应字符，但在使用UCS-2时会被用于映射某些字符。</p>
-<h2 id="MySQL对4字节字符的支持"><a href="#MySQL对4字节字符的支持" class="headerlink" title="MySQL对4字节字符的支持"></a>MySQL对4字节字符的支持</h2><p>MySQL 5.5开始有了utf8mb4字符集，兼容utf8并且可以存储4字节字符，详见<a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></p>
-<h2 id="Python中的4字节字符"><a href="#Python中的4字节字符" class="headerlink" title="Python中的4字节字符"></a>Python中的4字节字符</h2><p>最开始的方案是直接识别4字节字符并直接过滤掉，3字节的范围是<code>\u0000-\uFFFF</code>，如果想直接判断一个字符是否在这个范围，<strong>可能</strong>会惊奇的发现一个字符被拆分成了两个字符，该字符的长度也是<strong>2</strong>。比如<code>\U0001f604</code>(笑脸表情，参见<a href="https://codepoints.net/U+1F604" target="_blank" rel="external">https://codepoints.net/U+1F604</a>)会被拆分成<code>\ud83d</code>和<code>\ude04</code>，<code>\U0001f604</code>展示了以一当二的能力。至于说可能，是因为这是由Python解释器编译时候编译选项是–enable-unicode=ucs4还是–enable-unicode=ucs2决定的，后者就是前文描述的情况。查看当前Python情况可以输出sys.maxunicode，得到65535就是ucs2，详见Python文档<a href="https://docs.python.org/2/library/sys.html#sys.maxunicode" target="_blank" rel="external">https://docs.python.org/2/library/sys.html#sys.maxunicode</a> 。ucs4下，4字节字符范围在<code>\U00010000-\U0010ffff</code>，usc2下拆分出的两个字符会在\uD800-\uDFFF范围。所以如果要过滤emoji或者其他特殊字符，可以根据此范围替换。</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_invalid_str</span><span class="params">(text)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line">	过滤非BMP字符</div><div class="line">	"""</div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		<span class="comment"># UCS-4</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\U00010000-\U0010ffff]'</span>)</div><div class="line">	<span class="keyword">except</span> re.error:</div><div class="line">		<span class="comment"># UCS-2</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\uD800-\uDBFF][\uDC00-\uDFFF]'</span>)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> highpoints.sub(<span class="string">u'_'</span>, text)</div></pre></td></tr></table></figure>
-<p>参考：</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/UTF-16" target="_blank" rel="external">https://en.wikipedia.org/wiki/UTF-16</a></li>
-<li><a href="https://docs.python.org/2/library/sys.html#sys.maxunicode" target="_blank" rel="external">https://docs.python.org/2/library/sys.html#sys.maxunicode</a></li>
-<li><a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></li>
-<li><a href="http://stackoverflow.com/questions/26568722/remove-unicode-emoji-using-re-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/26568722/remove-unicode-emoji-using-re-in-python</a></li>
-</ul>
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><h3 id="1-1-master分支回滚的特殊性"><a href="#1-1-master分支回滚的特殊性" class="headerlink" title="1.1 master分支回滚的特殊性"></a>1.1 master分支回滚的特殊性</h3><ol>
+<li>多人协作，修改提交历史的方式易造成冲突</li>
+<li>希望所有操作的记录都是保存的，避免丢失代码</li>
+<li>希望没有master权限的人也能按照正常合并流程进行回滚</li>
+</ol>
+<p>所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。</p>
+<h3 id="1-2-场景描述"><a href="#1-2-场景描述" class="headerlink" title="1.2 场景描述"></a>1.2 场景描述</h3><ol>
+<li>回滚某个或某些commit</li>
+<li>回滚分支合并（merge commit）</li>
+<li>回滚<strong>到</strong>某个提交</li>
+</ol>
+<h2 id="2-回滚方法"><a href="#2-回滚方法" class="headerlink" title="2. 回滚方法"></a>2. 回滚方法</h2><h3 id="2-1-回滚某个或某些commit"><a href="#2-1-回滚某个或某些commit" class="headerlink" title="2.1 回滚某个或某些commit"></a>2.1 回滚某个或某些commit</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>commit</div></pre></td></tr></table></figure>
+<p>如：<code>git revet 08096c7</code></p>
+<h3 id="2-2-回滚分支合并（merge-commit）"><a href="#2-2-回滚分支合并（merge-commit）" class="headerlink" title="2.2 回滚分支合并（merge commit）"></a>2.2 回滚分支合并（merge commit）</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert -m parent-<span class="built_in">number</span> commit</div></pre></td></tr></table></figure>
+<p>如<code>git revert -m 1 08096c7c71429ac044a90bbd43f67aef13a91102</code></p>
+<p>一个典型的merge commit：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">commit a4aebedf433805eb15767f6f1905f3c236ce48bd</div><div class="line"><span class="symbol">Merge:</span> <span class="number">6</span>ee7688 d593ca7</div><div class="line"><span class="symbol">Author:</span> XXX <span class="params">&lt;XXX@qq.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Mon Aug <span class="number">22</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">16</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    XXXXX</div></pre></td></tr></table></figure></p>
+<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line">        |<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
+<p>-m 参数指定要回滚到parent commit，值为1或2，即第1个还是第2个。如上图，我们想回滚<strong>掉</strong>feature分之，回<strong>到</strong>合并之前的master，则选择1.通常使用Gitlab的merge request合并的分之都选1.</p>
+<h3 id="2-3-回滚到某个提交"><a href="#2-3-回滚到某个提交" class="headerlink" title="2.3 回滚到某个提交"></a>2.3 回滚到某个提交</h3><p>如要把master回滚到tag v100:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard v100</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft origin/master</span></div><div class="line">git <span class="keyword">commit</span> -am <span class="string">"revert to v100"</span></div></pre></td></tr></table></figure></p>
+<p>回滚完毕后，可以使用<code>git diff head v100</code>比较是否还有不同，如果有不同，则说明操作错误。</p>
 
       
     </div>
@@ -409,9 +445,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
         </div>
       
@@ -424,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/cj2w0q6rq002kje6xusjssufl/" rel="next" title="git技巧">
-                <i class="fa fa-chevron-left"></i> git技巧
+              <a href="/2016/cj2w0tuw6003foc6x4apnotki/" rel="next" title="peewee笔记(2)——构建自已的peewee文档">
+                <i class="fa fa-chevron-left"></i> peewee笔记(2)——构建自已的peewee文档
               </a>
             
           </div>
@@ -434,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/cj2w0q6s4003gje6xp29yvgnj/" rel="prev" title="peewee笔记(1)——基本语法">
-                peewee笔记(1)——基本语法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/cj2w0tuvk002boc6xp8nwtb33/" rel="prev" title="git tag应用">
+                git tag应用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浅谈UTF"><span class="nav-number">2.</span> <span class="nav-text">浅谈UTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL对4字节字符的支持"><span class="nav-number">3.</span> <span class="nav-text">MySQL对4字节字符的支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中的4字节字符"><span class="nav-number">4.</span> <span class="nav-text">Python中的4字节字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">5.</span> <span class="nav-text">代码示例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-master分支回滚的特殊性"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 master分支回滚的特殊性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-场景描述"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 场景描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-回滚方法"><span class="nav-number">2.</span> <span class="nav-text">2. 回滚方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-回滚某个或某些commit"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 回滚某个或某些commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-回滚分支合并（merge-commit）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 回滚分支合并（merge commit）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-回滚到某个提交"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 回滚到某个提交</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -727,9 +761,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ifchanged.io/2016/cj2w0q6r5001zje6xc2gara26/';
-          this.page.identifier = '2016/cj2w0q6r5001zje6xc2gara26/';
-          this.page.title = 'emoji、Python、MySQL utf8mb4与UTF';
+          this.page.url = 'http://ifchanged.io/2016/cj2w0tuvj0028oc6xpvn6qobd/';
+          this.page.identifier = '2016/cj2w0tuvj0028oc6xpvn6qobd/';
+          this.page.title = 'git master分支回滚指南';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ifchanged.disqus.com/embed.js';

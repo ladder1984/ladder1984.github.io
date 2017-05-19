@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Django,MySQL," />
 
 
 
@@ -89,49 +89,19 @@
 
 
 
-<meta name="description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
+<meta name="description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
+问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git master分支回滚指南">
-<meta property="og:url" content="http://ifchanged.io/2016/cj2w0q6rh002gje6x8q4m9cim/index.html">
+<meta property="og:title" content="MySQL时间精确度问题">
+<meta property="og:url" content="http://ifchanged.io/2015/cj2w0tuue000koc6x0a85wpof/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
-<meta property="og:updated_time" content="2017-03-03T16:59:13.000Z">
+<meta property="og:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
+问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git master分支回滚指南">
-<meta name="twitter:description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
+<meta name="twitter:title" content="MySQL时间精确度问题">
+<meta name="twitter:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
+问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
 
 
 
@@ -159,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://ifchanged.io/2016/cj2w0q6rh002gje6x8q4m9cim/"/>
+  <link rel="canonical" href="http://ifchanged.io/2015/cj2w0tuue000koc6x0a85wpof/"/>
 
 
 
 
 
-  <title> git master分支回滚指南 | IFchanged </title>
+  <title> MySQL时间精确度问题 | IFchanged </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -313,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2016/cj2w0q6rh002gje6x8q4m9cim/">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2015/cj2w0tuue000koc6x0a85wpof/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zeroten">
@@ -334,7 +304,7 @@
             
             
               
-                git master分支回滚指南
+                MySQL时间精确度问题
               
             
           </h1>
@@ -349,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-24T23:44:27+08:00">
-                2016-08-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-20T00:17:59+08:00">
+                2015-09-20
               </time>
             
 
@@ -368,9 +338,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/cj2w0q6rh002gje6x8q4m9cim/#comments" itemprop="discussionUrl">
+                <a href="/2015/cj2w0tuue000koc6x0a85wpof/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/cj2w0q6rh002gje6x8q4m9cim/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/cj2w0tuue000koc6x0a85wpof/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -396,26 +366,32 @@
       
 
       
-        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><h3 id="1-1-master分支回滚的特殊性"><a href="#1-1-master分支回滚的特殊性" class="headerlink" title="1.1 master分支回滚的特殊性"></a>1.1 master分支回滚的特殊性</h3><ol>
-<li>多人协作，修改提交历史的方式易造成冲突</li>
-<li>希望所有操作的记录都是保存的，避免丢失代码</li>
-<li>希望没有master权限的人也能按照正常合并流程进行回滚</li>
+        <h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。</p>
+<h2 id="问题探究"><a href="#问题探究" class="headerlink" title="问题探究"></a>问题探究</h2><p>在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能精确保存到秒，在MySQL 5.6.4之后以分数秒（Fractional Seconds）的形式保存更精确的时间，格式形如’2010-12-10 14:12:09.019473’。</p>
+<h3 id="fractional-seconds的使用"><a href="#fractional-seconds的使用" class="headerlink" title="fractional seconds的使用"></a>fractional seconds的使用</h3><p>截止到MySQL 5.7，时间的最大精确度是微妙（microsecond）。使用fractional seconds需要使用语法<code>type_name(fsp)</code>,type_name可为TIME, DATETIME, 和TIMESTAMP类型，fsp表示精度，取值范围是0-6，6时即表示微妙。例如<code>CREATE TABLE t1 (t TIME(3), dt DATETIME(6));</code>。以下为MySQL官方文档中的示例：</p>
+<pre><code>mysql&gt; CREATE TABLE fractest( c1 TIME(2), c2 DATETIME(2), c3 TIMESTAMP(2) );
+Query OK, 0 rows affected (0.33 sec)
+
+mysql&gt; INSERT INTO fractest VALUES 
+     &gt; (&apos;17:51:04.777&apos;, &apos;2014-09-08 17:51:04.777&apos;, &apos;2014-09-08 17:51:04.777&apos;);
+Query OK, 1 row affected (0.03 sec)
+
+mysql&gt; SELECT * FROM fractest;
++-------------+------------------------+------------------------+
+| c1          | c2                     | c3                     |
++-------------+------------------------+------------------------+
+| 17:51:04.78 | 2014-09-08 17:51:04.78 | 2014-09-08 17:51:04.78 |
++-------------+------------------------+------------------------+
+1 row in set (0.00 sec)
+</code></pre><p>更多信息，参考MySQL官方文档：<a href="http://dev.mysql.com/doc/refman/5.6/en/fractional-seconds.html" target="_blank" rel="external">Fractional Seconds in Time Values</a></p>
+<p>至于fractional second为什么直到MySQL 5.6.4才支持以及需要手动指定精确度，个人猜测是多数情况下不需要如此高的精确度，以及高精确度带来的性能问题。</p>
+<h3 id="Django中的支持"><a href="#Django中的支持" class="headerlink" title="Django中的支持"></a>Django中的支持</h3><p>似乎到了Django 1.8才对fractional seconds进行支持，创建model时可以使用<code>DATETIME(6)</code>,参见Django 1.8的<a href="https://docs.djangoproject.com/en/dev/releases/1.8/#database-backends" target="_blank" rel="external">release notes</a>和<a href="https://docs.djangoproject.com/en/dev/ref/databases/#mysql-fractional-seconds" target="_blank" rel="external">文档</a>。<br>需要注意的是：</p>
+<ol>
+<li>使用fractional seconds的最低版本为MySQL 5.6.4和MySQLdb 1.2.5。</li>
+<li>Django不会更新已有的数据库，需要执行SQL语句进行修改数据库，或执行Data Migrations操作</li>
+<li>对于早期版本，是有hack方案的，参见stackoverflow上的问题<a href="http://stackoverflow.com/questions/17846504/how-to-create-a-django-custom-field-to-store-mysql-datetime6-and-enable-fracti" target="_blank" rel="external">How to create a Django custom Field to store MYSQL DATETIME(6) and enable fractional seconds (milliseconds and or microseconds) in Django/MySQL?</a></li>
 </ol>
-<p>所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。</p>
-<h3 id="1-2-场景描述"><a href="#1-2-场景描述" class="headerlink" title="1.2 场景描述"></a>1.2 场景描述</h3><ol>
-<li>回滚某个或某些commit</li>
-<li>回滚分支合并（merge commit）</li>
-<li>回滚<strong>到</strong>某个提交</li>
-</ol>
-<h2 id="2-回滚方法"><a href="#2-回滚方法" class="headerlink" title="2. 回滚方法"></a>2. 回滚方法</h2><h3 id="2-1-回滚某个或某些commit"><a href="#2-1-回滚某个或某些commit" class="headerlink" title="2.1 回滚某个或某些commit"></a>2.1 回滚某个或某些commit</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>commit</div></pre></td></tr></table></figure>
-<p>如：<code>git revet 08096c7</code></p>
-<h3 id="2-2-回滚分支合并（merge-commit）"><a href="#2-2-回滚分支合并（merge-commit）" class="headerlink" title="2.2 回滚分支合并（merge commit）"></a>2.2 回滚分支合并（merge commit）</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert -m parent-<span class="built_in">number</span> commit</div></pre></td></tr></table></figure>
-<p>如<code>git revert -m 1 08096c7c71429ac044a90bbd43f67aef13a91102</code></p>
-<p>一个典型的merge commit：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">commit a4aebedf433805eb15767f6f1905f3c236ce48bd</div><div class="line"><span class="symbol">Merge:</span> <span class="number">6</span>ee7688 d593ca7</div><div class="line"><span class="symbol">Author:</span> XXX <span class="params">&lt;XXX@qq.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Mon Aug <span class="number">22</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">16</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    XXXXX</div></pre></td></tr></table></figure></p>
-<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line">        |<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
-<p>-m 参数指定要回滚到parent commit，值为1或2，即第1个还是第2个。如上图，我们想回滚<strong>掉</strong>feature分之，回<strong>到</strong>合并之前的master，则选择1.通常使用Gitlab的merge request合并的分之都选1.</p>
-<h3 id="2-3-回滚到某个提交"><a href="#2-3-回滚到某个提交" class="headerlink" title="2.3 回滚到某个提交"></a>2.3 回滚到某个提交</h3><p>如要把master回滚到tag v100:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard v100</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft origin/master</span></div><div class="line">git <span class="keyword">commit</span> -am <span class="string">"revert to v100"</span></div></pre></td></tr></table></figure></p>
-<p>回滚完毕后，可以使用<code>git diff head v100</code>比较是否还有不同，如果有不同，则说明操作错误。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>显然，在业务需求精确到秒即可满足的情况，为了自动化测试而更改已经部署的MySQL、Django版本及代码是得不偿失的。所以最终较好的解决方案是在自动化测试的代码中把item的生成时间根据生成次序进行二次处理。</p>
 
       
     </div>
@@ -445,7 +421,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -458,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/cj2w0q6s7003mje6xmjq9plpn/" rel="next" title="peewee笔记(2)——构建自已的peewee文档">
-                <i class="fa fa-chevron-left"></i> peewee笔记(2)——构建自已的peewee文档
+              <a href="/2015/cj2w0tuum000yoc6x6db6hrz6/" rel="next" title="Python模拟登录京东">
+                <i class="fa fa-chevron-left"></i> Python模拟登录京东
               </a>
             
           </div>
@@ -468,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/cj2w0q6rv002rje6x4krzqubq/" rel="prev" title="git tag应用">
-                git tag应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/cj2w0tuwz004voc6xqeif9vqz/" rel="prev" title="使用页面可见性API Visibility">
+                使用页面可见性API Visibility <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-master分支回滚的特殊性"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 master分支回滚的特殊性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-场景描述"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 场景描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-回滚方法"><span class="nav-number">2.</span> <span class="nav-text">2. 回滚方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-回滚某个或某些commit"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 回滚某个或某些commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-回滚分支合并（merge-commit）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 回滚分支合并（merge commit）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-回滚到某个提交"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 回滚到某个提交</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题背景"><span class="nav-number">1.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题探究"><span class="nav-number">2.</span> <span class="nav-text">问题探究</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-seconds的使用"><span class="nav-number">2.1.</span> <span class="nav-text">fractional seconds的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django中的支持"><span class="nav-number">2.2.</span> <span class="nav-text">Django中的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
@@ -761,9 +739,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ifchanged.io/2016/cj2w0q6rh002gje6x8q4m9cim/';
-          this.page.identifier = '2016/cj2w0q6rh002gje6x8q4m9cim/';
-          this.page.title = 'git master分支回滚指南';
+          this.page.url = 'http://ifchanged.io/2015/cj2w0tuue000koc6x0a85wpof/';
+          this.page.identifier = '2015/cj2w0tuue000koc6x0a85wpof/';
+          this.page.title = 'MySQL时间精确度问题';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ifchanged.disqus.com/embed.js';
