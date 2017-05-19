@@ -70,8 +70,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-# scheme: Muse
-scheme: Mist
+scheme: Muse
+# scheme: Mist
 #scheme: Pisces
 
 
@@ -132,8 +132,8 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/ladder1984
 
 
 # Social Links Icons
@@ -285,7 +285,11 @@ mathjax:
 #duoshuo_shortname:
 
 # Disqus
-disqus_shortname: ifchanged
+# disqus_shortname: ifchanged
+disqus:
+  enable: true
+  shortname: ifchanged
+  count: true
 
 # Hypercomments
 #hypercomments_id:
