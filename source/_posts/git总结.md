@@ -115,12 +115,11 @@ tags:
 - 场景：为了让log变得清晰，可以把多个commit合并成一个。但是如果commit较多，又或者经历过merg、cherry等命令，rebase将变得很麻烦。可以使用reset。
 
 - 命令：
-
 ```
 git rev-list ^origin/master HEAD|tail -1 # 得到commit xxx
 git reset --soft xxx~1
 git commit -m "获得干净的提交"
-```	
+```
 
 - 注意事项：为了防止误操作，可以使用`git branch bak1`备份分支，执行完上述命令后使用`git diff HEAD　bak1`进行比较差异，应得到没有差异的结果。
 
