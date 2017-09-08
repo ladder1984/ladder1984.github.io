@@ -278,6 +278,177 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2014/DJango开发笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/DJango开发笔记/" itemprop="url">
+                  DJango开发笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-12T17:50:40+08:00">
+                2014-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">编程笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/DJango开发笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/DJango开发笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/Django-Unchained.jpg" alt="Django Unchained"></h1><p>(图文无关，图片来自网络)</p>
+<p># </p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>IDE:JetBrains PyCharm 3.4.1</p>
+<p>Python: 2.7.8</p>
+<p>Django:1.7</p>
+<p>MySQL:5.6.20</p>
+<p>&nbsp;</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h2><p><pre class="lang:python decode:true ">#settings.py</pre></p>
+<p>DATABASES = {<br>    ‘default’: {<br>        ‘ENGINE’: ‘django.db.backends.mysql’,<br>        ‘NAME’: ‘datebaseName’,<br>        ‘USER’: ‘username’,<br>        ‘PASSWORD’: ‘pass’,<br>        ‘HOST’: ‘127.0.0.1’,<br>        ‘PORT’: ‘3306’,<br>    }<br>}<br>相关指令<br>python manage.py syncdb<br>python manage.py makemigrations<br>python manage.py migrate</p>
+<p>&nbsp;</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><strong>1.7文档</strong>：<a href="https://docs.djangoproject.com/en/1.7/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/</a></p>
+<p><strong>The Django Book（中文）</strong>：<a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="external">http://djangobook.py3k.cn/2.0/</a></p>
+<p>models数据类型：<a href="https://docs.djangoproject.com/en/dev/ref/models/fields/" target="_blank" rel="external">https://docs.djangoproject.com/en/dev/ref/models/fields/</a></p>
+<p>静态文件：<a href="https://docs.djangoproject.com/en/1.7/howto/static-files/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/howto/static-files/</a></p>
+<p>数据库迁移：<a href="https://docs.djangoproject.com/en/1.7/topics/migrations/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/topics/migrations/</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>使用Django真的很方便!学好英语真的很重要!</p>
+<p>PS：本来想多写点东西，但发现东西都在文档里。。。等整理好，再更新文章。</p>
+<p>Github：<a href="https://github.com/ladder1984/DJangoHotel_Python" target="_blank" rel="external">https://github.com/ladder1984/DJangoHotel_Python</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2014/Visual Studio 2013支持的C99库（library）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1963,337 +2134,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2013/为wordpress添加面包屑导航/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zeroten">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IFchanged">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/为wordpress添加面包屑导航/" itemprop="url">
-                  为wordpress添加面包屑导航
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-31T20:31:17+08:00">
-                2013-10-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站建设/" itemprop="url" rel="index">
-                    <span itemprop="name">网站建设</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/为wordpress添加面包屑导航/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/为wordpress添加面包屑导航/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>　　<strong>面包屑导航</strong>（英语：Breadcrumb Trail）是在用户界面中的一种导航辅助。它是用户一个在程序或文件中确定和转移他们位置的一种方法。更多介绍参考维基百科：<a href="http://zh.wikipedia.org/zh/%E9%9D%A2%E5%8C%85%E5%B1%91%E5%AF%BC%E8%88%AA" title="面包屑导航" target="_blank" rel="external">面包屑导航</a></p>
-<p>　　本文介绍一种非插件方式使用面包屑导航的方法，代码出自<a href="http://dimox.net/wordpress-breadcrumbs-without-a-plugin/" title="《WordPress Breadcrumbs Without a Plugin》" target="_blank" rel="external">《WordPress Breadcrumbs Without a Plugin》</a>，</p>
-<p>代码如下（点击展开）：</p>
-<pre class="minimize:true lang:php decode:true ">function dimox_breadcrumbs() {
-
-    /* === OPTIONS === */
-    $text['home']     = 'Home'; // text for the 'Home' link
-    $text['category'] = 'Archive by Category "%s"'; // text for a category page
-    $text['search']   = 'Search Results for "%s" Query'; // text for a search results page
-    $text['tag']      = 'Posts Tagged "%s"'; // text for a tag page
-    $text['author']   = 'Articles Posted by %s'; // text for an author page
-    $text['404']      = 'Error 404'; // text for the 404 page
-
-    $show_current   = 1; // 1 - show current post/page/category title in breadcrumbs, 0 - don't show
-    $show_on_home   = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-    $show_home_link = 1; // 1 - show the 'Home' link, 0 - don't show
-    $show_title     = 1; // 1 - show the title for the links, 0 - don't show
-    $delimiter      = ' &amp;raquo; '; // delimiter between crumbs
-    $before         = '&lt;span class="current"&gt;'; // tag before the current crumb
-    $after          = '&lt;/span&gt;'; // tag after the current crumb
-    /* === END OF OPTIONS === */
-
-    global $post;
-    $home_link    = home_url('/');
-    $link_before  = '&lt;span typeof="v:Breadcrumb"&gt;';
-    $link_after   = '&lt;/span&gt;';
-    $link_attr    = ' rel="v:url" property="v:title"';
-    $link         = $link_before . '&lt;a' . $link_attr . ' href="%1$s"&gt;%2$s&lt;/a&gt;' . $link_after;
-    $parent_id    = $parent_id_2 = $post-&gt;post_parent;
-    $frontpage_id = get_option('page_on_front');
-
-    if (is_home() || is_front_page()) {
-
-        if ($show_on_home == 1) echo '&lt;div class="breadcrumbs"&gt;&lt;a href="' . $home_link . '"&gt;' . $text['home'] . '&lt;/a&gt;&lt;/div&gt;';
-
-    } else {
-
-        echo '&lt;div class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#"&gt;';
-        if ($show_home_link == 1) {
-            echo '&lt;a href="' . $home_link . '" rel="v:url" property="v:title"&gt;' . $text['home'] . '&lt;/a&gt;';
-            if ($frontpage_id == 0 || $parent_id != $frontpage_id) echo $delimiter;
-        }
-
-        if ( is_category() ) {
-            $this_cat = get_category(get_query_var('cat'), false);
-            if ($this_cat-&gt;parent != 0) {
-                $cats = get_category_parents($this_cat-&gt;parent, TRUE, $delimiter);
-                if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
-                $cats = str_replace('&lt;a', $link_before . '&lt;a' . $link_attr, $cats);
-                $cats = str_replace('&lt;/a&gt;', '&lt;/a&gt;' . $link_after, $cats);
-                if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-                echo $cats;
-            }
-            if ($show_current == 1) echo $before . sprintf($text['category'], single_cat_title('', false)) . $after;
-
-        } elseif ( is_search() ) {
-            echo $before . sprintf($text['search'], get_search_query()) . $after;
-
-        } elseif ( is_day() ) {
-            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-            echo sprintf($link, get_month_link(get_the_time('Y'),get_the_time('m')), get_the_time('F')) . $delimiter;
-            echo $before . get_the_time('d') . $after;
-
-        } elseif ( is_month() ) {
-            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-            echo $before . get_the_time('F') . $after;
-
-        } elseif ( is_year() ) {
-            echo $before . get_the_time('Y') . $after;
-
-        } elseif ( is_single() &amp;&amp; !is_attachment() ) {
-            if ( get_post_type() != 'post' ) {
-                $post_type = get_post_type_object(get_post_type());
-                $slug = $post_type-&gt;rewrite;
-                printf($link, $home_link . '/' . $slug['slug'] . '/', $post_type-&gt;labels-&gt;singular_name);
-                if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
-            } else {
-                $cat = get_the_category(); $cat = $cat[0];
-                $cats = get_category_parents($cat, TRUE, $delimiter);
-                if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
-                $cats = str_replace('&lt;a', $link_before . '&lt;a' . $link_attr, $cats);
-                $cats = str_replace('&lt;/a&gt;', '&lt;/a&gt;' . $link_after, $cats);
-                if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-                echo $cats;
-                if ($show_current == 1) echo $before . get_the_title() . $after;
-            }
-
-        } elseif ( !is_single() &amp;&amp; !is_page() &amp;&amp; get_post_type() != 'post' &amp;&amp; !is_404() ) {
-            $post_type = get_post_type_object(get_post_type());
-            echo $before . $post_type-&gt;labels-&gt;singular_name . $after;
-
-        } elseif ( is_attachment() ) {
-            $parent = get_post($parent_id);
-            $cat = get_the_category($parent-&gt;ID); $cat = $cat[0];
-            $cats = get_category_parents($cat, TRUE, $delimiter);
-            $cats = str_replace('&lt;a', $link_before . '&lt;a' . $link_attr, $cats);
-            $cats = str_replace('&lt;/a&gt;', '&lt;/a&gt;' . $link_after, $cats);
-            if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-            echo $cats;
-            printf($link, get_permalink($parent), $parent-&gt;post_title);
-            if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
-
-        } elseif ( is_page() &amp;&amp; !$parent_id ) {
-            if ($show_current == 1) echo $before . get_the_title() . $after;
-
-        } elseif ( is_page() &amp;&amp; $parent_id ) {
-            if ($parent_id != $frontpage_id) {
-                $breadcrumbs = array();
-                while ($parent_id) {
-                    $page = get_page($parent_id);
-                    if ($parent_id != $frontpage_id) {
-                        $breadcrumbs[] = sprintf($link, get_permalink($page-&gt;ID), get_the_title($page-&gt;ID));
-                    }
-                    $parent_id = $page-&gt;post_parent;
-                }
-                $breadcrumbs = array_reverse($breadcrumbs);
-                for ($i = 0; $i &lt; count($breadcrumbs); $i++) {
-                    echo $breadcrumbs[$i];
-                    if ($i != count($breadcrumbs)-1) echo $delimiter;
-                }
-            }
-            if ($show_current == 1) {
-                if ($show_home_link == 1 || ($parent_id_2 != 0 &amp;&amp; $parent_id_2 != $frontpage_id)) echo $delimiter;
-                echo $before . get_the_title() . $after;
-            }
-
-        } elseif ( is_tag() ) {
-            echo $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
-
-        } elseif ( is_author() ) {
-            global $author;
-            $userdata = get_userdata($author);
-            echo $before . sprintf($text['author'], $userdata-&gt;display_name) . $after;
-
-        } elseif ( is_404() ) {
-            echo $before . $text['404'] . $after;
-        }
-
-        if ( get_query_var('paged') ) {
-            if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-            echo __('Page') . ' ' . get_query_var('paged');
-            if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
-        }
-
-        echo '&lt;/div&gt;&lt;!-- .breadcrumbs --&gt;';
-
-    }
-} // end dimox_breadcrumbs()
-</pre>
-
-<p>把以上代码放入functions.php中。</p>
-<p><strong>调用函数：</strong></p>
-<pre class="lang:php decode:true ">&lt;?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?&gt;
-</pre>
-
-<p>把调用函数放在需要显示面包屑导航的地方即可。</p>
-<p>　　生成的面包屑导航会在<pre class="inline:true decode:1 ">&lt;div&nbsp;class=&quot;breadcrumbs&quot;&gt;&nbsp;&lt;/div&gt;</pre>中，调整相应的css，即可自定义样式。比如<pre class="inline:true decode:1 ">.breadcrumbs a:link {color:#FFFFFF;}</pre>设置链接颜色为白色。</p>
-<p>这段代码首部的：</p>
-<pre>   
-/* === OPTIONS === */
-    $text['home']     = 'Home'; // text for the 'Home' link
-    $text['category'] = 'Archive by Category "%s"'; // text for a category page
-    $text['search']   = 'Search Results for "%s" Query'; // text for a search results page
-    $text['tag']      = 'Posts Tagged "%s"'; // text for a tag page
-    $text['author']   = 'Articles Posted by %s'; // text for an author page
-    $text['404']      = 'Error 404'; // text for the 404 page
-
-    $show_current   = 1; // 1 - show current post/page/category title in breadcrumbs, 0 - don't show
-    $show_on_home   = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-    $show_home_link = 1; // 1 - show the 'Home' link, 0 - don't show
-    $show_title     = 1; // 1 - show the title for the links, 0 - don't show
-    $delimiter      = ' &amp;raquo; '; // delimiter between crumbs
-    $before         = '&lt;span class="current"&gt;'; // tag before the current crumb
-    $after          = '&lt;/span&gt;'; // tag after the current crumb
-    /* === END OF OPTIONS === */
-</pre>
-
-<p>即为相关功能选项，带注释的代码应该很容易理解，不再解释。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2343,7 +2183,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2365,7 +2205,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

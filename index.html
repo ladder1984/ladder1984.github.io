@@ -278,6 +278,204 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2017/Kubernetes笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/Kubernetes笔记/" itemprop="url">
+                  Kubernetes笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T00:33:43+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/Kubernetes笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/Kubernetes笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。</p>
+<h3 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h3><p>master：主节点，负责k8s调度，不部署容器<br>node：master之外的主机节点<br>pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例<br>deployment：一个容器、编排部署集合<br>service：一个服务，简单理解deployment通过service暴露在网络中</p>
+<p>所以，用deployment管理一组pod，用service暴露deployment。</p>
+<h2 id="2-k8s技术介绍"><a href="#2-k8s技术介绍" class="headerlink" title="2. k8s技术介绍"></a>2. k8s技术介绍</h2><h3 id="2-1-网络"><a href="#2-1-网络" class="headerlink" title="2.1 网络"></a>2.1 网络</h3><p>使用flannel组件建立容器间网络，也是运维管理维护最麻烦的地方，因此：</p>
+<ul>
+<li>有三个网络，只需要运维了解，业务开发时不需要关心：<ul>
+<li>Cluster Network：虚拟局域网，pod所处的实际网络，pod获得Cluster IP。Cluster Network内部互通，内部pod可以访问公网、物理局域网</li>
+<li>物理局域网：外部主机所处的物流局域网</li>
+<li>公网</li>
+</ul>
+</li>
+<li>容器继承Node的DNS配置，不继承hosts</li>
+<li>pod访问外部时，通过所在Node的网络</li>
+<li>只能在Master通过NodePort，把service的端口和物理机连接，把service暴露给公网，这就造成Master的网络压力较大</li>
+</ul>
+<h3 id="2-3-服务发现"><a href="#2-3-服务发现" class="headerlink" title="2.3 服务发现"></a>2.3 服务发现</h3><p>k8s提供两种发现服务的方式，环境变量和DNS。由于数据库类资源通常使用外部资源，所以有用的是DNS自动给每个service自动注册name，由此可大大简化api-gateway的配置管理工作。</p>
+<h4 id="2-3-1-api-gateway"><a href="#2-3-1-api-gateway" class="headerlink" title="2.3.1 api-gateway"></a>2.3.1 api-gateway</h4><p>由于当前网络模式不支持使用宿主机的hosts，且k8s有访问发现机制，所以，</p>
+<ol>
+<li>gateway地址使用<strong>api-gateway</strong>，免去自建DNS开销。</li>
+<li>app地址使用k8s提供的Internal endpoints，即app:port形式，统一使用80端口，则简化为app</li>
+<li>app统一使用HTTP协议提供服务<br>例子：<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> /xxx/ &#123;</div><div class="line">    <span class="attribute">rewrite</span><span class="regexp"> ^/xxx/(.*)</span> /<span class="variable">$1</span> <span class="literal">break</span>;</div><div class="line">    <span class="attribute">proxy_pass</span> xxx;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>需要说明的是，api-gateway和app都应该存在于cluster network内。对于cluster network外的api service，Nginx规则按照老形式配置IP:Port形式；对于cluster network外的需要访问api-gateway的app，则访问外部Nginx，外部Nginx通过NodePort反向代理把请求发送给内部Nginx。</p>
+<h3 id="2-4-负载均衡"><a href="#2-4-负载均衡" class="headerlink" title="2.4 负载均衡"></a>2.4 负载均衡</h3><p>请求是首先访问service，然后service根据设置的策略访问pod。简单负载均衡模式和负载均衡器模式可以无缝切换。</p>
+<h4 id="2-4-1-简单负载均衡"><a href="#2-4-1-简单负载均衡" class="headerlink" title="2.4.1 简单负载均衡"></a>2.4.1 简单负载均衡</h4><p>在service不使用LoadBalancer模式时，，service以<strong>随机</strong>的方式选择pod。</p>
+<p>注：service的实现基于kube-proxy，kube-proxy有两种模式。<strong>userspace</strong>会<strong>循环</strong>选择pod，<strong>iptables</strong>模式会<strong>随机</strong>选择pod，<strong>iptables</strong>是默认模式且性能更好。</p>
+<h4 id="2-4-2-使用阿里云SLB负载均衡"><a href="#2-4-2-使用阿里云SLB负载均衡" class="headerlink" title="2.4.2 使用阿里云SLB负载均衡"></a>2.4.2 使用阿里云SLB负载均衡</h4><p>可以直接使用阿里云负载均衡服务<a href="https://intl.aliyun.com/zh/product/server-load-balancer" target="_blank" rel="external">https://intl.aliyun.com/zh/product/server-load-balancer</a>。<code>kubectl expose deployment nginx --port=80 --target-port=80 --type=LoadBalancer</code> 即可。具</p>
+<h3 id="2-5-容器调度"><a href="#2-5-容器调度" class="headerlink" title="2.5 容器调度"></a>2.5 容器调度</h3><h4 id="2-5-1-扩容和缩容"><a href="#2-5-1-扩容和缩容" class="headerlink" title="2.5.1 扩容和缩容"></a>2.5.1 扩容和缩容</h4><p>只需要修改deployment配置文件中的spec.replicas参数，k8s会立刻执行调度。</p>
+<h4 id="2-5-2-自动调度"><a href="#2-5-2-自动调度" class="headerlink" title="2.5.2 自动调度"></a>2.5.2 自动调度</h4><ul>
+<li>k8s会根据Node负载情况分配pod</li>
+<li>当有Node不可用时，k8s会自动把pod调度到可用Node</li>
+<li>当有docker 容器被关闭时，k8s会根据deploy根据spec.replicas，保证有正确数量的容器在运行</li>
+</ul>
+<h4 id="2-5-3-pod健康检查"><a href="#2-5-3-pod健康检查" class="headerlink" title="2.5.3 pod健康检查"></a>2.5.3 pod健康检查</h4><p>k8s提供探针对容器进行检测，可以后续开发</p>
+<h4 id="2-5-4-自动扩容"><a href="#2-5-4-自动扩容" class="headerlink" title="2.5.4 自动扩容"></a>2.5.4 自动扩容</h4><p>K8s提供<strong>HorizontalPodAutoscaler</strong>实现自动扩容，即根据性能指标自动增加pod的数量，但目前性能指标只支持CPU使用率。</p>
+<h2 id="3-k8s的使用"><a href="#3-k8s的使用" class="headerlink" title="3. k8s的使用"></a>3. k8s的使用</h2><h3 id="3-1-更新容器"><a href="#3-1-更新容器" class="headerlink" title="3.1 更新容器"></a>3.1 更新容器</h3><p>可以使用Jenkins调度api或者kubectl</p>
+<h4 id="3-1-1-滚动升级"><a href="#3-1-1-滚动升级" class="headerlink" title="3.1.1 滚动升级"></a>3.1.1 滚动升级</h4><p>k8s支持滚动升级，升级过程中，pod逐个替换，直到替换完成，在此过程中旧Pod依然会被使用。可设置minReadySeconds表示启动容器后等待程序启动的时间。</p>
+<p>只有更新PodTemplateSpec时才会触发滚动升级，如果镜像使用latest tag，则需要使用<code>kubectl patch deployment &lt;name&gt; -p &quot;{\&quot;spec\&quot;:{\&quot;template\&quot;:{\&quot;metadata\&quot;:{\&quot;labels\&quot;:{\&quot;date\&quot;‌​:\&quot;$(date +%s)\&quot;}}}}}&quot;</code>。</p>
+<h4 id="3-1-2-配置更新"><a href="#3-1-2-配置更新" class="headerlink" title="3.1.2 配置更新"></a>3.1.2 配置更新</h4><p>如果需要修改环境变量、pod数量等，可以更新配置文件然后使用<code>kubectl apply -f &lt;filename&gt;</code>。</p>
+<h3 id="3-2-配置文件管理"><a href="#3-2-配置文件管理" class="headerlink" title="3.2 配置文件管理"></a>3.2 配置文件管理</h3><h4 id="3-2-1-deployment和service配置文件管理"><a href="#3-2-1-deployment和service配置文件管理" class="headerlink" title="3.2.1 deployment和service配置文件管理"></a>3.2.1 deployment和service配置文件管理</h4><p>一个应用接入k8s只需要编写一个配置文件，包含deployment和service两项配置，如：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> extensions/v1beta1</div><div class="line"><span class="attr">kind:</span> Deployment</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> simples</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  replicas:</span> <span class="number">3</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metadata:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> simples</div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">      - name:</span> master</div><div class="line"><span class="attr">        image:</span> imgage.xxx.com/test/simples:latest  <span class="comment"># or just image: redis</span></div><div class="line"><span class="attr">        env:</span></div><div class="line"><span class="attr">        - name:</span> ENV_VAR</div><div class="line"><span class="attr">          value:</span> <span class="string">"10086"</span></div><div class="line"><span class="attr">        ports:</span></div><div class="line"><span class="attr">        - containerPort:</span> <span class="number">9999</span></div><div class="line"><span class="attr">      imagePullSecrets:</span></div><div class="line"><span class="attr">      - name:</span> keyyy</div><div class="line"></div><div class="line">      </div><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> Service</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> aaa</div><div class="line"><span class="attr">  labels:</span></div><div class="line"><span class="attr">    app:</span> aaa</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  ports:</span></div><div class="line">    <span class="comment"># the port that this service should serve on</span></div><div class="line"><span class="attr">  - port:</span> <span class="number">80</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    app:</span> aaa</div></pre></td></tr></table></figure></p>
+<p>每个应用自定义的内容只有环境变量和镜像地址。所有配置使用配置文件统一管理，配置文件使用git管理。</p>
+<h4 id="3-2-2-环境变量管理"><a href="#3-2-2-环境变量管理" class="headerlink" title="3.2.2 环境变量管理"></a>3.2.2 环境变量管理</h4><p>通用变量，如数据库配置、mns配置放入configMap，app引用configMap的值。各app自己的变量写入自己的配置文件。</p>
+<h3 id="3-3-dashboard"><a href="#3-3-dashboard" class="headerlink" title="3.3 dashboard"></a>3.3 dashboard</h3><p>官方web UI项目：<a href="https://github.com/kubernetes/dashboard" target="_blank" rel="external">https://github.com/kubernetes/dashboard</a></p>
+<p>dashboard可以查看相关信息，以及容器日志，不建议在dashboard编辑配置，应该使用配置文件。</p>
+<h4 id="3-3-1-账户登录"><a href="#3-3-1-账户登录" class="headerlink" title="3.3.1 账户登录"></a>3.3.1 账户登录</h4><p>dashboard 不提供用户登录系统。</p>
+<p>使用Nginx的Basic HTTP authentication功能为dashboard提供登录保护，参见<a href="http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html" target="_blank" rel="external">http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html</a>和<a href="http://www.ttlsa.com/nginx/nginx-basic-http-authentication/" target="_blank" rel="external">http://www.ttlsa.com/nginx/nginx-basic-http-authentication/</a>，可以为不同用户设置不同密码。</p>
+<h4 id="3-3-2-权限管理"><a href="#3-3-2-权限管理" class="headerlink" title="3.3.2 权限管理"></a>3.3.2 权限管理</h4><p>暂无好方案实现账户权限管理</p>
+<h2 id="4-k8s接入备忘录"><a href="#4-k8s接入备忘录" class="headerlink" title="4. k8s接入备忘录"></a>4. k8s接入备忘录</h2><h3 id="api-gateway改造"><a href="#api-gateway改造" class="headerlink" title="api-gateway改造"></a>api-gateway改造</h3><ol>
+<li>api service有uwsgi协议改为http协议</li>
+<li>api-gateway地址可直接使用service的地址</li>
+<li>api service统一使用80端口</li>
+</ol>
+<h3 id="环境变量改造"><a href="#环境变量改造" class="headerlink" title="环境变量改造"></a>环境变量改造</h3><p>让和环境有关的变量都使用环境变量管理，包括：</p>
+<ul>
+<li>MySQL数据库<ul>
+<li>host</li>
+<li>密码</li>
+</ul>
+</li>
+<li>redis地址</li>
+<li>Mongo地址</li>
+<li>MNS配置</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="静态资源管理"><a href="#静态资源管理" class="headerlink" title="静态资源管理"></a>静态资源管理</h3><p>静态资源可以直接用Nginx挂在物理机上。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>因为解决了宿主机端口冲突问题，方便的环境变量管理，可以做到一键创建环境，极大的减少了运维管理成本。</p>
+<p>注：kubernetes更新十分迅速，部分信息可能失效，本文根据kubernetes 1.7探索所得。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2017/git总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1902,220 +2100,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2015/git-rebase实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zeroten">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IFchanged">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/git-rebase实践/" itemprop="url">
-                  git rebase实践
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-28T19:54:15+08:00">
-                2015-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/git-rebase实践/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/git-rebase实践/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>同一个分支有三种表现形式</p>
-<ol>
-<li>远程分支</li>
-<li>远程引用分支 origin/master</li>
-<li>本地分支    master</li>
-</ol>
-<p>fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。</p>
-<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p>pull实际执行了<code>git fetch</code>和<code>git merge FETCH_HEAD</code>两条指令</p>
-<h3 id="rebase的意义"><a href="#rebase的意义" class="headerlink" title="rebase的意义"></a>rebase的意义</h3><p>rebase的作用是重写提交记录。</p>
-<ul>
-<li><p>rebase优点：</p>
-<ol>
-<li>合并commit（与前分支rebase）</li>
-<li>避免merge commit（与master rebase）</li>
-<li>重写提交记录</li>
-</ol>
-</li>
-<li><p>rebase缺点：</p>
-</li>
-</ul>
-<ol>
-<li>操作不慎会丢失commit</li>
-<li>影响不到的冲突（由merge commit引起）</li>
-</ol>
-<p>在操作不熟练时，可以先备份分支<code>checkout -b bak_xxx</code>。</p>
-<p>merge+revert的方式可以保证代码的安全性，但提交记录混乱。rebase+reset的方式能够保证提交记录的清晰。</p>
-<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><h3 id="创建新的分支"><a href="#创建新的分支" class="headerlink" title="创建新的分支"></a>创建新的分支</h3><p>开始需求时，需要建立一个新分支，并把它推送到远程仓库。新建分支的方法多种多样，唯一的原则是从master新建分支。</p>
-<ol>
-<li>更新master<ol>
-<li><code>git checkout master</code></li>
-<li><code>git pull</code></li>
-</ol>
-</li>
-<li>从master创建feature分支：<br> <code>git checkout master -b test</code> 或 <code>git checkout origin/master -b</code></li>
-<li>推送分支当远程<br>  <code>git push -u origin test:test</code> 本地分支名在前<br> -u是–set-upstream-to 的简写，设置追踪分支。</li>
-</ol>
-<h3 id="拉取分支"><a href="#拉取分支" class="headerlink" title="拉取分支"></a>拉取分支</h3><p>其他人在此分支协作时的获取。<br>    <code>git checkout --track origin/test</code></p>
-<h2 id="更新分支"><a href="#更新分支" class="headerlink" title="更新分支"></a>更新分支</h2><h3 id="从master更新"><a href="#从master更新" class="headerlink" title="从master更新"></a>从master更新</h3><ol>
-<li><strong>方案1</strong><ol>
-<li><code>git checkout master</code></li>
-<li><code>git pull</code></li>
-<li><code>git checkout test</code></li>
-<li><code>git rebase master</code></li>
-</ol>
-</li>
-<li><strong>方案2（推荐）</strong><br> <code>git pull --rebase origin master</code><br> <strong>注意：</strong>此种方法不会更新本地master分支</li>
-</ol>
-<h3 id="从test更新"><a href="#从test更新" class="headerlink" title="从test更新"></a>从test更新</h3><p><code>git pull --rebase</code><br><strong>注意</strong>：需要先设置跟踪分支</p>
-<h2 id="完成后合并到master"><a href="#完成后合并到master" class="headerlink" title="完成后合并到master"></a>完成后合并到master</h2><p>在test分支开发<strong>完成</strong>后，需要通过rebase合并commit，此时rebase的目标不再是分支，而是在test分支中的commit。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>从master更新test分支，方法见上文</li>
-<li>寻找rebase点，使用<code>git log</code>查看test分支中最后一个commit，如<br>66fc050b </li>
-<li><code>rebase -i 66fc050b</code>开始rebase</li>
-</ol>
-<h3 id="交互式rebase"><a href="#交互式rebase" class="headerlink" title="交互式rebase"></a>交互式rebase</h3><p>在执行rebase -i命令会打开sublime编辑器<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">pick</span> a8b6d2f <span class="number">2</span></div><div class="line">pick c2c1903 xsas</div><div class="line"></div><div class="line"><span class="comment"># Rebase 749e319..c2c1903 onto 749e319 (3 command(s))</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Commands:</span></div><div class="line"><span class="comment"># p, pick = use commit</span></div><div class="line"><span class="comment"># r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="comment"># e, edit = use commit, but stop for amending</span></div><div class="line"><span class="comment"># s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="comment"># f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="comment"># x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="comment"># d, drop = remove commit</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
-<p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">f</span> a8b6d2f <span class="number">2</span></div><div class="line">f c2c1903 xsas</div></pre></td></tr></table></figure></p>
-<p>然后保存文件并退出sublime。</p>
-<p>如果rebase过程中遇到冲突，解决完冲突后执行<code>git rebase --continue</code>，需要注意的是，即使强制关闭控制台，依然会处于rebase状态，需要执行<code>git rebase --abort</code>取消rebase，版本库会会滚刀rebase之前的状态。或者执行<code>git rebase --edit-todo</code>重新打开rebase文件。</p>
-<p>如果产生冲突，rebase会逐个释放冲突，处理完冲突后，执行<code>git rebase --continue</code>继续。</p>
-<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p>test分支经过rebase后，显然已经和远程分支冲突了，<br>需要强制提交:<br><code>git push -f</code><br>或者先删除远程分支:</p>
-<ol>
-<li><code>git push origin --delete test</code></li>
-<li><code>git push origin test:test</code></li>
-</ol>
-<h3 id="管理员合并分支"><a href="#管理员合并分支" class="headerlink" title="管理员合并分支"></a>管理员合并分支</h3><p>最终由管理员把test分支合并到master，需要注意的是合并前需要把test分支从master分支rebase更新，避免merge commit。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="使用Sublime-Text作为外部文本编辑器"><a href="#使用Sublime-Text作为外部文本编辑器" class="headerlink" title="使用Sublime Text作为外部文本编辑器"></a>使用Sublime Text作为外部文本编辑器</h3><p>对git进行设置通常使用git config命令或者直接编辑.config文件</p>
-<p><code>git config --global core.editor &quot;&#39;C:/Program Files/Sublime Text 2/sublime_text.exe&#39; -w&quot;</code><br>或<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="name">core</span>]</div><div class="line">	editor = <span class="symbol">'C:</span>\\Program Files\\Sublime Text <span class="number">2</span>\\sublime_text.exe' -w</div></pre></td></tr></table></figure></p>
-<h3 id="rebase取代merge"><a href="#rebase取代merge" class="headerlink" title="rebase取代merge"></a>rebase取代merge</h3><p><code>git config --global branch.autosetuprebase always</code><br>或<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">[branch]</span></div><div class="line">	autosetuprebase = always</div></pre></td></tr></table></figure></p>
-<h3 id="reset在合并提交中的应用"><a href="#reset在合并提交中的应用" class="headerlink" title="reset在合并提交中的应用"></a>reset在合并提交中的应用</h3><p><code>git reset commitId</code> commitId 的位置同rebase，reset会撤销提交，一切回滚到<code>git add</code>和<code>git commit</code>之前的状态，所以我们可以把所有修改一次commit，达到合并commit的作用。</p>
-<p>需要注意的是，reset后，提交人信息和提交信息(commit msg)都会丢失。</p>
-<h3 id="git-hooks-go"><a href="#git-hooks-go" class="headerlink" title="git_hooks_go"></a>git_hooks_go</h3><p>通过git hooks的方式为提交信息添加用户名、分支名等信息，方便rebase。<br>运行git_hooks_go目录下的install.py安装。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>从master创建分支</li>
-<li>使用rebase更新</li>
-<li>使用rebase -i 合并commit</li>
-<li>管理员合并分支</li>
-</ol>
-<p>更新git：<br><a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></p>
-<p>git文档：</p>
-<ol>
-<li><a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">http://git-scm.com/book/zh/v2</a></li>
-<li><a href="https://www.atlassian.com/git/tutorials/" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2165,7 +2149,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2187,7 +2171,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

@@ -278,6 +278,220 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2015/git-rebase实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeroten">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IFchanged">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/git-rebase实践/" itemprop="url">
+                  git rebase实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-28T19:54:15+08:00">
+                2015-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/git-rebase实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/git-rebase实践/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>同一个分支有三种表现形式</p>
+<ol>
+<li>远程分支</li>
+<li>远程引用分支 origin/master</li>
+<li>本地分支    master</li>
+</ol>
+<p>fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。</p>
+<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p>pull实际执行了<code>git fetch</code>和<code>git merge FETCH_HEAD</code>两条指令</p>
+<h3 id="rebase的意义"><a href="#rebase的意义" class="headerlink" title="rebase的意义"></a>rebase的意义</h3><p>rebase的作用是重写提交记录。</p>
+<ul>
+<li><p>rebase优点：</p>
+<ol>
+<li>合并commit（与前分支rebase）</li>
+<li>避免merge commit（与master rebase）</li>
+<li>重写提交记录</li>
+</ol>
+</li>
+<li><p>rebase缺点：</p>
+</li>
+</ul>
+<ol>
+<li>操作不慎会丢失commit</li>
+<li>影响不到的冲突（由merge commit引起）</li>
+</ol>
+<p>在操作不熟练时，可以先备份分支<code>checkout -b bak_xxx</code>。</p>
+<p>merge+revert的方式可以保证代码的安全性，但提交记录混乱。rebase+reset的方式能够保证提交记录的清晰。</p>
+<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><h3 id="创建新的分支"><a href="#创建新的分支" class="headerlink" title="创建新的分支"></a>创建新的分支</h3><p>开始需求时，需要建立一个新分支，并把它推送到远程仓库。新建分支的方法多种多样，唯一的原则是从master新建分支。</p>
+<ol>
+<li>更新master<ol>
+<li><code>git checkout master</code></li>
+<li><code>git pull</code></li>
+</ol>
+</li>
+<li>从master创建feature分支：<br> <code>git checkout master -b test</code> 或 <code>git checkout origin/master -b</code></li>
+<li>推送分支当远程<br>  <code>git push -u origin test:test</code> 本地分支名在前<br> -u是–set-upstream-to 的简写，设置追踪分支。</li>
+</ol>
+<h3 id="拉取分支"><a href="#拉取分支" class="headerlink" title="拉取分支"></a>拉取分支</h3><p>其他人在此分支协作时的获取。<br>    <code>git checkout --track origin/test</code></p>
+<h2 id="更新分支"><a href="#更新分支" class="headerlink" title="更新分支"></a>更新分支</h2><h3 id="从master更新"><a href="#从master更新" class="headerlink" title="从master更新"></a>从master更新</h3><ol>
+<li><strong>方案1</strong><ol>
+<li><code>git checkout master</code></li>
+<li><code>git pull</code></li>
+<li><code>git checkout test</code></li>
+<li><code>git rebase master</code></li>
+</ol>
+</li>
+<li><strong>方案2（推荐）</strong><br> <code>git pull --rebase origin master</code><br> <strong>注意：</strong>此种方法不会更新本地master分支</li>
+</ol>
+<h3 id="从test更新"><a href="#从test更新" class="headerlink" title="从test更新"></a>从test更新</h3><p><code>git pull --rebase</code><br><strong>注意</strong>：需要先设置跟踪分支</p>
+<h2 id="完成后合并到master"><a href="#完成后合并到master" class="headerlink" title="完成后合并到master"></a>完成后合并到master</h2><p>在test分支开发<strong>完成</strong>后，需要通过rebase合并commit，此时rebase的目标不再是分支，而是在test分支中的commit。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>从master更新test分支，方法见上文</li>
+<li>寻找rebase点，使用<code>git log</code>查看test分支中最后一个commit，如<br>66fc050b </li>
+<li><code>rebase -i 66fc050b</code>开始rebase</li>
+</ol>
+<h3 id="交互式rebase"><a href="#交互式rebase" class="headerlink" title="交互式rebase"></a>交互式rebase</h3><p>在执行rebase -i命令会打开sublime编辑器<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">pick</span> a8b6d2f <span class="number">2</span></div><div class="line">pick c2c1903 xsas</div><div class="line"></div><div class="line"><span class="comment"># Rebase 749e319..c2c1903 onto 749e319 (3 command(s))</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Commands:</span></div><div class="line"><span class="comment"># p, pick = use commit</span></div><div class="line"><span class="comment"># r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="comment"># e, edit = use commit, but stop for amending</span></div><div class="line"><span class="comment"># s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="comment"># f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="comment"># x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="comment"># d, drop = remove commit</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
+<p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">f</span> a8b6d2f <span class="number">2</span></div><div class="line">f c2c1903 xsas</div></pre></td></tr></table></figure></p>
+<p>然后保存文件并退出sublime。</p>
+<p>如果rebase过程中遇到冲突，解决完冲突后执行<code>git rebase --continue</code>，需要注意的是，即使强制关闭控制台，依然会处于rebase状态，需要执行<code>git rebase --abort</code>取消rebase，版本库会会滚刀rebase之前的状态。或者执行<code>git rebase --edit-todo</code>重新打开rebase文件。</p>
+<p>如果产生冲突，rebase会逐个释放冲突，处理完冲突后，执行<code>git rebase --continue</code>继续。</p>
+<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p>test分支经过rebase后，显然已经和远程分支冲突了，<br>需要强制提交:<br><code>git push -f</code><br>或者先删除远程分支:</p>
+<ol>
+<li><code>git push origin --delete test</code></li>
+<li><code>git push origin test:test</code></li>
+</ol>
+<h3 id="管理员合并分支"><a href="#管理员合并分支" class="headerlink" title="管理员合并分支"></a>管理员合并分支</h3><p>最终由管理员把test分支合并到master，需要注意的是合并前需要把test分支从master分支rebase更新，避免merge commit。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="使用Sublime-Text作为外部文本编辑器"><a href="#使用Sublime-Text作为外部文本编辑器" class="headerlink" title="使用Sublime Text作为外部文本编辑器"></a>使用Sublime Text作为外部文本编辑器</h3><p>对git进行设置通常使用git config命令或者直接编辑.config文件</p>
+<p><code>git config --global core.editor &quot;&#39;C:/Program Files/Sublime Text 2/sublime_text.exe&#39; -w&quot;</code><br>或<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="name">core</span>]</div><div class="line">	editor = <span class="symbol">'C:</span>\\Program Files\\Sublime Text <span class="number">2</span>\\sublime_text.exe' -w</div></pre></td></tr></table></figure></p>
+<h3 id="rebase取代merge"><a href="#rebase取代merge" class="headerlink" title="rebase取代merge"></a>rebase取代merge</h3><p><code>git config --global branch.autosetuprebase always</code><br>或<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">[branch]</span></div><div class="line">	autosetuprebase = always</div></pre></td></tr></table></figure></p>
+<h3 id="reset在合并提交中的应用"><a href="#reset在合并提交中的应用" class="headerlink" title="reset在合并提交中的应用"></a>reset在合并提交中的应用</h3><p><code>git reset commitId</code> commitId 的位置同rebase，reset会撤销提交，一切回滚到<code>git add</code>和<code>git commit</code>之前的状态，所以我们可以把所有修改一次commit，达到合并commit的作用。</p>
+<p>需要注意的是，reset后，提交人信息和提交信息(commit msg)都会丢失。</p>
+<h3 id="git-hooks-go"><a href="#git-hooks-go" class="headerlink" title="git_hooks_go"></a>git_hooks_go</h3><p>通过git hooks的方式为提交信息添加用户名、分支名等信息，方便rebase。<br>运行git_hooks_go目录下的install.py安装。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>从master创建分支</li>
+<li>使用rebase更新</li>
+<li>使用rebase -i 合并commit</li>
+<li>管理员合并分支</li>
+</ol>
+<p>更新git：<br><a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></p>
+<p>git文档：</p>
+<ol>
+<li><a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">http://git-scm.com/book/zh/v2</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2015/使用页面可见性API-Visibility/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1881,177 +2095,6 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digit+
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ifchanged.io/2014/DJango开发笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zeroten">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="IFchanged">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/DJango开发笔记/" itemprop="url">
-                  DJango开发笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-12T17:50:40+08:00">
-                2014-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">编程笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/DJango开发笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/DJango开发笔记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/Django-Unchained.jpg" alt="Django Unchained"></h1><p>(图文无关，图片来自网络)</p>
-<p># </p>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>IDE:JetBrains PyCharm 3.4.1</p>
-<p>Python: 2.7.8</p>
-<p>Django:1.7</p>
-<p>MySQL:5.6.20</p>
-<p>&nbsp;</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h2><p><pre class="lang:python decode:true ">#settings.py</pre></p>
-<p>DATABASES = {<br>    ‘default’: {<br>        ‘ENGINE’: ‘django.db.backends.mysql’,<br>        ‘NAME’: ‘datebaseName’,<br>        ‘USER’: ‘username’,<br>        ‘PASSWORD’: ‘pass’,<br>        ‘HOST’: ‘127.0.0.1’,<br>        ‘PORT’: ‘3306’,<br>    }<br>}<br>相关指令<br>python manage.py syncdb<br>python manage.py makemigrations<br>python manage.py migrate</p>
-<p>&nbsp;</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><strong>1.7文档</strong>：<a href="https://docs.djangoproject.com/en/1.7/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/</a></p>
-<p><strong>The Django Book（中文）</strong>：<a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="external">http://djangobook.py3k.cn/2.0/</a></p>
-<p>models数据类型：<a href="https://docs.djangoproject.com/en/dev/ref/models/fields/" target="_blank" rel="external">https://docs.djangoproject.com/en/dev/ref/models/fields/</a></p>
-<p>静态文件：<a href="https://docs.djangoproject.com/en/1.7/howto/static-files/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/howto/static-files/</a></p>
-<p>数据库迁移：<a href="https://docs.djangoproject.com/en/1.7/topics/migrations/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/topics/migrations/</a></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>使用Django真的很方便!学好英语真的很重要!</p>
-<p>PS：本来想多写点东西，但发现东西都在文档里。。。等整理好，再更新文章。</p>
-<p>Github：<a href="https://github.com/ladder1984/DJangoHotel_Python" target="_blank" rel="external">https://github.com/ladder1984/DJangoHotel_Python</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2101,7 +2144,7 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digit+
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2123,7 +2166,7 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digit+
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
