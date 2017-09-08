@@ -12,15 +12,35 @@ tags:
 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。
 
 ### 1.1 基本概念
-master：主节点，负责k8s调度，不部署容器
-node：master之外的主机节点
-pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
-deployment：一个容器、编排部署集合
-service：一个服务，简单理解deployment通过service暴露在网络中
+- master：主节点，负责k8s调度，不部署容器
+- node：master之外的主机节点
+- pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
+- deployment：一个容器、编排部署集合
+- service：一个服务，简单理解deployment通过service暴露在网络中
 
 所以，用deployment管理一组pod，用service暴露deployment。
 
+* Pod: 若干 container 组成的一个功能单元，共享相同的 IP / Namesapce / Volume
 
+### 1.2 基本架构
+
+* Single Master: 
+  * kube-apiserver - 响应 REST 请求，更新 etcd 信息
+  * kube-scheduler - Pods 调度
+  * kube-controller-manager - 所有其它控制功能
+* Nodes: 
+  * kube-proxy - 网络代理和负载均衡器
+  * kubelet - 与 master 交互，管理 Pod
+
+Internet --> kube-proxy --> Pods
+
+注：1.2版之前是由运行在 userspace 的 kube-proxy 分发请求，1.2 版 kube-proxy 监视服务变化，生成相应 iptables rules
+
+### 1.3 部署模型
+
+* Deployment/Replication controller - Pod 池，确保一个 Pod 有一定份数运行，可用作负载均衡和水平扩展
+* Service - 定义了一组 Pods 的逻辑集合和访问这个集合的策略，提供一个 Micro Service
+* Endpoints - 一个 API，更新 Service 中的 Pods 集合
 
 ## 2. k8s技术介绍
 
@@ -110,6 +130,7 @@ k8s支持滚动升级，升级过程中，pod逐个替换，直到替换完成�
 #### 3.2.1 deployment和service配置文件管理
 
 一个应用接入k8s只需要编写一个配置文件，包含deployment和service两项配置，如：
+
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -147,6 +168,7 @@ spec:
   selector:
     app: aaa      
 ```
+
 每个应用自定义的内容只有环境变量和镜像地址。所有配置使用配置文件统一管理，配置文件使用git管理。
 
 #### 3.2.2 环境变量管理
@@ -157,6 +179,10 @@ spec:
 官方web UI项目：https://github.com/kubernetes/dashboard
 
 dashboard可以查看相关信息，以及容器日志，不建议在dashboard编辑配置，应该使用配置文件。
+
+### 3.4 容器管理
+
+可以使用`kubectl`命令类似`docker`命令地关闭、重启、进入容器等。
 
 #### 3.3.1 账户登录
 
