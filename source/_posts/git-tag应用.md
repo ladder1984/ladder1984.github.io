@@ -33,7 +33,7 @@ tag的命令与分支相似。
 	- 删除本地标签: `git tag -d v0.1`      批量：`git tag -l "vTEST*"|xargs git tag -d`
 	- 删除远程标签: `git push origin --delete v0.1`   批量：`git tag -l "vTEST*"|xargs git push origin --delete`
 
-
+<!-- more -->
 ## 2. 配置
 
 ### 2.1 jenkins

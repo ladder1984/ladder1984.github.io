@@ -31,7 +31,7 @@ tags:
 
 
 参见: <https://ndpsoftware.com/git-cheatsheet.html>
-
+<!-- more --> 
 ### 分支
 - 远程分支：如**origin master**，位于远程仓库
 - 追踪分支：如**origin/master**，位于本地仓库（.git\refs\remotes），即git fetch到的位置。

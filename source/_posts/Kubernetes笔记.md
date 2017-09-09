@@ -20,7 +20,7 @@ Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开�
 所以，用deployment管理一组pod，用service暴露deployment。
 
 * Pod: 若干 container 组成的一个功能单元，共享相同的 IP / Namesapce / Volume
-
+<!-- more --> 
 ### 1.2 基本架构
 
 * Single Master: 
