@@ -107,7 +107,7 @@ node：master之外的主机节点
 pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
 deployment：一个容器、编排部署集合
 service：一个服务，简单理解deployment通过service暴露在网络中">
-<meta property="og:updated_time" content="2017-09-09T08:57:48.000Z">
+<meta property="og:updated_time" content="2017-09-09T09:14:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes笔记">
 <meta name="twitter:description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。
@@ -391,10 +391,11 @@ service：一个服务，简单理解deployment通过service暴露在网络中">
 </ul>
 <p>所以，用deployment管理一组pod，用service暴露deployment。</p>
 <ul>
-<li>Pod: 若干 container 组成的一个功能单元，共享相同的 IP / Namesapce / Volume</li>
-</ul>
-<h3 id="1-2-基本架构"><a href="#1-2-基本架构" class="headerlink" title="1.2 基本架构"></a>1.2 基本架构</h3><ul>
-<li>Single Master: <ul>
+<li><p>Pod: 若干 container 组成的一个功能单元，共享相同的 IP / Namesapce / Volume</p>
+<a id="more"></a> 
+<h3 id="1-2-基本架构"><a href="#1-2-基本架构" class="headerlink" title="1.2 基本架构"></a>1.2 基本架构</h3></li>
+<li><p>Single Master: </p>
+<ul>
 <li>kube-apiserver - 响应 REST 请求，更新 etcd 信息</li>
 <li>kube-scheduler - Pods 调度</li>
 <li>kube-controller-manager - 所有其它控制功能</li>
