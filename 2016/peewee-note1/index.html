@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="IFchanged">
 <meta property="og:description" content="peewee使用指南本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。 2.使用指南2.1.连接mysql2.1.1.连接形式使用url连接，方式和django类似，如：1234567891011DATABASES = &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta property="og:updated_time" content="2017-09-09T17:25:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="peewee笔记(1)——基本语法">
 <meta name="twitter:description" content="peewee使用指南本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。 2.使用指南2.1.连接mysql2.1.1.连接形式使用url连接，方式和django类似，如：1234567891011DATABASES = &amp;#123;">
@@ -348,6 +348,7 @@
         <h1 id="peewee使用指南"><a href="#peewee使用指南" class="headerlink" title="peewee使用指南"></a>peewee使用指南</h1><p>本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。</p>
 <h2 id="1-peewee介绍"><a href="#1-peewee介绍" class="headerlink" title="1.peewee介绍"></a>1.peewee介绍</h2><p>peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。</p>
 <h2 id="2-使用指南"><a href="#2-使用指南" class="headerlink" title="2.使用指南"></a>2.使用指南</h2><h3 id="2-1-连接mysql"><a href="#2-1-连接mysql" class="headerlink" title="2.1.连接mysql"></a>2.1.连接mysql</h3><h4 id="2-1-1-连接形式"><a href="#2-1-1-连接形式" class="headerlink" title="2.1.1.连接形式"></a>2.1.1.连接形式</h4><p>使用url连接，方式和django类似，如：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'mysql'</span>,</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'name'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'user'</span>,                      </div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'pass'</span>,                  </div><div class="line">        <span class="string">'HOST'</span>: <span class="string">'url'</span>,</div><div class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,</div><div class="line">        <span class="string">'CONN_MAX_AGE'</span>: <span class="number">100</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a> 
 <h3 id="2-2-model定义"><a href="#2-2-model定义" class="headerlink" title="2.2.model定义"></a>2.2.model定义</h3><h4 id="2-2-1-概述"><a href="#2-2-1-概述" class="headerlink" title="2.2.1.概述"></a>2.2.1.概述</h4><p>一句话描述：<strong>和Django一样用。</strong></p>
 <p>model定义基本和Django一致，<br>需要注意的是：</p>
 <ol>

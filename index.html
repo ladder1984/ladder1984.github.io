@@ -1097,18 +1097,15 @@
 
       
         
-          
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。</p>
-<p>打开peewee官方文档<a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="external">http://docs.peewee-orm.com/en/latest/</a>，我们可以看到只提供latest、stable版本文档，可能和我们定制的已经千差万别。好在peewee文档使用Sphinx构建，易于修改部署。</p>
-<h2 id="部署文档"><a href="#部署文档" class="headerlink" title="部署文档"></a>部署文档</h2><p>好在github上我们可以找到历史版本的文档，以2.6.4为例。</p>
-<ol>
-<li>安装Sphinx：<code>pip install sphinx</code></li>
-<li>从官方git（<a href="https://github.com/coleifer/peewee" target="_blank" rel="external">https://github.com/coleifer/peewee</a>）下载peewee源码并切换到tag 2.6.4。</li>
-<li>进入项目内doc/目录，执行<code>make.bat html</code>(Windows)或<code>make html</code>(Linux)生成静态网站目录_build/index/ 。</li>
-<li>把2的目录找个服务器放。</li>
-</ol>
-
-          
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官方版本差别越来越大，也无法合并官方的代码更新。如果后续开发者一直阅读官方文档就会有问题，所有需要构建自己的文档。</p>
+<p>打开peewee官方文档<a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="external">http://docs.peewee-orm.com/en/latest/</a>，我们可以看到只提供latest、stable版本文档，可能和我们定制的已经千差万别。好在peewee文档使用Sphinx构建，易于修改部署。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/peewee-note2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1237,103 +1234,16 @@
 
       
         
-          
-            <h1 id="peewee使用指南"><a href="#peewee使用指南" class="headerlink" title="peewee使用指南"></a>peewee使用指南</h1><p>本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。</p>
+          <h1 id="peewee使用指南"><a href="#peewee使用指南" class="headerlink" title="peewee使用指南"></a>peewee使用指南</h1><p>本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。</p>
 <h2 id="1-peewee介绍"><a href="#1-peewee介绍" class="headerlink" title="1.peewee介绍"></a>1.peewee介绍</h2><p>peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。</p>
 <h2 id="2-使用指南"><a href="#2-使用指南" class="headerlink" title="2.使用指南"></a>2.使用指南</h2><h3 id="2-1-连接mysql"><a href="#2-1-连接mysql" class="headerlink" title="2.1.连接mysql"></a>2.1.连接mysql</h3><h4 id="2-1-1-连接形式"><a href="#2-1-1-连接形式" class="headerlink" title="2.1.1.连接形式"></a>2.1.1.连接形式</h4><p>使用url连接，方式和django类似，如：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'mysql'</span>,</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'name'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'user'</span>,                      </div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'pass'</span>,                  </div><div class="line">        <span class="string">'HOST'</span>: <span class="string">'url'</span>,</div><div class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,</div><div class="line">        <span class="string">'CONN_MAX_AGE'</span>: <span class="number">100</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="2-2-model定义"><a href="#2-2-model定义" class="headerlink" title="2.2.model定义"></a>2.2.model定义</h3><h4 id="2-2-1-概述"><a href="#2-2-1-概述" class="headerlink" title="2.2.1.概述"></a>2.2.1.概述</h4><p>一句话描述：<strong>和Django一样用。</strong></p>
-<p>model定义基本和Django一致，<br>需要注意的是：</p>
-<ol>
-<li>属性和Django基本一致</li>
-<li>有些Django并不影响使用的东西peewee不支持，目前注意到的是<code>Field.choices</code>。</li>
-<li>peewee可以使用<code>playhouse.signals</code>实现信号机制。</li>
-</ol>
-<p>详见：<a href="http://docs.peewee-orm.com/en/stable/peewee/models.html#fields" target="_blank" rel="external">http://docs.peewee-orm.com/en/stable/peewee/models.html#fields</a></p>
-<h2 id="3-ORM操作（CRUD）"><a href="#3-ORM操作（CRUD）" class="headerlink" title="3.ORM操作（CRUD）"></a>3.ORM操作（CRUD）</h2><p>示例Model：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> peewee <span class="keyword">import</span> *</div><div class="line"></div><div class="line">db = SqliteDatabase(<span class="string">'people.db'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(Model)</span>:</span></div><div class="line">    name = CharField(default=<span class="string">''</span>)</div><div class="line">    age = IntegerField(default=<span class="number">0</span>) </div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        database = db <span class="comment"># This model uses the "people.db" database.</span></div></pre></td></tr></table></figure>
-<p>注：这是个model示例，实际上’database=db’已经封装在<code>db.model.Model</code>中，在python-service-base中不用写。</p>
-<h3 id="3-1-增加（Create）"><a href="#3-1-增加（Create）" class="headerlink" title="3.1.增加（Create）"></a>3.1.增加（Create）</h3><ol>
-<li>create()方法：</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grandma =Person.create(name=<span class="string">'Grandma'</span>, age = <span class="number">1</span>)</div></pre></td></tr></table></figure>
-<ol>
-<li>save()方法</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">person = Person()</div><div class="line">person.name = <span class="string">'bill'</span></div><div class="line">person.age =<span class="number">10</span></div><div class="line">person.save()</div></pre></td></tr></table></figure>
-<h3 id="3-2-查（Retrieve）"><a href="#3-2-查（Retrieve）" class="headerlink" title="3.2.查（Retrieve）"></a>3.2.查（Retrieve）</h3><p>peewee中查询记录分为get（查询单条记录）、select(条件查询批量记录)。</p>
-<h4 id="3-2-1-查询单条记录"><a href="#3-2-1-查询单条记录" class="headerlink" title="3.2.1.查询单条记录"></a>3.2.1.查询单条记录</h4><p>注：get方法获取不存在的记录会抛出异常。</p>
-<ol>
-<li><p><code>Product.get(name=&#39;abc&#39;)</code><br>或者<br><code>Product.get(Product.name==&#39;abc&#39;)</code></p>
-</li>
-<li><p><code>Product.select().where(Product.name==&#39;abc&#39;).get()</code></p>
-</li>
-<li><code>Product.select().where(Product.name==&#39;abc&#39;).first()</code></li>
-</ol>
-<p><strong>注:</strong></p>
-<ol>
-<li>get()支持name=’abc’也支持Product.name==’abc’的写法，where<strong>只</strong>Product.name==’abc’。</li>
-<li>前两种都是get方法，查询不到会抛出异常，select方法查询不到返回None。</li>
-</ol>
-<h4 id="3-2-2-查询全部"><a href="#3-2-2-查询全部" class="headerlink" title="3.2.2.查询全部"></a>3.2.2.查询全部</h4><p><code>Product.select()</code>等价于Django中的<code>Product.select().all()</code>，返回一个可迭代的SelectQuery对象。</p>
-<h4 id="3-2-3-条件查询"><a href="#3-2-3-条件查询" class="headerlink" title="3.2.3.条件查询"></a>3.2.3.条件查询</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Product</span>.<span class="keyword">select</span>().<span class="keyword">where</span>(<span class="built_in">Product</span>.<span class="keyword">name</span>==<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
-<p>返回一个可迭代的SelectQuery对象。</p>
-<ul>
-<li>或(OR)查询：<strong>|</strong>，例如：<code>User.select().where((User.is_staff == True) | (User.is_superuser == True))</code></li>
-<li>且(AND)查询:<strong>&amp;</strong>，例如：<code>Product.select().where(Product.name==&#39;abc&#39;,Product.owner_id==10086)</code> 或者 <code>Product.select().where((Product.name==&#39;abc&#39;) &amp; (Product.owner_id==10086))</code></li>
-<li>非(NOT)：<strong>~</strong>,没用过。。。</li>
-<li><p>比较：peewee支持如下比较符</p>
-  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">==  x <span class="keyword">equals</span> y</div><div class="line">&lt;   x <span class="keyword">is</span> <span class="keyword">less than</span> y</div><div class="line">&lt;=  x <span class="keyword">is</span> <span class="keyword">less than or equal</span> <span class="keyword">to</span> y</div><div class="line">&gt;   x <span class="keyword">is</span> <span class="keyword">greater than</span> y</div><div class="line">&gt;=  x <span class="keyword">is</span> <span class="keyword">greater than</span> <span class="keyword">or</span> <span class="keyword">equal</span> <span class="keyword">to</span> y</div><div class="line">!=  x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">equal</span> <span class="keyword">to</span> y</div><div class="line">&lt;&lt;  x IN y, <span class="keyword">where</span> y <span class="keyword">is</span> a <span class="built_in">list</span> <span class="keyword">or</span> query</div><div class="line">&gt;&gt;  x IS y, <span class="keyword">where</span> y <span class="keyword">is</span> None/NULL</div><div class="line">%   x LIKE y <span class="keyword">where</span> y may <span class="keyword">contain</span> wildcards</div><div class="line">**  x ILIKE y <span class="keyword">where</span> y may <span class="keyword">contain</span> wildcards</div><div class="line">~   Negation</div></pre></td></tr></table></figure>
-</li>
-<li><p>其他查询</p>
-  <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.contains(substr) 	Wild-card search <span class="keyword">for</span> substring.</div><div class="line">.startswith(prefix) 	Search <span class="keyword">for</span> values beginning <span class="keyword">with</span> prefix.</div><div class="line">.endswith(suffix) 	Search <span class="keyword">for</span> values ending <span class="keyword">with</span> suffix.</div><div class="line">.between(low, high) 	Search <span class="keyword">for</span> values between low <span class="keyword">and</span> high.</div><div class="line">.regexp(exp) 	Regular expression match.</div><div class="line">.bin_and(value) 	<span class="keyword">Binary</span> <span class="keyword">AND</span>.</div><div class="line">.bin_or(value) 	<span class="keyword">Binary</span> <span class="keyword">OR</span>.</div><div class="line">.in_(value) 	<span class="keyword">IN</span> lookup (identical <span class="keyword">to</span> &lt;&lt;).</div><div class="line">.not_in(value) 	<span class="keyword">NOT</span> <span class="keyword">IN</span> lookup.</div><div class="line">.is_null(is_null) 	<span class="keyword">IS</span> NULL <span class="keyword">or</span> <span class="keyword">IS</span> <span class="keyword">NOT</span> NULL. Accepts <span class="built_in">boolean</span> param.</div><div class="line">.concat(other) 	Concatenate two strings <span class="keyword">using</span> ||.</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>示例：</p>
-<p>查询id in ids，ids是个list。</p>
-<ul>
-<li><code>Product.select().where(Product.id &lt;&lt; ids)</code></li>
-<li><code>Product.select().where(Product.id.in_(ids))</code></li>
-</ul>
-<p>等价于Django中的<code>Product.objects.filter(id__=ids)</code>。</p>
-<h4 id="3-2-3-计数count"><a href="#3-2-3-计数count" class="headerlink" title="3.2.3.计数count"></a>3.2.3.计数count</h4><p><code>Product.select().where(Product.name==&#39;abc&#39;).count()</code>。<br>SelectQuery对象并不支持len()方法，即执行<code>len(Product.select().where(Product.name==&#39;abc&#39;))</code>会抛出TypeError异常。虽然可以实现支持len，但滥用可能带来性能风险。</p>
-<h4 id="3-2-5-排序order-by"><a href="#3-2-5-排序order-by" class="headerlink" title="3.2.5.排序order_by"></a>3.2.5.排序order_by</h4><ul>
-<li>降序：使用”-“或者”desc()”,<code>Tweet.select().order_by(Tweet.created_date.desc())</code> 等价于 <code>Tweet.select().order_by(-Tweet.created_date)</code></li>
-<li>升序：使用”+”或者”asc()”或者不写，<code>User.select().order_by(+User.username)</code></li>
-</ul>
-<h3 id="3-3-删除（Delete）"><a href="#3-3-删除（Delete）" class="headerlink" title="3.3.删除（Delete）"></a>3.3.删除（Delete）</h3><p><strong>建议使用方法1</strong></p>
-<ol>
-<li>Model.delete (Python class method, in API Reference)<br><code>mall_models.Order.delete().where(mall_models.Order.id=order.id).execute()</code><br>或者<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p = mall_models.Order.delete().where(mall_models.Order.id=order.id)</div><div class="line">p.execute()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>也就是执行了execute()才会执行删除操作。</p>
-<ol>
-<li><p>Model.delete_instance (Python method, in API Reference)</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> = Product.get(Product.name==<span class="string">'abc'</span>)</div><div class="line"><span class="selector-tag">p</span>.elete_instance()</div></pre></td></tr></table></figure>
-</li>
-<li><p>DeleteQuery<br><code>dq = DeleteQuery(User).where(User.active == False).execute()</code></p>
-</li>
-</ol>
-<h3 id="3-4-改（Update）"><a href="#3-4-改（Update）" class="headerlink" title="3.4.改（Update）"></a>3.4.改（Update）</h3><ol>
-<li>update修改(推荐)<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">query = Stat.update(counter=Stat.counter + <span class="number">1</span>).where(Stat.url == request.url)</div><div class="line">query.execute()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>同delete,也就是执行了execute()才会执行update操作。</p>
-<ol>
-<li>save修改<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> stat <span class="keyword">in</span> Stat.select().where(Stat.url == request.url):</div><div class="line">     stat.counter += <span class="number">1</span></div><div class="line">     stat.save()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>两种方式都类似Django语句，<strong>需要特别注意的是，peewee的update是原子的（Atomic ）</strong>，在并发情况下可靠，即peewee的update语句效果等价于Django使用F表达式的update，如<code>rules.update(remained_count=F(&#39;remained_count&#39;) - 1, get_count=F(&#39;get_count&#39;) + 1)</code></p>
-<h2 id="4-外键与join"><a href="#4-外键与join" class="headerlink" title="4.外键与join"></a>4.外键与join</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderHasProduct</span><span class="params">(models.Model)</span>:</span></div><div class="line">	order = models.ForeignKey(Order)</div><div class="line">	product = models.ForeignKey(Product, related_name=<span class="string">'product'</span>)</div><div class="line">	price = models.FloatField()  <span class="comment"># 商品单价</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span><span class="params">(models.Model)</span>:</span></div><div class="line">	order_id = models.CharField(max_length=<span class="number">100</span>)  <span class="comment"># 订单号</span></div><div class="line">	webapp_user_id = models.IntegerField()  <span class="comment"># WebApp用户的id</span></div><div class="line">	webapp_id = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'店铺ID'</span>)  <span class="comment"># webapp,订单成交的店铺id</span></div><div class="line">	webapp_source_id = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">'商品来源店铺ID'</span>)  <span class="comment"># 订单内商品实际来源店铺的id，已废弃</span></div><div class="line">	buyer_name = models.CharField(max_length=<span class="number">100</span>)  <span class="comment"># 购买人姓名</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></div><div class="line">	owner = models.ForeignKey(User, related_name=<span class="string">'user-product'</span>)</div><div class="line">	name = models.CharField(max_length=<span class="number">256</span>)  <span class="comment"># 商品名称</span></div><div class="line">	physical_unit = models.CharField(default=<span class="string">''</span>, max_length=<span class="number">256</span>)  <span class="comment"># 计量单位</span></div><div class="line">	price = models.FloatField(default=<span class="number">0.0</span>)  <span class="comment"># 商品价格</span></div></pre></td></tr></table></figure>
-<p>OrderHasProduct有外键Product和外键Order。</p>
-<h3 id="4-1-外键赋值"><a href="#4-1-外键赋值" class="headerlink" title="4.1.外键赋值"></a>4.1.外键赋值</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mall_models.OrderHasProduct.create(</div><div class="line">	<span class="attribute">order</span>=self.db_model,</div><div class="line">	<span class="attribute">product</span>=product.id,</div><div class="line">	<span class="built_in">..</span>.</div></pre></td></tr></table></figure>
-<p>可以看到把<strong>外键实例</strong>或者<strong>外键实例的id</strong>都是可以的。</p>
-<h3 id="4-2-涉及外键的查询"><a href="#4-2-涉及外键的查询" class="headerlink" title="4.2.涉及外键的查询"></a>4.2.涉及外键的查询</h3><h4 id="4-2-1-根据外键的主键查询"><a href="#4-2-1-根据外键的主键查询" class="headerlink" title="4.2.1 根据外键的主键查询"></a>4.2.1 根据外键的主键查询</h4><p>直接<code>OrderHasProduct.select().where(where(mall_models.Order.id=order.id).product_id=10086)</code></p>
-<h4 id="4-2-2-根据外键的某字段查询（join外键）"><a href="#4-2-2-根据外键的某字段查询（join外键）" class="headerlink" title="4.2.2 根据外键的某字段查询（join外键）"></a>4.2.2 根据外键的某字段查询（join外键）</h4><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">Rule</span>(<span class="title">models</span>.<span class="type">Model</span>):</span></div><div class="line"><span class="class">	owner = models.<span class="type">ForeignKey</span>(<span class="type">User</span>)</span></div><div class="line"><span class="class">	name = models.<span class="type">CharField</span>(<span class="title">max_length</span>=20, <span class="title">db_index</span>=<span class="type">True</span>) </span></div><div class="line"><span class="class">	valid = models.<span class="type">DecimalField</span>(<span class="title">max_digits</span>=65) </span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">Card</span>(<span class="title">models</span>.<span class="type">Model</span>):</span></div><div class="line"><span class="class">	owner = models.<span class="type">ForeignKey</span>(<span class="type">User</span>)</span></div><div class="line"><span class="class">	rule = models.<span class="type">ForeignKey</span>(<span class="type">Rule</span>)</span></div></pre></td></tr></table></figure>
-<p>Card有外键Rule。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">count = Card.select().join(wzcard_models.Rule).where(Card<span class="selector-class">.card_id</span><span class="selector-class">.in_</span>(ids),Rule<span class="selector-class">.valid</span> &gt;<span class="number">0</span>).count()</div></pre></td></tr></table></figure>
-<p>的确很长，peewee不支持django风格的”__”（双下划线），所以就直街上join了，peewee默认使用INNER join。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/peewee-note1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1462,23 +1372,15 @@
 
       
         
-          
-            <p>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。</p>
-<h2 id="浅谈UTF"><a href="#浅谈UTF" class="headerlink" title="浅谈UTF"></a>浅谈UTF</h2><p>最常用的字符都在BMP（Basic Multilingual Plane, 基本多语言平面），范围是<strong>U+0000至U+FFFF</strong>。只有这些码位在UCS-2可用，也是MySQL UTF8可以存储的范围，其它字符存储在辅助平面。</p>
-<p>其中从<strong>U+D800到U+DFFF</strong>之间的码位区段是永久保留不映射到Unicode字符。UTF-16就利用保留下来的0xD800-0xDFFF区段的码位来对辅助平面的字符的码位进行编码。Unicode规定这个范围不对应字符，但在使用UCS-2时会被用于映射某些字符。</p>
-<h2 id="MySQL对4字节字符的支持"><a href="#MySQL对4字节字符的支持" class="headerlink" title="MySQL对4字节字符的支持"></a>MySQL对4字节字符的支持</h2><p>MySQL 5.5开始有了utf8mb4字符集，兼容utf8并且可以存储4字节字符，详见<a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></p>
-<h2 id="Python中的4字节字符"><a href="#Python中的4字节字符" class="headerlink" title="Python中的4字节字符"></a>Python中的4字节字符</h2><p>最开始的方案是直接识别4字节字符并直接过滤掉，3字节的范围是<code>\u0000-\uFFFF</code>，如果想直接判断一个字符是否在这个范围，<strong>可能</strong>会惊奇的发现一个字符被拆分成了两个字符，该字符的长度也是<strong>2</strong>。比如<code>\U0001f604</code>(笑脸表情，参见<a href="https://codepoints.net/U+1F604" target="_blank" rel="external">https://codepoints.net/U+1F604</a>)会被拆分成<code>\ud83d</code>和<code>\ude04</code>，<code>\U0001f604</code>展示了以一当二的能力。至于说可能，是因为这是由Python解释器编译时候编译选项是–enable-unicode=ucs4还是–enable-unicode=ucs2决定的，后者就是前文描述的情况。查看当前Python情况可以输出sys.maxunicode，得到65535就是ucs2，详见Python文档<a href="https://docs.python.org/2/library/sys.html#sys.maxunicode" target="_blank" rel="external">https://docs.python.org/2/library/sys.html#sys.maxunicode</a> 。ucs4下，4字节字符范围在<code>\U00010000-\U0010ffff</code>，usc2下拆分出的两个字符会在\uD800-\uDFFF范围。所以如果要过滤emoji或者其他特殊字符，可以根据此范围替换。</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_invalid_str</span><span class="params">(text)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line"><span class="string">	过滤非BMP字符</span></div><div class="line"><span class="string">	"""</span></div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		<span class="comment"># UCS-4</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\U00010000-\U0010ffff]'</span>)</div><div class="line">	<span class="keyword">except</span> re.error:</div><div class="line">		<span class="comment"># UCS-2</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\uD800-\uDBFF][\uDC00-\uDFFF]'</span>)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> highpoints.sub(<span class="string">u'_'</span>, text)</div></pre></td></tr></table></figure>
-<p>参考：</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/UTF-16" target="_blank" rel="external">https://en.wikipedia.org/wiki/UTF-16</a></li>
-<li><a href="https://docs.python.org/2/library/sys.html#sys.maxunicode" target="_blank" rel="external">https://docs.python.org/2/library/sys.html#sys.maxunicode</a></li>
-<li><a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></li>
-<li><a href="http://stackoverflow.com/questions/26568722/remove-unicode-emoji-using-re-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/26568722/remove-unicode-emoji-using-re-in-python</a></li>
-</ul>
-
-          
+          <p>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/emoji、Python、MySQL utf8mb4与UTF/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1757,53 +1659,21 @@
 
       
         
-          
-            <h2 id="1-撤销"><a href="#1-撤销" class="headerlink" title="1.撤销"></a>1.撤销</h2><h3 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h3><p>checkout以文件作为参数时会<strong>修改</strong>文件为指定版本的状态。</p>
+          <h2 id="1-撤销"><a href="#1-撤销" class="headerlink" title="1.撤销"></a>1.撤销</h2><h3 id="撤销文件修改"><a href="#撤销文件修改" class="headerlink" title="撤销文件修改"></a>撤销文件修改</h3><p>checkout以文件作为参数时会<strong>修改</strong>文件为指定版本的状态。</p>
 <ul>
 <li>撤销未暂存的文件：<code>git checkout hello.py</code>，<code>git checkout .</code>为所有未暂存文件</li>
 <li>撤销未commit的文件：<code>git checkout HEAD hello.py</code></li>
 <li>撤销已经commit的文件到指定版本，如e316e21：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout e316e21 t1.txt</div><div class="line">git add t1.txt</div><div class="line">git commit -m <span class="string">'恢复t1.txt到e316e21'</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>注</strong>：以上撤销不会改写commit记录</p>
-<h3 id="1-1-撤销commit（不改写commit记录）"><a href="#1-1-撤销commit（不改写commit记录）" class="headerlink" title="1.1 撤销commit（不改写commit记录）"></a>1.1 撤销commit（不改写commit记录）</h3><p>revert命令用新的commit来撤销修改，不改写提交记录。</p>
-<ul>
-<li>revert指定commit:<code>git revert e316e21</code></li>
-<li><p>revert多个commit:<br>下文的大写字母带走commitID<br>方案1： 撤销多个commit并生成多个revert commit:<code>git revert A B C</code><br>方案2：撤销多个commit并生成一个revert commit：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git</span> revert A B C --<span class="literal">no</span>-commit</div><div class="line">git commit -m <span class="string">'the commit message'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>revert指定范围：<code>git revert A..D</code></p>
-</li>
-</ul>
-<h3 id="1-2-撤销commit（改写commit记录）"><a href="#1-2-撤销commit（改写commit记录）" class="headerlink" title="1.2 撤销commit（改写commit记录）"></a>1.2 撤销commit（改写commit记录）</h3><p>使用reset或者rebase可以改写记录，但是要注意的是一旦改写，commit将会消失，并且会和远程分支、他人的本地分支冲突，push时需要用参数<code>-f</code>强制提交。所以，除非你清楚的知道重写的作用以及对他人带来的影响，不要轻易重写记录。</p>
-<h4 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h4><p><code>git rebase -i commitID</code> commitID只要撤销的commit之前的一个或者某个commit<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">pick a5997c9 1</div><div class="line">pick 88a1edf 2</div><div class="line">pick dfa8d09 3</div><div class="line">pick 57d2c26 4</div><div class="line">pick ff3451d 5</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Rebase dfa8d09..ff3451d onto dfa8d09 (2 <span class="built_in">command</span>(s))</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Commands:</span></div><div class="line"><span class="meta">#</span><span class="bash"> p, pick = use commit</span></div><div class="line"><span class="meta">#</span><span class="bash"> r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="meta">#</span><span class="bash"> e, edit = use commit, but stop <span class="keyword">for</span> amending</span></div><div class="line"><span class="meta">#</span><span class="bash"> s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="meta">#</span><span class="bash"> f, fixup = like <span class="string">"squash"</span>, but discard this commit<span class="string">'s log message</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> x, <span class="built_in">exec</span> = run <span class="built_in">command</span> (the rest of the line) using shell</span></div><div class="line"><span class="meta">#</span><span class="bash"> d, drop = remove commit</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> However, <span class="keyword">if</span> you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
-<p>参照git的提示，把要撤销的commit的action改为d，或者把正行删掉。</p>
-<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4><p>如果这是要回滚到某个指定版本，如A，则直接<code>git reset A --hard</code>，如果要撤销的是提交记录中间的一个，则需要配合stash命令使用。<br>如有以下提交，要撤销其中的D提交，则：<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A</div><div class="line">B</div><div class="line"><span class="keyword">C</span></div><div class="line"><span class="keyword">D</span></div><div class="line"><span class="keyword">E</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft D</span></div><div class="line">git stash</div><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard E</span></div><div class="line">git stash pop</div><div class="line">git <span class="keyword">commit</span> -am 撤销D</div></pre></td></tr></table></figure>
-<h3 id="1-3-撤销add"><a href="#1-3-撤销add" class="headerlink" title="1.3 撤销add"></a>1.3 撤销add</h3><p>当把某个文件add后，可以使用<code>git reset file_path</code>撤销add。</p>
-<h3 id="1-4-撤销最近一次commit"><a href="#1-4-撤销最近一次commit" class="headerlink" title="1.4 撤销最近一次commit"></a>1.4 撤销最近一次commit</h3><p>有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 –amend 选项的提交命令尝试重新提交：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">'initial commit'</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> git add forgotten_file</span></div><div class="line"><span class="meta">$</span><span class="bash"> git commit --amend</span></div></pre></td></tr></table></figure></p>
-<p>第二次提交将会覆盖之前的提交。</p>
-<h3 id="撤销（删除）未追踪的文件"><a href="#撤销（删除）未追踪的文件" class="headerlink" title="撤销（删除）未追踪的文件"></a>撤销（删除）未追踪的文件</h3><p><code>git clean -fdx</code></p>
-<h2 id="2-版本回滚"><a href="#2-版本回滚" class="headerlink" title="2.版本回滚"></a>2.版本回滚</h2><p>版本回滚指把当前的分支切换到某个指定版本，具体而言是切换到某个commit或者tag，和上文提到的撤销类似，当从head开始撤销连续的若干commit就可达到回滚的效果。版本回滚是分支的角度，撤销是某个文件或者commit的角度。</p>
-<p>如有以下提交，：<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A</div><div class="line">B</div><div class="line"><span class="keyword">C</span></div><div class="line"><span class="keyword">D</span></div><div class="line"><span class="keyword">E</span></div></pre></td></tr></table></figure></p>
-<p>要回滚<strong>到D</strong>提交，有以下方法。</p>
-<h3 id="2-1-revert回滚（不改写commit记录）"><a href="#2-1-revert回滚（不改写commit记录）" class="headerlink" title="2.1 revert回滚（不改写commit记录）"></a>2.1 revert回滚（不改写commit记录）</h3><p>revert回滚是唯一可以不修改commit记录的回滚方式，但是会产生一次revert commit。方法是上文讲到的<strong>revert多个commit</strong>。此时，要把D之后的提交全部revert。则：<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">git</span></span> revert D..HEAD --<span class="keyword">no</span>-commit</div><div class="line">git commit -am <span class="string">'revert to D'</span></div></pre></td></tr></table></figure></p>
-<p>当不清楚范围是否制定正确的时候，可以使用<code>git revert D..HEAD</code>，与上面命令的区别是没有–no-commit参数，也不用最好再commit，git会自动的revert每一个commit并每个commit生成一个revert commit，这样就能看到revert了哪些commit。</p>
-<h3 id="2-2-reset回滚（改写commit记录）"><a href="#2-2-reset回滚（改写commit记录）" class="headerlink" title="2.2 reset回滚（改写commit记录）"></a>2.2 reset回滚（改写commit记录）</h3><p>和撤销中的用法类似：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard D</span></div></pre></td></tr></table></figure></p>
-<h3 id="2-2-checkout回滚（改写提交记录）"><a href="#2-2-checkout回滚（改写提交记录）" class="headerlink" title="2.2 checkout回滚（改写提交记录）"></a>2.2 checkout回滚（改写提交记录）</h3><p>checkout有三个目标，checkout文件是撤销中提到的改写文件，checkout分支是常用的切换分支，checkout commit就会切换到该commit，结合切换分支就可以达到回滚分支的作用。<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git checkout D</span></div></pre></td></tr></table></figure></p>
-<p>此时git会给出提示:</p>
-<blockquote>
-<p>You are in ‘detached HEAD’ state. You can look around, make experimental<br>changes and commit them, and you can discard any commits you make in this<br>state without impacting any branches by performing another checkout.</p>
-</blockquote>
-<p>简而言之，我们现在不在分支上，在’detached HEAD’ state（游离状态），当前的代码在commit D发生时的状态，<strong>此时的任何更改不会影响到任何分支</strong>。我们可以不回滚代码就可让代码处于之前的某个提交，查看之前的代码或者做些实验。</p>
-<p>从游离状态退出的方法是checkout到某个分支，你如<code>git checkout master</code>。而如果用创建分支的方法checkout -b <branch_name>就可以从当前创建分支，结合强制创建分支的参数-B，checkout回滚分支可以概括为：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> checkout -<span class="keyword">B </span>test <span class="number">6</span>a26980</div></pre></td></tr></table></figure></branch_name></p>
-<p>其中test是当前的分支名，6a26980是要回滚到的版本。</p>
-<h3 id="2-3-本地分支回滚到远程分支"><a href="#2-3-本地分支回滚到远程分支" class="headerlink" title="2.3 本地分支回滚到远程分支"></a>2.3 本地分支回滚到远程分支</h3><p>当本地分支被改的乱七八糟时，你可能会想到重新拉取远程分支，一切重来。比较容易理解的方式可能是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout -B master 随便切换个别的分支</div><div class="line">git branch -D <span class="built_in">test</span> 把糟糕的本地分支删掉</div><div class="line">git fetch 更新下远程引用分支</div><div class="line">git checkout <span class="built_in">test</span> 重新checkout <span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
-<p>这样子非常繁琐。有两个便捷的命令：<br><code>git checkout origin/test -B test</code>或者<code>git reset origin/test --hard</code>,当然，执行前别忘了<code>git fetch</code>更新。</p>
-<h2 id="3-reflog"><a href="#3-reflog" class="headerlink" title="3.reflog"></a>3.reflog</h2><p>reflog记录了<strong>本地仓库</strong>的指针移动,使用<code>git reflog</code>查看,<code>git reflog --relative-date</code>可以查看到时间。，如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b37132b HEAD@&#123;<span class="number">16</span> minutes ago&#125;: <span class="string">reset:</span> moving to origin/master</div><div class="line"><span class="number">94</span>a99ad HEAD@&#123;<span class="number">16</span> minutes ago&#125;: <span class="string">commit:</span> s</div><div class="line">b37132b HEAD@&#123;<span class="number">21</span> minutes ago&#125;: <span class="string">clone:</span> from git<span class="meta">@github</span>.<span class="string">com:</span>ladder1984/updateHosts</div></pre></td></tr></table></figure></p>
-<p>上面的日志显示进行了reset操作，如果想恢复到reset之前的状态，可以使用<code>git reset 94a99ad --hard</code>命令。注意，reflog查看到的ID也是可以checkout命令的，所以也可以使用<code>git checkout 94a99ad -B master</code></p>
-
-          
+<p><strong>注</strong>：以上撤销不会改写commit记录<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/git笔记-撤销与回滚/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

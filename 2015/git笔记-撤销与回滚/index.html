@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="IFchanged">
 <meta property="og:description" content="1.撤销撤销文件修改checkout以文件作为参数时会修改文件为指定版本的状态。  撤销未暂存的文件：git checkout hello.py，git checkout .为所有未暂存文件 撤销未commit的文件：git checkout HEAD hello.py 撤销已经commit的文件到指定版本，如e316e21：123git checkout e316e21 t1.txtgit ad">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta property="og:updated_time" content="2017-09-09T17:26:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git笔记-撤销与回滚">
 <meta name="twitter:description" content="1.撤销撤销文件修改checkout以文件作为参数时会修改文件为指定版本的状态。  撤销未暂存的文件：git checkout hello.py，git checkout .为所有未暂存文件 撤销未commit的文件：git checkout HEAD hello.py 撤销已经commit的文件到指定版本，如e316e21：123git checkout e316e21 t1.txtgit ad">
@@ -352,7 +352,7 @@
 <li>撤销已经commit的文件到指定版本，如e316e21：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout e316e21 t1.txt</div><div class="line">git add t1.txt</div><div class="line">git commit -m <span class="string">'恢复t1.txt到e316e21'</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>注</strong>：以上撤销不会改写commit记录</p>
+<p><strong>注</strong>：以上撤销不会改写commit记录<br><a id="more"></a> </p>
 <h3 id="1-1-撤销commit（不改写commit记录）"><a href="#1-1-撤销commit（不改写commit记录）" class="headerlink" title="1.1 撤销commit（不改写commit记录）"></a>1.1 撤销commit（不改写commit记录）</h3><p>revert命令用新的commit来撤销修改，不改写提交记录。</p>
 <ul>
 <li>revert指定commit:<code>git revert e316e21</code></li>

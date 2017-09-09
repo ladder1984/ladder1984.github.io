@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="IFchanged">
 <meta property="og:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同 问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
+<meta property="og:updated_time" content="2017-09-09T17:26:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="emoji、Python、MySQL utf8mb4与UTF">
 <meta name="twitter:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同 问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
@@ -346,7 +346,7 @@
 
       
         <p>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。<br><a id="more"></a> </p>
 <h2 id="浅谈UTF"><a href="#浅谈UTF" class="headerlink" title="浅谈UTF"></a>浅谈UTF</h2><p>最常用的字符都在BMP（Basic Multilingual Plane, 基本多语言平面），范围是<strong>U+0000至U+FFFF</strong>。只有这些码位在UCS-2可用，也是MySQL UTF8可以存储的范围，其它字符存储在辅助平面。</p>
 <p>其中从<strong>U+D800到U+DFFF</strong>之间的码位区段是永久保留不映射到Unicode字符。UTF-16就利用保留下来的0xD800-0xDFFF区段的码位来对辅助平面的字符的码位进行编码。Unicode规定这个范围不对应字符，但在使用UCS-2时会被用于映射某些字符。</p>
 <h2 id="MySQL对4字节字符的支持"><a href="#MySQL对4字节字符的支持" class="headerlink" title="MySQL对4字节字符的支持"></a>MySQL对4字节字符的支持</h2><p>MySQL 5.5开始有了utf8mb4字符集，兼容utf8并且可以存储4字节字符，详见<a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></p>
