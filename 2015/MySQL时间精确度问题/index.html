@@ -89,19 +89,18 @@
 
 
 
-<meta name="description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
-问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta name="description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。 问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta name="keywords" content="Django,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL时间精确度问题">
 <meta property="og:url" content="http://ifchanged.io/2015/MySQL时间精确度问题/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
-问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta property="og:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。 问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL时间精确度问题">
-<meta name="twitter:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。
-问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
+<meta name="twitter:description" content="问题背景在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL中默认情况下时间只存储到秒引起的，所以，在自动化测试服务器快速生成item时，可能出现先后创建的项目记录为同一个生成时间，在相关页面以生成时间排序时顺序可能和预期不符。 问题探究在MySQL默认情况下， 时间只会精确到秒。在MySQL 5.6.4之前，时间只能">
 
 
 

@@ -89,19 +89,18 @@
 
 
 
-<meta name="description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta name="description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同 问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta name="keywords" content="Python,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="emoji、Python、MySQL utf8mb4与UTF">
 <meta property="og:url" content="http://ifchanged.io/2016/emoji、Python、MySQL utf8mb4与UTF/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta property="og:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同 问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="emoji、Python、MySQL utf8mb4与UTF">
-<meta name="twitter:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同
-问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
+<meta name="twitter:description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x情况可能有所不同 问题描述如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显">
 
 
 
@@ -372,7 +371,7 @@
 <p>其中从<strong>U+D800到U+DFFF</strong>之间的码位区段是永久保留不映射到Unicode字符。UTF-16就利用保留下来的0xD800-0xDFFF区段的码位来对辅助平面的字符的码位进行编码。Unicode规定这个范围不对应字符，但在使用UCS-2时会被用于映射某些字符。</p>
 <h2 id="MySQL对4字节字符的支持"><a href="#MySQL对4字节字符的支持" class="headerlink" title="MySQL对4字节字符的支持"></a>MySQL对4字节字符的支持</h2><p>MySQL 5.5开始有了utf8mb4字符集，兼容utf8并且可以存储4字节字符，详见<a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></p>
 <h2 id="Python中的4字节字符"><a href="#Python中的4字节字符" class="headerlink" title="Python中的4字节字符"></a>Python中的4字节字符</h2><p>最开始的方案是直接识别4字节字符并直接过滤掉，3字节的范围是<code>\u0000-\uFFFF</code>，如果想直接判断一个字符是否在这个范围，<strong>可能</strong>会惊奇的发现一个字符被拆分成了两个字符，该字符的长度也是<strong>2</strong>。比如<code>\U0001f604</code>(笑脸表情，参见<a href="https://codepoints.net/U+1F604" target="_blank" rel="external">https://codepoints.net/U+1F604</a>)会被拆分成<code>\ud83d</code>和<code>\ude04</code>，<code>\U0001f604</code>展示了以一当二的能力。至于说可能，是因为这是由Python解释器编译时候编译选项是–enable-unicode=ucs4还是–enable-unicode=ucs2决定的，后者就是前文描述的情况。查看当前Python情况可以输出sys.maxunicode，得到65535就是ucs2，详见Python文档<a href="https://docs.python.org/2/library/sys.html#sys.maxunicode" target="_blank" rel="external">https://docs.python.org/2/library/sys.html#sys.maxunicode</a> 。ucs4下，4字节字符范围在<code>\U00010000-\U0010ffff</code>，usc2下拆分出的两个字符会在\uD800-\uDFFF范围。所以如果要过滤emoji或者其他特殊字符，可以根据此范围替换。</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_invalid_str</span><span class="params">(text)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line">	过滤非BMP字符</div><div class="line">	"""</div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		<span class="comment"># UCS-4</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\U00010000-\U0010ffff]'</span>)</div><div class="line">	<span class="keyword">except</span> re.error:</div><div class="line">		<span class="comment"># UCS-2</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\uD800-\uDBFF][\uDC00-\uDFFF]'</span>)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> highpoints.sub(<span class="string">u'_'</span>, text)</div></pre></td></tr></table></figure>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_invalid_str</span><span class="params">(text)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line"><span class="string">	过滤非BMP字符</span></div><div class="line"><span class="string">	"""</span></div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		<span class="comment"># UCS-4</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\U00010000-\U0010ffff]'</span>)</div><div class="line">	<span class="keyword">except</span> re.error:</div><div class="line">		<span class="comment"># UCS-2</span></div><div class="line">		highpoints = re.compile(<span class="string">u'[\uD800-\uDBFF][\uDC00-\uDFFF]'</span>)</div><div class="line"></div><div class="line">	<span class="keyword">return</span> highpoints.sub(<span class="string">u'_'</span>, text)</div></pre></td></tr></table></figure>
 <p>参考：</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/UTF-16" target="_blank" rel="external">https://en.wikipedia.org/wiki/UTF-16</a></li>

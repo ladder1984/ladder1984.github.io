@@ -89,34 +89,18 @@
 
 
 
-<meta name="description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。
-1.1 基本概念
-master：主节点，负责k8s调度，不应部署容器
-node：master之外的主机节点
-pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
-deployment：一个容器、编排部署集合
-service：一个服务，简单理解deployment通过service暴露在网络中">
+<meta name="description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器 node：master之外的主机节点 pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例 deployment：一个容器、编排部署集合 service：一个服务，简单理解deployment通过service暴露在网络中">
+<meta name="keywords" content="docker,kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes笔记">
 <meta property="og:url" content="http://ifchanged.io/2017/Kubernetes笔记/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。
-1.1 基本概念
-master：主节点，负责k8s调度，不应部署容器
-node：master之外的主机节点
-pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
-deployment：一个容器、编排部署集合
-service：一个服务，简单理解deployment通过service暴露在网络中">
+<meta property="og:description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器 node：master之外的主机节点 pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例 deployment：一个容器、编排部署集合 service：一个服务，简单理解deployment通过service暴露在网络中">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-09T09:14:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes笔记">
-<meta name="twitter:description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。
-1.1 基本概念
-master：主节点，负责k8s调度，不应部署容器
-node：master之外的主机节点
-pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例
-deployment：一个容器、编排部署集合
-service：一个服务，简单理解deployment通过service暴露在网络中">
+<meta name="twitter:description" content="1. 简介Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器 node：master之外的主机节点 pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例 deployment：一个容器、编排部署集合 service：一个服务，简单理解deployment通过service暴露在网络中">
 
 
 
@@ -452,7 +436,7 @@ service：一个服务，简单理解deployment通过service暴露在网络中">
 <p>只有更新PodTemplateSpec时才会触发滚动升级，如果镜像使用latest tag，则需要使用<code>kubectl patch deployment &lt;name&gt; -p &quot;{\&quot;spec\&quot;:{\&quot;template\&quot;:{\&quot;metadata\&quot;:{\&quot;labels\&quot;:{\&quot;date\&quot;‌​:\&quot;$(date +%s)\&quot;}}}}}&quot;</code>。</p>
 <h4 id="3-1-2-配置更新"><a href="#3-1-2-配置更新" class="headerlink" title="3.1.2 配置更新"></a>3.1.2 配置更新</h4><p>如果需要修改环境变量、pod数量等，可以更新配置文件然后使用<code>kubectl apply -f &lt;filename&gt;</code>。</p>
 <h3 id="3-2-配置文件管理"><a href="#3-2-配置文件管理" class="headerlink" title="3.2 配置文件管理"></a>3.2 配置文件管理</h3><h4 id="3-2-1-deployment和service配置文件管理"><a href="#3-2-1-deployment和service配置文件管理" class="headerlink" title="3.2.1 deployment和service配置文件管理"></a>3.2.1 deployment和service配置文件管理</h4><p>一个应用接入k8s只需要编写一个配置文件，包含deployment和service两项配置，如：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> extensions/v1beta1</div><div class="line"><span class="attr">kind:</span> Deployment</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> simples</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  replicas:</span> <span class="number">3</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metadata:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> simples</div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">      - name:</span> master</div><div class="line"><span class="attr">        image:</span> imgage.xxx.com/test/simples:latest  <span class="comment"># or just image: redis</span></div><div class="line"><span class="attr">        env:</span></div><div class="line"><span class="attr">        - name:</span> ENV_VAR</div><div class="line"><span class="attr">          value:</span> <span class="string">"10086"</span></div><div class="line"><span class="attr">        ports:</span></div><div class="line"><span class="attr">        - containerPort:</span> <span class="number">9999</span></div><div class="line"><span class="attr">      imagePullSecrets:</span></div><div class="line"><span class="attr">      - name:</span> keyyy</div><div class="line"></div><div class="line">      </div><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> Service</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> aaa</div><div class="line"><span class="attr">  labels:</span></div><div class="line"><span class="attr">    app:</span> aaa</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  ports:</span></div><div class="line">    <span class="comment"># the port that this service should serve on</span></div><div class="line"><span class="attr">  - port:</span> <span class="number">80</span></div><div class="line"><span class="attr">  selector:</span></div><div class="line"><span class="attr">    app:</span> aaa</div></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: Deployment</div><div class="line">metadata:</div><div class="line">  name: simples</div><div class="line">spec:</div><div class="line">  replicas: 3</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: simples</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: master</div><div class="line">        image: imgage.xxx.com/test/simples:latest  # <span class="keyword">or</span> just image: redis</div><div class="line">        env:</div><div class="line">        - name: ENV_VAR</div><div class="line">          value: <span class="string">"10086"</span></div><div class="line">        ports:</div><div class="line">        - containerPort: 9999</div><div class="line">      imagePullSecrets:</div><div class="line">      - name: keyyy</div><div class="line"></div><div class="line">      </div><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  name: aaa</div><div class="line">  labels:</div><div class="line">    app: aaa</div><div class="line">spec:</div><div class="line">  ports:</div><div class="line">    # the<span class="built_in"> port </span>that this<span class="built_in"> service </span>should serve on</div><div class="line">  - port: 80</div><div class="line">  selector:</div><div class="line">    app: aaa</div></pre></td></tr></table></figure>
 <p>每个应用自定义的内容只有环境变量和镜像地址。所有配置使用配置文件统一管理，配置文件使用git管理。</p>
 <h4 id="3-2-2-环境变量管理"><a href="#3-2-2-环境变量管理" class="headerlink" title="3.2.2 环境变量管理"></a>3.2.2 环境变量管理</h4><p>通用变量，如数据库配置、mns配置放入configMap，app引用configMap的值。各app自己的变量写入自己的配置文件。</p>
 <h3 id="3-3-dashboard"><a href="#3-3-dashboard" class="headerlink" title="3.3 dashboard"></a>3.3 dashboard</h3><p>官方web UI项目：<a href="https://github.com/kubernetes/dashboard" target="_blank" rel="external">https://github.com/kubernetes/dashboard</a></p>

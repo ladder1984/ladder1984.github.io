@@ -89,49 +89,18 @@
 
 
 
-<meta name="description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
+<meta name="description" content="1. 概述1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限的人也能按照正常合并流程进行回滚  所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git master分支回滚指南">
 <meta property="og:url" content="http://ifchanged.io/2016/git mater分支回滚指南/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
-<meta property="og:updated_time" content="2017-03-03T16:59:13.000Z">
+<meta property="og:description" content="1. 概述1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限的人也能按照正常合并流程进行回滚  所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-09T12:25:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git master分支回滚指南">
-<meta name="twitter:description" content="1. 概述1.1 master分支回滚的特殊性
-多人协作，修改提交历史的方式易造成冲突
-希望所有操作的记录都是保存的，避免丢失代码
-希望没有master权限的人也能按照正常合并流程进行回滚
-
-所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。
-1.2 场景描述
-回滚某个或某些commit
-回滚分支合并（merge commit）
-回滚到某个提交
-
-2. 回滚方法2.1 回滚某个或某">
+<meta name="twitter:description" content="1. 概述1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限的人也能按照正常合并流程进行回滚  所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。">
 
 
 
@@ -401,7 +370,7 @@
 <li>希望所有操作的记录都是保存的，避免丢失代码</li>
 <li>希望没有master权限的人也能按照正常合并流程进行回滚</li>
 </ol>
-<p>所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。</p>
+<p>所以，以下的方法都是不会修改提交历史了，操作可以使用正常合并流程。<br><a id="more"></a> </p>
 <h3 id="1-2-场景描述"><a href="#1-2-场景描述" class="headerlink" title="1.2 场景描述"></a>1.2 场景描述</h3><ol>
 <li>回滚某个或某些commit</li>
 <li>回滚分支合并（merge commit）</li>
@@ -412,7 +381,7 @@
 <h3 id="2-2-回滚分支合并（merge-commit）"><a href="#2-2-回滚分支合并（merge-commit）" class="headerlink" title="2.2 回滚分支合并（merge commit）"></a>2.2 回滚分支合并（merge commit）</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert -m parent-<span class="built_in">number</span> commit</div></pre></td></tr></table></figure>
 <p>如<code>git revert -m 1 08096c7c71429ac044a90bbd43f67aef13a91102</code></p>
 <p>一个典型的merge commit：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">commit a4aebedf433805eb15767f6f1905f3c236ce48bd</div><div class="line"><span class="symbol">Merge:</span> <span class="number">6</span>ee7688 d593ca7</div><div class="line"><span class="symbol">Author:</span> XXX <span class="params">&lt;XXX@qq.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Mon Aug <span class="number">22</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">16</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    XXXXX</div></pre></td></tr></table></figure></p>
-<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line">        |<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
+<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line"><span class="string">        </span>|<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
 <p>-m 参数指定要回滚到parent commit，值为1或2，即第1个还是第2个。如上图，我们想回滚<strong>掉</strong>feature分之，回<strong>到</strong>合并之前的master，则选择1.通常使用Gitlab的merge request合并的分之都选1.</p>
 <h3 id="2-3-回滚到某个提交"><a href="#2-3-回滚到某个提交" class="headerlink" title="2.3 回滚到某个提交"></a>2.3 回滚到某个提交</h3><p>如要把master回滚到tag v100:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard v100</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft origin/master</span></div><div class="line">git <span class="keyword">commit</span> -am <span class="string">"revert to v100"</span></div></pre></td></tr></table></figure></p>
 <p>回滚完毕后，可以使用<code>git diff head v100</code>比较是否还有不同，如果有不同，则说明操作错误。</p>

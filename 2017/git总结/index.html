@@ -89,36 +89,20 @@
 
 
 
-<meta name="description" content="git中的位置仓库
-
-工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。
-
-暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。
-
-Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
+<meta name="description" content="git中的位置仓库  工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。  暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。  Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
+<meta name="keywords" content="第一站,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git总结">
 <meta property="og:url" content="http://ifchanged.io/2017/git总结/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="git中的位置仓库
-
-工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。
-
-暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。
-
-Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
+<meta property="og:description" content="git中的位置仓库  工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。  暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。  Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/663aa05agy1fidv3clywuj20ih07wdgn.jpg">
 <meta property="og:image" content="http://wx3.sinaimg.cn/large/663aa05agy1fidv3axzisj20sg0ifacj.jpg">
 <meta property="og:updated_time" content="2017-09-09T09:17:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git总结">
-<meta name="twitter:description" content="git中的位置仓库
-
-工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。
-
-暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。
-
-Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
+<meta name="twitter:description" content="git中的位置仓库  工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。  暂存区：是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作`‘索引’’，不过一般说法还是叫暂存区域。  Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计">
 <meta name="twitter:image" content="http://wx1.sinaimg.cn/large/663aa05agy1fidv3clywuj20ih07wdgn.jpg">
 
 
@@ -502,7 +486,7 @@ Git仓库目录：是 Git 用来保存项目的元数据和对象数据库的地
 </li>
 </ul>
 <p>一个典型的merge commit：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">commit a4aebedf433805eb15767f6f1905f3c236ce48bd</div><div class="line"><span class="symbol">Merge:</span> <span class="number">6</span>ee7688 d593ca7</div><div class="line"><span class="symbol">Author:</span> XXX <span class="params">&lt;XXX@qq.com&gt;</span></div><div class="line"><span class="symbol">Date:</span>   Mon Aug <span class="number">22</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">16</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line">    XXXXX</div></pre></td></tr></table></figure></p>
-<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line">        |<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
+<p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      a4aebedf4</div><div class="line">         /\</div><div class="line"> 6ee7688|<span class="string"> </span>|d593ca7</div><div class="line">(master)|<span class="string"> </span>|<span class="string"> (feature)</span></div><div class="line"><span class="string">        </span>|<span class="string"> </span>|</div><div class="line">        |<span class="string"> </span>|</div></pre></td></tr></table></figure></p>
 <p>-m 参数指定要回滚到parent commit，值为1或2，即第1个还是第2个。如上图，我们想回滚掉feature分之，回到合并之前的master，则选择1。</p>
 <ul>
 <li>注意事项：通常使用Gitlab的merge request合并的分之都选1，当不确定时可以使用<code>git show xxxx</code>查看一下两个父节点分别是什么内容。</li>

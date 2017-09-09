@@ -89,52 +89,18 @@
 
 
 
-<meta name="description" content="准备知识分支同一个分支有三种表现形式
-
-远程分支
-远程引用分支 origin/master
-本地分支    master
-
-fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。
-pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令
-rebase的意义rebase的作用是重写提交记录。
-
-rebase优点：
-
-合并commit（">
+<meta name="description" content="准备知识分支同一个分支有三种表现形式  远程分支 远程引用分支 origin/master 本地分支    master  fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。 pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令 rebase的意义rebase的作用是重写提交记录。  rebase优点：  合并commit（">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git rebase实践">
 <meta property="og:url" content="http://ifchanged.io/2015/git-rebase实践/index.html">
 <meta property="og:site_name" content="IFchanged">
-<meta property="og:description" content="准备知识分支同一个分支有三种表现形式
-
-远程分支
-远程引用分支 origin/master
-本地分支    master
-
-fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。
-pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令
-rebase的意义rebase的作用是重写提交记录。
-
-rebase优点：
-
-合并commit（">
+<meta property="og:description" content="准备知识分支同一个分支有三种表现形式  远程分支 远程引用分支 origin/master 本地分支    master  fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。 pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令 rebase的意义rebase的作用是重写提交记录。  rebase优点：  合并commit（">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-01-08T14:27:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git rebase实践">
-<meta name="twitter:description" content="准备知识分支同一个分支有三种表现形式
-
-远程分支
-远程引用分支 origin/master
-本地分支    master
-
-fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。
-pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令
-rebase的意义rebase的作用是重写提交记录。
-
-rebase优点：
-
-合并commit（">
+<meta name="twitter:description" content="准备知识分支同一个分支有三种表现形式  远程分支 远程引用分支 origin/master 本地分支    master  fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。 pullpull实际执行了git fetch和git merge FETCH_HEAD两条指令 rebase的意义rebase的作用是重写提交记录。  rebase优点：  合并commit（">
 
 
 
@@ -453,8 +419,8 @@ rebase优点：
 <li>寻找rebase点，使用<code>git log</code>查看test分支中最后一个commit，如<br>66fc050b </li>
 <li><code>rebase -i 66fc050b</code>开始rebase</li>
 </ol>
-<h3 id="交互式rebase"><a href="#交互式rebase" class="headerlink" title="交互式rebase"></a>交互式rebase</h3><p>在执行rebase -i命令会打开sublime编辑器<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">pick</span> a8b6d2f <span class="number">2</span></div><div class="line">pick c2c1903 xsas</div><div class="line"></div><div class="line"><span class="comment"># Rebase 749e319..c2c1903 onto 749e319 (3 command(s))</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Commands:</span></div><div class="line"><span class="comment"># p, pick = use commit</span></div><div class="line"><span class="comment"># r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="comment"># e, edit = use commit, but stop for amending</span></div><div class="line"><span class="comment"># s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="comment"># f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="comment"># x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="comment"># d, drop = remove commit</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
-<p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="keyword">master</span></div><div class="line"><span class="title">f</span> a8b6d2f <span class="number">2</span></div><div class="line">f c2c1903 xsas</div></pre></td></tr></table></figure></p>
+<h3 id="交互式rebase"><a href="#交互式rebase" class="headerlink" title="交互式rebase"></a>交互式rebase</h3><p>在执行rebase -i命令会打开sublime编辑器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">pick 66fc050 Test:git pull --rebase origin master</div><div class="line">pick a8b6d2f 2</div><div class="line">pick c2c1903 xsas</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Rebase 749e319..c2c1903 onto 749e319 (3 <span class="built_in">command</span>(s))</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Commands:</span></div><div class="line"><span class="meta">#</span><span class="bash"> p, pick = use commit</span></div><div class="line"><span class="meta">#</span><span class="bash"> r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="meta">#</span><span class="bash"> e, edit = use commit, but stop <span class="keyword">for</span> amending</span></div><div class="line"><span class="meta">#</span><span class="bash"> s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="meta">#</span><span class="bash"> f, fixup = like <span class="string">"squash"</span>, but discard this commit<span class="string">'s log message</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> x, <span class="built_in">exec</span> = run <span class="built_in">command</span> (the rest of the line) using shell</span></div><div class="line"><span class="meta">#</span><span class="bash"> d, drop = remove commit</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> However, <span class="keyword">if</span> you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
+<p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pick <span class="number">66</span>fc050 Test:git pull --rebase origin <span class="literal">master</span></div><div class="line">f a8b6d2f <span class="number">2</span></div><div class="line">f c2c1903 xsas</div></pre></td></tr></table></figure></p>
 <p>然后保存文件并退出sublime。</p>
 <p>如果rebase过程中遇到冲突，解决完冲突后执行<code>git rebase --continue</code>，需要注意的是，即使强制关闭控制台，依然会处于rebase状态，需要执行<code>git rebase --abort</code>取消rebase，版本库会会滚刀rebase之前的状态。或者执行<code>git rebase --edit-todo</code>重新打开rebase文件。</p>
 <p>如果产生冲突，rebase会逐个释放冲突，处理完冲突后，执行<code>git rebase --continue</code>继续。</p>
@@ -465,7 +431,7 @@ rebase优点：
 </ol>
 <h3 id="管理员合并分支"><a href="#管理员合并分支" class="headerlink" title="管理员合并分支"></a>管理员合并分支</h3><p>最终由管理员把test分支合并到master，需要注意的是合并前需要把test分支从master分支rebase更新，避免merge commit。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="使用Sublime-Text作为外部文本编辑器"><a href="#使用Sublime-Text作为外部文本编辑器" class="headerlink" title="使用Sublime Text作为外部文本编辑器"></a>使用Sublime Text作为外部文本编辑器</h3><p>对git进行设置通常使用git config命令或者直接编辑.config文件</p>
-<p><code>git config --global core.editor &quot;&#39;C:/Program Files/Sublime Text 2/sublime_text.exe&#39; -w&quot;</code><br>或<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="name">core</span>]</div><div class="line">	editor = <span class="symbol">'C:</span>\\Program Files\\Sublime Text <span class="number">2</span>\\sublime_text.exe' -w</div></pre></td></tr></table></figure></p>
+<p><code>git config --global core.editor &quot;&#39;C:/Program Files/Sublime Text 2/sublime_text.exe&#39; -w&quot;</code><br>或<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[core]</div><div class="line">	editor = 'C:<span class="symbol">\\</span>Program Files<span class="symbol">\\</span>Sublime Text 2<span class="symbol">\\</span>sublime_text.exe' -w</div></pre></td></tr></table></figure></p>
 <h3 id="rebase取代merge"><a href="#rebase取代merge" class="headerlink" title="rebase取代merge"></a>rebase取代merge</h3><p><code>git config --global branch.autosetuprebase always</code><br>或<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">[branch]</span></div><div class="line">	autosetuprebase = always</div></pre></td></tr></table></figure></p>
 <h3 id="reset在合并提交中的应用"><a href="#reset在合并提交中的应用" class="headerlink" title="reset在合并提交中的应用"></a>reset在合并提交中的应用</h3><p><code>git reset commitId</code> commitId 的位置同rebase，reset会撤销提交，一切回滚到<code>git add</code>和<code>git commit</code>之前的状态，所以我们可以把所有修改一次commit，达到合并commit的作用。</p>
 <p>需要注意的是，reset后，提交人信息和提交信息(commit msg)都会丢失。</p>
