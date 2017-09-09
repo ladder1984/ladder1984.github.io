@@ -20,7 +20,7 @@ git commit -m '恢复t1.txt到e316e21'
 ```
 
 **注**：以上撤销不会改写commit记录
-
+<!-- more --> 
 ### 1.1 撤销commit（不改写commit记录）
 revert命令用新的commit来撤销修改，不改写提交记录。
 - revert指定commit:`git revert e316e21`
@@ -168,3 +168,4 @@ b37132b HEAD@{16 minutes ago}: reset: moving to origin/master
 b37132b HEAD@{21 minutes ago}: clone: from git@github.com:ladder1984/updateHosts 
 ```
 上面的日志显示进行了reset操作，如果想恢复到reset之前的状态，可以使用`git reset 94a99ad --hard`命令。注意，reflog查看到的ID也是可以checkout命令的，所以也可以使用`git checkout 94a99ad -B master`
+

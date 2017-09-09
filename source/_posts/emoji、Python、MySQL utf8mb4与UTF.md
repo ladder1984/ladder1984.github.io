@@ -12,7 +12,7 @@ tags:
 ## 问题描述
 
 如果向MySQL utf8的表中保存一个emoji字符，必然出错，因为emoji是4字节字符，而MySQL utf8只支持3字节字符。MySQL 5.5开始加入utf8mb4支持4字节字符，但是又带来了显示的问题，毕竟PC上无法正常显示emoji的，而且能显示的系统又各家有各家的样子。所以要么把emoji过滤掉、要么在显示时候做特殊处理。
-
+<!-- more --> 
 ## 浅谈UTF
 
 最常用的字符都在BMP（Basic Multilingual Plane, 基本多语言平面），范围是**U+0000至U+FFFF**。只有这些码位在UCS-2可用，也是MySQL UTF8可以存储的范围，其它字符存储在辅助平面。
@@ -53,3 +53,4 @@ def filter_invalid_str(text):
 - <https://docs.python.org/2/library/sys.html#sys.maxunicode>
 - https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html
 - http://stackoverflow.com/questions/26568722/remove-unicode-emoji-using-re-in-python
+
