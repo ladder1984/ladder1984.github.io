@@ -328,6 +328,52 @@
   </entry>
   
   <entry>
+    <title>浅谈行为驱动开发(BDD)</title>
+    <link href="http://ifchanged.io/2017/%E6%B5%85%E8%B0%88%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91(BDD)/"/>
+    <id>http://ifchanged.io/2017/浅谈行为驱动开发(BDD)/</id>
+    <published>2017-05-15T16:45:44.000Z</published>
+    <updated>2017-05-19T15:58:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>BDD（Behaviour-Driven Development行为驱动开发）是一种敏捷开放方式，鼓励开发者、测试、业务方参与开发协作，虽然多数情况下只有开发和测试参与。BDD使用自然语言描述用户故事，从而让各方都可读、可写测试用例，并且用通用的语言精确描述软件的行为。</p>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>一种测试方案，模拟用户的真实行为，来保证各个软件模块执行后的最终结果是正确的。</p>
+<h2 id="运作方式"><a href="#运作方式" class="headerlink" title="运作方式"></a>运作方式</h2><h3 id="文件组织"><a href="#文件组织" class="headerlink" title="文件组织"></a>文件组织</h3><p>用Gherkin语法描述step，一个个关联且有序的step组成完整的scenario，相关的scenario放入一个feature文件中。</p>
+<h3 id="Gherkin语法"><a href="#Gherkin语法" class="headerlink" title="Gherkin语法"></a>Gherkin语法</h3><ul>
+<li>Given：把系统置为某种状态，也就是准备数据</li>
+<li>When：描述用户行为，也就是要测试的step</li>
+<li>Then：获得结果，通常用于校验</li>
+<li>And：表示使用上一个step的关键词</li>
+</ul>
+<h3 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h3><p>用tag来标记不同模块，也用tag来标记通过和未通过的scenario</p>
+<h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p>令人怀念的<code>behave -kt @xxx</code>命令</p>
+<h3 id="Jenkins执行"><a href="#Jenkins执行" class="headerlink" title="Jenkins执行"></a>Jenkins执行</h3><p>可用Jenkins输出完整报告。在Jenkins执行时可用tag或目录分割多组feature，则并行执行，理论最短时间为最长scenario的耗时。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://github.com/cucumber/cucumber/wiki/Given-When-Then" target="_blank" rel="external">Gherkin</a></li>
+<li><a href="https://github.com/cucumber/cucumber/wiki/Given-When-Then" target="_blank" rel="external">Given When Then</a></li>
+</ul>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>以用户故事为测试单位，保证软件在真实、连贯场景中的正确性。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>当业务越来复杂、微服务越来越多时，这种集成测试方案难以维护，对开发者要求较高。在没有良好并行方案时，速度很慢。</p>
+<h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><ul>
+<li>库：behave，其他Python库实现：Lettuce、radish</li>
+<li>处理异步：celery使用同步模式、异步消息消费者采用子进程阻塞调用</li>
+<li>夸服务调用：BDD SERVER，使用http服务器传递step，并使用sub step调用，用http response返回结果</li>
+<li>第三方服务：各种mock</li>
+<li>IDE支持：Pycharm</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;BDD（Behaviour-Driven Development行为驱动开发）是一种敏捷开放方式，鼓励开发者、测试、业务方参与开发协作，虽然
+    
+    </summary>
+    
+    
+      <category term="第一站" scheme="http://ifchanged.io/tags/%E7%AC%AC%E4%B8%80%E7%AB%99/"/>
+    
+  </entry>
+  
+  <entry>
     <title>git tag应用</title>
     <link href="http://ifchanged.io/2017/git-tag%E5%BA%94%E7%94%A8/"/>
     <id>http://ifchanged.io/2017/git-tag应用/</id>
@@ -1347,48 +1393,6 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digit+
     
       <category term="编程笔记" scheme="http://ifchanged.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
     
-    
-      <category term="Python" scheme="http://ifchanged.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DJango开发笔记</title>
-    <link href="http://ifchanged.io/2014/DJango%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"/>
-    <id>http://ifchanged.io/2014/DJango开发笔记/</id>
-    <published>2014-09-12T09:50:40.000Z</published>
-    <updated>2017-01-08T14:27:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/Django-Unchained.jpg" alt="Django Unchained"></h1><p>(图文无关，图片来自网络)</p>
-<p># </p>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>IDE:JetBrains PyCharm 3.4.1</p>
-<p>Python: 2.7.8</p>
-<p>Django:1.7</p>
-<p>MySQL:5.6.20</p>
-<p>&nbsp;</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h2><p><pre class="lang:python decode:true ">#settings.py</pre></p>
-<p>DATABASES = {<br>    ‘default’: {<br>        ‘ENGINE’: ‘django.db.backends.mysql’,<br>        ‘NAME’: ‘datebaseName’,<br>        ‘USER’: ‘username’,<br>        ‘PASSWORD’: ‘pass’,<br>        ‘HOST’: ‘127.0.0.1’,<br>        ‘PORT’: ‘3306’,<br>    }<br>}<br>相关指令<br>python manage.py syncdb<br>python manage.py makemigrations<br>python manage.py migrate</p>
-<p>&nbsp;</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><strong>1.7文档</strong>：<a href="https://docs.djangoproject.com/en/1.7/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/</a></p>
-<p><strong>The Django Book（中文）</strong>：<a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="external">http://djangobook.py3k.cn/2.0/</a></p>
-<p>models数据类型：<a href="https://docs.djangoproject.com/en/dev/ref/models/fields/" target="_blank" rel="external">https://docs.djangoproject.com/en/dev/ref/models/fields/</a></p>
-<p>静态文件：<a href="https://docs.djangoproject.com/en/1.7/howto/static-files/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/howto/static-files/</a></p>
-<p>数据库迁移：<a href="https://docs.djangoproject.com/en/1.7/topics/migrations/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.7/topics/migrations/</a></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>使用Django真的很方便!学好英语真的很重要!</p>
-<p>PS：本来想多写点东西，但发现东西都在文档里。。。等整理好，再更新文章。</p>
-<p>Github：<a href="https://github.com/ladder1984/DJangoHotel_Python" target="_blank" rel="external">https://github.com/ladder1984/DJangoHotel_Python</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img src=&quot;http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/Django-Unchained
-    
-    </summary>
-    
-      <category term="编程笔记" scheme="http://ifchanged.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Django" scheme="http://ifchanged.io/tags/Django/"/>
     
       <category term="Python" scheme="http://ifchanged.io/tags/Python/"/>
     
