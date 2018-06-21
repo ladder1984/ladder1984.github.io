@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linode on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/linode/</link>
+    <description>Recent content in Linode on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Dec 2014 22:39:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/linode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>你好，Linode</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</link>
+      <pubDate>Mon, 01 Dec 2014 22:39:46 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</guid>
+      <description>一直对Linode很向往，恰巧Linode黑色星期五优惠，新用户赠送25美元，就入手了，可惜忘了使用lindoe10的优惠码，10美元就擦肩</description>
+    </item>
+    
+  </channel>
+</rss>

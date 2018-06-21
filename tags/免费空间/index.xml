@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>免费空间 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E5%85%8D%E8%B4%B9%E7%A9%BA%E9%97%B4/</link>
+    <description>Recent content in 免费空间 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 18 Mar 2013 13:52:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E5%85%8D%E8%B4%B9%E7%A9%BA%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHPCloud安装使用Wordpress图文教程</title>
+      <link>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 18 Mar 2013 13:52:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</guid>
+      <description>PHPCloud http://www.phpcloud.com/ PHPCloud是由著名的Zend公司的提供的免费云，500M免费PHP空间，不限流量，速度不错。500M对于个人博客差不多够了。本文介</description>
+    </item>
+    
+  </channel>
+</rss>

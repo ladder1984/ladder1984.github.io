@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程笔记 on Ladder1984</title>
+    <link>http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 编程笔记 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Apr 2015 23:08:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>第2章 词法分析——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>第二章 词法分析（Lexical analysis） 一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语</description>
+    </item>
+    
+    <item>
+      <title>第1章 简介——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 14 Apr 2015 23:10:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>关于阅读笔记 《The Python 2 Language Reference阅读笔记》系列文章是我阅读Python 2的The Python Language Reference所记的笔记，不是翻译，也不</description>
+    </item>
+    
+    <item>
+      <title>自动更新host的软件updateHosts</title>
+      <link>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</link>
+      <pubDate>Sun, 26 Oct 2014 22:27:02 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</guid>
+      <description>updateHosts 简介 自动从网络下载hosts文件，hosts源由用户设置。 hosts是什么？ hosts文件是一个用于储存计算机网络中各节点信息的计算机文件</description>
+    </item>
+    
+    <item>
+      <title>Python用PyInstaller打包笔记</title>
+      <link>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 22 Oct 2014 21:37:11 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</guid>
+      <description>为了把python发行到没有安装python的Windows环境使用，需要打包成exe可执行文件。现在常见的python打包工具有cx_Fr</description>
+    </item>
+    
+    <item>
+      <title>DJango开发笔记</title>
+      <link>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 12 Sep 2014 17:50:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>(图文无关，图片来自网络) 环境 IDE:JetBrains PyCharm 3.4.1 Python: 2.7.8 Django:1.7 MySQL:5.6.20 &amp;nbsp; 配置 数据库： #settings.py DATABASES = { &amp;lsquo;default&amp;rsquo;: { &amp;lsquo;ENGINE&amp;rsquo;: &amp;lsquo;django.db.backends.mysql&amp;rsquo;, &amp;lsquo;NAME&amp;rsquo;: &amp;lsquo;datebaseName&amp;rsquo;, &amp;lsquo;USER&amp;rsquo;: &amp;lsquo;username&amp;rsquo;, &amp;lsquo;PASSWORD&amp;rsquo;: &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;HOST&amp;rsquo;: &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;PORT&amp;rsquo;: &amp;lsquo;3306&amp;rsquo;, } } 相关指令 python manage.py syncdb python manage.py makemigrations python manage.py migrate &amp;nbsp; 参考文档 1.7</description>
+    </item>
+    
+    <item>
+      <title>C语言undefined behaviour未定义行为</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/</link>
+      <pubDate>Sat, 19 Oct 2013 20:32:19 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/</guid>
+      <description>C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行</description>
+    </item>
+    
+    <item>
+      <title>C语言main()函数标准写法</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95/</link>
+      <pubDate>Wed, 17 Apr 2013 16:49:12 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95/</guid>
+      <description>即使到了2013年的今天，还是能看到在C语言中void main()这种写法。也许是被VC++ 6宠坏了，也许是被谭浩强的《C语言程序设计》误导</description>
+    </item>
+    
+    <item>
+      <title>C语言判断输入是否是整数</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B4%E6%95%B0/</link>
+      <pubDate>Thu, 28 Mar 2013 00:13:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B4%E6%95%B0/</guid>
+      <description>首先考虑可能的输入： 非数字的字符。 带小数点的浮点数。 &amp;nbsp; 对于第一种情况，考虑到scanf函数的返回值是成功输入的数量，用if(scanf(&amp;l</description>
+    </item>
+    
+    <item>
+      <title>约瑟夫环的数学解法</title>
+      <link>http://ladder1984.github.io/post/josephus-problem/</link>
+      <pubDate>Sat, 22 Dec 2012 20:57:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/josephus-problem/</guid>
+      <description>int Josephus(int n, int m)//总人数为n，从第一人开始数到m的退出， { int i, r = 0; for (i = 2; i &amp;lt;= n; i++) r = (r + m) % i; return r+1;//最后一个人的初始位置 }</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>论坛BBS on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E8%AE%BA%E5%9D%9Bbbs/</link>
+    <description>Recent content in 论坛BBS on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Jan 2013 02:39:44 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E8%AE%BA%E5%9D%9Bbbs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>纪念那些消逝的杀毒软件及其他论坛BBS</title>
+      <link>http://ladder1984.github.io/post/remember-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 02:39:44 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/remember-those-bbs/</guid>
+      <description>那是WEB1.0的年代，那是属于论坛BBS的时代。Discuz!和PHPWind两个易用的建站程序，为我们带来了数不尽的论坛，为我们带来了多</description>
+    </item>
+    
+    <item>
+      <title>那些论坛还好吗</title>
+      <link>http://ladder1984.github.io/post/how-about-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 01:12:58 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/how-about-those-bbs/</guid>
+      <description>有几年不怎么逛论坛了，曾经也是个ID收割机，虽然还有很多论坛没有ID，留下遗憾。最近又忽然想起以前，想起以前逛论坛的岁月。再登录那些论坛，有</description>
+    </item>
+    
+  </channel>
+</rss>

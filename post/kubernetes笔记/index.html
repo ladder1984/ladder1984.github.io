@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Kubernetes笔记 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/kubernetes%E7%AC%94%E8%AE%B0/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Kubernetes笔记" />
+<meta property="og:description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/kubernetes%E7%AC%94%E8%AE%B0/" />
+
+
+
+<meta property="article:published_time" content="2017-09-09T00:33:43&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-09-09T00:33:43&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Kubernetes笔记">
+<meta itemprop="description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器">
+
+
+<meta itemprop="datePublished" content="2017-09-09T00:33:43&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-09T00:33:43&#43;00:00" />
+<meta itemprop="wordCount" content="3077">
+
+
+
+<meta itemprop="keywords" content="docker,kubernetes," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kubernetes笔记"/>
+<meta name="twitter:description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Kubernetes笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-09-09 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-简介">1. 简介</a>
+<ul>
+<li><a href="#1-1-基本概念">1.1 基本概念</a></li>
+<li><a href="#1-2-基本架构">1.2 基本架构</a></li>
+<li><a href="#1-3-部署模型">1.3 部署模型</a></li>
+</ul></li>
+<li><a href="#2-k8s技术介绍">2. k8s技术介绍</a>
+<ul>
+<li><a href="#2-1-网络">2.1 网络</a></li>
+<li><a href="#2-3-服务发现">2.3 服务发现</a>
+<ul>
+<li><a href="#2-3-1-api-gateway">2.3.1 api-gateway</a></li>
+</ul></li>
+<li><a href="#2-4-负载均衡">2.4 负载均衡</a>
+<ul>
+<li><a href="#2-4-1-简单负载均衡">2.4.1 简单负载均衡</a></li>
+<li><a href="#2-4-2-使用阿里云slb负载均衡">2.4.2 使用阿里云SLB负载均衡</a></li>
+</ul></li>
+<li><a href="#2-5-容器调度">2.5 容器调度</a>
+<ul>
+<li><a href="#2-5-1-扩容和缩容">2.5.1 扩容和缩容</a></li>
+<li><a href="#2-5-2-自动调度">2.5.2 自动调度</a></li>
+<li><a href="#2-5-3-pod健康检查">2.5.3 pod健康检查</a></li>
+<li><a href="#2-5-4-自动扩容">2.5.4 自动扩容</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-k8s的使用">3. k8s的使用</a>
+<ul>
+<li><a href="#3-1-更新容器">3.1 更新容器</a>
+<ul>
+<li><a href="#3-1-1-滚动升级">3.1.1 滚动升级</a></li>
+<li><a href="#3-1-2-配置更新">3.1.2 配置更新</a></li>
+</ul></li>
+<li><a href="#3-2-配置文件管理">3.2 配置文件管理</a>
+<ul>
+<li><a href="#3-2-1-deployment和service配置文件管理">3.2.1 deployment和service配置文件管理</a></li>
+<li><a href="#3-2-2-环境变量管理">3.2.2 环境变量管理</a></li>
+</ul></li>
+<li><a href="#3-3-dashboard">3.3 dashboard</a></li>
+<li><a href="#3-4-容器管理">3.4 容器管理</a>
+<ul>
+<li><a href="#3-3-1-账户登录">3.3.1 账户登录</a></li>
+<li><a href="#3-3-2-权限管理">3.3.2 权限管理</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#4-k8s接入备忘录">4. k8s接入备忘录</a>
+<ul>
+<li><a href="#api-gateway改造">api-gateway改造</a></li>
+<li><a href="#环境变量改造">环境变量改造</a></li>
+</ul></li>
+<li><a href="#其他">其他</a>
+<ul>
+<li><a href="#静态资源管理">静态资源管理</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="1-简介">1. 简介</h2>
+
+<p>Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。</p>
+
+<h3 id="1-1-基本概念">1.1 基本概念</h3>
+
+<ul>
+<li>master：主节点，负责k8s调度，不应部署容器</li>
+<li>node：master之外的主机节点</li>
+<li>pod：一组容器的集合，在一个pod只部署一个容器时，可基本等价于容器实例</li>
+<li>deployment：一个容器、编排部署集合</li>
+<li>service：一个服务，简单理解deployment通过service暴露在网络中</li>
+</ul>
+
+<p>所以，用deployment管理一组pod，用service暴露deployment。</p>
+
+<ul>
+<li><p>Pod: 若干 container 组成的一个功能单元，共享相同的 IP / Namesapce / Volume
+<!-- more --></p>
+
+<h3 id="1-2-基本架构">1.2 基本架构</h3></li>
+
+<li><p>Single Master:</p>
+
+<ul>
+<li>kube-apiserver - 响应 REST 请求，更新 etcd 信息</li>
+<li>kube-scheduler - Pods 调度</li>
+<li>kube-controller-manager - 所有其它控制功能</li>
+</ul></li>
+
+<li><p>Nodes:</p>
+
+<ul>
+<li>kube-proxy - 网络代理和负载均衡器</li>
+<li>kubelet - 与 master 交互，管理 Pod</li>
+</ul></li>
+</ul>
+
+<p>Internet &ndash;&gt; kube-proxy &ndash;&gt; Pods</p>
+
+<p>注：1.2版之前是由运行在 userspace 的 kube-proxy 分发请求，1.2 版 kube-proxy 监视服务变化，生成相应 iptables rules</p>
+
+<h3 id="1-3-部署模型">1.3 部署模型</h3>
+
+<ul>
+<li>Deployment/Replication controller - Pod 池，确保一个 Pod 有一定份数运行，可用作负载均衡和水平扩展</li>
+<li>Service - 定义了一组 Pods 的逻辑集合和访问这个集合的策略，提供一个 Micro Service</li>
+<li>Endpoints - 一个 API，更新 Service 中的 Pods 集合</li>
+</ul>
+
+<h2 id="2-k8s技术介绍">2. k8s技术介绍</h2>
+
+<h3 id="2-1-网络">2.1 网络</h3>
+
+<p>使用flannel组件建立容器间网络，也是运维管理维护最麻烦的地方，因此：
+- 有三个网络，只需要运维了解，业务开发时不需要关心：
+    - Cluster Network：虚拟局域网，pod所处的实际网络，pod获得Cluster IP。Cluster Network内部互通，内部pod可以访问公网、物理局域网
+    - 物理局域网：外部主机所处的物流局域网
+    - 公网
+- 容器继承Node的DNS配置，不继承hosts
+- pod访问外部时，通过所在Node的网络
+- 只能在Master通过NodePort，把service的端口和物理机连接，把service暴露给公网，这就造成Master的网络压力较大</p>
+
+<h3 id="2-3-服务发现">2.3 服务发现</h3>
+
+<p>k8s提供两种发现服务的方式，环境变量和DNS。由于数据库类资源通常使用外部资源，所以有用的是DNS自动给每个service自动注册name，由此可大大简化api-gateway的配置管理工作。</p>
+
+<h4 id="2-3-1-api-gateway">2.3.1 api-gateway</h4>
+
+<p>由于当前网络模式不支持使用宿主机的hosts，且k8s有访问发现机制，所以，
+1. gateway地址使用<strong>api-gateway</strong>，免去自建DNS开销。
+2. app地址使用k8s提供的Internal endpoints，即app:port形式，统一使用80端口，则简化为app
+3. app统一使用HTTP协议提供服务
+例子：</p>
+
+<pre><code>    location /xxx/ {
+        rewrite ^/xxx/(.*) /$1 break;
+        proxy_pass xxx;
+    }
+</code></pre>
+
+<p>需要说明的是，api-gateway和app都应该存在于cluster network内。对于cluster network外的api service，Nginx规则按照老形式配置IP:Port形式；对于cluster network外的需要访问api-gateway的app，则访问外部Nginx，外部Nginx通过NodePort反向代理把请求发送给内部Nginx。</p>
+
+<h3 id="2-4-负载均衡">2.4 负载均衡</h3>
+
+<p>请求是首先访问service，然后service根据设置的策略访问pod。简单负载均衡模式和负载均衡器模式可以无缝切换。</p>
+
+<h4 id="2-4-1-简单负载均衡">2.4.1 简单负载均衡</h4>
+
+<p>在service不使用LoadBalancer模式时，，service以<strong>随机</strong>的方式选择pod。</p>
+
+<p>注：service的实现基于kube-proxy，kube-proxy有两种模式。<strong>userspace</strong>会<strong>循环</strong>选择pod，<strong>iptables</strong>模式会<strong>随机</strong>选择pod，<strong>iptables</strong>是默认模式且性能更好。</p>
+
+<h4 id="2-4-2-使用阿里云slb负载均衡">2.4.2 使用阿里云SLB负载均衡</h4>
+
+<p>可以直接使用阿里云负载均衡服务<a href="https://intl.aliyun.com/zh/product/server-load-balancer">https://intl.aliyun.com/zh/product/server-load-balancer</a>。<code>kubectl expose deployment nginx --port=80 --target-port=80 --type=LoadBalancer</code> 即可。具</p>
+
+<h3 id="2-5-容器调度">2.5 容器调度</h3>
+
+<h4 id="2-5-1-扩容和缩容">2.5.1 扩容和缩容</h4>
+
+<p>只需要修改deployment配置文件中的spec.replicas参数，k8s会立刻执行调度。</p>
+
+<h4 id="2-5-2-自动调度">2.5.2 自动调度</h4>
+
+<ul>
+<li>k8s会根据Node负载情况分配pod</li>
+<li>当有Node不可用时，k8s会自动把pod调度到可用Node</li>
+<li>当有docker 容器被关闭时，k8s会根据deploy根据spec.replicas，保证有正确数量的容器在运行</li>
+</ul>
+
+<h4 id="2-5-3-pod健康检查">2.5.3 pod健康检查</h4>
+
+<p>k8s提供探针对容器进行检测，可以后续开发</p>
+
+<h4 id="2-5-4-自动扩容">2.5.4 自动扩容</h4>
+
+<p>K8s提供<strong>HorizontalPodAutoscaler</strong>实现自动扩容，即根据性能指标自动增加pod的数量，但目前性能指标只支持CPU使用率。</p>
+
+<h2 id="3-k8s的使用">3. k8s的使用</h2>
+
+<h3 id="3-1-更新容器">3.1 更新容器</h3>
+
+<p>可以使用Jenkins调度api或者kubectl</p>
+
+<h4 id="3-1-1-滚动升级">3.1.1 滚动升级</h4>
+
+<p>k8s支持滚动升级，升级过程中，pod逐个替换，直到替换完成，在此过程中旧Pod依然会被使用。可设置minReadySeconds表示启动容器后等待程序启动的时间。</p>
+
+<p>只有更新PodTemplateSpec时才会触发滚动升级，如果镜像使用latest tag，则需要使用<code>kubectl patch deployment &lt;name&gt; -p &quot;{\&quot;spec\&quot;:{\&quot;template\&quot;:{\&quot;metadata\&quot;:{\&quot;labels\&quot;:{\&quot;date\&quot;‌​:\&quot;$(date +%s)\&quot;}}}}}&quot;</code>。</p>
+
+<h4 id="3-1-2-配置更新">3.1.2 配置更新</h4>
+
+<p>如果需要修改环境变量、pod数量等，可以更新配置文件然后使用<code>kubectl apply -f &lt;filename&gt;</code>。</p>
+
+<h3 id="3-2-配置文件管理">3.2 配置文件管理</h3>
+
+<h4 id="3-2-1-deployment和service配置文件管理">3.2.1 deployment和service配置文件管理</h4>
+
+<p>一个应用接入k8s只需要编写一个配置文件，包含deployment和service两项配置，如：</p>
+
+<pre><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simples
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: simples
+    spec:
+      containers:
+      - name: master
+        image: imgage.xxx.com/test/simples:latest  # or just image: redis
+        env:
+        - name: ENV_VAR
+          value: &quot;10086&quot;
+        ports:
+        - containerPort: 9999
+      imagePullSecrets:
+      - name: keyyy
+
+      
+apiVersion: v1
+kind: Service
+metadata:
+  name: aaa
+  labels:
+    app: aaa
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 80
+  selector:
+    app: aaa      
+</code></pre>
+
+<p>每个应用自定义的内容只有环境变量和镜像地址。所有配置使用配置文件统一管理，配置文件使用git管理。</p>
+
+<h4 id="3-2-2-环境变量管理">3.2.2 环境变量管理</h4>
+
+<p>通用变量，如数据库配置、mns配置放入configMap，app引用configMap的值。各app自己的变量写入自己的配置文件。</p>
+
+<h3 id="3-3-dashboard">3.3 dashboard</h3>
+
+<p>官方web UI项目：<a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
+
+<p>dashboard可以查看相关信息，以及容器日志，不建议在dashboard编辑配置，应该使用配置文件。</p>
+
+<h3 id="3-4-容器管理">3.4 容器管理</h3>
+
+<p>可以使用<code>kubectl</code>命令类似<code>docker</code>命令地关闭、重启、进入容器等。</p>
+
+<h4 id="3-3-1-账户登录">3.3.1 账户登录</h4>
+
+<p>dashboard 不提供用户登录系统。</p>
+
+<p>使用Nginx的Basic HTTP authentication功能为dashboard提供登录保护，参见<a href="http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html">http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html</a>和<a href="http://www.ttlsa.com/nginx/nginx-basic-http-authentication/">http://www.ttlsa.com/nginx/nginx-basic-http-authentication/</a>，可以为不同用户设置不同密码。</p>
+
+<h4 id="3-3-2-权限管理">3.3.2 权限管理</h4>
+
+<p>暂无好方案实现账户权限管理</p>
+
+<h2 id="4-k8s接入备忘录">4. k8s接入备忘录</h2>
+
+<h3 id="api-gateway改造">api-gateway改造</h3>
+
+<ol>
+<li>api service有uwsgi协议改为http协议</li>
+<li>api-gateway地址可直接使用service的地址</li>
+<li>api service统一使用80端口</li>
+</ol>
+
+<h3 id="环境变量改造">环境变量改造</h3>
+
+<p>让和环境有关的变量都使用环境变量管理，包括：</p>
+
+<ul>
+<li>MySQL数据库
+
+<ul>
+<li>host</li>
+<li>密码</li>
+</ul></li>
+<li>redis地址</li>
+<li>Mongo地址</li>
+<li>MNS配置</li>
+</ul>
+
+<h2 id="其他">其他</h2>
+
+<h3 id="静态资源管理">静态资源管理</h3>
+
+<p>静态资源可以直接用Nginx挂在物理机上。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>因为解决了宿主机端口冲突问题，方便的环境变量管理，可以做到一键创建环境，极大的减少了运维管理成本。</p>
+
+<p>注：kubernetes更新十分迅速，部分信息可能失效，本文根据kubernetes 1.7探索所得。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-09-09</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/docker/">docker</a>
+          
+          <a href="/tags/kubernetes/">kubernetes</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/git%E6%80%BB%E7%BB%93/">
+            <span class="next-text nav-default">git总结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding Life on Ladder1984</title>
+    <link>http://ladder1984.github.io/categories/coding-life/</link>
+    <description>Recent content in Coding Life on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Jan 2013 03:12:05 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/categories/coding-life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>初读《计算机程序的构造和解释》(SICP)</title>
+      <link>http://ladder1984.github.io/post/first-read-sicp/</link>
+      <pubDate>Mon, 14 Jan 2013 03:12:05 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/first-read-sicp/</guid>
+      <description>中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种</description>
+    </item>
+    
+    <item>
+      <title>《算法艺术与信息学竞赛》黑书到手</title>
+      <link>http://ladder1984.github.io/post/codeblackbook/</link>
+      <pubDate>Tue, 01 Jan 2013 03:30:12 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/codeblackbook/</guid>
+      <description>久闻刘汝佳的黑书《算法艺术与信息学竞赛》，前几天突然想买一本，突然发现当当有折扣，只用&amp;yen;17.60，果断下单。27日晚上下单，终于还</description>
+    </item>
+    
+  </channel>
+</rss>

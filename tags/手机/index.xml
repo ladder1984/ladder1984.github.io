@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>手机 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E6%89%8B%E6%9C%BA/</link>
+    <description>Recent content in 手机 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 07 Dec 2012 19:42:13 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E6%89%8B%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我的手机常用软件——Android平台</title>
+      <link>http://ladder1984.github.io/post/software-android/</link>
+      <pubDate>Fri, 07 Dec 2012 19:42:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/software-android/</guid>
+      <description>联系人管理：go联系人加强版 短信：go短信加强版 即时通讯/IM：QQ office：金山wps 笔记本：有道云笔记 翻译：有道词典 安全软件：LBE</description>
+    </item>
+    
+  </channel>
+</rss>

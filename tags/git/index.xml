@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/git/</link>
+    <description>Recent content in Git on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 24 Aug 2017 21:06:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git总结</title>
+      <link>http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 24 Aug 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/</guid>
+      <description>git中的位置 仓库 工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。 暂存区：</description>
+    </item>
+    
+    <item>
+      <title>git tag应用</title>
+      <link>http://ladder1984.github.io/post/git-tag%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Tue, 28 Feb 2017 14:59:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git-tag%E5%BA%94%E7%94%A8/</guid>
+      <description>1. Tag概述 像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布</description>
+    </item>
+    
+    <item>
+      <title>git master分支回滚指南</title>
+      <link>http://ladder1984.github.io/post/how-to-revert-on-git-master-branch/</link>
+      <pubDate>Wed, 24 Aug 2016 23:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/how-to-revert-on-git-master-branch/</guid>
+      <description>1. 概述 1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限</description>
+    </item>
+    
+    <item>
+      <title>git笔记-撤销与回滚</title>
+      <link>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</link>
+      <pubDate>Thu, 19 Nov 2015 11:31:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</guid>
+      <description>1.撤销 撤销文件修改 checkout以文件作为参数时会修改文件为指定版本的状态。 - 撤销未暂存的文件：git checkout hello.py，git checkout .为所</description>
+    </item>
+    
+    <item>
+      <title>git rebase实践</title>
+      <link>http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Wed, 28 Oct 2015 19:54:15 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/</guid>
+      <description>准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才</description>
+    </item>
+    
+  </channel>
+</rss>

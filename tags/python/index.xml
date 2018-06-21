@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/python/</link>
+    <description>Recent content in Python on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Mar 2016 20:17:01 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>peewee笔记(2)——构建自已的peewee文档</title>
+      <link>http://ladder1984.github.io/post/peewee-note2/</link>
+      <pubDate>Mon, 28 Mar 2016 20:17:01 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note2/</guid>
+      <description>背景 开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官</description>
+    </item>
+    
+    <item>
+      <title>peewee笔记(1)——基本语法</title>
+      <link>http://ladder1984.github.io/post/peewee-note1/</link>
+      <pubDate>Wed, 23 Mar 2016 10:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note1/</guid>
+      <description>peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级</description>
+    </item>
+    
+    <item>
+      <title>emoji、Python、MySQL utf8mb4与UTF</title>
+      <link>http://ladder1984.github.io/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/</link>
+      <pubDate>Sun, 20 Mar 2016 21:16:31 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/</guid>
+      <description>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x</description>
+    </item>
+    
+    <item>
+      <title>Python模拟登录京东</title>
+      <link>http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/</link>
+      <pubDate>Sun, 13 Sep 2015 23:16:01 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/</guid>
+      <description>模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos</description>
+    </item>
+    
+    <item>
+      <title>第2章 词法分析——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>第二章 词法分析（Lexical analysis） 一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语</description>
+    </item>
+    
+    <item>
+      <title>第1章 简介——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 14 Apr 2015 23:10:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>关于阅读笔记 《The Python 2 Language Reference阅读笔记》系列文章是我阅读Python 2的The Python Language Reference所记的笔记，不是翻译，也不</description>
+    </item>
+    
+    <item>
+      <title>自动更新host的软件updateHosts</title>
+      <link>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</link>
+      <pubDate>Sun, 26 Oct 2014 22:27:02 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</guid>
+      <description>updateHosts 简介 自动从网络下载hosts文件，hosts源由用户设置。 hosts是什么？ hosts文件是一个用于储存计算机网络中各节点信息的计算机文件</description>
+    </item>
+    
+    <item>
+      <title>Python用PyInstaller打包笔记</title>
+      <link>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 22 Oct 2014 21:37:11 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</guid>
+      <description>为了把python发行到没有安装python的Windows环境使用，需要打包成exe可执行文件。现在常见的python打包工具有cx_Fr</description>
+    </item>
+    
+    <item>
+      <title>DJango开发笔记</title>
+      <link>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 12 Sep 2014 17:50:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>(图文无关，图片来自网络) 环境 IDE:JetBrains PyCharm 3.4.1 Python: 2.7.8 Django:1.7 MySQL:5.6.20 &amp;nbsp; 配置 数据库： #settings.py DATABASES = { &amp;lsquo;default&amp;rsquo;: { &amp;lsquo;ENGINE&amp;rsquo;: &amp;lsquo;django.db.backends.mysql&amp;rsquo;, &amp;lsquo;NAME&amp;rsquo;: &amp;lsquo;datebaseName&amp;rsquo;, &amp;lsquo;USER&amp;rsquo;: &amp;lsquo;username&amp;rsquo;, &amp;lsquo;PASSWORD&amp;rsquo;: &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;HOST&amp;rsquo;: &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;PORT&amp;rsquo;: &amp;lsquo;3306&amp;rsquo;, } } 相关指令 python manage.py syncdb python manage.py makemigrations python manage.py migrate &amp;nbsp; 参考文档 1.7</description>
+    </item>
+    
+    <item>
+      <title>python写的简单批量下载器</title>
+      <link>http://ladder1984.github.io/post/python-downloader/</link>
+      <pubDate>Wed, 02 Jan 2013 01:15:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python-downloader/</guid>
+      <description>&lt;p&gt;闲得无聊，用python写了个简易下载器，把教务系统中所有人的照片下载下来了。俗话说“人生苦短，我用python”，所以用python实现只需要几行代码。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

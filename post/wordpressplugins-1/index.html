@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>wordpress插件推荐——主题功能实现 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/wordpressplugins-1/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="wordpress插件推荐——主题功能实现" />
+<meta property="og:description" content="一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/wordpressplugins-1/" />
+
+
+
+<meta property="article:published_time" content="2012-12-18T23:18:36&#43;00:00"/>
+
+<meta property="article:modified_time" content="2012-12-18T23:18:36&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="wordpress插件推荐——主题功能实现">
+<meta itemprop="description" content="一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有">
+
+
+<meta itemprop="datePublished" content="2012-12-18T23:18:36&#43;00:00" />
+<meta itemprop="dateModified" content="2012-12-18T23:18:36&#43;00:00" />
+<meta itemprop="wordCount" content="853">
+
+
+
+<meta itemprop="keywords" content="wordpress," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="wordpress插件推荐——主题功能实现"/>
+<meta name="twitter:description" content="一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">wordpress插件推荐——主题功能实现</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-12-18 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"> 网站建设 </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有些麻烦，新手也有些为难。尤其像我这样新建立的博客，主题的更换是频繁的，每次手动添加功能将是否麻烦，所以本文将推荐一些插件，让你在什么主题都能用这些功能。 安装wordpress插件最简便的方法是在后台插件处搜索插件名，在线安装。当然也可以根据提示上传插件安装。以下的插件都是<a href="http://itoldme.net" title="墙外的梯子">墙外的梯子</a>正在使用的插件，亲测支持wordpress3.5，可以搜索插件名或访问插件主页安装。</p>
+
+<p>１.统计代码插入：<strong>Google Analytics for WordPress</strong></p>
+
+<blockquote>
+<p><strong>　　方便的插入google统计代码，之用输入ＵＡ就行，还可以设置为不统计已登录的用户，更多功能请试用插件<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2012/12/QQ截图20121218224008.png" alt="QQ截图20121218224008" /></strong></p>
+
+<p><a href="http://yoast.com/wordpress/google-analytics/#utm_source=wordpress&amp;amp;utm_medium=plugin&amp;amp;utm_campaign=wpgaplugin&amp;amp;utm_content=v420">访问插件主页</a></p>
+
+<p>&nbsp;</p>
+</blockquote>
+
+<p>2.分享工具：<strong>JiaThis分享工具</strong> <strong>　　社会化分享已是博客中常见功能，jackthis可以把你的文章方便的分享到新浪微博、qq空间、facebook等国内外流行SNS。可以在文章末尾或两侧浮动条显示分享按钮，当你阅读到本文末尾时就可以看到一个事例<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2012/12/QQ截图20121218225522.png" alt="QQ截图20121218225522" /></strong> <a href="http://www.jiathis.com/help/html/wordpress-install-jiathis">访问插件主页</a></p>
+
+<p>3.连接管理：<strong>Link Manager</strong> <strong>　　wordpress3.5取消了连接管理功能（升级到3.5的还会有此功能，但全新安装的就没了），但wordpress官方出品了</strong>_|_Link Manager插件，功能和之前版本的连接管理完全一样<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218231653.png" alt="QQ截图20121218231653" />**</p>
+
+<p>4.文章阅读数统计：<strong>WP-PostViews Plus</strong> <strong>　　丰富的文章阅读数统计设定，还可防灌水。<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218230026.png" alt="QQ截图20121218230026" /></strong>   <a href="http://wwpteach.com/wp-postviews-plus">访问插件主页</a></p>
+
+<p>5.相关文章推荐：<strong>WP Keyword Link</strong> <strong>　　本是一款为博客添加关键词链接的插件，但也可以用于显示相关文章推荐<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218230518.png" alt="QQ截图20121218230518" /><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218230550.png" alt="" /></strong>   <a href="http://liucheng.name/789/">访问插件主页</a></p>
+
+<p>&nbsp;</p>
+
+<p>６．摘要输出：<strong>中文摘要插件</strong> <strong>　　可设定摘要的数量，并支持ｍｏｒｅ标签，完美支持中文，而外国人出的此类插件常常把中文输出为乱码。</strong> <img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218230526.png" alt="QQ截图20121218230526" /> <a href="http://kutailang.com/">访问插件主页</a></p>
+
+<p>7.评论框美化加强：<strong>多说</strong> 社会化评论框，为中小网站提供“新浪微博、QQ、人人、豆瓣等多帐号登录并评论”功能。“多说”帮你搭建更活跃，互动性更强的评论平台，并可用邮件提醒新评论。多说将接管你的评论框。欢迎大家在<a href="http://itoldme.net/">墙外的梯子</a>的多说评论框留言。<img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/12/QQ截图20121218230946.png" alt="QQ截图20121218230946" /> <a href="http://wordpress.org/extend/plugins/duoshuo/">访问插件主页</a></p>
+
+<p><menu id="userscript-search-by-image" type="context"></menu></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2012-12-18</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/wordpress/">wordpress</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/retrieve-weibo-relatedblog/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">找回新浪微博的“关联博客”功能</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/whatis-fuxkgfw/">
+            <span class="next-text nav-default">什么是科学上网</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

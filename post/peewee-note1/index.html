@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>peewee笔记(1)——基本语法 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/peewee-note1/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="peewee笔记(1)——基本语法" />
+<meta property="og:description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/peewee-note1/" />
+
+
+
+<meta property="article:published_time" content="2016-03-23T10:44:27&#43;00:00"/>
+
+<meta property="article:modified_time" content="2016-03-23T10:44:27&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="peewee笔记(1)——基本语法">
+<meta itemprop="description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级">
+
+
+<meta itemprop="datePublished" content="2016-03-23T10:44:27&#43;00:00" />
+<meta itemprop="dateModified" content="2016-03-23T10:44:27&#43;00:00" />
+<meta itemprop="wordCount" content="2518">
+
+
+
+<meta itemprop="keywords" content="peewee,MySQL,Python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="peewee笔记(1)——基本语法"/>
+<meta name="twitter:description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">peewee笔记(1)——基本语法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-23 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#peewee使用指南">peewee使用指南</a>
+<ul>
+<li><a href="#1-peewee介绍">1.peewee介绍</a></li>
+<li><a href="#2-使用指南">2.使用指南</a>
+<ul>
+<li><a href="#2-1-连接mysql">2.1.连接mysql</a>
+<ul>
+<li><a href="#2-1-1-连接形式">2.1.1.连接形式</a></li>
+</ul></li>
+<li><a href="#2-2-model定义">2.2.model定义</a>
+<ul>
+<li><a href="#2-2-1-概述">2.2.1.概述</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-orm操作-crud">3.ORM操作（CRUD）</a>
+<ul>
+<li><a href="#3-1-增加-create">3.1.增加（Create）</a></li>
+<li><a href="#3-2-查-retrieve">3.2.查（Retrieve）</a>
+<ul>
+<li><a href="#3-2-1-查询单条记录">3.2.1.查询单条记录</a></li>
+<li><a href="#3-2-2-查询全部">3.2.2.查询全部</a></li>
+<li><a href="#3-2-3-条件查询">3.2.3.条件查询</a></li>
+<li><a href="#3-2-3-计数count">3.2.3.计数count</a></li>
+<li><a href="#3-2-5-排序order-by">3.2.5.排序order_by</a></li>
+</ul></li>
+<li><a href="#3-3-删除-delete">3.3.删除（Delete）</a></li>
+<li><a href="#3-4-改-update">3.4.改（Update）</a></li>
+</ul></li>
+<li><a href="#4-外键与join">4.外键与join</a>
+<ul>
+<li><a href="#4-1-外键赋值">4.1.外键赋值</a></li>
+<li><a href="#4-2-涉及外键的查询">4.2.涉及外键的查询</a>
+<ul>
+<li><a href="#4-2-1-根据外键的主键查询">4.2.1 根据外键的主键查询</a></li>
+<li><a href="#4-2-2-根据外键的某字段查询-join外键">4.2.2 根据外键的某字段查询（join外键）</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="peewee使用指南">peewee使用指南</h1>
+
+<p>本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。</p>
+
+<h2 id="1-peewee介绍">1.peewee介绍</h2>
+
+<p>peewee是一个轻量级Python ORM，支持Sqlite、MYSQL、PostgresqlD等数据库。</p>
+
+<h2 id="2-使用指南">2.使用指南</h2>
+
+<h3 id="2-1-连接mysql">2.1.连接mysql</h3>
+
+<h4 id="2-1-1-连接形式">2.1.1.连接形式</h4>
+
+<p>使用url连接，方式和django类似，如：</p>
+
+<pre><code>DATABASES = {
+    'default': {
+        'ENGINE': 'mysql',
+        'NAME': 'name',
+        'USER': 'user',                      
+        'PASSWORD': 'pass',                  
+        'HOST': 'url',
+        'PORT': '',
+        'CONN_MAX_AGE': 100
+    }
+}
+</code></pre>
+
+<!-- more --> 
+
+<h3 id="2-2-model定义">2.2.model定义</h3>
+
+<h4 id="2-2-1-概述">2.2.1.概述</h4>
+
+<p>一句话描述：<strong>和Django一样用。</strong></p>
+
+<p>model定义基本和Django一致，
+需要注意的是：
+1. 属性和Django基本一致
+2. 有些Django并不影响使用的东西peewee不支持，目前注意到的是<code>Field.choices</code>。
+3. peewee可以使用<code>playhouse.signals</code>实现信号机制。</p>
+
+<p>详见：<a href="http://docs.peewee-orm.com/en/stable/peewee/models.html#fields">http://docs.peewee-orm.com/en/stable/peewee/models.html#fields</a></p>
+
+<h2 id="3-orm操作-crud">3.ORM操作（CRUD）</h2>
+
+<p>示例Model：</p>
+
+<pre><code class="language-python">from peewee import *
+
+db = SqliteDatabase('people.db')
+
+class Person(Model):
+    name = CharField(default='')
+    age = IntegerField(default=0) 
+
+    class Meta:
+        database = db # This model uses the &quot;people.db&quot; database.
+
+</code></pre>
+
+<p>注：这是个model示例，实际上&rsquo;database=db&rsquo;已经封装在<code>db.model.Model</code>中，在python-service-base中不用写。</p>
+
+<h3 id="3-1-增加-create">3.1.增加（Create）</h3>
+
+<ol>
+<li>create()方法：</li>
+</ol>
+
+<pre><code class="language-python">grandma =Person.create(name='Grandma', age = 1)
+</code></pre>
+
+<ol>
+<li>save()方法</li>
+</ol>
+
+<pre><code class="language-python">person = Person()
+person.name = 'bill'
+person.age =10
+person.save()
+</code></pre>
+
+<h3 id="3-2-查-retrieve">3.2.查（Retrieve）</h3>
+
+<p>peewee中查询记录分为get（查询单条记录）、select(条件查询批量记录)。</p>
+
+<h4 id="3-2-1-查询单条记录">3.2.1.查询单条记录</h4>
+
+<p>注：get方法获取不存在的记录会抛出异常。</p>
+
+<ol>
+<li><p><code>Product.get(name='abc')</code>
+或者
+<code>Product.get(Product.name=='abc')</code></p></li>
+
+<li><p><code>Product.select().where(Product.name=='abc').get()</code></p></li>
+
+<li><p><code>Product.select().where(Product.name=='abc').first()</code></p></li>
+</ol>
+
+<p><strong>注:</strong>
+1. get()支持name=&lsquo;abc&rsquo;也支持Product.name==&lsquo;abc&rsquo;的写法，where<strong>只</strong>Product.name==&lsquo;abc&rsquo;。
+2. 前两种都是get方法，查询不到会抛出异常，select方法查询不到返回None。</p>
+
+<h4 id="3-2-2-查询全部">3.2.2.查询全部</h4>
+
+<p><code>Product.select()</code>等价于Django中的<code>Product.select().all()</code>，返回一个可迭代的SelectQuery对象。</p>
+
+<h4 id="3-2-3-条件查询">3.2.3.条件查询</h4>
+
+<pre><code>Product.select().where(Product.name=='abc')
+</code></pre>
+
+<p>返回一个可迭代的SelectQuery对象。</p>
+
+<ul>
+<li>或(OR)查询：<strong>|</strong>，例如：<code>User.select().where((User.is_staff == True) | (User.is_superuser == True))</code></li>
+<li>且(AND)查询:<strong>&amp;</strong>，例如：<code>Product.select().where(Product.name=='abc',Product.owner_id==10086)</code> 或者 <code>Product.select().where((Product.name=='abc') &amp; (Product.owner_id==10086))</code></li>
+<li>非(NOT)：<strong>~</strong>,没用过。。。</li>
+
+<li><p>比较：peewee支持如下比较符</p>
+
+<pre><code>==  x equals y
+&lt;   x is less than y
+&lt;=  x is less than or equal to y
+&gt;   x is greater than y
+&gt;=  x is greater than or equal to y
+!=  x is not equal to y
+&lt;&lt;  x IN y, where y is a list or query
+&gt;&gt;  x IS y, where y is None/NULL
+%   x LIKE y where y may contain wildcards
+**  x ILIKE y where y may contain wildcards
+~   Negation
+</code></pre></li>
+
+<li><p>其他查询</p>
+
+<pre><code>.contains(substr)   Wild-card search for substring.
+.startswith(prefix)     Search for values beginning with prefix.
+.endswith(suffix)   Search for values ending with suffix.
+.between(low, high)     Search for values between low and high.
+.regexp(exp)    Regular expression match.
+.bin_and(value)     Binary AND.
+.bin_or(value)  Binary OR.
+.in_(value)     IN lookup (identical to &lt;&lt;).
+.not_in(value)  NOT IN lookup.
+.is_null(is_null)   IS NULL or IS NOT NULL. Accepts boolean param.
+.concat(other)  Concatenate two strings using ||.
+</code></pre></li>
+</ul>
+
+<p>示例：</p>
+
+<p>查询id in ids，ids是个list。</p>
+
+<ul>
+<li><code>Product.select().where(Product.id &lt;&lt; ids)</code></li>
+<li><code>Product.select().where(Product.id.in_(ids))</code></li>
+</ul>
+
+<p>等价于Django中的<code>Product.objects.filter(id__=ids)</code>。</p>
+
+<h4 id="3-2-3-计数count">3.2.3.计数count</h4>
+
+<p><code>Product.select().where(Product.name=='abc').count()</code>。
+SelectQuery对象并不支持len()方法，即执行<code>len(Product.select().where(Product.name=='abc'))</code>会抛出TypeError异常。虽然可以实现支持len，但滥用可能带来性能风险。</p>
+
+<h4 id="3-2-5-排序order-by">3.2.5.排序order_by</h4>
+
+<ul>
+<li>降序：使用&rdquo;-&ldquo;或者&rdquo;desc()&ldquo;,<code>Tweet.select().order_by(Tweet.created_date.desc())</code> 等价于 <code>Tweet.select().order_by(-Tweet.created_date)</code></li>
+<li>升序：使用&rdquo;+&ldquo;或者&rdquo;asc()&ldquo;或者不写，<code>User.select().order_by(+User.username)</code></li>
+</ul>
+
+<h3 id="3-3-删除-delete">3.3.删除（Delete）</h3>
+
+<p><strong>建议使用方法1</strong></p>
+
+<ol>
+<li><p>Model.delete (Python class method, in API Reference)
+<code>mall_models.Order.delete().where(mall_models.Order.id=order.id).execute()</code>
+或者</p>
+
+<pre><code class="language-python">p = mall_models.Order.delete().where(mall_models.Order.id=order.id)
+p.execute()
+</code></pre>
+
+<p>也就是执行了execute()才会执行删除操作。</p></li>
+
+<li><p>Model.delete_instance (Python method, in API Reference)</p>
+
+<pre><code>p = Product.get(Product.name=='abc')
+p.elete_instance()
+</code></pre></li>
+
+<li><p>DeleteQuery
+<code>dq = DeleteQuery(User).where(User.active == False).execute()</code></p></li>
+</ol>
+
+<h3 id="3-4-改-update">3.4.改（Update）</h3>
+
+<ol>
+<li><p>update修改(推荐)</p>
+
+<pre><code class="language-python">query = Stat.update(counter=Stat.counter + 1).where(Stat.url == request.url)
+query.execute()
+</code></pre>
+
+<p>同delete,也就是执行了execute()才会执行update操作。</p></li>
+
+<li><p>save修改</p>
+
+<pre><code class="language-python">for stat in Stat.select().where(Stat.url == request.url):
+ stat.counter += 1
+ stat.save()
+</code></pre></li>
+</ol>
+
+<p>两种方式都类似Django语句，<strong>需要特别注意的是，peewee的update是原子的（Atomic ）</strong>，在并发情况下可靠，即peewee的update语句效果等价于Django使用F表达式的update，如<code>rules.update(remained_count=F('remained_count') - 1, get_count=F('get_count') + 1)</code></p>
+
+<h2 id="4-外键与join">4.外键与join</h2>
+
+<pre><code class="language-python">class OrderHasProduct(models.Model):
+	order = models.ForeignKey(Order)
+	product = models.ForeignKey(Product, related_name='product')
+	price = models.FloatField()  # 商品单价
+
+
+class Order(models.Model):
+	order_id = models.CharField(max_length=100)  # 订单号
+	webapp_user_id = models.IntegerField()  # WebApp用户的id
+	webapp_id = models.CharField(max_length=20, verbose_name='店铺ID')  # webapp,订单成交的店铺id
+	webapp_source_id = models.IntegerField(default=0, verbose_name='商品来源店铺ID')  # 订单内商品实际来源店铺的id，已废弃
+	buyer_name = models.CharField(max_length=100)  # 购买人姓名
+
+
+class Product(models.Model):
+	owner = models.ForeignKey(User, related_name='user-product')
+	name = models.CharField(max_length=256)  # 商品名称
+	physical_unit = models.CharField(default='', max_length=256)  # 计量单位
+	price = models.FloatField(default=0.0)  # 商品价格
+
+</code></pre>
+
+<p>OrderHasProduct有外键Product和外键Order。</p>
+
+<h3 id="4-1-外键赋值">4.1.外键赋值</h3>
+
+<pre><code>mall_models.OrderHasProduct.create(
+	order=self.db_model,
+	product=product.id,
+	...
+</code></pre>
+
+<p>可以看到把<strong>外键实例</strong>或者<strong>外键实例的id</strong>都是可以的。</p>
+
+<h3 id="4-2-涉及外键的查询">4.2.涉及外键的查询</h3>
+
+<h4 id="4-2-1-根据外键的主键查询">4.2.1 根据外键的主键查询</h4>
+
+<p>直接<code>OrderHasProduct.select().where(where(mall_models.Order.id=order.id).product_id=10086)</code></p>
+
+<h4 id="4-2-2-根据外键的某字段查询-join外键">4.2.2 根据外键的某字段查询（join外键）</h4>
+
+<pre><code>class Rule(models.Model):
+	owner = models.ForeignKey(User)
+	name = models.CharField(max_length=20, db_index=True) 
+	valid = models.DecimalField(max_digits=65) 
+
+
+class Card(models.Model):
+	owner = models.ForeignKey(User)
+	rule = models.ForeignKey(Rule) 
+</code></pre>
+
+<p>Card有外键Rule。</p>
+
+<pre><code>count = Card.select().join(wzcard_models.Rule).where(Card.card_id.in_(ids),Rule.valid &gt;0).count()
+</code></pre>
+
+<p>的确很长，peewee不支持django风格的&rdquo;__&ldquo;（双下划线），所以就直街上join了，peewee默认使用INNER join。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-03-23</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/peewee/">peewee</a>
+          
+          <a href="/tags/mysql/">MySQL</a>
+          
+          <a href="/tags/python/">Python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/peewee-note2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">peewee笔记(2)——构建自已的peewee文档</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/">
+            <span class="next-text nav-default">emoji、Python、MySQL utf8mb4与UTF</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

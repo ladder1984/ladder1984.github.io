@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firefox on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/firefox/</link>
+    <description>Recent content in Firefox on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 03 Sep 2013 21:08:54 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/firefox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>油猴脚本推荐（二）</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Tue, 03 Sep 2013 21:08:54 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>油猴（Greasemonkey）是Firefox上的一个著名扩展，为火狐带来了强大的功能，通过海量的脚本（http://userscript</description>
+    </item>
+    
+    <item>
+      <title>火狐Firefox优秀扩展推荐(二)</title>
+      <link>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Sun, 01 Sep 2013 13:49:26 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>火狐Firefox的优秀就在与其强大的可定制性，任何外观，任何功能，只有你想不到，没有做不到。这里就推荐几款火狐firefox优秀扩展，推荐</description>
+    </item>
+    
+    <item>
+      <title>油猴脚本推荐</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Sat, 16 Mar 2013 22:15:50 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</guid>
+      <description>油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScri</description>
+    </item>
+    
+    <item>
+      <title>火狐Firefox优秀扩展推荐</title>
+      <link>http://ladder1984.github.io/post/firefox-addons/</link>
+      <pubDate>Thu, 13 Dec 2012 18:21:30 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/firefox-addons/</guid>
+      <description>火狐firefox的优秀就在与其强大的可定制性，任何外观，任何功能，只有你想不到，没有做不到。这里就推荐几款火狐firefox优秀扩展，推荐</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/markdown/</link>
+    <description>Recent content in Markdown on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Mar 2014 14:18:33 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Markdown on Save Improved停止维护，已并入Jetpack</title>
+      <link>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</link>
+      <pubDate>Wed, 26 Mar 2014 14:18:33 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</guid>
+      <description>墙外的梯子长期使用的markdown插件Markdown on Save Improved业已停止维护，并且已并入Jetpack，markdown功能现在</description>
+    </item>
+    
+    <item>
+      <title>PHP Markdown——wordpress的markdown插件</title>
+      <link>http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Mon, 15 Apr 2013 00:32:32 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/</guid>
+      <description>《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-</description>
+    </item>
+    
+    <item>
+      <title>Markdown使用笔记</title>
+      <link>http://ladder1984.github.io/post/markdown%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 11 Apr 2013 08:00:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/markdown%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
+      <description>Markdown很优雅、简洁，但正因为简洁，所以存在着一些功能的缺失。本文介绍一些Markdown使用的补充。 HTML代码转义 虽然Markd</description>
+    </item>
+    
+    <item>
+      <title>使用Markdown写作Wordpress</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9Cwordpress/</link>
+      <pubDate>Thu, 04 Apr 2013 17:54:42 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9Cwordpress/</guid>
+      <description>前言 今时今日，Markdown已经越来越流行，作为最流行的博客程序——WordPress，虽然没有原生支持，但是有丰富的插件让WordPre</description>
+    </item>
+    
+    <item>
+      <title>使用Markdown写作</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9C/</link>
+      <pubDate>Thu, 04 Apr 2013 13:43:17 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9C/</guid>
+      <description>Markdown 是一种轻量级标记语言，创始人为John Gruber和Aaron Swartz。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的</description>
+    </item>
+    
+  </channel>
+</rss>

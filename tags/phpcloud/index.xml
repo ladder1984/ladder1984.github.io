@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phpcloud on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/phpcloud/</link>
+    <description>Recent content in Phpcloud on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Apr 2013 08:20:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/phpcloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决phpcloud 502 Bad Gateway休眠问题</title>
+      <link>http://ladder1984.github.io/post/%E8%A7%A3%E5%86%B3phpcloud-502-bad-gateway%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 09 Apr 2013 08:20:20 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%A7%A3%E5%86%B3phpcloud-502-bad-gateway%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</guid>
+      <description>phpcloud是个不错的免费空间,探针可见http://blog.itoldme.net/tz.php，但是也存在一个问题，如果你cnam</description>
+    </item>
+    
+    <item>
+      <title>用Chevereto搭建图床</title>
+      <link>http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Fri, 05 Apr 2013 00:27:11 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</guid>
+      <description>前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让</description>
+    </item>
+    
+    <item>
+      <title>PHPCloud安装使用Wordpress图文教程</title>
+      <link>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 18 Mar 2013 13:52:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</guid>
+      <description>PHPCloud http://www.phpcloud.com/ PHPCloud是由著名的Zend公司的提供的免费云，500M免费PHP空间，不限流量，速度不错。500M对于个人博客差不多够了。本文介</description>
+    </item>
+    
+  </channel>
+</rss>

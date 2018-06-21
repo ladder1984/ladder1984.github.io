@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IT评论 on Ladder1984</title>
+    <link>http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/</link>
+    <description>Recent content in IT评论 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 10 Apr 2013 08:00:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微信收费的质疑</title>
+      <link>http://ladder1984.github.io/post/%E5%BE%AE%E4%BF%A1%E6%94%B6%E8%B4%B9%E7%9A%84%E8%B4%A8%E7%96%91/</link>
+      <pubDate>Wed, 10 Apr 2013 08:00:59 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%BE%AE%E4%BF%A1%E6%94%B6%E8%B4%B9%E7%9A%84%E8%B4%A8%E7%96%91/</guid>
+      <description>前言 最近微信收费的传闻甚嚣尘上，一会是某部、某运营商的大老爷们说收费是必然的，一会是飞信说收费纯属谣言。谷歌搜索“微信收费”找到约 6,900,000 条结果，</description>
+    </item>
+    
+    <item>
+      <title>中国互联网免费产品盈利模式</title>
+      <link>http://ladder1984.github.io/post/profit-of-free-internet-product/</link>
+      <pubDate>Sun, 30 Dec 2012 00:15:54 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/profit-of-free-internet-product/</guid>
+      <description>中国互联网也有中国特色，并没有形成国外的用户付费的环境。但是产品要生存，还是需要盈利模式（注意，本文探讨的是产品盈利模式，并不是一整套商业模</description>
+    </item>
+    
+  </channel>
+</rss>

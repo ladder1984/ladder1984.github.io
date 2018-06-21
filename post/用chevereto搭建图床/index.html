@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用Chevereto搭建图床 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="用Chevereto搭建图床" />
+<meta property="og:description" content="前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" />
+
+
+
+<meta property="article:published_time" content="2013-04-05T00:27:11&#43;00:00"/>
+
+<meta property="article:modified_time" content="2013-04-05T00:27:11&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="用Chevereto搭建图床">
+<meta itemprop="description" content="前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让">
+
+
+<meta itemprop="datePublished" content="2013-04-05T00:27:11&#43;00:00" />
+<meta itemprop="dateModified" content="2013-04-05T00:27:11&#43;00:00" />
+<meta itemprop="wordCount" content="1180">
+
+
+
+<meta itemprop="keywords" content="phpcloud,wordpress," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用Chevereto搭建图床"/>
+<meta name="twitter:description" content="前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">用Chevereto搭建图床</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-04-05 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"> 网站建设 </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#用chevereto搭建图床">用Chevereto搭建图床</a>
+<ul>
+<li><a href="#1-chevereto下载">1. Chevereto下载</a></li>
+<li><a href="#2-chevereto部署">2. Chevereto部署</a></li>
+<li><a href="#3-和本地同步">3. 和本地同步</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="前言">前言</h1>
+
+<p>　　虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让人<strong>100%</strong>放心。原因如下：</p>
+
+<ol>
+<li>服务关闭或修改政策。连Google Reader都会被关闭，还有什么不会的呢？若是在未通知用户情况下突然关闭，那对用户造成的损失将会巨大的。</li>
+<li>网站被墙。天灾人祸导致图床服务器损坏，还有可能回复，而一旦被墙，就是不可抗拒的。</li>
+<li>图片被删除。就算是合法的文件，也不能保证图床服务商因为某种政策原因删除你的图片。</li>
+</ol>
+
+<p>　　如果图床出了问题，即使你保存了图片，更换文章中的图片url也是个复杂的工程。所以，搭建自己的图床是个不错的选择，当然在专业的图床供应商处购买付费服务也是不错的选择。搭建自己的图床，使用自己的域名，即使空间出了问题，还是可以迁移的，因为引用的只是图片的url。鉴于Wordpress自带不错的图片管理功能，本文更适合空间、流量有限，并担心免费服务稳定性的人。</p>
+
+<h1 id="用chevereto搭建图床">用Chevereto搭建图床</h1>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2013/12/chevereto.png" alt="Chevereto" /></p>
+
+<p>　　图床程序有很多，以<strong>图床程序</strong>为关键词Google一下就有大量选择。选择Chevereto是因为它的易于部署，无需sql数据库。当然简单的代价就是功能很少，少到了你就把他当成可以外链图片的网盘就行了。当然，这是指的Chevereto免费版，其收费版是有相当丰富功能的。</p>
+
+<h2 id="1-chevereto下载">1. Chevereto下载</h2>
+
+<p>Chevereto最新的免费版是1.91，最后更新是2010年10月，下次更新估计在下世纪。</p>
+
+<p>Chevereto官网：<a href="http://chevereto.com/">http://chevereto.com/</a></p>
+
+<p>免费版下载：<a href="http://chevereto.googlecode.com/files/chevereto_nb1.91.zip">http://chevereto.googlecode.com/files/chevereto_nb1.91.zip</a></p>
+
+<h2 id="2-chevereto部署">2. Chevereto部署</h2>
+
+<p><strong>上传</strong>：像安装Wordpress等php程序安装一样，把upload文件夹的里的所有文件上传到网站根目录，如果你没有合适的免费空间，推荐使用phpcloud，使用方法，参考<a href="http://www.itoldme.net/archives/368">《PHPCloud安装使用WordPress图文教程》</a></p>
+
+<p><strong>修改文件权限</strong>：修改所有文件夹权限为777，phpcloud修改的方法，同样参考<a href="http://www.itoldme.net/archives/368">《PHPCloud安装使用WordPress图文教程》</a></p>
+
+<p><strong>设置中文</strong>：Chevereto默认是英文，但鉴于功能十分简单，是否修改中文也无所谓。修改方法为在config.php修改define(&lsquo;LANG&rsquo;, &lsquo;cn&rsquo;);</p>
+
+<p><strong>修改图片存储路径</strong>：默认是在/images文件夹内，修改方法为在config.php修改define(&lsquo;DIR_IM&rsquo;,&lsquo;images/&rsquo;);</p>
+
+<h2 id="3-和本地同步">3. 和本地同步</h2>
+
+<p>　　如果你嫌手动上传到图床麻烦的话，可以把图片保存到本机文件夹，利用WinSCP同步到图床服务器。具体方法参考这篇文章： <a href="http://housefansblog.tk/?p=352">利用sftp+winscp的自动同步功能建立属于自己的伪dropbox</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-04-05</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/phpcloud/">phpcloud</a>
+          
+          <a href="/tags/wordpress/">wordpress</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/%E7%BC%96%E7%A8%8B%E6%AF%94%E8%B5%9B%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%E7%B1%BB/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">编程比赛整理——算法类</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9Cwordpress/">
+            <span class="next-text nav-default">使用Markdown写作Wordpress</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

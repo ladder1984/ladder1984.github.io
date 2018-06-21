@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git笔记 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/git%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Git笔记 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 Nov 2015 11:31:25 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/git%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git笔记-撤销与回滚</title>
+      <link>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</link>
+      <pubDate>Thu, 19 Nov 2015 11:31:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</guid>
+      <description>1.撤销 撤销文件修改 checkout以文件作为参数时会修改文件为指定版本的状态。 - 撤销未暂存的文件：git checkout hello.py，git checkout .为所</description>
+    </item>
+    
+  </channel>
+</rss>

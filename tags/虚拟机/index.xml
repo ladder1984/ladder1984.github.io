@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>虚拟机 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+    <description>Recent content in 虚拟机 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 09 May 2013 21:59:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>虚拟机安装Linux操作系统</title>
+      <link>http://ladder1984.github.io/post/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Thu, 09 May 2013 21:59:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description>什么是linux Linux（/ˈlɪnəks/ LIN-əks）是一种自由和开放源代码的类UNIX操作系统。定义Linux的组件是Linux内</description>
+    </item>
+    
+    <item>
+      <title>配置外网访问VirtualBox内网站</title>
+      <link>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Sun, 02 Dec 2012 17:32:57 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</guid>
+      <description>VirtualBox网址http://www.virtualbox.org/ 网络连接方式选择NAT 选择端口转发,主机端口任意填写,如8888</description>
+    </item>
+    
+  </channel>
+</rss>

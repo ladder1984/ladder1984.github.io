@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>初读《计算机程序的构造和解释》(SICP) - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/first-read-sicp/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="初读《计算机程序的构造和解释》(SICP)" />
+<meta property="og:description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/first-read-sicp/" />
+
+
+
+<meta property="article:published_time" content="2013-01-14T03:12:05&#43;00:00"/>
+
+<meta property="article:modified_time" content="2013-01-14T03:12:05&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="初读《计算机程序的构造和解释》(SICP)">
+<meta itemprop="description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种">
+
+
+<meta itemprop="datePublished" content="2013-01-14T03:12:05&#43;00:00" />
+<meta itemprop="dateModified" content="2013-01-14T03:12:05&#43;00:00" />
+<meta itemprop="wordCount" content="1718">
+
+
+
+<meta itemprop="keywords" content="LISP,Scheme,SICP," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="初读《计算机程序的构造和解释》(SICP)"/>
+<meta name="twitter:description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">初读《计算机程序的构造和解释》(SICP)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-01-14 </span>
+        <div class="post-category">
+            
+              <a href="/categories/coding-life/"> Coding Life </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>中了<a href="http://book.douban.com/subject/6021440/">《黑客与画家》</a>关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种说不清道不明的向往已经够了。近日偶然看到《计算机程序的构造和解释》，也就是《Structure and Interpretation of Computer Programs》（简称为SICP），便什么也不顾的打乱既有计划，看了起来。虽然只读了十几页，也收获颇丰。</p>
+
+<pre><code>如果没有一点编程基础，也许感觉不到什么，但是如果之前学过C语言，或受C影响的其他语言，如C++、Java等，看LISP就仿佛进了一个新世界。一句无厘头的话就能表明我初读SICP的感受，&amp;ldquo;=竟然是等于号的意思，毁三观啊&amp;rdquo;。C等语言中&amp;ldquo;=&amp;rdquo;表示赋值，&amp;ldquo;==&amp;rdquo;才是等于的意思。以我粗浅的理解，LISP中赋值用define表示，如define x 1。这也隐隐表明着LISP与C系语言的巨大不同。据说现在主流的编程语言，滥觞就是C和LISP，果然大不同。
+
+LISP并没有一个统一的标准，似乎在未来也不可能形成标准，取而代之的是大量方言，最主流是的common LISP和scheme，因为LISP的灵活性，创建一种新的方言也十分容易。SICP一书使用的是scheme。书如其名，该书并不是以介绍scheme为目的，而是计算机程序的构造和解释，所以很遗憾的没有在开头就看到hello world。不过Google一下就有了：(display &amp;quot;Hello world&amp;quot;)。是的，就是这么简单。顺便提下另外两种方言的hello world，Common LISP：(display &amp;quot;Hello world&amp;quot;)。Clojure：(println &amp;quot;Hello, world!&amp;quot;)。
+
+看书的最初的印象，是熟悉的分号没了，取而代之的是无穷无尽的括号()，一开始看，真的容易搞不清分号的对应关系，不过看了一会就基本习惯了。另外就是奇怪的算术方法，如+ 1 1来表示1+1。结合分号，一个算术式真的看起来够复杂，不过相信这样自有其好处。
+
+除了LISP本身对我的吸引外，SICP也是很有深度的一本书。[Amazon](http://www.amazon.com/Structure-Interpretation-Computer-Programs-Edition/dp/0070004846/ref=sr_1_1?ie=UTF8&amp;amp;qid=1358103764&amp;amp;sr=8-1&amp;amp;keywords=Structure+and+Interpretation+of+Computer+Programs)上五星和一星居多这种完全不符合正态分布的打分，也显出本书的不烦。这本MIT发入门书，给我带来了极大的兴趣与快感。
+
+![http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/s1113106.jpg](http://www.itoldme.net/wordpress/wp-content/uploads/2014/09/s1113106.jpg)
+
+推荐阅读：
+</code></pre>
+
+<blockquote>
+<p><a href="http://mitpress.mit.edu/sicp/full-text/book/book.html"><em><strong>Structure and Interpretation of Computer Programs</strong></em></a> SICP在线阅读（英文原文）</p>
+
+<pre><code>    [**《黑客与画家》**](http://book.douban.com/subject/6021440/)豆瓣
+
+    **[为什么Lisp语言如此先进？（译文）](http://www.ruanyifeng.com/blog/2010/10/why_lisp_is_superior.html)**
+
+    *&amp;nbsp; [**计算机程序的构造和解释(豆瓣)**](http://book.douban.com/subject/1148282/)&amp;nbsp; 豆瓣
+
+     [**https://zh.wikipedia.org/zh/LISP**](https://zh.wikipedia.org/zh/LISP &quot;https://zh.wikipedia.org/zh/LISP&quot;)&amp;nbsp; 维基百科LISP词条
+
+    [**https://zh.wikipedia.org/wiki/Scheme**](https://zh.wikipedia.org/wiki/Scheme &quot;https://zh.wikipedia.org/wiki/Scheme&quot;) 维基百科Scheme词条
+
+    [**《Structure and Interpretation of Computer Programs, Second Edition》**](http://www.amazon.com/Structure-Interpretation-Computer-Programs-Edition/dp/0070004846/ref=sr_1_1?ie=UTF8&amp;amp;qid=1358103764&amp;amp;sr=8-1&amp;amp;keywords=Structure+and+Interpretation+of+Computer+Programs)Amazon.com
+</code></pre>
+</blockquote>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-01-14</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/lisp/">LISP</a>
+          
+          <a href="/tags/scheme/">Scheme</a>
+          
+          <a href="/tags/sicp/">SICP</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/how-about-those-bbs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">那些论坛还好吗</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/svn-download-googlecode/">
+            <span class="next-text nav-default">SVN下载Google Code源代码的简单方法</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

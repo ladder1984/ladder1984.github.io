@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Python Language Reference阅读笔记 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in The Python Language Reference阅读笔记 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Apr 2015 23:08:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>第2章 词法分析——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>第二章 词法分析（Lexical analysis） 一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语</description>
+    </item>
+    
+    <item>
+      <title>第1章 简介——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 14 Apr 2015 23:10:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>关于阅读笔记 《The Python 2 Language Reference阅读笔记》系列文章是我阅读Python 2的The Python Language Reference所记的笔记，不是翻译，也不</description>
+    </item>
+    
+  </channel>
+</rss>

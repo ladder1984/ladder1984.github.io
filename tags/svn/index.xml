@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svn on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/svn/</link>
+    <description>Recent content in Svn on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Jan 2013 21:46:15 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/svn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SVN下载Google Code源代码的简单方法</title>
+      <link>http://ladder1984.github.io/post/svn-download-googlecode/</link>
+      <pubDate>Thu, 10 Jan 2013 21:46:15 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/svn-download-googlecode/</guid>
+      <description>Google Code上的项目基本使用SVN做版本控制，window是没有原生支持SVN的，所以需要一款SVN工具。网上常见的方法是使用Tortoise</description>
+    </item>
+    
+  </channel>
+</rss>

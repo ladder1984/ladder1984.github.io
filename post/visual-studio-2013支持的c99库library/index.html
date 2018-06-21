@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Visual Studio 2013支持的C99库（library） - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="C99已经发布多年，但微软的Visual C&#43;&#43;尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/visual-studio-2013%E6%94%AF%E6%8C%81%E7%9A%84c99%E5%BA%93library/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Visual Studio 2013支持的C99库（library）" />
+<meta property="og:description" content="C99已经发布多年，但微软的Visual C&#43;&#43;尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/visual-studio-2013%E6%94%AF%E6%8C%81%E7%9A%84c99%E5%BA%93library/" />
+
+
+
+<meta property="article:published_time" content="2014-07-23T18:09:05&#43;00:00"/>
+
+<meta property="article:modified_time" content="2014-07-23T18:09:05&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Visual Studio 2013支持的C99库（library）">
+<meta itemprop="description" content="C99已经发布多年，但微软的Visual C&#43;&#43;尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大">
+
+
+<meta itemprop="datePublished" content="2014-07-23T18:09:05&#43;00:00" />
+<meta itemprop="dateModified" content="2014-07-23T18:09:05&#43;00:00" />
+<meta itemprop="wordCount" content="1337">
+
+
+
+<meta itemprop="keywords" content="C," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visual Studio 2013支持的C99库（library）"/>
+<meta name="twitter:description" content="C99已经发布多年，但微软的Visual C&#43;&#43;尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Visual Studio 2013支持的C99库（library）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-23 </span>
+        <div class="post-category">
+            
+              <a href="/categories/coding/"> Coding </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>C99已经发布多年，但微软的Visual C++尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大家有帮助。水平有限，翻译不当之处，欢迎指正。</p>
+
+<hr />
+
+<p>大家好，我是Pat Brenner，Visual C++库团队的开发人员。在这篇博文中，我想分享添加到Visual Studio 2013中的 C运行时库（run-time library）对C99支持的一些信息。</p>
+
+<p>总的来说，我们为如下头文件中缺失的函数增加了声明（declarations）和实现（implementations）：math.h，ctype.h，wctype.h，tdio.h， stdlib.h， and wchar.h。我们也新增了一些头文件，包括complex.h，stdbool.h，fenv.h，和 inttypes.h，并且增加了声明在它们中的所有函数的实现。此外，我们增加了新的C ++ wrapper headers（ccomplex, cfenv, cinttypes, ctgmath)并且更新了其他的一部分（ccomplex, cctype, clocale, cmath, cstdint, cstdio, cstring, cwchar, and cwctype）。</p>
+
+<p>大部分工作（除了stdbool.h和fenv.h外的所有C头文件）已经及时在Visual Studio 2013 Preview发布前完成并且已经可用，但是剩下的（stdbool.h, fenv.h 和 the C++ wrapper headers）将会在Visual Studio 2013 RTM中完成并发布。</p>
+
+<p>更详细的说，这些是我们增加的声明和实现，根据声明它们的头文件分组：</p>
+
+<ul>
+<li><p>math.h:</p>
+
+<ul>
+<li>float_t, double_t, fpclassify, isfinite isinf, isnan, isnormal, signbit</li>
+<li>HUGE_VALF, HUGE_VALL, INFINITY, NAN, MATH_ERRNO, MATH_ERREXCEPT</li>
+<li>FP_INFINITE, FP_NAN, FP_NORMAL, FP_SUBNORMAL, FP_ZERO, FP_ILOGB0, FP_ILOGBNAN</li>
+<li>acosh, acoshf, acoshl, asinh, asinhf, asinhl, atanh, atanhf, atanhl</li>
+<li>exp2, exp2f, exp2l, expm1, expm1f, expm1l</li>
+<li>ilogb, ilogbf, ilogbl, logb, logbf, logbl, log1p, log1pf, log1pl, log2, log2f, log2l</li>
+<li>scalbn, scalbnf, scalbnl, scalbln, scalblnf, scalblnl</li>
+<li>cbrt, cbrtf, cbrtl, erf, erff, erfl, erfc, erfcf, erfcl</li>
+<li>lgamma, lgammaf, lgammal, tgamma, tgammaf, tgammal</li>
+<li>nearbyint, nearbyintf, nearbyintl, nan, nanf, nanl</li>
+<li>rint, rintf, rintl, lrint, lrintf, lrintl, llrint, llrintf, llrintl</li>
+<li>round, roundf, roundl, lround, lroundf, lroundl, llround, llroundf, llroundl</li>
+<li>trunc, truncf, truncl, remainder, remainderf, remainder, remquo, remquof, remquol</li>
+<li>nextafter, nextafterf, nextafterl, nexttoward, nexttowardf, nexttowardl</li>
+<li>fdim, fdimf, fdiml, fmax, fmaxf, fmaxl, fmin, fminf, fminl, fma, fmaf, fmal</li>
+</ul></li>
+
+<li><p>complex.h:</p>
+
+<ul>
+<li>cacos, cacosf, cacosl, casin, casinf, casinl, catan, catanf, catanl</li>
+<li>ccos, ccosf, ccosl, csin, csinf, csinl, ctan, ctanf, ctanl</li>
+<li>cacosh, cacoshf, cacoshl, casinh, casinhf, casinhl, catanh, catanhf, catanhl</li>
+<li>ccosh, ccoshf, ccoshl, csinh, csinhf, csinhl, ctanh, ctanhf, ctanhl</li>
+<li>cexp, cexpf, cexpl, clog, clogf, clogl, cabs, cabsf, cabsl</li>
+<li>cpow, cpowf, cpowl, csqrt, csqrtf, csqrtl, carg, cargf, cargl</li>
+<li>cimag, cimagf, cimagl, conj, conjf, conjl, cproj, cprojf, cprojl, creal, crealf, creall</li>
+</ul></li>
+
+<li><p>fenv.h:</p>
+
+<ul>
+<li>fegetenv, fesetenv, feupdateenv, fegetexceptflag, fesetexceptflag</li>
+<li>feclearexcept, feholdexcept, fetestexcept, feraiseexcept</li>
+</ul></li>
+
+<li><p>inttypes.h:</p>
+
+<ul>
+<li>PRIi8, PRIi16, PRIi32, PRIi64, PRIiMAX, PRIiPTR, PRIiLEAST8, PRIiLEAST16, PRIiLEAST32, PRIiLEAST64, PRIiFAST8, PRIiFAST16, PRIiFAST32, PRIiFAST64</li>
+<li>PRIo8, PRIo16, PRIo32, PRIo64, PRIoMAX, PRIoPTR, PRIoLEAST8, PRIoLEAST16, PRIoLEAST32, PRIoLEAST64, PRIoFAST8, PRIoFAST16, PRIoFAST32, PRIoFAST64</li>
+<li>PRIu8, PRIu16, PRIu32, PRIu64, PRIuMAX, PRIuPTR, PRIuLEAST8, PRIuLEAST16, PRIuLEAST32, PRIuLEAST64, PRIuFAST8, PRIuFAST16, PRIuFAST32, PRIuFAST64</li>
+<li>PRIx8, PRIx16, PRIx32, PRIx64, PRIxMAX, PRIxPTR, PRIxLEAST8, PRIxLEAST16, PRIxLEAST32, PRIxLEAST64, PRIxFAST8, PRIxFAST16, PRIxFAST32, PRIxFAST64</li>
+<li>PRIX8, PRIX16, PRIX32, PRIX64, PRIXMAX, PRIXPTR, PRIXLEAST8, PRIXLEAST16, PRIXLEAST32, PRIXLEAST64, PRIXFAST8, PRIXFAST16, PRIXFAST32, PRIXFAST64</li>
+<li>SCNd8, SCNd16, SCNd32, SCNd64, SCNdMAX, SCNdPTR, SCNdLEAST8, SCNdLEAST16, SCNdLEAST32, SCNdLEAST64, SCNdFAST8, SCNdFAST16, SCNdFAST32, SCNdFAST64</li>
+<li>SCNi8, SCNi16, SCNi32, SCNi64, SCNiMAX, SCNiPTR, SCNiLEAST8, SCNiLEAST16, SCNiLEAST32, SCNiLEAST64, SCNiFAST8, SCNiFAST16, SCNiFAST32, SCNiFAST64</li>
+<li>SCNo8, SCNo16, SCNo32, SCNo64, SCNoMAX, SCNoPTR, SCNoLEAST8, SCNoLEAST16, SCNoLEAST32, SCNoLEAST64, SCNoFAST8, SCNoFAST16, SCNoFAST32, SCNoFAST64</li>
+<li>SCNu8, SCNu16, SCNu32, SCNu64, SCNuMAX, SCNuPTR, SCNuLEAST8, SCNuLEAST16, SCNuLEAST32, SCNuLEAST64, SCNuFAST8, SCNuFAST16, SCNuFAST32, SCNuFAST64</li>
+<li>SCNx8, SCNx16, SCNx32, SCNx64, SCNxMAX, SCNxPTR, SCNxLEAST8, SCNxLEAST16, SCNxLEAST32, SCNxLEAST64, SCNxFAST8, SCNxFAST16, SCNxFAST32, SCNxFAST64</li>
+<li>SCNX8, SCNX16, SCNX32, SCNX64, SCNXMAX, SCNXPTR, SCNXLEAST8, SCNXLEAST16, SCNXLEAST32, SCNXLEAST64, SCNXFAST8, SCNXFAST16, SCNXFAST32, SCNXFAST64</li>
+<li>imaxabs, imaxdiv, strtoimax, strtoumax, wcstoimax, wcstoumax</li>
+</ul></li>
+
+<li><p>ctype.h</p>
+
+<ul>
+<li>isblank</li>
+</ul></li>
+
+<li><p>wctype.h</p>
+
+<ul>
+<li>iswblank</li>
+</ul></li>
+
+<li><p>float.h</p>
+
+<ul>
+<li>DECIMAL_DIG, FLT_EVAL_METHOD</li>
+</ul></li>
+
+<li><p>stdarg.h</p>
+
+<ul>
+<li>va_copy</li>
+</ul></li>
+
+<li><p>stdbool.h</p>
+
+<ul>
+<li>bool, true, false, __bool_true_false_are_defined</li>
+</ul></li>
+
+<li><p>stdio.h</p>
+
+<ul>
+<li>vscanf, vfscanf, vsscanf</li>
+</ul></li>
+
+<li><p>stdlib.h</p>
+
+<ul>
+<li>atoll, strtof, strtold, strtoll, strtoull</li>
+</ul></li>
+
+<li><p>wchar.h</p>
+
+<ul>
+<li>vwscanf, vfwscanf, vswscanf, wcstof, wcstold, wcstoll, wcstoull
+我们知道这并不是对C99库函数的完整支持，尽我们的理解，缺少的部分如下：</li>
+</ul></li>
+
+<li><p>tgmath头文件缺失，这个头文件需要C编译器的支持。</p>
+
+<ul>
+<li>注意，ctgmath 头文件已经被添加——这是有可能的，因为这个头文件不需要tgmath.h头文件，只需要ccomplex 和 cmath headers头文件</li>
+</ul></li>
+
+<li><p>uchar.h偷文件缺失。这来自the C Unicode TR.</p></li>
+
+<li><p>printf家族中的一些格式说明符尚不支持</p></li>
+
+<li><p>stdio.h和wcahr.h中的snprintf and snwprintf 函数缺失。
+我希望你觉得这些信息有用，我们尽力优先实现我们认为重要的函数。</p></li>
+</ul>
+
+<p>Pat Brenner, Visual C++ Libraries Development Team</p>
+
+<hr />
+
+<p>&nbsp;</p>
+
+<p>原文链接：<a href="http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx">http://blogs.msdn.com/b/vcblog/archive/2013/07/19/c99-library-support-in-visual-studio-2013.aspx</a></p>
+
+<p>&nbsp;</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-07-23</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/c/">C</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">DJango开发笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/">
+            <span class="next-text nav-default">基于Java的个人信息助理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python模拟登录京东 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Python模拟登录京东" />
+<meta property="og:description" content="模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/" />
+
+
+
+<meta property="article:published_time" content="2015-09-13T23:16:01&#43;00:00"/>
+
+<meta property="article:modified_time" content="2015-09-13T23:16:01&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python模拟登录京东">
+<meta itemprop="description" content="模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos">
+
+
+<meta itemprop="datePublished" content="2015-09-13T23:16:01&#43;00:00" />
+<meta itemprop="dateModified" content="2015-09-13T23:16:01&#43;00:00" />
+<meta itemprop="wordCount" content="1083">
+
+
+
+<meta itemprop="keywords" content="Python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python模拟登录京东"/>
+<meta name="twitter:description" content="模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python模拟登录京东</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-09-13 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#模拟登录的方法">模拟登录的方法</a></li>
+<li><a href="#数据准备">数据准备</a></li>
+<li><a href="#进行登录">进行登录</a></li>
+<li><a href="#完整代码">完整代码</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="模拟登录的方法">模拟登录的方法</h2>
+
+<p>真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Post请求，向网站服务器提交数据。模拟登录就是通过程序对这种行为进行模拟，所以一是要准备账号、密码等信息，二是要像用户一样进行post。</p>
+
+<p>但是，通常网站都会限制程序的模拟登录，通常的方法也就是在上面提到的两点上进行检测。一是增加要提交的校验信息，二是检测post的行为。</p>
+
+<p>本文介绍使用Python进行模拟登录京东网，使用PyQuery来捕捉京东增加的校验信息，用requests执行post请求。</p>
+
+<h2 id="数据准备">数据准备</h2>
+
+<p>首先找到京东的登录页面<a href="https://passport.jd.com/new/login.aspx">https://passport.jd.com/new/login.aspx</a> ,随便提交一次，发现post的地址是<a href="https://passport.jd.com/uc/loginService">https://passport.jd.com/uc/loginService</a> ，以及post数据为：</p>
+
+<pre><code>uuid:53c85802-XXX-ebdd952dda93
+machineNet:
+machineCpu:
+machineDisk:
+SGIARTgLfH:dJGep
+loginname:XXXX
+nloginpwd:XXX
+loginpwd:XXX
+chkRememberMe:on
+authcode:
+</code></pre>
+
+<p>其中,<code>loginname</code>是用户名，<code>nloginpwd</code>和<code>loginpwd</code>都是密码，<code>uuid</code>、loginname上面的一组数据(本例中为SGIARTgLfH:dJGep)三者都是用于验证登录的随机字符串。<code>authcode</code>为验证码,<code>chkRememberMe</code>为是否自动登录。其他的项留空。</p>
+
+<p>所以，重要的是获取uuid和那组随机数据。这些数据都在登录页面<a href="https://passport.jd.com/new/login.aspx">https://passport.jd.com/new/login.aspx</a> 中。检查该页面源码，这些数据都在<form id="formlogin">表格中，使用pyquery进行选择，代码为：</p>
+
+<pre><code>uuid = d(&quot;#uuid&quot;).attr(&quot;value&quot;)
+left = d('#formlogin input[type=&quot;hidden&quot;]:eq(4)').attr(&quot;name&quot;)
+right = d('#formlogin input[type=&quot;hidden&quot;]:eq(4)').attr(&quot;value&quot;)
+</code></pre>
+
+<p>另外一个重要数据是验证码，在多次尝试登录或者其他京东不喜欢的情况下，会要求填写验证码。同样使用pyquery查找验证码，代码为：</p>
+
+<pre><code>auth_img_url = d('#JD_Verification1').attr(&quot;src2&quot;)
+</code></pre>
+
+<p>然后下载验证码，在不是很频繁登录的情况下，手动填写就够了。</p>
+
+<p>需要<strong>注意</strong>的是，京东的网页随时可能修改，post的数据和数据的来源都要根据实际情况确定。</p>
+
+<h2 id="进行登录">进行登录</h2>
+
+<p>登录操作使用requests，需要注意的是，要使用requests中的Session，首先创建<code>s = requests.Session()</code>，然后使用<code>s.post</code>和<code>s.get</code>进行操作。<code>s.post(login_post_url, data=login_data)</code>即可。返回<code>({&quot;success&quot;:&quot;http://www.jd.com&quot;})</code>表示登录成功，可以使用s会话进行后续操作。</p>
+
+<h2 id="完整代码">完整代码</h2>
+
+<p>完整代码如下：</p>
+
+<p>{% gist 2a1231184de59a725f64 login_jingdong.py %}</p>
+
+<p>或访问gist查看<a href="https://gist.github.com/ladder1984/2a1231184de59a725f64">https://gist.github.com/ladder1984/2a1231184de59a725f64</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-09-13</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">Python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MySQL时间精确度问题</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">第2章 词法分析——The Python Language Reference阅读笔记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

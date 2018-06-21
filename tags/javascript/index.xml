@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/javascript/</link>
+    <description>Recent content in JavaScript on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 25 Sep 2015 18:38:43 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用页面可见性API Visibility</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/</link>
+      <pubDate>Fri, 25 Sep 2015 18:38:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/</guid>
+      <description>介绍 可见性API的好处是判断当前页面是否可见，并基于此执行不同的操作，通常可以节省不少资源，比如轮询，比如视频播放。 可见性API包括两个属性</description>
+    </item>
+    
+  </channel>
+</rss>

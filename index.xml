@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ladder1984</title>
+    <link>http://ladder1984.github.io/</link>
+    <description>Recent content on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 09 Sep 2017 00:33:43 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes笔记</title>
+      <link>http://ladder1984.github.io/post/kubernetes%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 09 Sep 2017 00:33:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/kubernetes%E7%AC%94%E8%AE%B0/</guid>
+      <description>1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器</description>
+    </item>
+    
+    <item>
+      <title>git总结</title>
+      <link>http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 24 Aug 2017 21:06:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/</guid>
+      <description>git中的位置 仓库 工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。 暂存区：</description>
+    </item>
+    
+    <item>
+      <title>浅谈行为驱动开发(BDD)</title>
+      <link>http://ladder1984.github.io/post/%E6%B5%85%E8%B0%88%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91bdd/</link>
+      <pubDate>Tue, 16 May 2017 00:45:44 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B5%85%E8%B0%88%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91bdd/</guid>
+      <description>简介 BDD（Behaviour-Driven Development行为驱动开发）是一种敏捷开放方式，鼓励开发者、测试、业务方参与开发协作，虽</description>
+    </item>
+    
+    <item>
+      <title>git tag应用</title>
+      <link>http://ladder1984.github.io/post/git-tag%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Tue, 28 Feb 2017 14:59:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git-tag%E5%BA%94%E7%94%A8/</guid>
+      <description>1. Tag概述 像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布</description>
+    </item>
+    
+    <item>
+      <title>git master分支回滚指南</title>
+      <link>http://ladder1984.github.io/post/how-to-revert-on-git-master-branch/</link>
+      <pubDate>Wed, 24 Aug 2016 23:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/how-to-revert-on-git-master-branch/</guid>
+      <description>1. 概述 1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限</description>
+    </item>
+    
+    <item>
+      <title>peewee笔记(2)——构建自已的peewee文档</title>
+      <link>http://ladder1984.github.io/post/peewee-note2/</link>
+      <pubDate>Mon, 28 Mar 2016 20:17:01 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note2/</guid>
+      <description>背景 开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官</description>
+    </item>
+    
+    <item>
+      <title>peewee笔记(1)——基本语法</title>
+      <link>http://ladder1984.github.io/post/peewee-note1/</link>
+      <pubDate>Wed, 23 Mar 2016 10:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note1/</guid>
+      <description>peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级</description>
+    </item>
+    
+    <item>
+      <title>emoji、Python、MySQL utf8mb4与UTF</title>
+      <link>http://ladder1984.github.io/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/</link>
+      <pubDate>Sun, 20 Mar 2016 21:16:31 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/</guid>
+      <description>编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x</description>
+    </item>
+    
+    <item>
+      <title>git技巧</title>
+      <link>http://ladder1984.github.io/post/git%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Mon, 23 Nov 2015 10:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E6%8A%80%E5%B7%A7/</guid>
+      <description>git技巧，不断更新中 查找分支某个commit: git log|grep commitID git branch --contains commitID 可以配合grep指定分支 比较分支不同的commit git rev-list A ^B查找在B但不在A分</description>
+    </item>
+    
+    <item>
+      <title>git笔记-撤销与回滚</title>
+      <link>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</link>
+      <pubDate>Thu, 19 Nov 2015 11:31:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/</guid>
+      <description>1.撤销 撤销文件修改 checkout以文件作为参数时会修改文件为指定版本的状态。 - 撤销未暂存的文件：git checkout hello.py，git checkout .为所</description>
+    </item>
+    
+    <item>
+      <title>git rebase实践</title>
+      <link>http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Wed, 28 Oct 2015 19:54:15 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/</guid>
+      <description>准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才</description>
+    </item>
+    
+    <item>
+      <title>使用页面可见性API Visibility</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/</link>
+      <pubDate>Fri, 25 Sep 2015 18:38:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/</guid>
+      <description>介绍 可见性API的好处是判断当前页面是否可见，并基于此执行不同的操作，通常可以节省不少资源，比如轮询，比如视频播放。 可见性API包括两个属性</description>
+    </item>
+    
+    <item>
+      <title>MySQL时间精确度问题</title>
+      <link>http://ladder1984.github.io/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sun, 20 Sep 2015 00:17:59 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/</guid>
+      <description>问题背景 在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL</description>
+    </item>
+    
+    <item>
+      <title>Python模拟登录京东</title>
+      <link>http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/</link>
+      <pubDate>Sun, 13 Sep 2015 23:16:01 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E4%BA%AC%E4%B8%9C/</guid>
+      <description>模拟登录的方法 真实用户在登录网站时，是在登录页面填写自己的账号、密码信息，并点击登录按钮。从实现的角度上讲，实际上是执行了一个Http Pos</description>
+    </item>
+    
+    <item>
+      <title>第2章 词法分析——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC2%E7%AB%A0-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90the-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>第二章 词法分析（Lexical analysis） 一个 Python 程序由 解析器(parser) 读入, 输入解析器的是由 词法分析器(lexical analyzer) 生成的 语</description>
+    </item>
+    
+    <item>
+      <title>第1章 简介——The Python Language Reference阅读笔记</title>
+      <link>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 14 Apr 2015 23:10:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%AC%AC1%E7%AB%A0-%E7%AE%80%E4%BB%8Bthe-python-language-reference%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>关于阅读笔记 《The Python 2 Language Reference阅读笔记》系列文章是我阅读Python 2的The Python Language Reference所记的笔记，不是翻译，也不</description>
+    </item>
+    
+    <item>
+      <title>把wordpress迁移到子目录</title>
+      <link>http://ladder1984.github.io/post/%E6%8A%8Awordpress%E8%BF%81%E7%A7%BB%E5%88%B0%E5%AD%90%E7%9B%AE%E5%BD%95/</link>
+      <pubDate>Fri, 12 Dec 2014 23:56:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%8A%8Awordpress%E8%BF%81%E7%A7%BB%E5%88%B0%E5%AD%90%E7%9B%AE%E5%BD%95/</guid>
+      <description>之前把wordpress安装在根目录，虽然这样建立wordpress很方便，但也会把根目录弄得很混乱，尤其是建立其他站点时很不方便，好在把w</description>
+    </item>
+    
+    <item>
+      <title>你好，Linode</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</link>
+      <pubDate>Mon, 01 Dec 2014 22:39:46 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</guid>
+      <description>一直对Linode很向往，恰巧Linode黑色星期五优惠，新用户赠送25美元，就入手了，可惜忘了使用lindoe10的优惠码，10美元就擦肩</description>
+    </item>
+    
+    <item>
+      <title>自动更新host的软件updateHosts</title>
+      <link>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</link>
+      <pubDate>Sun, 26 Oct 2014 22:27:02 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0host%E7%9A%84%E8%BD%AF%E4%BB%B6updatehosts/</guid>
+      <description>updateHosts 简介 自动从网络下载hosts文件，hosts源由用户设置。 hosts是什么？ hosts文件是一个用于储存计算机网络中各节点信息的计算机文件</description>
+    </item>
+    
+    <item>
+      <title>Python用PyInstaller打包笔记</title>
+      <link>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 22 Oct 2014 21:37:11 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python%E7%94%A8pyinstaller%E6%89%93%E5%8C%85%E7%AC%94%E8%AE%B0/</guid>
+      <description>为了把python发行到没有安装python的Windows环境使用，需要打包成exe可执行文件。现在常见的python打包工具有cx_Fr</description>
+    </item>
+    
+    <item>
+      <title>DJango开发笔记</title>
+      <link>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 12 Sep 2014 17:50:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>(图文无关，图片来自网络) 环境 IDE:JetBrains PyCharm 3.4.1 Python: 2.7.8 Django:1.7 MySQL:5.6.20 &amp;nbsp; 配置 数据库： #settings.py DATABASES = { &amp;lsquo;default&amp;rsquo;: { &amp;lsquo;ENGINE&amp;rsquo;: &amp;lsquo;django.db.backends.mysql&amp;rsquo;, &amp;lsquo;NAME&amp;rsquo;: &amp;lsquo;datebaseName&amp;rsquo;, &amp;lsquo;USER&amp;rsquo;: &amp;lsquo;username&amp;rsquo;, &amp;lsquo;PASSWORD&amp;rsquo;: &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;HOST&amp;rsquo;: &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;PORT&amp;rsquo;: &amp;lsquo;3306&amp;rsquo;, } } 相关指令 python manage.py syncdb python manage.py makemigrations python manage.py migrate &amp;nbsp; 参考文档 1.7</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 2013支持的C99库（library）</title>
+      <link>http://ladder1984.github.io/post/visual-studio-2013%E6%94%AF%E6%8C%81%E7%9A%84c99%E5%BA%93library/</link>
+      <pubDate>Wed, 23 Jul 2014 18:09:05 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/visual-studio-2013%E6%94%AF%E6%8C%81%E7%9A%84c99%E5%BA%93library/</guid>
+      <description>C99已经发布多年，但微软的Visual C++尚未完整支持C99。我偶然看到VS官方博客上一篇介绍C99库支持的文章，特翻译了一下，希望对大</description>
+    </item>
+    
+    <item>
+      <title>基于Java的个人信息助理</title>
+      <link>http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/</link>
+      <pubDate>Wed, 25 Jun 2014 01:08:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/</guid>
+      <description>1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇</description>
+    </item>
+    
+    <item>
+      <title>Iconic One主题更改字体</title>
+      <link>http://ladder1984.github.io/post/iconic-one%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93/</link>
+      <pubDate>Wed, 04 Jun 2014 02:27:34 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/iconic-one%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93/</guid>
+      <description>一、起因 墙外的梯子一直使用Iconic One主题，但近期网络不稳定，导致本站也访问缓慢，经查其中一个原因是主题默认字体Ubuntu放在放在G</description>
+    </item>
+    
+    <item>
+      <title>考研路漫漫，虽千万人吾往矣</title>
+      <link>http://ladder1984.github.io/post/%E8%80%83%E7%A0%94%E8%B7%AF%E6%BC%AB%E6%BC%AB%E8%99%BD%E5%8D%83%E4%B8%87%E4%BA%BA%E5%90%BE%E5%BE%80%E7%9F%A3/</link>
+      <pubDate>Sun, 20 Apr 2014 18:54:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%80%83%E7%A0%94%E8%B7%AF%E6%BC%AB%E6%BC%AB%E8%99%BD%E5%8D%83%E4%B8%87%E4%BA%BA%E5%90%BE%E5%BE%80%E7%9F%A3/</guid>
+      <description>昔者曾子謂子襄曰：『子好勇乎？吾嘗聞大勇於夫子矣：自反而不縮，雖褐寬博，吾不惴焉；自反而縮，雖千萬人吾往矣。』孟施舍之守氣，又不如曾子之守約</description>
+    </item>
+    
+    <item>
+      <title>Markdown on Save Improved停止维护，已并入Jetpack</title>
+      <link>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</link>
+      <pubDate>Wed, 26 Mar 2014 14:18:33 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</guid>
+      <description>墙外的梯子长期使用的markdown插件Markdown on Save Improved业已停止维护，并且已并入Jetpack，markdown功能现在</description>
+    </item>
+    
+    <item>
+      <title>订阅豆瓣广播——基于feed43的RSS抓取</title>
+      <link>http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/</link>
+      <pubDate>Tue, 04 Feb 2014 19:33:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/</guid>
+      <description>相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有</description>
+    </item>
+    
+    <item>
+      <title>映像劫持与hosts，封禁程序与网址</title>
+      <link>http://ladder1984.github.io/post/%E6%98%A0%E5%83%8F%E5%8A%AB%E6%8C%81%E4%B8%8Ehosts%E5%B0%81%E7%A6%81%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BD%91%E5%9D%80/</link>
+      <pubDate>Thu, 09 Jan 2014 16:42:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%98%A0%E5%83%8F%E5%8A%AB%E6%8C%81%E4%B8%8Ehosts%E5%B0%81%E7%A6%81%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BD%91%E5%9D%80/</guid>
+      <description>当Deadline临近，项目还没完成，必须管住自己乱点的手，比如禁掉自己打开某个网页，某个游戏。可以通过映像劫持和hosts解决。 封禁制定程</description>
+    </item>
+    
+    <item>
+      <title>Code::Blocks的中文汉化</title>
+      <link>http://ladder1984.github.io/post/codeblocks%E7%9A%84%E4%B8%AD%E6%96%87%E6%B1%89%E5%8C%96/</link>
+      <pubDate>Fri, 03 Jan 2014 12:47:42 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/codeblocks%E7%9A%84%E4%B8%AD%E6%96%87%E6%B1%89%E5%8C%96/</guid>
+      <description>什么是Code::Blocks Code::Blocks是一个免费、开源、跨平台的集成开发环境，使用C++开发，并且使用wxWidgets做为</description>
+    </item>
+    
+    <item>
+      <title>Wordpress主题制作笔记</title>
+      <link>http://ladder1984.github.io/post/wordpress%E4%B8%BB%E9%A2%98%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 06 Nov 2013 23:20:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/wordpress%E4%B8%BB%E9%A2%98%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0/</guid>
+      <description>wordpress主题非常强大，完全可以定制出所需功能。把以下函数放入functions.php，把调用函数放入主题中所需的位置。 获取指定文</description>
+    </item>
+    
+    <item>
+      <title>为wordpress添加面包屑导航</title>
+      <link>http://ladder1984.github.io/post/%E4%B8%BAwordpress%E6%B7%BB%E5%8A%A0%E9%9D%A2%E5%8C%85%E5%B1%91%E5%AF%BC%E8%88%AA/</link>
+      <pubDate>Thu, 31 Oct 2013 20:31:17 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%B8%BAwordpress%E6%B7%BB%E5%8A%A0%E9%9D%A2%E5%8C%85%E5%B1%91%E5%AF%BC%E8%88%AA/</guid>
+      <description>面包屑导航（英语：Breadcrumb Trail）是在用户界面中的一种导航辅助。它是用户一个在程序或文件中确定和转移他们位置的一种方法。更多</description>
+    </item>
+    
+    <item>
+      <title>C语言undefined behaviour未定义行为</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/</link>
+      <pubDate>Sat, 19 Oct 2013 20:32:19 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/</guid>
+      <description>C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行</description>
+    </item>
+    
+    <item>
+      <title>Super RSS Reader——wordpress侧边栏rss加强插件</title>
+      <link>http://ladder1984.github.io/post/super-rss-readerwordpress%E4%BE%A7%E8%BE%B9%E6%A0%8Frss%E5%8A%A0%E5%BC%BA%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Sun, 22 Sep 2013 20:43:10 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/super-rss-readerwordpress%E4%BE%A7%E8%BE%B9%E6%A0%8Frss%E5%8A%A0%E5%BC%BA%E6%8F%92%E4%BB%B6/</guid>
+      <description>作为一名RSS低端老用户，悼念完Google Reader依然还是用着RSS，阅读的频率反而比以前更高了。本想写篇文章比较下当前的RSS Rea</description>
+    </item>
+    
+    <item>
+      <title>油猴脚本推荐（二）</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Tue, 03 Sep 2013 21:08:54 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>油猴（Greasemonkey）是Firefox上的一个著名扩展，为火狐带来了强大的功能，通过海量的脚本（http://userscript</description>
+    </item>
+    
+    <item>
+      <title>火狐Firefox优秀扩展推荐(二)</title>
+      <link>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Sun, 01 Sep 2013 13:49:26 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>火狐Firefox的优秀就在与其强大的可定制性，任何外观，任何功能，只有你想不到，没有做不到。这里就推荐几款火狐firefox优秀扩展，推荐</description>
+    </item>
+    
+    <item>
+      <title>悼Google Reader</title>
+      <link>http://ladder1984.github.io/post/%E6%82%BCgoogle-reader/</link>
+      <pubDate>Fri, 28 Jun 2013 01:36:28 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%82%BCgoogle-reader/</guid>
+      <description>2013年7月1日，Google Reader涅槃之日。 对于一个Google Reader重度用户来说，这无疑是一场灾难。对于一个Google R</description>
+    </item>
+    
+    <item>
+      <title>初识CentOS（二）——获得超级用户（root）权限</title>
+      <link>http://ladder1984.github.io/post/%E5%88%9D%E8%AF%86centos%E4%BA%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7root%E6%9D%83%E9%99%90/</link>
+      <pubDate>Sun, 19 May 2013 01:10:35 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%88%9D%E8%AF%86centos%E4%BA%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7root%E6%9D%83%E9%99%90/</guid>
+      <description>为了安全起见，linux对普通用户权限限制较大，但我们平时还是需要超级用户权限的，这类似于windows里的管理员权限。本文简单介绍如何在c</description>
+    </item>
+    
+    <item>
+      <title>虚拟机安装Linux操作系统</title>
+      <link>http://ladder1984.github.io/post/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Thu, 09 May 2013 21:59:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description>什么是linux Linux（/ˈlɪnəks/ LIN-əks）是一种自由和开放源代码的类UNIX操作系统。定义Linux的组件是Linux内</description>
+    </item>
+    
+    <item>
+      <title>一些科学上网有用的东西</title>
+      <link>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</link>
+      <pubDate>Thu, 09 May 2013 10:20:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</guid>
+      <description>smarthosts —— 我是一个云Hosts文件，用来干啥你懂的 - http://code.google.com/p/smarthosts/ goagent —— goagent是使用Python编写的网络软件，可以运行在Windows/Mac/L</description>
+    </item>
+    
+    <item>
+      <title>初识CentOS（一）——安装和选择更新源</title>
+      <link>http://ladder1984.github.io/post/%E5%88%9D%E8%AF%86centos%E4%B8%80%E5%AE%89%E8%A3%85%E5%92%8C%E9%80%89%E6%8B%A9%E6%9B%B4%E6%96%B0%E6%BA%90/</link>
+      <pubDate>Wed, 08 May 2013 22:04:25 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%88%9D%E8%AF%86centos%E4%B8%80%E5%AE%89%E8%A3%85%E5%92%8C%E9%80%89%E6%8B%A9%E6%9B%B4%E6%96%B0%E6%BA%90/</guid>
+      <description>什么是CentOS CentOS（Community Enterprise Operating System）是Linux发布版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定</description>
+    </item>
+    
+    <item>
+      <title>搬家到三号主机</title>
+      <link>http://ladder1984.github.io/post/%E6%90%AC%E5%AE%B6%E5%88%B0%E4%B8%89%E5%8F%B7%E4%B8%BB%E6%9C%BA/</link>
+      <pubDate>Sun, 05 May 2013 01:40:18 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%90%AC%E5%AE%B6%E5%88%B0%E4%B8%89%E5%8F%B7%E4%B8%BB%E6%9C%BA/</guid>
+      <description>最近博客总是宕机，速度也有问题，看了下主机后台，经常CPU占用率到100%，于是萌生了重新安装wordpress的想法。正好看的了三号主机提</description>
+    </item>
+    
+    <item>
+      <title>在SNS社交网络注销账号</title>
+      <link>http://ladder1984.github.io/post/%E5%9C%A8sns%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%B3%A8%E9%94%80%E8%B4%A6%E5%8F%B7/</link>
+      <pubDate>Wed, 24 Apr 2013 00:12:50 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%9C%A8sns%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%B3%A8%E9%94%80%E8%B4%A6%E5%8F%B7/</guid>
+      <description>在SNS删掉一个人，不如注销自己所有的SNS，这样再想去看也看不了了。账号自杀，一了百了。 注销豆瓣 注销后，该豆瓣帐号不可恢复; 你的私有数据将</description>
+    </item>
+    
+    <item>
+      <title>C语言main()函数标准写法</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95/</link>
+      <pubDate>Wed, 17 Apr 2013 16:49:12 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95/</guid>
+      <description>即使到了2013年的今天，还是能看到在C语言中void main()这种写法。也许是被VC++ 6宠坏了，也许是被谭浩强的《C语言程序设计》误导</description>
+    </item>
+    
+    <item>
+      <title>PHP Markdown——wordpress的markdown插件</title>
+      <link>http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Mon, 15 Apr 2013 00:32:32 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/</guid>
+      <description>《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-</description>
+    </item>
+    
+    <item>
+      <title>Markdown使用笔记</title>
+      <link>http://ladder1984.github.io/post/markdown%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 11 Apr 2013 08:00:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/markdown%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
+      <description>Markdown很优雅、简洁，但正因为简洁，所以存在着一些功能的缺失。本文介绍一些Markdown使用的补充。 HTML代码转义 虽然Markd</description>
+    </item>
+    
+    <item>
+      <title>微信收费的质疑</title>
+      <link>http://ladder1984.github.io/post/%E5%BE%AE%E4%BF%A1%E6%94%B6%E8%B4%B9%E7%9A%84%E8%B4%A8%E7%96%91/</link>
+      <pubDate>Wed, 10 Apr 2013 08:00:59 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%BE%AE%E4%BF%A1%E6%94%B6%E8%B4%B9%E7%9A%84%E8%B4%A8%E7%96%91/</guid>
+      <description>前言 最近微信收费的传闻甚嚣尘上，一会是某部、某运营商的大老爷们说收费是必然的，一会是飞信说收费纯属谣言。谷歌搜索“微信收费”找到约 6,900,000 条结果，</description>
+    </item>
+    
+    <item>
+      <title>解决phpcloud 502 Bad Gateway休眠问题</title>
+      <link>http://ladder1984.github.io/post/%E8%A7%A3%E5%86%B3phpcloud-502-bad-gateway%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 09 Apr 2013 08:20:20 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%A7%A3%E5%86%B3phpcloud-502-bad-gateway%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</guid>
+      <description>phpcloud是个不错的免费空间,探针可见http://blog.itoldme.net/tz.php，但是也存在一个问题，如果你cnam</description>
+    </item>
+    
+    <item>
+      <title>神奇的圆角空格</title>
+      <link>http://ladder1984.github.io/post/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%9C%86%E8%A7%92%E7%A9%BA%E6%A0%BC/</link>
+      <pubDate>Mon, 08 Apr 2013 08:00:36 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%A5%9E%E5%A5%87%E7%9A%84%E5%9C%86%E8%A7%92%E7%A9%BA%E6%A0%BC/</guid>
+      <description>有些程序就是喜欢自作聪明的删掉的你的空格&amp;rdquo; &amp;ldquo;,比如wordpress、Markdown。而圆角空格&amp;rdquo; &amp;r</description>
+    </item>
+    
+    <item>
+      <title>Tangstyle改造笔记</title>
+      <link>http://ladder1984.github.io/post/tangstyle%E6%94%B9%E9%80%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 07 Apr 2013 13:27:28 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/tangstyle%E6%94%B9%E9%80%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>Tangstyle是款相当不错的简洁风格主题，具有自适应特性，也免去了再安装手机版主题的麻烦。为了让它符号我的习惯，做了一些改造，使其符合我</description>
+    </item>
+    
+    <item>
+      <title>编程比赛整理——软件类</title>
+      <link>http://ladder1984.github.io/post/%E7%BC%96%E7%A8%8B%E6%AF%94%E8%B5%9B%E6%95%B4%E7%90%86%E8%BD%AF%E4%BB%B6%E7%B1%BB/</link>
+      <pubDate>Sat, 06 Apr 2013 14:00:24 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%BC%96%E7%A8%8B%E6%AF%94%E8%B5%9B%E6%95%B4%E7%90%86%E8%BD%AF%E4%BB%B6%E7%B1%BB/</guid>
+      <description>为方便想要参加编程比赛的人，本站整理总结了一些编程赛事。本文介绍产品类竞赛，用你的创意写就软件，算法类比赛请参考本站的《编程比赛整理——算法</description>
+    </item>
+    
+    <item>
+      <title>编程比赛整理——算法类</title>
+      <link>http://ladder1984.github.io/post/%E7%BC%96%E7%A8%8B%E6%AF%94%E8%B5%9B%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%E7%B1%BB/</link>
+      <pubDate>Sat, 06 Apr 2013 08:00:42 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%BC%96%E7%A8%8B%E6%AF%94%E8%B5%9B%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%E7%B1%BB/</guid>
+      <description>为方便想要参加编程比赛的人，本站整理总结了一些编程赛事。本文介绍算法类竞赛，这类比赛比拼纯粹的算法，不会让参加这生产完整的软件。产品类比赛请</description>
+    </item>
+    
+    <item>
+      <title>用Chevereto搭建图床</title>
+      <link>http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Fri, 05 Apr 2013 00:27:11 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%94%A8chevereto%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</guid>
+      <description>前言 虽然有imgur、imgbox等免费图床，以及skydrive、新浪微博等可以做图床的网络存储，而且这些服务稳定性还不错。但是依然不能让</description>
+    </item>
+    
+    <item>
+      <title>使用Markdown写作Wordpress</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9Cwordpress/</link>
+      <pubDate>Thu, 04 Apr 2013 17:54:42 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9Cwordpress/</guid>
+      <description>前言 今时今日，Markdown已经越来越流行，作为最流行的博客程序——WordPress，虽然没有原生支持，但是有丰富的插件让WordPre</description>
+    </item>
+    
+    <item>
+      <title>使用Markdown写作</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9C/</link>
+      <pubDate>Thu, 04 Apr 2013 13:43:17 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8markdown%E5%86%99%E4%BD%9C/</guid>
+      <description>Markdown 是一种轻量级标记语言，创始人为John Gruber和Aaron Swartz。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的</description>
+    </item>
+    
+    <item>
+      <title>珍爱生命，远离VC6</title>
+      <link>http://ladder1984.github.io/post/%E7%8F%8D%E7%88%B1%E7%94%9F%E5%91%BD%E8%BF%9C%E7%A6%BBvc6/</link>
+      <pubDate>Mon, 01 Apr 2013 22:50:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%8F%8D%E7%88%B1%E7%94%9F%E5%91%BD%E8%BF%9C%E7%A6%BBvc6/</guid>
+      <description>一.什么是VC 6？ Microsoft Visual C++，（简称Visual C++、MSVC、VC++或VC）是微软Microsoft Visual Studio的一部分，C++开发</description>
+    </item>
+    
+    <item>
+      <title>C语言判断输入是否是整数</title>
+      <link>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B4%E6%95%B0/</link>
+      <pubDate>Thu, 28 Mar 2013 00:13:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B4%E6%95%B0/</guid>
+      <description>首先考虑可能的输入： 非数字的字符。 带小数点的浮点数。 &amp;nbsp; 对于第一种情况，考虑到scanf函数的返回值是成功输入的数量，用if(scanf(&amp;l</description>
+    </item>
+    
+    <item>
+      <title>PHPCloud安装使用Wordpress图文教程</title>
+      <link>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 18 Mar 2013 13:52:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</guid>
+      <description>PHPCloud http://www.phpcloud.com/ PHPCloud是由著名的Zend公司的提供的免费云，500M免费PHP空间，不限流量，速度不错。500M对于个人博客差不多够了。本文介</description>
+    </item>
+    
+    <item>
+      <title>油猴脚本推荐</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Sat, 16 Mar 2013 22:15:50 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</guid>
+      <description>油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScri</description>
+    </item>
+    
+    <item>
+      <title>域名从华夏名网转出</title>
+      <link>http://ladder1984.github.io/post/domain-transferred-from-huaxia/</link>
+      <pubDate>Mon, 11 Mar 2013 14:51:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/domain-transferred-from-huaxia/</guid>
+      <description>在华夏名网注册的本站域名http://www.itoldme.net，用了一段时间，虽然没感觉到到什么问题，但是把域名注册在国内总是缺乏安全</description>
+    </item>
+    
+    <item>
+      <title>Typecho版日志上线</title>
+      <link>http://ladder1984.github.io/post/typecho-log-on-line/</link>
+      <pubDate>Tue, 26 Feb 2013 13:51:22 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/typecho-log-on-line/</guid>
+      <description>记录我的生活随笔，纯粹个人吐槽，没浏览价值，顺便使用一下Typecho玩玩。 typecho是一款博客程序，它在GPL Version 2许可证下发行，基于P</description>
+    </item>
+    
+    <item>
+      <title>Hostker虚拟主机公测邀请码（每日更新）</title>
+      <link>http://ladder1984.github.io/post/hostker-virtual-host-the-beta-invitation-yards-updated-daily/</link>
+      <pubDate>Sun, 24 Feb 2013 22:31:08 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/hostker-virtual-host-the-beta-invitation-yards-updated-daily/</guid>
+      <description>Hostker官网：[http://www.hostker.com/](http://www.hostker.com/) 什么是Hostker</description>
+    </item>
+    
+    <item>
+      <title>纪念那些消逝的杀毒软件及其他论坛BBS</title>
+      <link>http://ladder1984.github.io/post/remember-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 02:39:44 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/remember-those-bbs/</guid>
+      <description>那是WEB1.0的年代，那是属于论坛BBS的时代。Discuz!和PHPWind两个易用的建站程序，为我们带来了数不尽的论坛，为我们带来了多</description>
+    </item>
+    
+    <item>
+      <title>那些论坛还好吗</title>
+      <link>http://ladder1984.github.io/post/how-about-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 01:12:58 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/how-about-those-bbs/</guid>
+      <description>有几年不怎么逛论坛了，曾经也是个ID收割机，虽然还有很多论坛没有ID，留下遗憾。最近又忽然想起以前，想起以前逛论坛的岁月。再登录那些论坛，有</description>
+    </item>
+    
+    <item>
+      <title>初读《计算机程序的构造和解释》(SICP)</title>
+      <link>http://ladder1984.github.io/post/first-read-sicp/</link>
+      <pubDate>Mon, 14 Jan 2013 03:12:05 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/first-read-sicp/</guid>
+      <description>中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种</description>
+    </item>
+    
+    <item>
+      <title>SVN下载Google Code源代码的简单方法</title>
+      <link>http://ladder1984.github.io/post/svn-download-googlecode/</link>
+      <pubDate>Thu, 10 Jan 2013 21:46:15 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/svn-download-googlecode/</guid>
+      <description>Google Code上的项目基本使用SVN做版本控制，window是没有原生支持SVN的，所以需要一款SVN工具。网上常见的方法是使用Tortoise</description>
+    </item>
+    
+    <item>
+      <title>Wordpress禁止统计代码计算管理员本人访问</title>
+      <link>http://ladder1984.github.io/post/not-analyse-admin/</link>
+      <pubDate>Mon, 07 Jan 2013 07:07:34 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/not-analyse-admin/</guid>
+      <description>如果把站长本人的浏览量计入统计统计数据，显然数据就不准了，影响分析价值，尤其是像我这样的浏览量不本来就小的网站。完全可以利用wordpres</description>
+    </item>
+    
+    <item>
+      <title>Hostker免费云主机邀请码若干（已失效）</title>
+      <link>http://ladder1984.github.io/post/hostker-invitation/</link>
+      <pubDate>Sun, 06 Jan 2013 17:25:53 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/hostker-invitation/</guid>
+      <description>Hostker云主机目前免费内侧中，墙外的梯子将会每天提供一枚邀请码。有兴趣的同学可以前去折腾练手，或者试试作长期使用，毕竟90后创业的公司</description>
+    </item>
+    
+    <item>
+      <title>所谓考试，一切随缘</title>
+      <link>http://ladder1984.github.io/post/exam-in-university/</link>
+      <pubDate>Sun, 06 Jan 2013 00:00:32 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/exam-in-university/</guid>
+      <description>大学的考试&amp;hellip;&amp;hellip; 题目不会做，很忧伤； 题目会做，还是挂科了，很忧伤； 没人给发答案，很忧伤； 有人发答案，抄不成，很忧伤</description>
+    </item>
+    
+    <item>
+      <title>对搜索引擎无语了</title>
+      <link>http://ladder1984.github.io/post/i-can-say-nothin-to-search-engine/</link>
+      <pubDate>Wed, 02 Jan 2013 12:06:06 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/i-can-say-nothin-to-search-engine/</guid>
+      <description>2012-12-02到今天整整建站一个月。20几号时把域名由itoldme.net改为www.itoldme.net。虽然这个改动很简单，而</description>
+    </item>
+    
+    <item>
+      <title>python写的简单批量下载器</title>
+      <link>http://ladder1984.github.io/post/python-downloader/</link>
+      <pubDate>Wed, 02 Jan 2013 01:15:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python-downloader/</guid>
+      <description>&lt;p&gt;闲得无聊，用python写了个简易下载器，把教务系统中所有人的照片下载下来了。俗话说“人生苦短，我用python”，所以用python实现只需要几行代码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《算法艺术与信息学竞赛》黑书到手</title>
+      <link>http://ladder1984.github.io/post/codeblackbook/</link>
+      <pubDate>Tue, 01 Jan 2013 03:30:12 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/codeblackbook/</guid>
+      <description>久闻刘汝佳的黑书《算法艺术与信息学竞赛》，前几天突然想买一本，突然发现当当有折扣，只用&amp;yen;17.60，果断下单。27日晚上下单，终于还</description>
+    </item>
+    
+    <item>
+      <title>博客添加简单的面包屑导航</title>
+      <link>http://ladder1984.github.io/post/addbreadcrumbs/</link>
+      <pubDate>Tue, 01 Jan 2013 01:16:31 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/addbreadcrumbs/</guid>
+      <description>下面说一下方法，使用这里的代码《WordPress Breadcrumbs Without a Plugin》，05.04.2012版本。本人略作修改，把1.“home”改成首页，</description>
+    </item>
+    
+    <item>
+      <title>中国互联网免费产品盈利模式</title>
+      <link>http://ladder1984.github.io/post/profit-of-free-internet-product/</link>
+      <pubDate>Sun, 30 Dec 2012 00:15:54 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/profit-of-free-internet-product/</guid>
+      <description>中国互联网也有中国特色，并没有形成国外的用户付费的环境。但是产品要生存，还是需要盈利模式（注意，本文探讨的是产品盈利模式，并不是一整套商业模</description>
+    </item>
+    
+    <item>
+      <title>DuckDuckGo，无过滤无追踪的搜索引擎</title>
+      <link>http://ladder1984.github.io/post/duckduckgo/</link>
+      <pubDate>Sat, 29 Dec 2012 21:10:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/duckduckgo/</guid>
+      <description>一.关于Duckduckgo DuckDuckGo是一个互联网搜索引擎，其总部位于美国宾州Valley Forge市。强调在传统搜索引擎的基础上</description>
+    </item>
+    
+    <item>
+      <title>约瑟夫环的数学解法</title>
+      <link>http://ladder1984.github.io/post/josephus-problem/</link>
+      <pubDate>Sat, 22 Dec 2012 20:57:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/josephus-problem/</guid>
+      <description>int Josephus(int n, int m)//总人数为n，从第一人开始数到m的退出， { int i, r = 0; for (i = 2; i &amp;lt;= n; i++) r = (r + m) % i; return r+1;//最后一个人的初始位置 }</description>
+    </item>
+    
+    <item>
+      <title>找回新浪微博的“关联博客”功能</title>
+      <link>http://ladder1984.github.io/post/retrieve-weibo-relatedblog/</link>
+      <pubDate>Fri, 21 Dec 2012 00:52:57 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/retrieve-weibo-relatedblog/</guid>
+      <description>虽然有很多方法把博文同步到新浪微博，但是设置“关联博客”应该还是最简单的方法，一次设置，完全自动发微博。然而现在的新来微博设置界面已经找不到</description>
+    </item>
+    
+    <item>
+      <title>wordpress插件推荐——主题功能实现</title>
+      <link>http://ladder1984.github.io/post/wordpressplugins-1/</link>
+      <pubDate>Tue, 18 Dec 2012 23:18:36 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/wordpressplugins-1/</guid>
+      <description>一些优秀的主题会提供一些特殊功能，如摘要输出、统计代码插入、相关文章推荐等功能。但不是每个主题都有丰富的功能，虽然可以通过修改代码实现，但有</description>
+    </item>
+    
+    <item>
+      <title>什么是科学上网</title>
+      <link>http://ladder1984.github.io/post/whatis-fuxkgfw/</link>
+      <pubDate>Sun, 16 Dec 2012 03:47:06 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/whatis-fuxkgfw/</guid>
+      <description>上网谁不会？还有什么科学不科学的。 但其实你只不过是在一堵墙内上个局域网罢了，其实你永远都没真正接触过真正的互联网。肖申克里的人习惯被关在墙里</description>
+    </item>
+    
+    <item>
+      <title>火狐Firefox优秀扩展推荐</title>
+      <link>http://ladder1984.github.io/post/firefox-addons/</link>
+      <pubDate>Thu, 13 Dec 2012 18:21:30 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/firefox-addons/</guid>
+      <description>火狐firefox的优秀就在与其强大的可定制性，任何外观，任何功能，只有你想不到，没有做不到。这里就推荐几款火狐firefox优秀扩展，推荐</description>
+    </item>
+    
+    <item>
+      <title>建站10天</title>
+      <link>http://ladder1984.github.io/post/mysite-for-10days/</link>
+      <pubDate>Thu, 13 Dec 2012 16:17:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/mysite-for-10days/</guid>
+      <description>自第一篇文章发表，我的网站http://itoldme.net 上线10天了。 域名：在华夏名网，优惠期39元买的一年．net域名，据客服说，非</description>
+    </item>
+    
+    <item>
+      <title>我对的我的大学的理解</title>
+      <link>http://ladder1984.github.io/post/my-comprehension-of-university/</link>
+      <pubDate>Thu, 13 Dec 2012 02:12:33 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/my-comprehension-of-university/</guid>
+      <description>是我的 &amp;nbsp; 是我的大学，我不能了解所有的大学，我不能了解我所在大学的一切，我只能感受到自己身处的小环境 &amp;nbsp; 是理解，人对客观事物的认识总是有偏差，不</description>
+    </item>
+    
+    <item>
+      <title>中国人与诺贝尔奖</title>
+      <link>http://ladder1984.github.io/post/chinese-and-nobel-prize/</link>
+      <pubDate>Tue, 11 Dec 2012 23:21:41 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/chinese-and-nobel-prize/</guid>
+      <description>本文中提到的的“中国人”并不是个严格的定义，包括中国籍、华裔（包括占中国人口绝大多数的汉族和其他民族）。既包括民国时期的中华民国，也包括如今</description>
+    </item>
+    
+    <item>
+      <title>我的手机常用软件——Android平台</title>
+      <link>http://ladder1984.github.io/post/software-android/</link>
+      <pubDate>Fri, 07 Dec 2012 19:42:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/software-android/</guid>
+      <description>联系人管理：go联系人加强版 短信：go短信加强版 即时通讯/IM：QQ office：金山wps 笔记本：有道云笔记 翻译：有道词典 安全软件：LBE</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下HUSTOJ安装时候遇到的问题——命令行方面</title>
+      <link>http://ladder1984.github.io/post/problem-of-install-hustoj/</link>
+      <pubDate>Thu, 06 Dec 2012 22:24:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/problem-of-install-hustoj/</guid>
+      <description>0.LIVECD安装时未能进入图形界面 alt+F1,输入startx 2.修改相关密码 修改root密码sudo passwd root 修改mysql密码： mysqladmin -uroot -proot password</description>
+    </item>
+    
+    <item>
+      <title>我的常用软件——windows平台</title>
+      <link>http://ladder1984.github.io/post/%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6windows%E5%B9%B3%E5%8F%B0/</link>
+      <pubDate>Tue, 04 Dec 2012 21:01:29 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6windows%E5%B9%B3%E5%8F%B0/</guid>
+      <description>即时通讯/IM:QQ 官方网站 浏览器:Waterfox/水狐 (火狐firefox的64位第三方编译版) [官方网站](http://www.wa</description>
+    </item>
+    
+    <item>
+      <title>配置外网访问VirtualBox内网站</title>
+      <link>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Sun, 02 Dec 2012 17:32:57 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</guid>
+      <description>VirtualBox网址http://www.virtualbox.org/ 网络连接方式选择NAT 选择端口转发,主机端口任意填写,如8888</description>
+    </item>
+    
+  </channel>
+</rss>

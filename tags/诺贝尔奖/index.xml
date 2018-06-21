@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>诺贝尔奖 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%A5%96/</link>
+    <description>Recent content in 诺贝尔奖 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Dec 2012 23:21:41 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%A5%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>中国人与诺贝尔奖</title>
+      <link>http://ladder1984.github.io/post/chinese-and-nobel-prize/</link>
+      <pubDate>Tue, 11 Dec 2012 23:21:41 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/chinese-and-nobel-prize/</guid>
+      <description>本文中提到的的“中国人”并不是个严格的定义，包括中国籍、华裔（包括占中国人口绝大多数的汉族和其他民族）。既包括民国时期的中华民国，也包括如今</description>
+    </item>
+    
+  </channel>
+</rss>

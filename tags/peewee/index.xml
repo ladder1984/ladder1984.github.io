@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Peewee on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/peewee/</link>
+    <description>Recent content in Peewee on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Mar 2016 20:17:01 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/peewee/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>peewee笔记(2)——构建自已的peewee文档</title>
+      <link>http://ladder1984.github.io/post/peewee-note2/</link>
+      <pubDate>Mon, 28 Mar 2016 20:17:01 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note2/</guid>
+      <description>背景 开源软件的一大好处就是我们可以根据自己的需要进行定制或优化，但这带来的问题是，修改可能无法合并的回社区。随着时间流逝，自己的版本可能和官</description>
+    </item>
+    
+    <item>
+      <title>peewee笔记(1)——基本语法</title>
+      <link>http://ladder1984.github.io/post/peewee-note1/</link>
+      <pubDate>Wed, 23 Mar 2016 10:44:27 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/peewee-note1/</guid>
+      <description>peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级</description>
+    </item>
+    
+  </channel>
+</rss>

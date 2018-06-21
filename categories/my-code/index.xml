@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Code on Ladder1984</title>
+    <link>http://ladder1984.github.io/categories/my-code/</link>
+    <description>Recent content in My Code on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 25 Jun 2014 01:08:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/categories/my-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于Java的个人信息助理</title>
+      <link>http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/</link>
+      <pubDate>Wed, 25 Jun 2014 01:08:07 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/</guid>
+      <description>1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇</description>
+    </item>
+    
+    <item>
+      <title>python写的简单批量下载器</title>
+      <link>http://ladder1984.github.io/post/python-downloader/</link>
+      <pubDate>Wed, 02 Jan 2013 01:15:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/python-downloader/</guid>
+      <description>&lt;p&gt;闲得无聊，用python写了个简易下载器，把教务系统中所有人的照片下载下来了。俗话说“人生苦短，我用python”，所以用python实现只需要几行代码。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

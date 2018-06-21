@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>科学上网 on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+    <description>Recent content in 科学上网 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 09 May 2013 10:20:43 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一些科学上网有用的东西</title>
+      <link>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</link>
+      <pubDate>Thu, 09 May 2013 10:20:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</guid>
+      <description>smarthosts —— 我是一个云Hosts文件，用来干啥你懂的 - http://code.google.com/p/smarthosts/ goagent —— goagent是使用Python编写的网络软件，可以运行在Windows/Mac/L</description>
+    </item>
+    
+    <item>
+      <title>什么是科学上网</title>
+      <link>http://ladder1984.github.io/post/whatis-fuxkgfw/</link>
+      <pubDate>Sun, 16 Dec 2012 03:47:06 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/whatis-fuxkgfw/</guid>
+      <description>上网谁不会？还有什么科学不科学的。 但其实你只不过是在一堵墙内上个局域网罢了，其实你永远都没真正接触过真正的互联网。肖申克里的人习惯被关在墙里</description>
+    </item>
+    
+  </channel>
+</rss>

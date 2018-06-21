@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>订阅豆瓣广播——基于feed43的RSS抓取 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="订阅豆瓣广播——基于feed43的RSS抓取" />
+<meta property="og:description" content="相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/" />
+
+
+
+<meta property="article:published_time" content="2014-02-04T19:33:40&#43;00:00"/>
+
+<meta property="article:modified_time" content="2014-02-04T19:33:40&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="订阅豆瓣广播——基于feed43的RSS抓取">
+<meta itemprop="description" content="相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有">
+
+
+<meta itemprop="datePublished" content="2014-02-04T19:33:40&#43;00:00" />
+<meta itemprop="dateModified" content="2014-02-04T19:33:40&#43;00:00" />
+<meta itemprop="wordCount" content="1007">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="订阅豆瓣广播——基于feed43的RSS抓取"/>
+<meta name="twitter:description" content="相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">订阅豆瓣广播——基于feed43的RSS抓取</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-02-04 </span>
+        <div class="post-category">
+            
+              <a href="/categories/about%E4%BA%92%E8%81%94%E7%BD%91/"> About互联网 </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#相关介绍">相关介绍</a></li>
+<li><a href="#使用方法">使用方法</a>
+<ul>
+<li><a href="#第一步-step-1-specify-source-page-address-url">第一步. Step 1. Specify source page address (URL)</a></li>
+<li><a href="#第二步-step-2-define-extraction-rules">第二步. Step 2. Define extraction rules</a></li>
+<li><a href="#第三步-step-3-define-output-format">第三步. Step 3. Define output format</a></li>
+<li><a href="#第四步-step-4-get-your-rss-feed">第四步. Step 4. Get your RSS feed</a></li>
+</ul></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="相关介绍">相关介绍</h1>
+
+<p>Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，<a href="https://web.archive.org/web/*/http:/feed43.com">archive.org</a>上在2006年也有记录，可见Feed43是个稳定、可长期使用的服务。更多信息参见Feed43官网：<a href="http://feed43.com/">http://feed43.com/</a></p>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed41.png" alt="" /></p>
+
+<h1 id="使用方法">使用方法</h1>
+
+<p>本文以我的豆瓣广播为例，地址：<a href="http://www.douban.com/people/2743322/statuses">http://www.douban.com/people/2743322/statuses</a></p>
+
+<p>打开<a href="http://feed43.com/">http://feed43.com/</a>，点击Create your own feed。</p>
+
+<h2 id="第一步-step-1-specify-source-page-address-url">第一步. Step 1. Specify source page address (URL)</h2>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed42.png" alt="" /></p>
+
+<p>输入所要生成网页的网址，&rdquo;Encoding&rdquo;要填写网页编码格式，一般可以省略，豆瓣广播为utf-8。点击&rdquo;Reload&rdquo;进入第二步。</p>
+
+<h2 id="第二步-step-2-define-extraction-rules">第二步. Step 2. Define extraction rules</h2>
+
+<p>这是关键的一步，选择要抓取的东西。</p>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed43.png" alt="" /></p>
+
+<p><strong>Global Search Pattern</strong>表示搜寻的范围，可以不填，表示搜寻整个网页。<strong>Item (repeatable) Search Pattern</strong> 里需要填入替换的规则，这里需要懂些html知识，如果不懂或者懒得找的话就继续看文章吧。具体写法可参见小众软件的教程<a href="http://www.appinn.com/feed43/">《FEED43 – 为没有 Feed 的网页生成 RSS 格式订阅源[教程]》</a>。本文介绍豆瓣广播的规则的具体写法。</p>
+
+<p>打开豆瓣广播网页的源文件，经观察发现，每条广播的动态都在名为status-item的div中。</p>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed44.png" alt="" /></p>
+
+<p>规则开头自然是<code>&lt;div class=&quot;status-item&quot;{}&gt;</code>，然后填入表示替换内容的<code>｛％｝</code>，一堆div做结尾自然不好处理，还好每个div后带个<code>.html --&gt;</code>，就用其作为结尾。整个规则是<code>&lt;div class=&quot;status-item&quot;{*}&gt;｛％｝.html --&gt;</code>，如图所示。然后点击Extract进入下一步。</p>
+
+<h2 id="第三步-step-3-define-output-format">第三步. Step 3. Define output format</h2>
+
+<p>这一步用于定义RSS输出格式，豆瓣广播根本就没有标题，所以就直接如图填写就可以了。</p>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed45.png" alt="" /></p>
+
+<p>其中的Item Link Template，直接填写豆瓣广播的地址是比较好的处理方法。点击Preview进入下一步。</p>
+
+<h2 id="第四步-step-4-get-your-rss-feed">第四步. Step 4. Get your RSS feed</h2>
+
+<p>这一步就可以获得输出的RSS地址，以及一些其他不重要的功能。</p>
+
+<p><img src="http://www.itoldme.net/wordpress/wp-content/uploads/2014/02/020414_1153_feed46.png" alt="" /></p>
+
+<h1 id="注意事项">注意事项</h1>
+
+<ol>
+<li>如果豆瓣广播的网页代码更改，则提取规则也需要更改，虽然这种情况很少发生</li>
+<li>免费版的抓取周期为6小时，付费版最快为15分钟，参见<a href="http://feed43.com/upgrade.html">http://feed43.com/upgrade.html</a></li>
+<li>抓取是以非登录状态，所以一些只有登录后才能看到的东西就看不到了</li>
+</ol>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-02-04</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Markdown on Save Improved停止维护，已并入Jetpack</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E6%98%A0%E5%83%8F%E5%8A%AB%E6%8C%81%E4%B8%8Ehosts%E5%B0%81%E7%A6%81%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BD%91%E5%9D%80/">
+            <span class="next-text nav-default">映像劫持与hosts，封禁程序与网址</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

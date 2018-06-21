@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 06 Dec 2012 22:24:14 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu下HUSTOJ安装时候遇到的问题——命令行方面</title>
+      <link>http://ladder1984.github.io/post/problem-of-install-hustoj/</link>
+      <pubDate>Thu, 06 Dec 2012 22:24:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/problem-of-install-hustoj/</guid>
+      <description>0.LIVECD安装时未能进入图形界面 alt+F1,输入startx 2.修改相关密码 修改root密码sudo passwd root 修改mysql密码： mysqladmin -uroot -proot password</description>
+    </item>
+    
+  </channel>
+</rss>

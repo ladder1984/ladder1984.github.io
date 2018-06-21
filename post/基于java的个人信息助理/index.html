@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基于Java的个人信息助理 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="基于Java的个人信息助理" />
+<meta property="og:description" content="1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/%E5%9F%BA%E4%BA%8Ejava%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E5%8A%A9%E7%90%86/" />
+
+
+
+<meta property="article:published_time" content="2014-06-25T01:08:07&#43;00:00"/>
+
+<meta property="article:modified_time" content="2014-06-25T01:08:07&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="基于Java的个人信息助理">
+<meta itemprop="description" content="1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇">
+
+
+<meta itemprop="datePublished" content="2014-06-25T01:08:07&#43;00:00" />
+<meta itemprop="dateModified" content="2014-06-25T01:08:07&#43;00:00" />
+<meta itemprop="wordCount" content="2611">
+
+
+
+<meta itemprop="keywords" content="Java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于Java的个人信息助理"/>
+<meta name="twitter:description" content="1 前言 “个人信息助理（Personal Information Assistant）”是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">基于Java的个人信息助理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-25 </span>
+        <div class="post-category">
+            
+              <a href="/categories/my-code/"> My Code </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-前言">1 前言</a></li>
+<li><a href="#2-需求分析">2 需求分析</a></li>
+<li><a href="#3-准备工作">3 准备工作</a>
+<ul>
+<li><a href="#3-1-数据库的选择">3.1 数据库的选择</a></li>
+<li><a href="#3-2-开发环境的选择">3.2 开发环境的选择</a>
+<ul>
+<li><a href="#3-2-1-ide的选择">3.2.1 IDE的选择</a></li>
+<li><a href="#3-2-1-字符编码-character-encoding-选择">3.2.1 字符编码（Character encoding）选择</a></li>
+<li><a href="#3-2-3-操作系统的选择">3.2.3 操作系统的选择</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#4-分析与设计">4 分析与设计</a>
+<ul>
+<li><a href="#4-1-三层架构">4.1 三层架构</a></li>
+<li><a href="#4-2-功能实现">4.2 功能实现</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="1-前言">1 前言</h2>
+
+<p><strong>“个人信息助理（Personal Information Assistant）”</strong>是我刚刚做完的课程设计的题目，也应该是很多人遇到的题目，但是搜索却发现没有一篇博客文章是讲这个的（也有可能是我没注意到），原因想必是这题目太水了，没什么拿出来讲的价值，我也是这么认为的。。。但鉴于博客很久没有更新了，便就此写点东西凑凑数，也算是对这次课程设计的总结。水平实在是渣，只为记录点自己的经验，顺便给后来同渣者点经验。误点进本页的大神请直接右上角（如果你的关闭按钮在左上角，呃，就左上角吧）。</p>
+
+<p>由于时间关系，也由于本人水平有限，最后的成品非常粗糙，各位姑且一看。本文不会贴完整代码，代码已在github开源。文档也不会贴完整，只会选我认为重要的讲，完整文档也会放出来。</p>
+
+<p>做个课设，写篇总结也是应该，虽然上交了一份厚厚的报告，但那是面向老师的，很多东西说不明白，说不清楚。而本文是面向作者自己、面向课设的。</p>
+
+<h2 id="2-需求分析">2 需求分析</h2>
+
+<p>直接抄书了，最终也是按照书上要求实现的。</p>
+
+<blockquote>
+<p>在现代信息社会里，人们越来越重视信息的交流与沟通，更加注重时间的有效利用，其中个人量也在高速增加，因此个人信息的管理与日常工作和生活中成为一项必不可少的内容，方便实用的个人信息管理工具对于提高信息利用率具有重要实际意义。随着个人电脑的普及，简单实用的个人信息助理工具成为人们日常个人信息管理的不错选择。
+  基本功能与要求：
+  具体需要实现以下一些基本功能。
+  1. <strong>权限验证</strong>：验证用户合法身份，保障个人信息安全。
+  2. <strong>口令维护</strong>：用户可以定期或不定期的更改登录口令，提高系统安全性。
+  3. <strong>日常记事</strong>：记录日常生活或者工作事件，以免遗忘，并提供记录的查询、浏览、修改和删除等管理功能。
+  4. <strong>通讯簿</strong>：记录朋友、亲属、同事等联系人的通信信息，以免遗忘，并提供记录的查询、浏览、修改和删除等功能。
+  5. <strong>密码备忘</strong>：记录各类密码信息，以免遗忘，并提供记录的查询、浏览、修改和删除等功能。</p>
+</blockquote>
+
+<p>稍微注意看下就知道3、4、5功能完全一样，都是对信息的<strong>查询、浏览、修改、删除</strong>，其实还有<strong>添加</strong>，不过既然书上没写，我就不改动了。</p>
+
+<h2 id="3-准备工作">3 准备工作</h2>
+
+<h3 id="3-1-数据库的选择">3.1 数据库的选择</h3>
+
+<p>首先要确定，<strong>不能选择</strong>需要服务器端运行数据库，因为PIA是面向桌面用户的，不必要，也不可能要求用户安装数据库，并要求用户配置。所以需要支持无服务器模式的数据库。为了用做题、为了用数据库而用数据库是不可取的，要考虑实际需求。考虑到编程语言是JAVA，所以进入我视野的有SQLite、Access、H2 DATABASE。最终选择了Access，原因很简单：</p>
+
+<ol>
+<li>没有解决SQLite数据库加密的问题。</li>
+<li>H2感觉有点复杂，没足够时间折腾。</li>
+<li>Access具备足够稳定、令人放心，海量的资料可供查询、能遇到的坑基本前人都遇到过，同时Access应对本系统足够了。</li>
+</ol>
+
+<p>Access也有缺点：
+ 1. 这是微软的产品，不知道这算不算原罪。
+ 2. 不能真正无服务器运行，至少要装个运行时。
+ 3. 跨平台待考，但也看到Jackcess这种有趣的linux解决方案。</p>
+
+<h3 id="3-2-开发环境的选择">3.2 开发环境的选择</h3>
+
+<h4 id="3-2-1-ide的选择">3.2.1 IDE的选择</h4>
+
+<p>只能说，MyEclipse足够<strong>卡</strong>，卡到不用考虑是否选择它。IntelliJ IDEA足够<strong>舒服</strong>，舒服到放不下手。同时MyEclipse是穷学生负担不起的，推荐使用免费的IntelliJ IDEA社区版 <a href="http://www.jetbrains.com/idea/download/。">http://www.jetbrains.com/idea/download/。</a></p>
+
+<h4 id="3-2-1-字符编码-character-encoding-选择">3.2.1 字符编码（Character encoding）选择</h4>
+
+<p>选择GBK，不要问我为什么，折腾成UTF-8也会遇到很多问题，在这上面我浪费了很多时间，也就不折腾了，系统默认好了。</p>
+
+<h4 id="3-2-3-操作系统的选择">3.2.3 操作系统的选择</h4>
+
+<p>Windows，既是开发环境，也是支持的平台。原因很简单：</p>
+
+<ol>
+<li>我用的Windows</li>
+<li>我选择了Access作为数据库</li>
+</ol>
+
+<h2 id="4-分析与设计">4 分析与设计</h2>
+
+<h3 id="4-1-三层架构">4.1 三层架构</h3>
+
+<blockquote>
+<p>三层架构(3-tier architecture) 通常意义上的三层架构就是将整个业务应用划分为：表现层（UI）、业务逻辑层（BLL）、数据访问层（DAL）。区分层次的目的即为了“高内聚，低耦合”的思想。
+  　　　引自 百度百科</p>
+</blockquote>
+
+<p>就个人信息助理而言，<strong>UI层</strong>的类用于GUI显示，以及从用户获得输入数据。<strong>BLL层</strong>的类用于把获得的数据生成sql语句。<strong>DAL层</strong>的类用于打开、关闭数据库，执行sql语句。</p>
+
+<p>另外写个PIA.java启动软件，并初始化。</p>
+
+<p>形成如下结构：
+<strong>PIA.java</strong></p>
+
+<p><strong>BLL</strong>/LoginBLL.java</p>
+
+<p><strong>BLL</strong>/addrBookBLL.java</p>
+
+<p><strong>BLL</strong>/notepadBLL.java</p>
+
+<p><strong>BLL</strong>/passMaintainBLL.java</p>
+
+<p><strong>BLL</strong>/pwdBLL.java</p>
+
+<p><strong>DAL</strong>/DB.java</p>
+
+<p><strong>UI</strong>/MainFrame.java</p>
+
+<p><strong>UI</strong>/addrBookDialog.java</p>
+
+<p><strong>UI</strong>/dbMaintainDialog.java</p>
+
+<p><strong>UI</strong>/loginDialog.java</p>
+
+<p><strong>UI</strong>/notepadDialog.java</p>
+
+<p><strong>UI</strong>/passMaintainDialog.java</p>
+
+<p><strong>UI</strong>/pwdDialog.java</p>
+
+<p><strong>UI</strong>/searchDialog.java</p>
+
+<h3 id="4-2-功能实现">4.2 功能实现</h3>
+
+<ol>
+<li>登入功能
+界面类：loginDialog.java
+业务逻辑类：loginBLL.java
+数据访问类：DB.java
+①   loginDialog.java
+生成登陆窗口，获得用户输入信息。
+②   loginBLL.java
+把用户信息与数据库内信息比较，返回校验结果。
+③   DB.java
+数据库访问类，负责打开数据库、关闭数据库、执行sql语句。</li>
+<li>登陆口令维护功能
+界面类：passMaintainDialog.java
+业务逻辑类：passMaintainBLL.java
+数据访问类：DB.java
+①   PassMaintainDialog.java
+创建口令维护窗口，获得新用户、新密码。
+②   passMaintainBLL.java
+用从界面获得的新用户名、新密码更新数据库信息。
+③   DB.java
+参见上文</li>
+<li>数据库维护功能
+类：dbMaintainDialog.java
+①   dbMaintainDialog.java
+备份数据库、还原数据库。</li>
+<li>密码备忘管理
+界面类：notepadDialog.java
+业务逻辑类：notepadBLL.java
+数据库访问类：DB.java
+①   notepadDialog.java
+创建用户界面，获取用户添加、修改、删除、搜索的信息
+②   pwdBLL.java
+把用户用户添加、修改、删除的密码备忘传入数据库。
+③   DB.java
+参见上文</li>
+<li>日常记事管理
+界面类:notepadDialog.java
+业务逻辑类：notepadBLL.java
+数据库访问类：DB.java
+①   notepadDialog.java
+创建用户界面，获取用户添加、修改、删除、搜索的日常记事
+②   notepadBLL.java
+③   DB.java</li>
+<li>通讯簿管理
+界面类:addrBookDialog.java
+业务逻辑类：addrBookBLL.java
+数据库访问类：DB.java
+①   addrBookDialog.java
+创建用户界面，获取用户添加、修改、删除、搜索的通讯簿条目
+②   notepadBLL.java
+③   DB.java
+参见上文</li>
+<li>显示主界面
+界面类：mainFrame.java
+业务逻辑类：PIA.java
+①   mainframe.java
+显示主界面。
+②   PIA.java
+启动软件。启动登陆框、启动主界面、连接数据库</li>
+</ol>
+
+<p><strong>本文分析设计比较简略，详情参见完整文档</strong></p>
+
+<p>题    目：       个人信息助理</p>
+
+<p>作    者：zeroten
+网    址：<a href="http://www.itoldme.net">http://www.itoldme.net</a>
+代码地址：<a href="https://github.com/ladder1984/PIA">https://github.com/ladder1984/PIA</a>
+文档说明：<a href="http://www.itoldme.net/archives/1126">http://www.itoldme.net/archives/1126</a>
+完整文档(OneDrive下载)：<a href="http://1drv.ms/1v2mZHq">http://1drv.ms/1v2mZHq</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-06-25</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/java/">Java</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/visual-studio-2013%E6%94%AF%E6%8C%81%E7%9A%84c99%E5%BA%93library/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Visual Studio 2013支持的C99库（library）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/iconic-one%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93/">
+            <span class="next-text nav-default">Iconic One主题更改字体</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>git rebase实践 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="git rebase实践" />
+<meta property="og:description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/" />
+
+
+
+<meta property="article:published_time" content="2015-10-28T19:54:15&#43;00:00"/>
+
+<meta property="article:modified_time" content="2015-10-28T19:54:15&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="git rebase实践">
+<meta itemprop="description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才">
+
+
+<meta itemprop="datePublished" content="2015-10-28T19:54:15&#43;00:00" />
+<meta itemprop="dateModified" content="2015-10-28T19:54:15&#43;00:00" />
+<meta itemprop="wordCount" content="1769">
+
+
+
+<meta itemprop="keywords" content="git," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git rebase实践"/>
+<meta name="twitter:description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">git rebase实践</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-28 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#准备知识">准备知识</a>
+<ul>
+<li><a href="#分支">分支</a></li>
+<li><a href="#pull">pull</a></li>
+<li><a href="#rebase的意义">rebase的意义</a></li>
+</ul></li>
+<li><a href="#新建分支">新建分支</a>
+<ul>
+<li><a href="#创建新的分支">创建新的分支</a></li>
+<li><a href="#拉取分支">拉取分支</a></li>
+</ul></li>
+<li><a href="#更新分支">更新分支</a>
+<ul>
+<li><a href="#从master更新">从master更新</a></li>
+<li><a href="#从test更新">从test更新</a></li>
+</ul></li>
+<li><a href="#完成后合并到master">完成后合并到master</a>
+<ul>
+<li><a href="#准备工作">准备工作</a></li>
+<li><a href="#交互式rebase">交互式rebase</a></li>
+<li><a href="#推送到远程仓库">推送到远程仓库</a></li>
+<li><a href="#管理员合并分支">管理员合并分支</a></li>
+</ul></li>
+<li><a href="#其他">其他</a>
+<ul>
+<li><a href="#使用sublime-text作为外部文本编辑器">使用Sublime Text作为外部文本编辑器</a></li>
+<li><a href="#rebase取代merge">rebase取代merge</a></li>
+<li><a href="#reset在合并提交中的应用">reset在合并提交中的应用</a></li>
+<li><a href="#git-hooks-go">git_hooks_go</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="准备知识">准备知识</h2>
+
+<h3 id="分支">分支</h3>
+
+<p>同一个分支有三种表现形式
+1. 远程分支
+2. 远程引用分支 origin/master
+3. 本地分支 master</p>
+
+<p>fetch会更新远程引用分支，本地分支merge远程引用分支之后才会更新本地分支。</p>
+
+<h3 id="pull">pull</h3>
+
+<p>pull实际执行了<code>git fetch</code>和<code>git merge FETCH_HEAD</code>两条指令</p>
+
+<h3 id="rebase的意义">rebase的意义</h3>
+
+<p>rebase的作用是重写提交记录。
+- rebase优点：
+    1. 合并commit（与前分支rebase）
+    2. 避免merge commit（与master rebase）
+    3. 重写提交记录</p>
+
+<ul>
+<li>rebase缺点：</li>
+<li>操作不慎会丢失commit</li>
+<li>影响不到的冲突（由merge commit引起）</li>
+</ul>
+
+<p>在操作不熟练时，可以先备份分支<code>checkout -b bak_xxx</code>。</p>
+
+<p>merge+revert的方式可以保证代码的安全性，但提交记录混乱。rebase+reset的方式能够保证提交记录的清晰。</p>
+
+<h2 id="新建分支">新建分支</h2>
+
+<h3 id="创建新的分支">创建新的分支</h3>
+
+<p>开始需求时，需要建立一个新分支，并把它推送到远程仓库。新建分支的方法多种多样，唯一的原则是从master新建分支。
+1. 更新master
+    1. <code>git checkout master</code>
+    2. <code>git pull</code>
+2. 从master创建feature分支：
+    <code>git checkout master -b test</code> 或 <code>git checkout origin/master -b</code>
+3. 推送分支当远程
+     <code>git push -u origin test:test</code> 本地分支名在前
+    -u是&ndash;set-upstream-to 的简写，设置追踪分支。</p>
+
+<h3 id="拉取分支">拉取分支</h3>
+
+<p>其他人在此分支协作时的获取。
+    <code>git checkout --track origin/test</code></p>
+
+<h2 id="更新分支">更新分支</h2>
+
+<h3 id="从master更新">从master更新</h3>
+
+<ol>
+<li><strong>方案1</strong>
+
+<ol>
+<li><code>git checkout master</code></li>
+<li><code>git pull</code></li>
+<li><code>git checkout test</code></li>
+<li><code>git rebase master</code></li>
+</ol></li>
+<li><strong>方案2（推荐）</strong>
+<code>git pull --rebase origin master</code>
+<strong>注意：</strong>此种方法不会更新本地master分支</li>
+</ol>
+
+<h3 id="从test更新">从test更新</h3>
+
+<p><code>git pull --rebase</code>
+<strong>注意</strong>：需要先设置跟踪分支</p>
+
+<h2 id="完成后合并到master">完成后合并到master</h2>
+
+<p>在test分支开发<strong>完成</strong>后，需要通过rebase合并commit，此时rebase的目标不再是分支，而是在test分支中的commit。</p>
+
+<h3 id="准备工作">准备工作</h3>
+
+<ol>
+<li>从master更新test分支，方法见上文</li>
+<li>寻找rebase点，使用<code>git log</code>查看test分支中最后一个commit，如
+66fc050b</li>
+<li><code>rebase -i 66fc050b</code>开始rebase</li>
+</ol>
+
+<h3 id="交互式rebase">交互式rebase</h3>
+
+<p>在执行rebase -i命令会打开sublime编辑器</p>
+
+<pre><code>pick 66fc050 Test:git pull --rebase origin master
+pick a8b6d2f 2
+pick c2c1903 xsas
+
+# Rebase 749e319..c2c1903 onto 749e319 (3 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like &quot;squash&quot;, but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+</code></pre>
+
+<p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成</p>
+
+<pre><code>pick 66fc050 Test:git pull --rebase origin master
+f a8b6d2f 2
+f c2c1903 xsas
+</code></pre>
+
+<p>然后保存文件并退出sublime。</p>
+
+<p>如果rebase过程中遇到冲突，解决完冲突后执行<code>git rebase --continue</code>，需要注意的是，即使强制关闭控制台，依然会处于rebase状态，需要执行<code>git rebase --abort</code>取消rebase，版本库会会滚刀rebase之前的状态。或者执行<code>git rebase --edit-todo</code>重新打开rebase文件。</p>
+
+<p>如果产生冲突，rebase会逐个释放冲突，处理完冲突后，执行<code>git rebase --continue</code>继续。</p>
+
+<h3 id="推送到远程仓库">推送到远程仓库</h3>
+
+<p>test分支经过rebase后，显然已经和远程分支冲突了，
+需要强制提交:
+<code>git push -f</code>
+或者先删除远程分支:
+1. <code>git push origin --delete test</code>
+2. <code>git push origin test:test</code></p>
+
+<h3 id="管理员合并分支">管理员合并分支</h3>
+
+<p>最终由管理员把test分支合并到master，需要注意的是合并前需要把test分支从master分支rebase更新，避免merge commit。</p>
+
+<h2 id="其他">其他</h2>
+
+<h3 id="使用sublime-text作为外部文本编辑器">使用Sublime Text作为外部文本编辑器</h3>
+
+<p>对git进行设置通常使用git config命令或者直接编辑.config文件</p>
+
+<p><code>git config --global core.editor &quot;'C:/Program Files/Sublime Text 2/sublime_text.exe' -w&quot;</code>
+或</p>
+
+<pre><code>[core]
+	editor = 'C:\\Program Files\\Sublime Text 2\\sublime_text.exe' -w
+</code></pre>
+
+<h3 id="rebase取代merge">rebase取代merge</h3>
+
+<p><code>git config --global branch.autosetuprebase always</code>
+或</p>
+
+<pre><code>[branch]
+	autosetuprebase = always
+</code></pre>
+
+<h3 id="reset在合并提交中的应用">reset在合并提交中的应用</h3>
+
+<p><code>git reset commitId</code> commitId 的位置同rebase，reset会撤销提交，一切回滚到<code>git add</code>和<code>git commit</code>之前的状态，所以我们可以把所有修改一次commit，达到合并commit的作用。</p>
+
+<p>需要注意的是，reset后，提交人信息和提交信息(commit msg)都会丢失。</p>
+
+<h3 id="git-hooks-go">git_hooks_go</h3>
+
+<p>通过git hooks的方式为提交信息添加用户名、分支名等信息，方便rebase。
+运行git_hooks_go目录下的install.py安装。</p>
+
+<h2 id="总结">总结</h2>
+
+<ol>
+<li>从master创建分支</li>
+<li>使用rebase更新</li>
+<li>使用rebase -i 合并commit</li>
+<li>管理员合并分支</li>
+</ol>
+
+<p>更新git：
+<a href="http://git-scm.com/download/">http://git-scm.com/download/</a></p>
+
+<p>git文档：
+1. <a href="http://git-scm.com/book/zh/v2">http://git-scm.com/book/zh/v2</a>
+2. <a href="https://www.atlassian.com/git/tutorials/">https://www.atlassian.com/git/tutorials/</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-10-28</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/git/">git</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">git笔记-撤销与回滚</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/">
+            <span class="next-text nav-default">使用页面可见性API Visibility</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

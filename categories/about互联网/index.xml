@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About互联网 on Ladder1984</title>
+    <link>http://ladder1984.github.io/categories/about%E4%BA%92%E8%81%94%E7%BD%91/</link>
+    <description>Recent content in About互联网 on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Dec 2014 22:39:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/categories/about%E4%BA%92%E8%81%94%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>你好，Linode</title>
+      <link>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</link>
+      <pubDate>Mon, 01 Dec 2014 22:39:46 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%BD%A0%E5%A5%BDlinode/</guid>
+      <description>一直对Linode很向往，恰巧Linode黑色星期五优惠，新用户赠送25美元，就入手了，可惜忘了使用lindoe10的优惠码，10美元就擦肩</description>
+    </item>
+    
+    <item>
+      <title>Markdown on Save Improved停止维护，已并入Jetpack</title>
+      <link>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</link>
+      <pubDate>Wed, 26 Mar 2014 14:18:33 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/markdown-on-save-improved-e5-81-9c-e6-ad-a2-e7-bb-b4-e6-8a-a4-ef-bc-8c-e5-b7-b2-e5-b9-b6-e5-85-a5-jetpack/</guid>
+      <description>墙外的梯子长期使用的markdown插件Markdown on Save Improved业已停止维护，并且已并入Jetpack，markdown功能现在</description>
+    </item>
+    
+    <item>
+      <title>订阅豆瓣广播——基于feed43的RSS抓取</title>
+      <link>http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/</link>
+      <pubDate>Tue, 04 Feb 2014 19:33:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E8%AE%A2%E9%98%85%E8%B1%86%E7%93%A3%E5%B9%BF%E6%92%AD%E5%9F%BA%E4%BA%8Efeed43%E7%9A%84rss%E6%8A%93%E5%8F%96/</guid>
+      <description>相关介绍 Feed43：读作feed for free，用来给网页生成feed。Feed43建立于2006年，archive.org上在2006年也有</description>
+    </item>
+    
+    <item>
+      <title>油猴脚本推荐（二）</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Tue, 03 Sep 2013 21:08:54 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>油猴（Greasemonkey）是Firefox上的一个著名扩展，为火狐带来了强大的功能，通过海量的脚本（http://userscript</description>
+    </item>
+    
+    <item>
+      <title>火狐Firefox优秀扩展推荐(二)</title>
+      <link>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</link>
+      <pubDate>Sun, 01 Sep 2013 13:49:26 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E7%81%AB%E7%8B%90firefox%E4%BC%98%E7%A7%80%E6%89%A9%E5%B1%95%E6%8E%A8%E8%8D%90%E4%BA%8C/</guid>
+      <description>火狐Firefox的优秀就在与其强大的可定制性，任何外观，任何功能，只有你想不到，没有做不到。这里就推荐几款火狐firefox优秀扩展，推荐</description>
+    </item>
+    
+    <item>
+      <title>悼Google Reader</title>
+      <link>http://ladder1984.github.io/post/%E6%82%BCgoogle-reader/</link>
+      <pubDate>Fri, 28 Jun 2013 01:36:28 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%82%BCgoogle-reader/</guid>
+      <description>2013年7月1日，Google Reader涅槃之日。 对于一个Google Reader重度用户来说，这无疑是一场灾难。对于一个Google R</description>
+    </item>
+    
+    <item>
+      <title>一些科学上网有用的东西</title>
+      <link>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</link>
+      <pubDate>Thu, 09 May 2013 10:20:43 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E4%B8%80%E4%BA%9B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%89%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/</guid>
+      <description>smarthosts —— 我是一个云Hosts文件，用来干啥你懂的 - http://code.google.com/p/smarthosts/ goagent —— goagent是使用Python编写的网络软件，可以运行在Windows/Mac/L</description>
+    </item>
+    
+    <item>
+      <title>在SNS社交网络注销账号</title>
+      <link>http://ladder1984.github.io/post/%E5%9C%A8sns%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%B3%A8%E9%94%80%E8%B4%A6%E5%8F%B7/</link>
+      <pubDate>Wed, 24 Apr 2013 00:12:50 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E5%9C%A8sns%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E6%B3%A8%E9%94%80%E8%B4%A6%E5%8F%B7/</guid>
+      <description>在SNS删掉一个人，不如注销自己所有的SNS，这样再想去看也看不了了。账号自杀，一了百了。 注销豆瓣 注销后，该豆瓣帐号不可恢复; 你的私有数据将</description>
+    </item>
+    
+    <item>
+      <title>PHPCloud安装使用Wordpress图文教程</title>
+      <link>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 18 Mar 2013 13:52:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/phpcloud%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8wordpress%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/</guid>
+      <description>PHPCloud http://www.phpcloud.com/ PHPCloud是由著名的Zend公司的提供的免费云，500M免费PHP空间，不限流量，速度不错。500M对于个人博客差不多够了。本文介</description>
+    </item>
+    
+    <item>
+      <title>油猴脚本推荐</title>
+      <link>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Sat, 16 Mar 2013 22:15:50 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90/</guid>
+      <description>油猴是Firefox上的一个扩展，一个堪称伟大的扩展，为火狐带来了强大的自定义功能。介绍是&amp;ldquo;允许您通过使用少量的JavaScri</description>
+    </item>
+    
+    <item>
+      <title>Typecho版日志上线</title>
+      <link>http://ladder1984.github.io/post/typecho-log-on-line/</link>
+      <pubDate>Tue, 26 Feb 2013 13:51:22 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/typecho-log-on-line/</guid>
+      <description>记录我的生活随笔，纯粹个人吐槽，没浏览价值，顺便使用一下Typecho玩玩。 typecho是一款博客程序，它在GPL Version 2许可证下发行，基于P</description>
+    </item>
+    
+    <item>
+      <title>Hostker虚拟主机公测邀请码（每日更新）</title>
+      <link>http://ladder1984.github.io/post/hostker-virtual-host-the-beta-invitation-yards-updated-daily/</link>
+      <pubDate>Sun, 24 Feb 2013 22:31:08 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/hostker-virtual-host-the-beta-invitation-yards-updated-daily/</guid>
+      <description>Hostker官网：[http://www.hostker.com/](http://www.hostker.com/) 什么是Hostker</description>
+    </item>
+    
+    <item>
+      <title>纪念那些消逝的杀毒软件及其他论坛BBS</title>
+      <link>http://ladder1984.github.io/post/remember-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 02:39:44 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/remember-those-bbs/</guid>
+      <description>那是WEB1.0的年代，那是属于论坛BBS的时代。Discuz!和PHPWind两个易用的建站程序，为我们带来了数不尽的论坛，为我们带来了多</description>
+    </item>
+    
+    <item>
+      <title>那些论坛还好吗</title>
+      <link>http://ladder1984.github.io/post/how-about-those-bbs/</link>
+      <pubDate>Fri, 18 Jan 2013 01:12:58 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/how-about-those-bbs/</guid>
+      <description>有几年不怎么逛论坛了，曾经也是个ID收割机，虽然还有很多论坛没有ID，留下遗憾。最近又忽然想起以前，想起以前逛论坛的岁月。再登录那些论坛，有</description>
+    </item>
+    
+    <item>
+      <title>SVN下载Google Code源代码的简单方法</title>
+      <link>http://ladder1984.github.io/post/svn-download-googlecode/</link>
+      <pubDate>Thu, 10 Jan 2013 21:46:15 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/svn-download-googlecode/</guid>
+      <description>Google Code上的项目基本使用SVN做版本控制，window是没有原生支持SVN的，所以需要一款SVN工具。网上常见的方法是使用Tortoise</description>
+    </item>
+    
+    <item>
+      <title>Hostker免费云主机邀请码若干（已失效）</title>
+      <link>http://ladder1984.github.io/post/hostker-invitation/</link>
+      <pubDate>Sun, 06 Jan 2013 17:25:53 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/hostker-invitation/</guid>
+      <description>Hostker云主机目前免费内侧中，墙外的梯子将会每天提供一枚邀请码。有兴趣的同学可以前去折腾练手，或者试试作长期使用，毕竟90后创业的公司</description>
+    </item>
+    
+    <item>
+      <title>DuckDuckGo，无过滤无追踪的搜索引擎</title>
+      <link>http://ladder1984.github.io/post/duckduckgo/</link>
+      <pubDate>Sat, 29 Dec 2012 21:10:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/duckduckgo/</guid>
+      <description>一.关于Duckduckgo DuckDuckGo是一个互联网搜索引擎，其总部位于美国宾州Valley Forge市。强调在传统搜索引擎的基础上</description>
+    </item>
+    
+    <item>
+      <title>找回新浪微博的“关联博客”功能</title>
+      <link>http://ladder1984.github.io/post/retrieve-weibo-relatedblog/</link>
+      <pubDate>Fri, 21 Dec 2012 00:52:57 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/retrieve-weibo-relatedblog/</guid>
+      <description>虽然有很多方法把博文同步到新浪微博，但是设置“关联博客”应该还是最简单的方法，一次设置，完全自动发微博。然而现在的新来微博设置界面已经找不到</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下HUSTOJ安装时候遇到的问题——命令行方面</title>
+      <link>http://ladder1984.github.io/post/problem-of-install-hustoj/</link>
+      <pubDate>Thu, 06 Dec 2012 22:24:14 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/problem-of-install-hustoj/</guid>
+      <description>0.LIVECD安装时未能进入图形界面 alt+F1,输入startx 2.修改相关密码 修改root密码sudo passwd root 修改mysql密码： mysqladmin -uroot -proot password</description>
+    </item>
+    
+    <item>
+      <title>配置外网访问VirtualBox内网站</title>
+      <link>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Sun, 02 Dec 2012 17:32:57 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AEvirtualbox%E5%86%85%E7%BD%91%E7%AB%99/</guid>
+      <description>VirtualBox网址http://www.virtualbox.org/ 网络连接方式选择NAT 选择端口转发,主机端口任意填写,如8888</description>
+    </item>
+    
+  </channel>
+</rss>

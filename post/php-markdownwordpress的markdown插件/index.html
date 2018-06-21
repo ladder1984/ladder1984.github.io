@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>PHP Markdown——wordpress的markdown插件 - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" />
+  <meta name="description" content="《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="PHP Markdown——wordpress的markdown插件" />
+<meta property="og:description" content="《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/php-markdownwordpress%E7%9A%84markdown%E6%8F%92%E4%BB%B6/" />
+
+
+
+<meta property="article:published_time" content="2013-04-15T00:32:32&#43;00:00"/>
+
+<meta property="article:modified_time" content="2013-04-15T00:32:32&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="PHP Markdown——wordpress的markdown插件">
+<meta itemprop="description" content="《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-">
+
+
+<meta itemprop="datePublished" content="2013-04-15T00:32:32&#43;00:00" />
+<meta itemprop="dateModified" content="2013-04-15T00:32:32&#43;00:00" />
+<meta itemprop="wordCount" content="734">
+
+
+
+<meta itemprop="keywords" content="Markdown,wordpress," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP Markdown——wordpress的markdown插件"/>
+<meta name="twitter:description" content="《使用Markdown写作WordPress》一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">PHP Markdown——wordpress的markdown插件</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-04-15 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"> 网站建设 </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#安装php-markdown">安装PHP Markdown</a></li>
+<li><a href="#配置php-markdown">配置PHP Markdown</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<p><strong><a href="http://www.itoldme.net/archives/427">《使用Markdown写作WordPress》</a></strong>一文已经介绍了在wordpress通过WP-Markdown插件写markdown，但是WP-Markdown也有问题，那就是如果你插入js代码、iframe之类的东西，虽然可以正确显示，但是当你发布完文章后，编辑器里这些东西就消失了。也就是说当你再需要修改这篇文章时候，你得重新找来这些代码。这种编辑器乱改文章的事情是相当糟糕的。
+　　幸运的是，另一款markdown插件PHP Markdown不存在这个问题，当然没有实时预览是这个插件的一个缺点。</p>
+
+<h3 id="安装php-markdown">安装PHP Markdown</h3>
+
+<p>　　在wordpress后台的插件搜索中搜不到PHP Markdown，所以还是去官网下载吧。</p>
+
+<p><strong>下载地址</strong>:<a href="http://michelf.ca/projects/php-markdown/classic/">http://michelf.ca/projects/php-markdown/classic/</a>,如果你不需要PHP Markdown Extra的特性的话，就下载上面的PHP Markdown好了。最新版为PHP Markdown 1.0.1q，直接下载地址为:<a href="http://littoral.michelf.ca/code/php-markdown/php-markdown-1.0.1q.zip">http://littoral.michelf.ca/code/php-markdown/php-markdown-1.0.1q.zip</a></p>
+
+<p>下载完毕后，和安装其他wordpress插件一样上传到plugins目录，或者通过后台上传功能安装</p>
+
+<h3 id="配置php-markdown">配置PHP Markdown</h3>
+
+<p>　　遗憾的是，没有找到WP-Markdown一样的配置选项，所以就直接写吧。似乎只有在html编辑器中可以使用markdown，这样也好，直接放弃可视化编辑器吧，避免编辑器过程中带来不必要的麻烦。
+<strong>设置方法</strong>:用户-所有用户-&lt;你的用户名&gt;-勾选“撰写文章时不使用可视化编辑器”</p>
+
+<p>PS:段乱开头的空格可以使用html实体＆nbsp;实现。</p>
+
+<hr />
+
+<p>推荐阅读：
+　　<strong><a href="http://www.itoldme.net/archives/427">《使用Markdown写作WordPress》</a></strong></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-04-15</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/markdown/">Markdown</a>
+          
+          <a href="/tags/wordpress/">wordpress</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/c%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">C语言main()函数标准写法</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/markdown%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">Markdown使用笔记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2012 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/django/</link>
+    <description>Recent content in Django on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Sep 2015 00:17:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL时间精确度问题</title>
+      <link>http://ladder1984.github.io/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sun, 20 Sep 2015 00:17:59 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/</guid>
+      <description>问题背景 在项目最近的自动化测试中，会出现一个随机出现的报错，表现为根据生成时间排序的item有时候会和预期不符。经确认，该问题是由MySQL</description>
+    </item>
+    
+    <item>
+      <title>DJango开发笔记</title>
+      <link>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 12 Sep 2014 17:50:40 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/django%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>(图文无关，图片来自网络) 环境 IDE:JetBrains PyCharm 3.4.1 Python: 2.7.8 Django:1.7 MySQL:5.6.20 &amp;nbsp; 配置 数据库： #settings.py DATABASES = { &amp;lsquo;default&amp;rsquo;: { &amp;lsquo;ENGINE&amp;rsquo;: &amp;lsquo;django.db.backends.mysql&amp;rsquo;, &amp;lsquo;NAME&amp;rsquo;: &amp;lsquo;datebaseName&amp;rsquo;, &amp;lsquo;USER&amp;rsquo;: &amp;lsquo;username&amp;rsquo;, &amp;lsquo;PASSWORD&amp;rsquo;: &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;HOST&amp;rsquo;: &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;PORT&amp;rsquo;: &amp;lsquo;3306&amp;rsquo;, } } 相关指令 python manage.py syncdb python manage.py makemigrations python manage.py migrate &amp;nbsp; 参考文档 1.7</description>
+    </item>
+    
+  </channel>
+</rss>

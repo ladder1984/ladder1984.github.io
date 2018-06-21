@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Duckduckgo on Ladder1984</title>
+    <link>http://ladder1984.github.io/tags/duckduckgo/</link>
+    <description>Recent content in Duckduckgo on Ladder1984</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 29 Dec 2012 21:10:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://ladder1984.github.io/tags/duckduckgo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DuckDuckGo，无过滤无追踪的搜索引擎</title>
+      <link>http://ladder1984.github.io/post/duckduckgo/</link>
+      <pubDate>Sat, 29 Dec 2012 21:10:00 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/duckduckgo/</guid>
+      <description>一.关于Duckduckgo DuckDuckGo是一个互联网搜索引擎，其总部位于美国宾州Valley Forge市。强调在传统搜索引擎的基础上</description>
+    </item>
+    
+  </channel>
+</rss>
