@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Centos on Ladder1984</title>
+    <title>centos on Ladder1984</title>
     <link>http://ladder1984.github.io/tags/centos/</link>
-    <description>Recent content in Centos on Ladder1984</description>
+    <description>Recent content in centos on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 19 May 2013 01:10:35 +0000</lastBuildDate>

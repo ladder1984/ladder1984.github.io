@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="ladder1984" />
-  <meta name="description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种" />
+  <meta name="description" content="中了[《黑客与画家》](http://book.douban.com/subject/6021440/)关于LISP介绍的毒，对LISP神往" />
 
   <meta name="keywords" content="Hugo, theme, even" />
 
@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.53" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/first-read-sicp/" />
@@ -50,40 +50,25 @@
 
 
 <meta property="og:title" content="初读《计算机程序的构造和解释》(SICP)" />
-<meta property="og:description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种" />
+<meta property="og:description" content="中了[《黑客与画家》](http://book.douban.com/subject/6021440/)关于LISP介绍的毒，对LISP神往" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ladder1984.github.io/post/first-read-sicp/" />
-
-
-
-<meta property="article:published_time" content="2013-01-14T03:12:05&#43;00:00"/>
-
+<meta property="og:url" content="http://ladder1984.github.io/post/first-read-sicp/" /><meta property="article:published_time" content="2013-01-14T03:12:05&#43;00:00"/>
 <meta property="article:modified_time" content="2013-01-14T03:12:05&#43;00:00"/>
 
-
-
-
-
-
-
-
-
-
-
 <meta itemprop="name" content="初读《计算机程序的构造和解释》(SICP)">
-<meta itemprop="description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种">
+<meta itemprop="description" content="中了[《黑客与画家》](http://book.douban.com/subject/6021440/)关于LISP介绍的毒，对LISP神往">
 
 
 <meta itemprop="datePublished" content="2013-01-14T03:12:05&#43;00:00" />
 <meta itemprop="dateModified" content="2013-01-14T03:12:05&#43;00:00" />
-<meta itemprop="wordCount" content="1718">
+<meta itemprop="wordCount" content="1761">
 
 
 
 <meta itemprop="keywords" content="LISP,Scheme,SICP," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="初读《计算机程序的构造和解释》(SICP)"/>
-<meta name="twitter:description" content="中了《黑客与画家》关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种"/>
+<meta name="twitter:description" content="中了[《黑客与画家》](http://book.douban.com/subject/6021440/)关于LISP介绍的毒，对LISP神往"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -175,9 +160,9 @@
 
     
     <div class="post-content">
-      <p>中了<a href="http://book.douban.com/subject/6021440/">《黑客与画家》</a>关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种说不清道不明的向往已经够了。近日偶然看到《计算机程序的构造和解释》，也就是《Structure and Interpretation of Computer Programs》（简称为SICP），便什么也不顾的打乱既有计划，看了起来。虽然只读了十几页，也收获颇丰。</p>
+      <pre><code>中了[《黑客与画家》](http://book.douban.com/subject/6021440/)关于LISP介绍的毒，对LISP神往已久。虽然很难看到LISP的实际应用，相关讨论也少之又少，但偶尔看到的只言片语对于那种说不清道不明的向往已经够了。近日偶然看到《计算机程序的构造和解释》，也就是《Structure and Interpretation of Computer Programs》（简称为SICP），便什么也不顾的打乱既有计划，看了起来。虽然只读了十几页，也收获颇丰。
 
-<pre><code>如果没有一点编程基础，也许感觉不到什么，但是如果之前学过C语言，或受C影响的其他语言，如C++、Java等，看LISP就仿佛进了一个新世界。一句无厘头的话就能表明我初读SICP的感受，&amp;ldquo;=竟然是等于号的意思，毁三观啊&amp;rdquo;。C等语言中&amp;ldquo;=&amp;rdquo;表示赋值，&amp;ldquo;==&amp;rdquo;才是等于的意思。以我粗浅的理解，LISP中赋值用define表示，如define x 1。这也隐隐表明着LISP与C系语言的巨大不同。据说现在主流的编程语言，滥觞就是C和LISP，果然大不同。
+如果没有一点编程基础，也许感觉不到什么，但是如果之前学过C语言，或受C影响的其他语言，如C++、Java等，看LISP就仿佛进了一个新世界。一句无厘头的话就能表明我初读SICP的感受，&amp;ldquo;=竟然是等于号的意思，毁三观啊&amp;rdquo;。C等语言中&amp;ldquo;=&amp;rdquo;表示赋值，&amp;ldquo;==&amp;rdquo;才是等于的意思。以我粗浅的理解，LISP中赋值用define表示，如define x 1。这也隐隐表明着LISP与C系语言的巨大不同。据说现在主流的编程语言，滥觞就是C和LISP，果然大不同。
 
 LISP并没有一个统一的标准，似乎在未来也不可能形成标准，取而代之的是大量方言，最主流是的common LISP和scheme，因为LISP的灵活性，创建一种新的方言也十分容易。SICP一书使用的是scheme。书如其名，该书并不是以介绍scheme为目的，而是计算机程序的构造和解释，所以很遗憾的没有在开头就看到hello world。不过Google一下就有了：(display &amp;quot;Hello world&amp;quot;)。是的，就是这么简单。顺便提下另外两种方言的hello world，Common LISP：(display &amp;quot;Hello world&amp;quot;)。Clojure：(println &amp;quot;Hello, world!&amp;quot;)。
 
@@ -332,7 +317,7 @@ LISP并没有一个统一的标准，似乎在未来也不可能形成标准，�
 <script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

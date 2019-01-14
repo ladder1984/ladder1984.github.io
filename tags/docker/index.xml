@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Ladder1984</title>
+    <title>docker on Ladder1984</title>
     <link>http://ladder1984.github.io/tags/docker/</link>
-    <description>Recent content in Docker on Ladder1984</description>
+    <description>Recent content in docker on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 09 Sep 2017 00:33:43 +0000</lastBuildDate>

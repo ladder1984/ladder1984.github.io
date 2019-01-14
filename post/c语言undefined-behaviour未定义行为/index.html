@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.53" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" />
@@ -52,23 +52,8 @@
 <meta property="og:title" content="C语言undefined behaviour未定义行为" />
 <meta property="og:description" content="C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" />
-
-
-
-<meta property="article:published_time" content="2013-10-19T20:32:19&#43;00:00"/>
-
+<meta property="og:url" content="http://ladder1984.github.io/post/c%E8%AF%AD%E8%A8%80undefined-behaviour%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" /><meta property="article:published_time" content="2013-10-19T20:32:19&#43;00:00"/>
 <meta property="article:modified_time" content="2013-10-19T20:32:19&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
 
 <meta itemprop="name" content="C语言undefined behaviour未定义行为">
 <meta itemprop="description" content="C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行">
@@ -186,7 +171,7 @@
     <div class="post-content">
       
 
-<p>C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行为有编译器自行处理，在不同的编译器可能会产生不同的结果，又或者如果程序调用未定义的行为，可能会成功编译，甚至一开始运行时没有错误，只会在另一个系统上，甚至是在另一个日期运行失败。当一个未定义行为的实例发生时，正如语言标准所说，“什么事情都可能发生”，也许什么都没有发生。</p>
+<p>　　C语言中的未定义行为（Undefined Behavior）是指C语言标准未做规定的行为。同时，标准也从没要求编译器判断未定义行为，所以这些行为有编译器自行处理，在不同的编译器可能会产生不同的结果，又或者如果程序调用未定义的行为，可能会成功编译，甚至一开始运行时没有错误，只会在另一个系统上，甚至是在另一个日期运行失败。当一个未定义行为的实例发生时，正如语言标准所说，“什么事情都可能发生”，也许什么都没有发生。</p>
 
 <p>　　所以，避免未定义行为，是个明智的决定。本文将介绍几种未定义行为，同时欢迎读者纠错和补充。</p>
 
@@ -356,7 +341,7 @@ int main()
 <script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

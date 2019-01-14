@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git笔记 on Ladder1984</title>
+    <title>git笔记 on Ladder1984</title>
     <link>http://ladder1984.github.io/tags/git%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in Git笔记 on Ladder1984</description>
+    <description>Recent content in git笔记 on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 19 Nov 2015 11:31:25 +0000</lastBuildDate>

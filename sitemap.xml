@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ladder1984.github.io/post/git%E5%8E%9F%E7%90%86%E4%B9%8B%E4%BB%8E%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%88%B0commit/</loc>
+    <lastmod>2019-01-14T15:12:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://ladder1984.github.io/post/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E6%B5%85%E6%9E%90/</loc>
     <lastmod>2019-01-14T14:48:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -640,13 +647,6 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/centos/</loc>
-    <lastmod>2013-05-19T01:10:35+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/categories/coding/</loc>
     <lastmod>2014-07-23T18:09:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -668,36 +668,8 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/docker/</loc>
-    <lastmod>2017-09-09T00:33:43+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ladder1984.github.io/tags/duckduckgo/</loc>
-    <lastmod>2012-12-29T21:10:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/tags/firefox/</loc>
     <lastmod>2013-09-03T21:08:54+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ladder1984.github.io/tags/git/</loc>
-    <lastmod>2017-08-24T21:06:07+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ladder1984.github.io/tags/git%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2015-11-19T11:31:25+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -731,13 +703,6 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/kubernetes/</loc>
-    <lastmod>2017-09-09T00:33:43+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/tags/lisp/</loc>
     <lastmod>2013-01-14T03:12:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -746,7 +711,7 @@
   
   <url>
     <loc>http://ladder1984.github.io/</loc>
-    <lastmod>2019-01-14T14:48:19+08:00</lastmod>
+    <lastmod>2019-01-14T15:12:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -787,29 +752,8 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/oj/</loc>
-    <lastmod>2012-12-06T22:24:14+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ladder1984.github.io/tags/peewee/</loc>
-    <lastmod>2016-03-28T20:17:01+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://ladder1984.github.io/tags/phpcloud/</loc>
-    <lastmod>2013-04-09T08:20:20+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/post/</loc>
-    <lastmod>2019-01-14T14:48:19+08:00</lastmod>
+    <lastmod>2019-01-14T15:12:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -843,13 +787,6 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/svn/</loc>
-    <lastmod>2013-01-10T21:46:15+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/tags/</loc>
     <lastmod>2014-07-23T18:09:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -864,13 +801,6 @@
   </url>
   
   <url>
-    <loc>http://ladder1984.github.io/tags/ubuntu/</loc>
-    <lastmod>2012-12-06T22:24:14+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://ladder1984.github.io/tags/vps/</loc>
     <lastmod>2014-12-01T22:39:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -880,6 +810,83 @@
   <url>
     <loc>http://ladder1984.github.io/tags/virtualbox/</loc>
     <lastmod>2012-12-02T17:32:57+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/centos/</loc>
+    <lastmod>2013-05-19T01:10:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/docker/</loc>
+    <lastmod>2017-09-09T00:33:43+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/duckduckgo/</loc>
+    <lastmod>2012-12-29T21:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/git/</loc>
+    <lastmod>2019-01-14T15:12:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/git%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2015-11-19T11:31:25+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/kubernetes/</loc>
+    <lastmod>2017-09-09T00:33:43+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/oj/</loc>
+    <lastmod>2012-12-06T22:24:14+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/peewee/</loc>
+    <lastmod>2016-03-28T20:17:01+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/phpcloud/</loc>
+    <lastmod>2013-04-09T08:20:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/svn/</loc>
+    <lastmod>2013-01-10T21:46:15+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ladder1984.github.io/tags/ubuntu/</loc>
+    <lastmod>2012-12-06T22:24:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
