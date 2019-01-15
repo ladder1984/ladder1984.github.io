@@ -61,7 +61,7 @@
 
 <meta itemprop="datePublished" content="2019-01-14T15:12:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-14T15:12:36&#43;08:00" />
-<meta itemprop="wordCount" content="2710">
+<meta itemprop="wordCount" content="2702">
 
 
 
@@ -228,15 +228,17 @@ git update-ref refs/heads/master 48d2ea321a0f1c35b2799ad853c93115e8ab98d7
 
 <p>当在一个新目录或已有目录执行<code>git init</code> 时，Git 会创建一个 .git 目录。 这个目录包含了几乎所有 Git 存储和操作的对象。</p>
 
-<p>.git目录默认内容如下：
-&gt;
-HEAD
-config*
-description
-hooks/
-info/
-objects/
+<p>.git目录默认内容如下：</p>
+
+<blockquote>
+<p>HEAD<br />
+config<br />
+description<br />
+hooks/<br />
+info/<br />
+objects/<br />
 refs/</p>
+</blockquote>
 
 <ul>
 <li>description文件: 仅供 GitWeb 程序使用</li>
@@ -255,14 +257,17 @@ refs/</p>
 </ul></li>
 </ul>
 
-<p>所以，本质上：
-- 分支：一个指向某一系列提交之首的指针或引用
-- 当前位置：git status或者git branch命令看到的当前位置就是HEAD文件的内容
-- 切换分支：就是修改HEAD文件的内容，设置新的引用
-- 新建分支：就是在refs/heads新建一个文件，内容为原分支的最新commit对象
-- fetch和push：实际上就是和远程server交换objects目录里的内容
-- add：就是把文件放入index文件
-- commit：就是把index文件的内容生成一个commit对象</p>
+<p>所以，本质上：</p>
+
+<ul>
+<li>分支：一个指向某一系列提交之首的指针或引用</li>
+<li>当前位置：git status或者git branch命令看到的当前位置就是HEAD文件的内容</li>
+<li>切换分支：就是修改HEAD文件的内容，设置新的引用</li>
+<li>新建分支：就是在refs/heads新建一个文件，内容为原分支的最新commit对象</li>
+<li>fetch和push：实际上就是和远程server交换objects目录里的内容</li>
+<li>add：就是把文件放入index文件</li>
+<li>commit：就是把index文件的内容生成一个commit对象</li>
+</ul>
 
 <h2 id="git对象">git对象</h2>
 
