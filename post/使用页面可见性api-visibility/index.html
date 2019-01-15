@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="介绍 可见性API的好处是判断当前页面是否可见，并基于此执行不同的操作，通常可以节省不少资源，比如轮询，比如视频播放。 可见性API包括两个属性" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="介绍 可见性API的好处是判断当前页面是否可见，并基于此执行不同的操作，通常可以节省不少资源，比如轮询，比如视频播放。 可见性API包括两个属性" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="使用页面可见性API Visibility" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2015-09-25T18:38:43&#43;00:00" />
 <meta itemprop="dateModified" content="2015-09-25T18:38:43&#43;00:00" />
-<meta itemprop="wordCount" content="410">
+<meta itemprop="wordCount" content="420">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2015-09-25 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -159,11 +140,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -184,18 +160,32 @@
 <h2 id="示例">示例</h2>
 
 <p>结合两个属性和事件，可以很好的根据页面可见性进行一些操作，比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;visibilitychange&#34;</span><span class="p">,</span> <span class="nx">func</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 
-<pre><code class="language-JavaScript">document.addEventListener(&quot;visibilitychange&quot;, func, false);
-
-if(document.visibilityState == 'visible'){  
-    //do sth.
-}
-else if(document.visibilityState == 'hidden'){
-    //do sth.
-
-}
-</code></pre>
-
+<span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">visibilityState</span> <span class="o">==</span> <span class="s1">&#39;visible&#39;</span><span class="p">){</span>  
+    <span class="c1">//do sth.
+</span><span class="c1"></span><span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">visibilityState</span> <span class="o">==</span> <span class="s1">&#39;hidden&#39;</span><span class="p">){</span>
+    <span class="c1">//do sth.
+</span><span class="c1"></span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 <p>参考文档：
 - <a href="http://www.w3.org/TR/page-visibility/">http://www.w3.org/TR/page-visibility/</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/Events/visibilitychange">https://developer.mozilla.org/en-US/docs/Web/Events/visibilitychange</a>
@@ -204,7 +194,6 @@ else if(document.visibilityState == 'hidden'){
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -216,28 +205,17 @@ else if(document.visibilityState == 'hidden'){
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/javascript/">JavaScript</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/git-rebase%E5%AE%9E%E8%B7%B5/">
+        <a class="prev" href="/post/git-rebase%E5%AE%9E%E8%B7%B5/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">git rebase实践</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/">
+        <a class="next" href="/post/mysql%E6%97%B6%E9%97%B4%E7%B2%BE%E7%A1%AE%E5%BA%A6%E9%97%AE%E9%A2%98/">
             <span class="next-text nav-default">MySQL时间精确度问题</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -246,8 +224,7 @@ else if(document.visibilityState == 'hidden'){
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -262,26 +239,11 @@ else if(document.visibilityState == 'hidden'){
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -299,8 +261,7 @@ else if(document.visibilityState == 'hidden'){
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -315,12 +276,10 @@ else if(document.visibilityState == 'hidden'){
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -328,7 +287,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

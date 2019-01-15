@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="peewee使用指南 本系列文章基于peewee 2.6.4，同时会参照Django Orm做点比较。 1.peewee介绍 peewee是一个轻量级" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/peewee-note1/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="peewee笔记(1)——基本语法" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2016-03-23T10:44:27&#43;00:00" />
 <meta itemprop="dateModified" content="2016-03-23T10:44:27&#43;00:00" />
-<meta itemprop="wordCount" content="2518">
+<meta itemprop="wordCount" content="2625">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2016-03-23 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -191,11 +172,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -214,20 +190,34 @@
 <h4 id="2-1-1-连接形式">2.1.1.连接形式</h4>
 
 <p>使用url连接，方式和django类似，如：</p>
-
-<pre><code>DATABASES = {
-    'default': {
-        'ENGINE': 'mysql',
-        'NAME': 'name',
-        'USER': 'user',                      
-        'PASSWORD': 'pass',                  
-        'HOST': 'url',
-        'PORT': '',
-        'CONN_MAX_AGE': 100
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;mysql&#39;,
+        &#39;NAME&#39;: &#39;name&#39;,
+        &#39;USER&#39;: &#39;user&#39;,                      
+        &#39;PASSWORD&#39;: &#39;pass&#39;,                  
+        &#39;HOST&#39;: &#39;url&#39;,
+        &#39;PORT&#39;: &#39;&#39;,
+        &#39;CONN_MAX_AGE&#39;: 100
     }
-}
-</code></pre>
-
+}</pre></td></tr></table>
+</div>
+</div>
 <!-- more --> 
 
 <h3 id="2-2-model定义">2.2.model定义</h3>
@@ -247,20 +237,32 @@
 <h2 id="3-orm操作-crud">3.ORM操作（CRUD）</h2>
 
 <p>示例Model：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="o">*</span>
 
-<pre><code class="language-python">from peewee import *
+<span class="n">db</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span><span class="s1">&#39;people.db&#39;</span><span class="p">)</span>
 
-db = SqliteDatabase('people.db')
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
 
-class Person(Model):
-    name = CharField(default='')
-    age = IntegerField(default=0) 
-
-    class Meta:
-        database = db # This model uses the &quot;people.db&quot; database.
-
-</code></pre>
-
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span> <span class="c1"># This model uses the &#34;people.db&#34; database.</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>注：这是个model示例，实际上&rsquo;database=db&rsquo;已经封装在<code>db.model.Model</code>中，在python-service-base中不用写。</p>
 
 <h3 id="3-1-增加-create">3.1.增加（Create）</h3>
@@ -268,20 +270,31 @@ class Person(Model):
 <ol>
 <li>create()方法：</li>
 </ol>
-
-<pre><code class="language-python">grandma =Person.create(name='Grandma', age = 1)
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">grandma</span> <span class="o">=</span><span class="n">Person</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Grandma&#39;</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
 <ol>
 <li>save()方法</li>
 </ol>
-
-<pre><code class="language-python">person = Person()
-person.name = 'bill'
-person.age =10
-person.save()
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bill&#39;</span>
+<span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span><span class="mi">10</span>
+<span class="n">person</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
 <h3 id="3-2-查-retrieve">3.2.查（Retrieve）</h3>
 
 <p>peewee中查询记录分为get（查询单条记录）、select(条件查询批量记录)。</p>
@@ -309,10 +322,14 @@ person.save()
 <p><code>Product.select()</code>等价于Django中的<code>Product.select().all()</code>，返回一个可迭代的SelectQuery对象。</p>
 
 <h4 id="3-2-3-条件查询">3.2.3.条件查询</h4>
-
-<pre><code>Product.select().where(Product.name=='abc')
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Product.select().where(Product.name==&#39;abc&#39;)</pre></td></tr></table>
+</div>
+</div>
 <p>返回一个可迭代的SelectQuery对象。</p>
 
 <ul>
@@ -321,8 +338,22 @@ person.save()
 <li>非(NOT)：<strong>~</strong>,没用过。。。</li>
 
 <li><p>比较：peewee支持如下比较符</p>
-
-<pre><code>==  x equals y
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">==  x equals y
 &lt;   x is less than y
 &lt;=  x is less than or equal to y
 &gt;   x is greater than y
@@ -332,12 +363,27 @@ person.save()
 &gt;&gt;  x IS y, where y is None/NULL
 %   x LIKE y where y may contain wildcards
 **  x ILIKE y where y may contain wildcards
-~   Negation
-</code></pre></li>
+~   Negation</pre></td></tr></table>
+</div>
+</div></li>
 
 <li><p>其他查询</p>
-
-<pre><code>.contains(substr)   Wild-card search for substring.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">.contains(substr)   Wild-card search for substring.
 .startswith(prefix)     Search for values beginning with prefix.
 .endswith(suffix)   Search for values ending with suffix.
 .between(low, high)     Search for values between low and high.
@@ -347,8 +393,9 @@ person.save()
 .in_(value)     IN lookup (identical to &lt;&lt;).
 .not_in(value)  NOT IN lookup.
 .is_null(is_null)   IS NULL or IS NOT NULL. Accepts boolean param.
-.concat(other)  Concatenate two strings using ||.
-</code></pre></li>
+.concat(other)  Concatenate two strings using ||.</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <p>示例：</p>
@@ -382,18 +429,29 @@ SelectQuery对象并不支持len()方法，即执行<code>len(Product.select().w
 <li><p>Model.delete (Python class method, in API Reference)
 <code>mall_models.Order.delete().where(mall_models.Order.id=order.id).execute()</code>
 或者</p>
-
-<pre><code class="language-python">p = mall_models.Order.delete().where(mall_models.Order.id=order.id)
-p.execute()
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">p</span> <span class="o">=</span> <span class="n">mall_models</span><span class="o">.</span><span class="n">Order</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mall_models</span><span class="o">.</span><span class="n">Order</span><span class="o">.</span><span class="nb">id</span><span class="o">=</span><span class="n">order</span><span class="o">.</span><span class="nb">id</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>也就是执行了execute()才会执行删除操作。</p></li>
 
 <li><p>Model.delete_instance (Python method, in API Reference)</p>
-
-<pre><code>p = Product.get(Product.name=='abc')
-p.elete_instance()
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">p = Product.get(Product.name==&#39;abc&#39;)
+p.elete_instance()</pre></td></tr></table>
+</div>
+</div></li>
 
 <li><p>DeleteQuery
 <code>dq = DeleteQuery(User).where(User.active == False).execute()</code></p></li>
@@ -403,57 +461,97 @@ p.elete_instance()
 
 <ol>
 <li><p>update修改(推荐)</p>
-
-<pre><code class="language-python">query = Stat.update(counter=Stat.counter + 1).where(Stat.url == request.url)
-query.execute()
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">query</span> <span class="o">=</span> <span class="n">Stat</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">counter</span><span class="o">=</span><span class="n">Stat</span><span class="o">.</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Stat</span><span class="o">.</span><span class="n">url</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="n">query</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>同delete,也就是执行了execute()才会执行update操作。</p></li>
 
 <li><p>save修改</p>
-
-<pre><code class="language-python">for stat in Stat.select().where(Stat.url == request.url):
- stat.counter += 1
- stat.save()
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">Stat</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Stat</span><span class="o">.</span><span class="n">url</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">):</span>
+ <span class="n">stat</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+ <span class="n">stat</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 
 <p>两种方式都类似Django语句，<strong>需要特别注意的是，peewee的update是原子的（Atomic ）</strong>，在并发情况下可靠，即peewee的update语句效果等价于Django使用F表达式的update，如<code>rules.update(remained_count=F('remained_count') - 1, get_count=F('get_count') + 1)</code></p>
 
 <h2 id="4-外键与join">4.外键与join</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">OrderHasProduct</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+	<span class="n">order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span>
+	<span class="n">product</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Product</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;product&#39;</span><span class="p">)</span>
+	<span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">()</span>  <span class="c1"># 商品单价</span>
 
-<pre><code class="language-python">class OrderHasProduct(models.Model):
-	order = models.ForeignKey(Order)
-	product = models.ForeignKey(Product, related_name='product')
-	price = models.FloatField()  # 商品单价
+
+<span class="k">class</span> <span class="nc">Order</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+	<span class="n">order_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 订单号</span>
+	<span class="n">webapp_user_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>  <span class="c1"># WebApp用户的id</span>
+	<span class="n">webapp_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;店铺ID&#39;</span><span class="p">)</span>  <span class="c1"># webapp,订单成交的店铺id</span>
+	<span class="n">webapp_source_id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;商品来源店铺ID&#39;</span><span class="p">)</span>  <span class="c1"># 订单内商品实际来源店铺的id，已废弃</span>
+	<span class="n">buyer_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 购买人姓名</span>
 
 
-class Order(models.Model):
-	order_id = models.CharField(max_length=100)  # 订单号
-	webapp_user_id = models.IntegerField()  # WebApp用户的id
-	webapp_id = models.CharField(max_length=20, verbose_name='店铺ID')  # webapp,订单成交的店铺id
-	webapp_source_id = models.IntegerField(default=0, verbose_name='商品来源店铺ID')  # 订单内商品实际来源店铺的id，已废弃
-	buyer_name = models.CharField(max_length=100)  # 购买人姓名
-
-
-class Product(models.Model):
-	owner = models.ForeignKey(User, related_name='user-product')
-	name = models.CharField(max_length=256)  # 商品名称
-	physical_unit = models.CharField(default='', max_length=256)  # 计量单位
-	price = models.FloatField(default=0.0)  # 商品价格
-
-</code></pre>
-
+<span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+	<span class="n">owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;user-product&#39;</span><span class="p">)</span>
+	<span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># 商品名称</span>
+	<span class="n">physical_unit</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># 计量单位</span>
+	<span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># 商品价格</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>OrderHasProduct有外键Product和外键Order。</p>
 
 <h3 id="4-1-外键赋值">4.1.外键赋值</h3>
-
-<pre><code>mall_models.OrderHasProduct.create(
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mall_models.OrderHasProduct.create(
 	order=self.db_model,
 	product=product.id,
-	...
-</code></pre>
-
+	...</pre></td></tr></table>
+</div>
+</div>
 <p>可以看到把<strong>外键实例</strong>或者<strong>外键实例的id</strong>都是可以的。</p>
 
 <h3 id="4-2-涉及外键的查询">4.2.涉及外键的查询</h3>
@@ -463,8 +561,20 @@ class Product(models.Model):
 <p>直接<code>OrderHasProduct.select().where(where(mall_models.Order.id=order.id).product_id=10086)</code></p>
 
 <h4 id="4-2-2-根据外键的某字段查询-join外键">4.2.2 根据外键的某字段查询（join外键）</h4>
-
-<pre><code>class Rule(models.Model):
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">class Rule(models.Model):
 	owner = models.ForeignKey(User)
 	name = models.CharField(max_length=20, db_index=True) 
 	valid = models.DecimalField(max_digits=65) 
@@ -472,19 +582,22 @@ class Product(models.Model):
 
 class Card(models.Model):
 	owner = models.ForeignKey(User)
-	rule = models.ForeignKey(Rule) 
-</code></pre>
-
+	rule = models.ForeignKey(Rule) </pre></td></tr></table>
+</div>
+</div>
 <p>Card有外键Rule。</p>
-
-<pre><code>count = Card.select().join(wzcard_models.Rule).where(Card.card_id.in_(ids),Rule.valid &gt;0).count()
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">count = Card.select().join(wzcard_models.Rule).where(Card.card_id.in_(ids),Rule.valid &gt;0).count()</pre></td></tr></table>
+</div>
+</div>
 <p>的确很长，peewee不支持django风格的&rdquo;__&ldquo;（双下划线），所以就直街上join了，peewee默认使用INNER join。</p>
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -496,32 +609,19 @@ class Card(models.Model):
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/peewee/">peewee</a>
-          
           <a href="/tags/mysql/">MySQL</a>
-          
           <a href="/tags/python/">Python</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/peewee-note2/">
+        <a class="prev" href="/post/peewee-note2/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">peewee笔记(2)——构建自已的peewee文档</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/">
+        <a class="next" href="/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/">
             <span class="next-text nav-default">emoji、Python、MySQL utf8mb4与UTF</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -530,8 +630,7 @@ class Card(models.Model):
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -546,26 +645,11 @@ class Card(models.Model):
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -583,8 +667,7 @@ class Card(models.Model):
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -599,12 +682,10 @@ class Card(models.Model):
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -612,7 +693,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

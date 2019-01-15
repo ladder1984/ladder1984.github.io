@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="准备知识 分支 同一个分支有三种表现形式 1. 远程分支 2. 远程引用分支 origin/master 3. 本地分支 master fetch会更新远程引用分支，本地分支merge远程引用分支之后才" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/git-rebase%E5%AE%9E%E8%B7%B5/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="git rebase实践" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2015-10-28T19:54:15&#43;00:00" />
 <meta itemprop="dateModified" content="2015-10-28T19:54:15&#43;00:00" />
-<meta itemprop="wordCount" content="1769">
+<meta itemprop="wordCount" content="1798">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2015-10-28 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -187,11 +168,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -286,8 +262,33 @@
 <h3 id="交互式rebase">交互式rebase</h3>
 
 <p>在执行rebase -i命令会打开sublime编辑器</p>
-
-<pre><code>pick 66fc050 Test:git pull --rebase origin master
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">pick 66fc050 Test:git pull --rebase origin master
 pick a8b6d2f 2
 pick c2c1903 xsas
 
@@ -298,7 +299,7 @@ pick c2c1903 xsas
 # r, reword = use commit, but edit the commit message
 # e, edit = use commit, but stop for amending
 # s, squash = use commit, but meld into previous commit
-# f, fixup = like &quot;squash&quot;, but discard this commit's log message
+# f, fixup = like &#34;squash&#34;, but discard this commit&#39;s log message
 # x, exec = run command (the rest of the line) using shell
 # d, drop = remove commit
 #
@@ -308,16 +309,22 @@ pick c2c1903 xsas
 #
 # However, if you remove everything, the rebase will be aborted.
 #
-# Note that empty commits are commented out
-</code></pre>
-
+# Note that empty commits are commented out</pre></td></tr></table>
+</div>
+</div>
 <p>内容以<code>动作 commitID commit信息</code>的形式展现，66fc050、a8b6d2f、c2c1903就是三次提交，如果需要合并三次提交，修改成</p>
-
-<pre><code>pick 66fc050 Test:git pull --rebase origin master
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">pick 66fc050 Test:git pull --rebase origin master
 f a8b6d2f 2
-f c2c1903 xsas
-</code></pre>
-
+f c2c1903 xsas</pre></td></tr></table>
+</div>
+</div>
 <p>然后保存文件并退出sublime。</p>
 
 <p>如果rebase过程中遇到冲突，解决完冲突后执行<code>git rebase --continue</code>，需要注意的是，即使强制关闭控制台，依然会处于rebase状态，需要执行<code>git rebase --abort</code>取消rebase，版本库会会滚刀rebase之前的状态。或者执行<code>git rebase --edit-todo</code>重新打开rebase文件。</p>
@@ -345,20 +352,30 @@ f c2c1903 xsas
 
 <p><code>git config --global core.editor &quot;'C:/Program Files/Sublime Text 2/sublime_text.exe' -w&quot;</code>
 或</p>
-
-<pre><code>[core]
-	editor = 'C:\\Program Files\\Sublime Text 2\\sublime_text.exe' -w
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[core]
+	editor = &#39;C:\\Program Files\\Sublime Text 2\\sublime_text.exe&#39; -w</pre></td></tr></table>
+</div>
+</div>
 <h3 id="rebase取代merge">rebase取代merge</h3>
 
 <p><code>git config --global branch.autosetuprebase always</code>
 或</p>
-
-<pre><code>[branch]
-	autosetuprebase = always
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[branch]
+	autosetuprebase = always</pre></td></tr></table>
+</div>
+</div>
 <h3 id="reset在合并提交中的应用">reset在合并提交中的应用</h3>
 
 <p><code>git reset commitId</code> commitId 的位置同rebase，reset会撤销提交，一切回滚到<code>git add</code>和<code>git commit</code>之前的状态，所以我们可以把所有修改一次commit，达到合并commit的作用。</p>
@@ -388,7 +405,6 @@ f c2c1903 xsas
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -400,28 +416,17 @@ f c2c1903 xsas
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/git/">git</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/">
+        <a class="prev" href="/post/git%E7%AC%94%E8%AE%B0-%E6%92%A4%E9%94%80%E4%B8%8E%E5%9B%9E%E6%BB%9A/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">git笔记-撤销与回滚</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/">
+        <a class="next" href="/post/%E4%BD%BF%E7%94%A8%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7api-visibility/">
             <span class="next-text nav-default">使用页面可见性API Visibility</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -430,8 +435,7 @@ f c2c1903 xsas
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -446,26 +450,11 @@ f c2c1903 xsas
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -483,8 +472,7 @@ f c2c1903 xsas
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -499,12 +487,10 @@ f c2c1903 xsas
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -512,7 +498,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

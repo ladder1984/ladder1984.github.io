@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="1. 简介 Kubernetes一个用于容器集群的自动化部署、扩容以及运维的开源平台。 1.1 基本概念 master：主节点，负责k8s调度，不应部署容器" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/kubernetes%E7%AC%94%E8%AE%B0/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Kubernetes笔记" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2017-09-09T00:33:43&#43;00:00" />
 <meta itemprop="dateModified" content="2017-09-09T00:33:43&#43;00:00" />
-<meta itemprop="wordCount" content="3077">
+<meta itemprop="wordCount" content="3116">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2017-09-09 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -211,11 +192,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -293,13 +269,20 @@
 2. app地址使用k8s提供的Internal endpoints，即app:port形式，统一使用80端口，则简化为app
 3. app统一使用HTTP协议提供服务
 例子：</p>
-
-<pre><code>    location /xxx/ {
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    location /xxx/ {
         rewrite ^/xxx/(.*) /$1 break;
         proxy_pass xxx;
-    }
-</code></pre>
-
+    }</pre></td></tr></table>
+</div>
+</div>
 <p>需要说明的是，api-gateway和app都应该存在于cluster network内。对于cluster network外的api service，Nginx规则按照老形式配置IP:Port形式；对于cluster network外的需要访问api-gateway的app，则访问外部Nginx，外部Nginx通过NodePort反向代理把请求发送给内部Nginx。</p>
 
 <h3 id="2-4-负载均衡">2.4 负载均衡</h3>
@@ -359,8 +342,46 @@
 <h4 id="3-2-1-deployment和service配置文件管理">3.2.1 deployment和service配置文件管理</h4>
 
 <p>一个应用接入k8s只需要编写一个配置文件，包含deployment和service两项配置，如：</p>
-
-<pre><code>apiVersion: extensions/v1beta1
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: simples
@@ -376,7 +397,7 @@ spec:
         image: imgage.xxx.com/test/simples:latest  # or just image: redis
         env:
         - name: ENV_VAR
-          value: &quot;10086&quot;
+          value: &#34;10086&#34;
         ports:
         - containerPort: 9999
       imagePullSecrets:
@@ -394,9 +415,9 @@ spec:
     # the port that this service should serve on
   - port: 80
   selector:
-    app: aaa      
-</code></pre>
-
+    app: aaa      </pre></td></tr></table>
+</div>
+</div>
 <p>每个应用自定义的内容只有环境变量和镜像地址。所有配置使用配置文件统一管理，配置文件使用git管理。</p>
 
 <h4 id="3-2-2-环境变量管理">3.2.2 环境变量管理</h4>
@@ -463,7 +484,6 @@ spec:
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -475,30 +495,18 @@ spec:
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/docker/">docker</a>
-          
           <a href="/tags/kubernetes/">kubernetes</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E6%B5%85%E6%9E%90/">
+        <a class="prev" href="/post/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E6%B5%85%E6%9E%90/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">领域驱动设计浅析</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/git%E6%80%BB%E7%BB%93/">
+        <a class="next" href="/post/git%E6%80%BB%E7%BB%93/">
             <span class="next-text nav-default">git总结</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -507,8 +515,7 @@ spec:
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -523,26 +530,11 @@ spec:
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -560,8 +552,7 @@ spec:
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -576,12 +567,10 @@ spec:
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -589,7 +578,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

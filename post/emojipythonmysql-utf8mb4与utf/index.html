@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="编码、字符集是很大的内容，本文简单聊聊Python、MySQL中处理emoji这种特殊字符的问题。本文描述的Python是2.x版本，3.x" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/emojipythonmysql-utf8mb4%E4%B8%8Eutf/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="emoji、Python、MySQL utf8mb4与UTF" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2016-03-20T21:16:31&#43;00:00" />
 <meta itemprop="dateModified" content="2016-03-20T21:16:31&#43;00:00" />
-<meta itemprop="wordCount" content="1146">
+<meta itemprop="wordCount" content="1158">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2016-03-20 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -161,11 +142,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -191,22 +167,36 @@
 <p>最开始的方案是直接识别4字节字符并直接过滤掉，3字节的范围是<code>\u0000-\uFFFF</code>，如果想直接判断一个字符是否在这个范围，<strong>可能</strong>会惊奇的发现一个字符被拆分成了两个字符，该字符的长度也是<strong>2</strong>。比如<code>\U0001f604</code>(笑脸表情，参见<a href="https://codepoints.net/U+1F604">https://codepoints.net/U+1F604</a>)会被拆分成<code>\ud83d</code>和<code>\ude04</code>，<code>\U0001f604</code>展示了以一当二的能力。至于说可能，是因为这是由Python解释器编译时候编译选项是&ndash;enable-unicode=ucs4还是&ndash;enable-unicode=ucs2决定的，后者就是前文描述的情况。查看当前Python情况可以输出sys.maxunicode，得到65535就是ucs2，详见Python文档<a href="https://docs.python.org/2/library/sys.html#sys.maxunicode">https://docs.python.org/2/library/sys.html#sys.maxunicode</a> 。ucs4下，4字节字符范围在<code>\U00010000-\U0010ffff</code>，usc2下拆分出的两个字符会在\uD800-\uDFFF范围。所以如果要过滤emoji或者其他特殊字符，可以根据此范围替换。</p>
 
 <h2 id="代码示例">代码示例</h2>
-
-<pre><code>def filter_invalid_str(text):
-	&quot;&quot;&quot;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">def filter_invalid_str(text):
+	&#34;&#34;&#34;
 	过滤非BMP字符
-	&quot;&quot;&quot;
+	&#34;&#34;&#34;
 	try:
 		# UCS-4
-		highpoints = re.compile(u'[\U00010000-\U0010ffff]')
+		highpoints = re.compile(u&#39;[\U00010000-\U0010ffff]&#39;)
 	except re.error:
 		# UCS-2
-		highpoints = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
+		highpoints = re.compile(u&#39;[\uD800-\uDBFF][\uDC00-\uDFFF]&#39;)
 
-	return highpoints.sub(u'_', text)
-
-</code></pre>
-
+	return highpoints.sub(u&#39;_&#39;, text)</pre></td></tr></table>
+</div>
+</div>
 <p>参考：</p>
 
 <ul>
@@ -218,7 +208,6 @@
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -230,30 +219,18 @@
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/mysql/">MySQL</a>
-          
           <a href="/tags/python/">Python</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/peewee-note1/">
+        <a class="prev" href="/post/peewee-note1/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">peewee笔记(1)——基本语法</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/git%E6%8A%80%E5%B7%A7/">
+        <a class="next" href="/post/git%E6%8A%80%E5%B7%A7/">
             <span class="next-text nav-default">git技巧</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -262,8 +239,7 @@
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -278,26 +254,11 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -315,8 +276,7 @@
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -331,12 +291,10 @@
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -344,7 +302,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

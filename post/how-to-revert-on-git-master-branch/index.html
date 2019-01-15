@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="1. 概述 1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="1. 概述 1.1 master分支回滚的特殊性 多人协作，修改提交历史的方式易造成冲突 希望所有操作的记录都是保存的，避免丢失代码 希望没有master权限" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/how-to-revert-on-git-master-branch/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="git master分支回滚指南" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2016-08-24T23:44:27&#43;00:00" />
 <meta itemprop="dateModified" content="2016-08-24T23:44:27&#43;00:00" />
-<meta itemprop="wordCount" content="500">
+<meta itemprop="wordCount" content="517">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2016-08-24 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -167,11 +148,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -199,55 +175,86 @@
 <h2 id="2-回滚方法">2. 回滚方法</h2>
 
 <h3 id="2-1-回滚某个或某些commit">2.1 回滚某个或某些commit</h3>
-
-<pre><code>git revert commit
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git revert commit</pre></td></tr></table>
+</div>
+</div>
 <p>如：<code>git revet 08096c7</code></p>
 
 <h3 id="2-2-回滚分支合并-merge-commit">2.2 回滚分支合并（merge commit）</h3>
-
-<pre><code>git revert -m parent-number commit
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git revert -m parent-number commit</pre></td></tr></table>
+</div>
+</div>
 <p>如<code>git revert -m 1 08096c7c71429ac044a90bbd43f67aef13a91102</code></p>
 
 <p>一个典型的merge commit：</p>
-
-<pre><code>commit a4aebedf433805eb15767f6f1905f3c236ce48bd
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">commit a4aebedf433805eb15767f6f1905f3c236ce48bd
 Merge: 6ee7688 d593ca7
 Author: XXX &lt;XXX@qq.com&gt;
 Date:   Mon Aug 22 15:40:16 2016 +0800
 
-    XXXXX
-</code></pre>
-
+    XXXXX</pre></td></tr></table>
+</div>
+</div>
 <p>其中merge字段中的6ee7688 d593ca7就是两个parent commit，</p>
-
-<pre><code>        a4aebedf4
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">        a4aebedf4
            /\
    6ee7688| |d593ca7
   (master)| | (feature)
           | |
-          | |
-</code></pre>
-
+          | |</pre></td></tr></table>
+</div>
+</div>
 <p>-m 参数指定要回滚到parent commit，值为1或2，即第1个还是第2个。如上图，我们想回滚<strong>掉</strong>feature分之，回<strong>到</strong>合并之前的master，则选择1.通常使用Gitlab的merge request合并的分之都选1.</p>
 
 <h3 id="2-3-回滚到某个提交">2.3 回滚到某个提交</h3>
 
 <p>如要把master回滚到tag v100:</p>
-
-<pre><code>git reset --hard v100
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git reset --hard v100
 git reset --soft origin/master
-git commit -am &quot;revert to v100&quot;
-</code></pre>
-
+git commit -am &#34;revert to v100&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>回滚完毕后，可以使用<code>git diff head v100</code>比较是否还有不同，如果有不同，则说明操作错误。</p>
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -259,28 +266,17 @@ git commit -am &quot;revert to v100&quot;
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/git/">git</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/git-tag%E5%BA%94%E7%94%A8/">
+        <a class="prev" href="/post/git-tag%E5%BA%94%E7%94%A8/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">git tag应用</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
-          <a class="next" href="/post/peewee-note2/">
+        <a class="next" href="/post/peewee-note2/">
             <span class="next-text nav-default">peewee笔记(2)——构建自已的peewee文档</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -289,8 +285,7 @@ git commit -am &quot;revert to v100&quot;
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -305,26 +300,11 @@ git commit -am &quot;revert to v100&quot;
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -342,8 +322,7 @@ git commit -am &quot;revert to v100&quot;
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -358,12 +337,10 @@ git commit -am &quot;revert to v100&quot;
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -371,7 +348,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

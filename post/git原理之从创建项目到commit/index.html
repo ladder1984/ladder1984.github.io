@@ -16,21 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ladder1984" />
-  <meta name="description" content="本文试图用底层命令来实现高层命令add和commit操作来介绍git底层原理。 底层命令与高层命令 高层命令（porcelain）：诸如chec" />
-
-  <meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ladder1984" /><meta name="description" content="本文试图用底层命令来实现高层命令add和commit操作来介绍git底层原理。 底层命令与高层命令 高层命令（porcelain）：诸如chec" /><meta name="keywords" content="Ladder1984, Python, Git" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/git%E5%8E%9F%E7%90%86%E4%B9%8B%E4%BB%8E%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%88%B0commit/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,15 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-
-
-
-<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Git原理之从创建项目到commit" />
@@ -61,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-01-14T15:12:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-14T15:12:36&#43;08:00" />
-<meta itemprop="wordCount" content="2706">
+<meta itemprop="wordCount" content="2744">
 
 
 
@@ -99,8 +88,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -118,8 +105,6 @@
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -137,15 +122,11 @@
         <span class="post-time"> 2019-01-14 </span>
         
         
-        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
@@ -173,11 +154,6 @@
 </nav>
   </div>
 </div>
-
-    
-    
-
-    
     <div class="post-content">
       
 
@@ -193,15 +169,24 @@
 <p>首先，我们分别使用高层命令与底层命令完成从创建仓库到添加文件，到commit的过程：</p>
 
 <h3 id="高层命令">高层命令</h3>
-
-<pre><code>mkdir gittest
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mkdir gittest
 cd gittest
 git init
 echo aaa&gt;a.txt
 git add a.txt
-git commit -m &quot;init&quot;
-</code></pre>
-
+git commit -m &#34;init&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>我们看下add和commit命令在git官方的定义：</p>
 
 <ul>
@@ -212,18 +197,30 @@ git commit -m &quot;init&quot;
 <p>从中，我们可以提取出关键词：工作目录、暂存区、数据库、快照、指针。</p>
 
 <h3 id="底层命令">底层命令</h3>
-
-<pre><code>mkdir gittest
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mkdir gittest
 cd gittest
 git init
 echo aaa&gt;a.txt
 git hash-object -w a.txt
 git update-index --add --cacheinfo 100644 72943a16fb2c8f38f9dde202b7a70ccc19c52f34 a.txt
 git write-tree
-git commit-tree 37057b2e8a9041ef88b805a5b7c4e0e668a03be4 -m &quot;init&quot;
-git update-ref refs/heads/master 48d2ea321a0f1c35b2799ad853c93115e8ab98d7
-</code></pre>
-
+git commit-tree 37057b2e8a9041ef88b805a5b7c4e0e668a03be4 -m &#34;init&#34;
+git update-ref refs/heads/master 48d2ea321a0f1c35b2799ad853c93115e8ab98d7</pre></td></tr></table>
+</div>
+</div>
 <h2 id="仓库文件-git目录-内容">仓库文件(.git目录)内容</h2>
 
 <p>当在一个新目录或已有目录执行<code>git init</code> 时，Git 会创建一个 .git 目录。 这个目录包含了几乎所有 Git 存储和操作的对象。</p>
@@ -295,48 +292,86 @@ refs/</p>
 <p>前文曾提及，在存储内容时，会有个头部信息一并被保存。 让我们略花些时间来看看 Git 是如何存储其对象的。 通过在 Ruby 脚本语言中交互式地演示，你将看到一个数据对象——本例中是字符串“what is up, doc?”——是如何被存储的。</p>
 
 <p>可以通过 irb 命令启动 Ruby 的交互模式：</p>
-
-<pre><code>$ irb
-&gt;&gt; content = &quot;what is up, doc?&quot;
-=&gt; &quot;what is up, doc?&quot;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$ irb
+&gt;&gt; content = &#34;what is up, doc?&#34;
+=&gt; &#34;what is up, doc?&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>Git 以对象类型作为开头来构造一个头部信息，本例中是一个“blob”字符串。 接着 Git 会添加一个空格，随后是数据内容的长度，最后是一个空字节（null byte）：</p>
-
-<pre><code>&gt;&gt; header = &quot;blob #{content.length}\0&quot;
-=&gt; &quot;blob 16\u0000&quot;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;&gt; header = &#34;blob #{content.length}\0&#34;
+=&gt; &#34;blob 16\u0000&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>Git 会将上述头部信息和原始数据拼接起来，并计算出这条新内容的 SHA-1 校验和。 在 Ruby 中可以这样计算 SHA-1 值——先通过 require 命令导入 SHA-1 digest 库，然后对目标字符串调用 Digest::SHA1.hexdigest()：</p>
-
-<pre><code>&gt;&gt; store = header + content
-=&gt; &quot;blob 16\u0000what is up, doc?&quot;
-&gt;&gt; require 'digest/sha1'
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;&gt; store = header + content
+=&gt; &#34;blob 16\u0000what is up, doc?&#34;
+&gt;&gt; require &#39;digest/sha1&#39;
 =&gt; true
 &gt;&gt; sha1 = Digest::SHA1.hexdigest(store)
-=&gt; &quot;bd9dbf5aae1a3862dd1526723246b20206e5fc37&quot;
-</code></pre>
-
+=&gt; &#34;bd9dbf5aae1a3862dd1526723246b20206e5fc37&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>Git 会通过 zlib 压缩这条新内容。在 Ruby 中可以借助 zlib 库做到这一点。 先导入相应的库，然后对目标内容调用 Zlib::Deflate.deflate()：</p>
-
-<pre><code>&gt;&gt; require 'zlib'
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;&gt; require &#39;zlib&#39;
 =&gt; true
 &gt;&gt; zlib_content = Zlib::Deflate.deflate(store)
-=&gt; &quot;x\x9CK\xCA\xC9OR04c(\xCFH,Q\xC8,V(-\xD0QH\xC9O\xB6\a\x00_\x1C\a\x9D&quot;
-</code></pre>
-
+=&gt; &#34;x\x9CK\xCA\xC9OR04c(\xCFH,Q\xC8,V(-\xD0QH\xC9O\xB6\a\x00_\x1C\a\x9D&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>最后，需要将这条经由 zlib 压缩的内容写入磁盘上的某个对象。 要先确定待写入对象的路径（SHA-1 值的前两个字符作为子目录名称，后 38 个字符则作为子目录内文件的名称）。 如果该子目录不存在，可以通过 Ruby 中的 FileUtils.mkdir_p() 函数来创建它。 接着，通过 File.open() 打开这个文件。最后，对上一步中得到的文件句柄调用 write() 函数，以向目标文件写入之前那条 zlib 压缩过的内容：</p>
-
-<pre><code>&gt;&gt; path = '.git/objects/' + sha1[0,2] + '/' + sha1[2,38]
-=&gt; &quot;.git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37&quot;
-&gt;&gt; require 'fileutils'
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&gt;&gt; path = &#39;.git/objects/&#39; + sha1[0,2] + &#39;/&#39; + sha1[2,38]
+=&gt; &#34;.git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37&#34;
+&gt;&gt; require &#39;fileutils&#39;
 =&gt; true
 &gt;&gt; FileUtils.mkdir_p(File.dirname(path))
-=&gt; &quot;.git/objects/bd&quot;
-&gt;&gt; File.open(path, 'w') { |f| f.write zlib_content }
-=&gt; 32
-</code></pre>
-
+=&gt; &#34;.git/objects/bd&#34;
+&gt;&gt; File.open(path, &#39;w&#39;) { |f| f.write zlib_content }
+=&gt; 32</pre></td></tr></table>
+</div>
+</div>
 <p>就是这样——你已创建了一个有效的 Git 数据对象。 所有的 Git 对象均以这种方式存储，区别仅在于类型标识——另两种对象类型的头部信息以字符串“commit”或“tree”开头，而不是“blob”。 另外，虽然数据对象的内容几乎可以是任何东西，但提交对象和树对象的内容却有各自固定的格式。</p>
 
 <h4 id="快照">快照</h4>
@@ -375,7 +410,6 @@ refs/</p>
 
     </div>
 
-    
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
@@ -387,23 +421,13 @@ refs/</p>
   </p>
   
   
-</div>
-
-    
-    
-
-    <footer class="post-footer">
+</div><footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/git/">git</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
         
-        
-          <a class="next" href="/post/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E6%B5%85%E6%9E%90/">
+        <a class="next" href="/post/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E6%B5%85%E6%9E%90/">
             <span class="next-text nav-default">领域驱动设计浅析</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -412,8 +436,7 @@ refs/</p>
     </footer>
   </article>
         </div>
-        
-  <div id="disqus_thread"></div>
+        <div id="disqus_thread"></div>
     <script type="text/javascript">
     (function() {
       
@@ -428,26 +451,11 @@ refs/</p>
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
-
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="https://github.com/ladder1984" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
   <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -465,8 +473,7 @@ refs/</p>
 
   <span class="copyright-year">
     &copy; 
-    
-      2012 - 
+    2012 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -481,12 +488,10 @@ refs/</p>
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-
-
-<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 <script type="application/javascript">
@@ -494,7 +499,7 @@ var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-99172222-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>
