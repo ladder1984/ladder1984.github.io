@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Jan 2019 15:12:36 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jul 2019 15:51:15 +0800</lastBuildDate>
     
 	<atom:link href="http://ladder1984.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wsgi服务正确处理path与path_info</title>
+      <link>http://ladder1984.github.io/post/wsgi%E6%9C%8D%E5%8A%A1%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86path%E4%B8%8Epath_info/</link>
+      <pubDate>Thu, 25 Jul 2019 15:51:15 +0800</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/wsgi%E6%9C%8D%E5%8A%A1%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86path%E4%B8%8Epath_info/</guid>
+      <description>问题 需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方</description>
+    </item>
     
     <item>
       <title>Git原理之从创建项目到commit</title>

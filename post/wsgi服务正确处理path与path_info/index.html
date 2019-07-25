@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Wsgi服务正确处理path与path_info - Ladder1984</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ladder1984" /><meta name="description" content="问题 需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方" /><meta name="keywords" content="Ladder1984, Python, Git" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://ladder1984.github.io/post/wsgi%E6%9C%8D%E5%8A%A1%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86path%E4%B8%8Epath_info/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Wsgi服务正确处理path与path_info" />
+<meta property="og:description" content="问题 需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ladder1984.github.io/post/wsgi%E6%9C%8D%E5%8A%A1%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86path%E4%B8%8Epath_info/" /><meta property="article:published_time" content="2019-07-25T15:51:15&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-25T15:51:15&#43;08:00"/>
+
+<meta itemprop="name" content="Wsgi服务正确处理path与path_info">
+<meta itemprop="description" content="问题 需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方">
+
+
+<meta itemprop="datePublished" content="2019-07-25T15:51:15&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-25T15:51:15&#43;08:00" />
+<meta itemprop="wordCount" content="1720">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wsgi服务正确处理path与path_info"/>
+<meta name="twitter:description" content="问题 需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ladder1984</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Ladder1984</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Wsgi服务正确处理path与path_info</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-25 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#问题">问题</a></li>
+<li><a href="#原因">原因</a></li>
+<li><a href="#方案">方案</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="问题">问题</h2>
+
+<p>需要把原app1.yy.com,app2.yy.com.. 的域名合并成xx.yy.com/app1 , xx.yy.com/app2的部署方式，在测试合并域名部署时，发现前端发来的请求，个别页面报错，观察到的情况是</p>
+
+<ol>
+<li>前端请求<a href="http://xxx.yy.com/app1/api/get_order，希望获得app1服务的/api/get_order的接口">http://xxx.yy.com/app1/api/get_order，希望获得app1服务的/api/get_order的接口</a></li>
+<li>而后端对此返回HTTP 301,重定向到了<a href="http://xxx.yy.com/api/get_order/">http://xxx.yy.com/api/get_order/</a></li>
+<li>前端服务访问<a href="http://xxx.yy.com/api/get_order/，">http://xxx.yy.com/api/get_order/，</a> Nginx无法找到/api/get_order/，于是返回404</li>
+</ol>
+
+<h2 id="原因">原因</h2>
+
+<p>此时Nginx配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-/Users/zhutianqi/ladder1984-blog/content/post/wsgi服务正确处理path与path_info.md" data-lang="/Users/zhutianqi/ladder1984-blog/content/post/wsgi服务正确处理path与path_info.md"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-/Users/zhutianqi/ladder1984-blog/content/post/wsgi服务正确处理path与path_info.md" data-lang="/Users/zhutianqi/ladder1984-blog/content/post/wsgi服务正确处理path与path_info.md">server {<span class="err">
+</span><span class="err"></span>    listen 80;<span class="err">
+</span><span class="err"></span>    server_name xxx.yy.com;<span class="err">
+</span><span class="err"></span>    location /app1/{<span class="err">
+</span><span class="err"></span>           proxy_pass http://192.168.6.183:19910/;<span class="err">
+</span><span class="err"></span>        }<span class="err">
+</span><span class="err"></span>}</code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>Nginx接受请求<a href="http://xxx.yy.com/app1/api/get_order">http://xxx.yy.com/app1/api/get_order</a> 后通过proxy_pass转发给<a href="http://192.168.6.183:19910/">http://192.168.6.183:19910/</a></li>
+<li>wsgi服务，即Django，接受到<a href="http://xxx.yy.com/api/get_order请求">http://xxx.yy.com/api/get_order请求</a></li>
+<li>按照Django url匹配原则，即项目代码定义的url(r&rsquo;api/get_order/$&lsquo;,  &hellip;)<br />
+3.1 会首先认为api/get_order匹配失败，<br />
+3.2 根据Django默认设置APPEND_SLASH=True，会发起重定向补全“/”，根据request.host和request.path_info，得到重定向url：<a href="http://xxx.yy.com/api/get_order/">http://xxx.yy.com/api/get_order/</a></li>
+<li>NGINX无法匹配 /api/get_order/，返回404</li>
+</ol>
+
+<p>根本原因是，Django服务无法感知到path: /app1的存在，所以重定向生成的URL有误。对此，解决方案有：</p>
+
+<ol>
+<li>在Django设置APPEND_SLASH=False，关闭自动补全。但所有客户端必须正确请求携带/的URL，但排查老代码，以及规避以后代码请求出错风险较大</li>
+<li>通过Django中间件的方式在处理url匹配前自动加上/，但此方案只能处理APPEND_SLASH场景，不确定Django是否还有其他类似重定向，也使得后端服务丧失发起重定向能力，风险较大</li>
+<li>彻底解决path问题，使得后端服务正确感知到完整path是/app1/api/get_order，并能正确处理</li>
+</ol>
+
+<h2 id="方案">方案</h2>
+
+<p>经查询，对于多个服务部署到同一域名的多个path下，Nginx、wsgi、Django是有支持的。需要使用SCRIPT_NAME特性。</p>
+
+<p>根据wsgi定义，详见 <a href="https://www.python.org/dev/peps/pep-0333/#id19：">https://www.python.org/dev/peps/pep-0333/#id19：</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SCRIPT_NAME：URL请求中路径开始的部分，对应应用程序对象
+PATH_INFO：URL请求路径剩余部分，指定请求目标在应用程序内部的虚拟位置</pre></td></tr></table>
+</div>
+</div>
+<p>即完整的path是SCRIPT_NAME + PATH_INFO，以上述场景，SCRIPT_NAME是/app1，PATH_INFO是/api/get_order。</p>
+
+<p>而Django能够正确处理<code>SCRIPT_NAME</code>和<code>PATH_INFO</code>，url匹配时是使用path_info，而<code>append_slash</code>这样需要完整path的场景，<code>get_full_path</code>函数能够正确识别SCRIPT_NAME，所以只要正确把SCRIPT_NAME + PATH_INFO传给Django就行了。<code>http://xxx.yy.com/app1/api/get_order</code> 请求，Django能解析到<code>request.path: /app1/api/get_order</code>，<code>request.path_info: /api/get_order</code>。</p>
+
+<p>具体方案如下：</p>
+
+<p>Nginx配置文件:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">server {
+    listen 80;
+    server_name xx.yy.com;
+    location /app1/{
+ 
+           uwsgi_pass 192.168.6.81:9999;
+           uwsgi_param SCRIPT_NAME /app1;
+           include uwsgi_params;
+        }
+ 
+ 
+}</pre></td></tr></table>
+</div>
+</div>
+<p>uWSGI的init配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">...
+route-run = fixpathinfo:
+...</pre></td></tr></table>
+</div>
+</div>
+<p><strong>注意</strong>uWSGI需要2.0.11及以上版本，详见：<a href="https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Changelog-2.0.11.html#fixpathinfo">https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Changelog-2.0.11.html#fixpathinfo</a></p>
+
+<p>参考：</p>
+
+<p><a href="https://note.qidong.name/2017/11/uwsgi-script-name/">https://note.qidong.name/2017/11/uwsgi-script-name/</a></p>
+
+<p><a href="https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Changelog-2.0.11.html">https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Changelog-2.0.11.html</a></p>
+
+<p><a href="https://www.python.org/dev/peps/pep-0333/#id19">https://www.python.org/dev/peps/pep-0333/#id19</a></p>
+
+<p><a href="https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Vars.html">https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/Vars.html</a></p>
+
+<p><a href="https://www.jianshu.com/p/9c95a28c6895">https://www.jianshu.com/p/9c95a28c6895</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ladder1984</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-07-25</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/git%E5%8E%9F%E7%90%86%E4%B9%8B%E4%BB%8E%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%88%B0commit/">
+            <span class="next-text nav-default">Git原理之从创建项目到commit</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'ifchanged';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="http://ladder1984.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2012 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ladder1984</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-99172222-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
