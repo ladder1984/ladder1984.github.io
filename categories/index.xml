@@ -6,10 +6,28 @@
     <description>Recent content in Categories on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Dec 2014 22:39:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2015 23:08:51 +0000</lastBuildDate>
     
 	<atom:link href="http://ladder1984.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>编程笔记</title>
+      <link>http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网站建设</title>
+      <link>http://ladder1984.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</link>
+      <pubDate>Fri, 12 Dec 2014 23:56:13 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>About互联网</title>
@@ -21,38 +39,11 @@
     </item>
     
     <item>
-      <title>About计算机</title>
-      <link>http://ladder1984.github.io/categories/about%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
-      <pubDate>Thu, 09 Jan 2014 16:42:13 +0000</pubDate>
-      
-      <guid>http://ladder1984.github.io/categories/about%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Coding</title>
       <link>http://ladder1984.github.io/categories/coding/</link>
       <pubDate>Wed, 23 Jul 2014 18:09:05 +0000</pubDate>
       
       <guid>http://ladder1984.github.io/categories/coding/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Coding Life</title>
-      <link>http://ladder1984.github.io/categories/coding-life/</link>
-      <pubDate>Mon, 14 Jan 2013 03:12:05 +0000</pubDate>
-      
-      <guid>http://ladder1984.github.io/categories/coding-life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IT评论</title>
-      <link>http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/</link>
-      <pubDate>Wed, 10 Apr 2013 08:00:59 +0000</pubDate>
-      
-      <guid>http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/</guid>
       <description></description>
     </item>
     
@@ -75,20 +66,29 @@
     </item>
     
     <item>
-      <title>编程笔记</title>
-      <link>http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Wed, 15 Apr 2015 23:08:51 +0000</pubDate>
+      <title>About计算机</title>
+      <link>http://ladder1984.github.io/categories/about%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+      <pubDate>Thu, 09 Jan 2014 16:42:13 +0000</pubDate>
       
-      <guid>http://ladder1984.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://ladder1984.github.io/categories/about%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>网站建设</title>
-      <link>http://ladder1984.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</link>
-      <pubDate>Fri, 12 Dec 2014 23:56:13 +0000</pubDate>
+      <title>IT评论</title>
+      <link>http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/</link>
+      <pubDate>Wed, 10 Apr 2013 08:00:59 +0000</pubDate>
       
-      <guid>http://ladder1984.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/</guid>
+      <guid>http://ladder1984.github.io/categories/it%E8%AF%84%E8%AE%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coding Life</title>
+      <link>http://ladder1984.github.io/categories/coding-life/</link>
+      <pubDate>Mon, 14 Jan 2013 03:12:05 +0000</pubDate>
+      
+      <guid>http://ladder1984.github.io/categories/coding-life/</guid>
       <description></description>
     </item>
     

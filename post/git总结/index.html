@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/" />
@@ -41,7 +41,8 @@
 <meta property="og:title" content="git总结" />
 <meta property="og:description" content="git中的位置 仓库 工作目录：对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。 暂存区：" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/" /><meta property="article:published_time" content="2017-08-24T21:06:07&#43;00:00"/>
+<meta property="og:url" content="http://ladder1984.github.io/post/git%E6%80%BB%E7%BB%93/" />
+<meta property="article:published_time" content="2017-08-24T21:06:07&#43;00:00"/>
 <meta property="article:modified_time" content="2017-08-24T21:06:07&#43;00:00"/>
 
 <meta itemprop="name" content="git总结">
@@ -50,7 +51,7 @@
 
 <meta itemprop="datePublished" content="2017-08-24T21:06:07&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-24T21:06:07&#43;00:00" />
-<meta itemprop="wordCount" content="3277">
+<meta itemprop="wordCount" content="3285">
 
 
 
@@ -393,25 +394,42 @@ Date:   Mon Aug 22 15:40:16 2016 +0800
 
 <ul>
 <li>场景：如果上线失败，想回滚到上次上线的版本，上线到昨天的某个版本等待。得到版本号后就可以回滚<strong>到</strong>那个版本。</li>
-<li>命令：
-<code>
-git reset --hard a4aebedf433805eb15767f6f1905f3c236ce48bd
+
+<li><p>命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git reset --hard a4aebedf433805eb15767f6f1905f3c236ce48bd
 git reset --soft origin/master
-git commit -am &quot;revert to a4aebedf433805eb15767f6f1905f3c236ce48bd&quot;
-</code></li>
+git commit -am &#34;revert to a4aebedf433805eb15767f6f1905f3c236ce48bd&#34;</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <h3 id="撤销本地操作">撤销本地操作</h3>
 
 <ul>
 <li>场景： 如删除错分支，reset命令错commit时，可以使用relog查看操作日志，并撤销操作。</li>
-<li>命令:
-<code>
-git reflog # 查找需要恢复到的id
-git reset --head XXX
-</code></li>
-<li>注意事项：reflog只记录HEAD的值，即每一次提交或改变分支，所以没有commit的内容无法用reflog恢复。</li>
-<li>参考：<a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D">维护与数据恢复</a></li>
+
+<li><p>命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git reflog # 查找需要恢复到的id
+git reset --head XXX</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>注意事项：reflog只记录HEAD的值，即每一次提交或改变分支，所以没有commit的内容无法用reflog恢复。</p></li>
+
+<li><p>参考：<a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D">维护与数据恢复</a></p></li>
 </ul>
 
 <h3 id="把本地重置到远程分支的版本">把本地重置到远程分支的版本</h3>
@@ -453,13 +471,21 @@ git checkout origin/master -B master</pre></td></tr></table>
 
 <ul>
 <li>暴力checkout法：手动git checkout  HEAD~1，HEAD~10,HEAD~5这样手动切换到某个commit</li>
-<li>bisect命令：
-<code>
-git bisect start #标记开始
+
+<li><p>bisect命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git bisect start #标记开始
 git bisect bad # 标记当前有问题 
-git bisect good v1.0 标记一个没问题的起点
-</code>
-而后git会自动开始二分查找，用户使用git bisect bad或者git bisect good进行标记当前commit的情况，直到能确定因为问题的commit。</li>
+git bisect good v1.0 标记一个没问题的起点</pre></td></tr></table>
+</div>
+</div>
+<p>而后git会自动开始二分查找，用户使用git bisect bad或者git bisect good进行标记当前commit的情况，直到能确定因为问题的commit。</p></li>
 </ul></li>
 </ul>
 

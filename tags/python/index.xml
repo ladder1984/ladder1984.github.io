@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Wsgi服务正确处理path与path_info</title>
+      <title>WSGI服务正确处理path与path_info</title>
       <link>http://ladder1984.github.io/post/wsgi%E6%9C%8D%E5%8A%A1%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86path%E4%B8%8Epath_info/</link>
       <pubDate>Thu, 25 Jul 2019 15:51:15 +0800</pubDate>
       
