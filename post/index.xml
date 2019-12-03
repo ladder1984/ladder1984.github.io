@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ladder1984</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Jul 2019 15:51:15 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2019 17:13:12 +0800</lastBuildDate>
     
 	<atom:link href="http://ladder1984.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>项目监控的一点总结</title>
+      <link>http://ladder1984.github.io/post/%E9%A1%B9%E7%9B%AE%E7%9B%91%E6%8E%A7%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 01 Dec 2019 17:13:12 +0800</pubDate>
+      
+      <guid>http://ladder1984.github.io/post/%E9%A1%B9%E7%9B%AE%E7%9B%91%E6%8E%A7%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <description>总结下做监控的一些经验，以备查用。 1. 为什么做监控？ 监控是为了查看项目的运行情况，及早发现问题。 2. 监控什么？ 项目的执行是为了产生业务的结果，那</description>
+    </item>
     
     <item>
       <title>WSGI服务正确处理path与path_info</title>
